@@ -132,7 +132,11 @@ public class JavaBuilder extends BaseBuilder {
 		JavaFile file = JavaFile.builder(packageName, service.build())
 			.build();
 
-		file.writeTo(new File("src/gen/java"));
+		if (Validator.isNull(destination)) {
+			destination = "src/gen/java";
+		}
+
+		file.writeTo(new File(destination));
 	}
 
 	protected String contextPath(String context, String filter) {

@@ -1,18 +1,17 @@
 plugins {
 	id 'java'
-	id 'com.jfrog.bintray' version '1.6'
+	id 'maven-publish'
+	id 'com.jfrog.bintray' version '1.7.1'
 }
 
-archivesBaseName = 'liferay-sdk-builder'
+apply from: 'formatter.gradle'
+format.workingDir = 'src/main/java'
 
 repositories {
 	mavenLocal()
 	jcenter()
 	mavenCentral()
 }
-
-apply from: 'formatter.gradle'
-format.workingDir = 'src/main/java'
 
 dependencies {
 	compile group: 'com.squareup', name: 'javapoet', version: '1.5.1'
@@ -21,6 +20,40 @@ dependencies {
 	compile group: 'org.apache.velocity', name: 'velocity-tools', version: '2.0'
 	compile group: 'org.json', name: 'json', version: '20140107'
 	compile group: 'com.liferay.mobile', name: 'liferay-mobile-sdk', version: '2.0-beta-5'
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+			artifactId 'liferay-sdk-builder'
+			artifact sourceJar
+		}
+	}
+}
+
+bintray {
+	user = findProperty('user') ?: ''
+	key = findProperty('key') ?: ''
+
+	publications = ['mavenJava']
+
+	pkg {
+		repo = 'liferay-mobile'
+		name = 'liferay-sdk-builder'
+		userOrg = 'liferay'
+		licenses = ['LGPL-2.1']
+		vcsUrl = 'https://github.com/brunofarache/liferay-sdk-builder.git'
+
+		version {
+			name = project.version
+		}
+	}
+}
+
+task sourceJar(type: Jar, dependsOn: classes) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
 }
 
 task wrapper(type: Wrapper) {
