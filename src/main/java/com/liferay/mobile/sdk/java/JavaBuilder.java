@@ -57,7 +57,7 @@ public class JavaBuilder extends BaseBuilder {
 		AnnotationSpec servicePathAnnotation = AnnotationSpec
 			.builder(Path.class)
 			.addMember(
-				"value", "$S", contextPath(discovery.getContext(), filter))
+				"value", "$S", util.contextPath(discovery.getContext(), filter))
 			.build();
 
 		TypeSpec.Builder service = TypeSpec
@@ -137,20 +137,6 @@ public class JavaBuilder extends BaseBuilder {
 		}
 
 		file.writeTo(new File(destination));
-	}
-
-	protected String contextPath(String context, String filter) {
-		if (Validator.isNotNull(context)) {
-			context += ".";
-		}
-
-		context += filter;
-
-		if (!context.startsWith("/")) {
-			context = "/" + context;
-		}
-
-		return context;
 	}
 
 	protected boolean hasUploadData(List<Parameter> params) {

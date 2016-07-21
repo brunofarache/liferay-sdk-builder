@@ -79,6 +79,25 @@ public class LanguageUtil {
 		return WordUtils.capitalize(word);
 	}
 
+	public String contextPath(String context, String path) {
+		if (Validator.isNotNull(context)) {
+			if (path.startsWith("/")) {
+				path = path.substring(1);
+			}
+
+			context = context + "." + path;
+		}
+		else {
+			context = path;
+		}
+
+		if (!context.startsWith("/")) {
+			context = "/" + context;
+		}
+
+		return context;
+	}
+
 	public String getMethodName(String path) {
 		String last = getMethodURL(path);
 
