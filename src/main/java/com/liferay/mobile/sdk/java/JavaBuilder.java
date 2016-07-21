@@ -52,72 +52,11 @@ public class JavaBuilder extends BaseBuilder {
 			int version, String filter, String destination)
 		throws Exception {
 
-		JavaUtil util = new JavaUtil();
-
-		AnnotationSpec servicePathAnnotation = AnnotationSpec
-			.builder(Path.class)
-			.addMember(
-				"value", "$S", util.contextPath(discovery.getContext(), filter))
-			.build();
-
-		TypeSpec.Builder service = TypeSpec
-			.interfaceBuilder(util.getServiceClassName(filter))
-			.addModifiers(Modifier.PUBLIC)
-			.addAnnotation(servicePathAnnotation);
+		TypeSpec.Builder classBuilder = classBuilder(discovery, filter);
 
 		for (Action action : actions) {
-			String path = action.getPath();
-			String methodName = util.getMethodName(path);
-			path = path.substring(path.lastIndexOf("/"));
-
-			AnnotationSpec.Builder methodPathAnnotation = AnnotationSpec
-				.builder(Path.class)
-				.addMember("value", "$S", path);
-
-			if (hasUploadData(action.getParameters())) {
-				methodPathAnnotation.addMember(
-					"contentType", "$T.MULTIPART", ContentType.class);
-			}
-
-			TypeName returnType = ParameterizedTypeName.get(
-				Call.class, util.returnType(action.getResponse()));
-
-			MethodSpec.Builder method = MethodSpec.methodBuilder(methodName)
-				.addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
-				.addAnnotation(methodPathAnnotation.build())
-				.returns(returnType);
-
-			for (Parameter parameter : action.getParameters()) {
-				String parameterName = parameter.getName();
-
-				AnnotationSpec parameterAnnotation;
-				Class type = util.type(parameter.getType());
-
-				if (type == JSONObject.class) {
-					parameterAnnotation = AnnotationSpec
-						.builder(Param.class)
-						.addMember("name", "$S", parameterName)
-						.addMember(
-							"className", "$S",
-							util.className(parameter.getType()))
-						.build();
-				}
-				else {
-					parameterAnnotation = AnnotationSpec
-						.builder(Param.class)
-						.addMember("name", "$S", parameterName)
-						.build();
-				}
-
-				ParameterSpec param = ParameterSpec
-					.builder(type, parameterName)
-					.addAnnotation(parameterAnnotation)
-					.build();
-
-				method.addParameter(param);
-			}
-
-			service.addMethod(method.build());
+			MethodSpec.Builder methodBuilder = methodBuilder(action);
+			classBuilder.addMethod(methodBuilder.build());
 		}
 
 		StringBuilder sb = new StringBuilder(packageName);
@@ -129,7 +68,7 @@ public class JavaBuilder extends BaseBuilder {
 
 		packageName = sb.toString();
 
-		JavaFile file = JavaFile.builder(packageName, service.build())
+		JavaFile file = JavaFile.builder(packageName, classBuilder.build())
 			.build();
 
 		if (Validator.isNull(destination)) {
@@ -137,6 +76,23 @@ public class JavaBuilder extends BaseBuilder {
 		}
 
 		file.writeTo(new File(destination));
+	}
+
+	protected TypeSpec.Builder classBuilder(
+		Discovery discovery, String filter) {
+
+		String contextPath = javaUtil.contextPath(
+			discovery.getContext(), filter);
+
+		AnnotationSpec servicePathAnnotation = AnnotationSpec
+			.builder(Path.class)
+			.addMember("value", "$S", contextPath)
+			.build();
+
+		return TypeSpec
+			.interfaceBuilder(javaUtil.getServiceClassName(filter))
+			.addModifiers(Modifier.PUBLIC)
+			.addAnnotation(servicePathAnnotation);
 	}
 
 	protected boolean hasUploadData(List<Parameter> params) {
@@ -150,5 +106,72 @@ public class JavaBuilder extends BaseBuilder {
 
 		return false;
 	}
+
+	protected MethodSpec.Builder methodBuilder(Action action) {
+		AnnotationSpec.Builder methodPathAnnotationBuilder =
+			methodPathAnnotationBuilder(action);
+
+		TypeName returnType = ParameterizedTypeName.get(
+			Call.class, javaUtil.returnType(action.getResponse()));
+
+		String methodName = javaUtil.getMethodName(methodPath(action));
+
+		MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder(methodName)
+			.addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
+			.addAnnotation(methodPathAnnotationBuilder.build())
+			.returns(returnType);
+
+		for (Parameter parameter : action.getParameters()) {
+			ParameterSpec.Builder parameterBuilder = parameterBuilder(
+				parameter);
+
+			methodBuilder.addParameter(parameterBuilder.build());
+		}
+
+		return methodBuilder;
+	}
+
+	protected String methodPath(Action action) {
+		String path = action.getPath();
+		return path.substring(path.lastIndexOf("/"));
+	}
+
+	protected AnnotationSpec.Builder methodPathAnnotationBuilder(
+		Action action) {
+
+		String path = methodPath(action);
+
+		AnnotationSpec.Builder methodPathAnnotationBuilder = AnnotationSpec
+			.builder(Path.class)
+			.addMember("value", "$S", path);
+
+		if (hasUploadData(action.getParameters())) {
+			methodPathAnnotationBuilder.addMember(
+				"contentType", "$T.MULTIPART", ContentType.class);
+		}
+
+		return methodPathAnnotationBuilder;
+	}
+
+	protected ParameterSpec.Builder parameterBuilder(Parameter parameter) {
+		String name = parameter.getName();
+
+		AnnotationSpec.Builder parameterAnnotationBuilder = AnnotationSpec
+			.builder(Param.class)
+			.addMember("name", "$S", name);
+
+		Class type = javaUtil.type(parameter.getType());
+
+		if (type == JSONObject.class) {
+			parameterAnnotationBuilder = parameterAnnotationBuilder.addMember(
+				"className", "$S", javaUtil.className(parameter.getType()));
+		}
+
+		return ParameterSpec
+			.builder(type, name)
+			.addAnnotation(parameterAnnotationBuilder.build());
+	}
+
+	protected JavaUtil javaUtil = new JavaUtil();
 
 }

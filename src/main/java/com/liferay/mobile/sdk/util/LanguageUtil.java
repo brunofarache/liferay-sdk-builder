@@ -108,9 +108,7 @@ public class LanguageUtil {
 
 	public String getMethodName(String path) {
 		String last = getMethodURL(path);
-
 		String[] methodName = last.split("-");
-
 		StringBuilder sb = new StringBuilder();
 
 		for (int i = 0; i < methodName.length; i++) {
