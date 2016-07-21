@@ -21,6 +21,17 @@ import java.util.ArrayList;
  */
 public class Action {
 
+	public Action() {
+	}
+
+	public Action(
+		String path, String response, ArrayList<Parameter> parameters) {
+
+		this.path = path;
+		this.response = response;
+		this.parameters = parameters;
+	}
+
 	public ArrayList<Parameter> getParameters() {
 		return parameters;
 	}

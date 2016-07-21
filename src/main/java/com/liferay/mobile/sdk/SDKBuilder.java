@@ -14,9 +14,11 @@
 
 package com.liferay.mobile.sdk;
 
-import com.google.gson.Gson;
-
+import com.liferay.mobile.sdk.json.Action;
+import com.liferay.mobile.sdk.json.ActionDeserializer;
 import com.liferay.mobile.sdk.json.Discovery;
+import com.liferay.mobile.sdk.json.DiscoveryDeserializer;
+import com.liferay.mobile.sdk.json.JSONParser;
 import com.liferay.mobile.sdk.util.Validator;
 
 import com.squareup.okhttp.OkHttpClient;
@@ -122,8 +124,15 @@ public class SDKBuilder {
 			throw new IOException("Unexpected HTTP response: " + response);
 		}
 
-		return new Gson().fromJson(
-			response.body().charStream(), Discovery.class);
+		if (portalVersion == 7) {
+			JSONParser.registerTypeAdapter(
+				Discovery.class, new DiscoveryDeserializer());
+
+			JSONParser.registerTypeAdapter(
+				Action.class, new ActionDeserializer());
+		}
+
+		return JSONParser.fromJSON(response.body().string(), Discovery.class);
 	}
 
 	protected Map<String, String> parseArguments(String[] args) {
