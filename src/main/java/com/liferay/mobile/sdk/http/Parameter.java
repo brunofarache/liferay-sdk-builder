@@ -14,36 +14,20 @@
 
 package com.liferay.mobile.sdk.http;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 /**
  * @author Bruno Farache
  */
 public class Parameter {
 
-	public Parameter(JSONObject jsonObj) throws JSONException {
-		_name = jsonObj.getString("name");
-		_type = jsonObj.getString("type");
-	}
-
 	public String getName() {
-		return _name;
+		return name;
 	}
 
 	public String getType() {
-		return _type;
+		return type;
 	}
 
-	public void setName(String name) {
-		_name = name;
-	}
-
-	public void setType(String type) {
-		_type = type;
-	}
-
-	private String _name;
-	private String _type;
+	protected String name;
+	protected String type;
 
 }

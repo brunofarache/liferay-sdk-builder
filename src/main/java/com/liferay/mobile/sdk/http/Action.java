@@ -14,73 +14,27 @@
 
 package com.liferay.mobile.sdk.http;
 
-import com.liferay.mobile.sdk.util.Validator;
-
 import java.util.ArrayList;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * @author Bruno Farache
  */
 public class Action {
 
-	public Action(JSONObject jsonObj, String context) throws JSONException {
-		_method = jsonObj.getString("method");
-		_path = jsonObj.getString("path");
-
-		if (Validator.isNotNull(context)) {
-			_path = _path.replaceFirst("/", ".");
-		}
-
-		_response = jsonObj.getString("response");
-
-		JSONArray parameters = jsonObj.getJSONArray("parameters");
-
-		for (int i = 0; i < parameters.length(); i++) {
-			JSONObject parameter = parameters.getJSONObject(i);
-
-			_parameters.add(new Parameter(parameter));
-		}
-	}
-
-	public String getMethod() {
-		return _method;
-	}
-
 	public ArrayList<Parameter> getParameters() {
-		return _parameters;
+		return parameters;
 	}
 
 	public String getPath() {
-		return _path;
+		return path;
 	}
 
 	public String getResponse() {
-		return _response;
+		return response;
 	}
 
-	public void setMethod(String method) {
-		_method = method;
-	}
-
-	public void setParameters(ArrayList<Parameter> parameters) {
-		_parameters = parameters;
-	}
-
-	public void setPath(String path) {
-		_path = path;
-	}
-
-	public void setResponse(String response) {
-		_response = response;
-	}
-
-	private String _method;
-	private ArrayList<Parameter> _parameters = new ArrayList<>();
-	private String _path;
-	private String _response;
+	protected ArrayList<Parameter> parameters = new ArrayList<>();
+	protected String path;
+	protected String response;
 
 }

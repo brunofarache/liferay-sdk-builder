@@ -18,57 +18,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 /**
  * @author Bruno Farache
  */
 public class Discovery {
 
-	public Discovery(String json) throws JSONException {
-		JSONObject jsonObj = new JSONObject(json);
-
-		_context = jsonObj.getString("context");
-		_basePath = jsonObj.getString("basePath");
-
-		if (jsonObj.has("discover")) {
-			JSONArray jsonArray = jsonObj.getJSONArray("discover");
-
-			for (int i = 0; i < jsonArray.length(); i++) {
-				_discover.add(jsonArray.getString(i));
-			}
-		}
-
-		JSONArray actions = jsonObj.getJSONArray("actions");
-
-		for (int i = 0; i < actions.length(); i++) {
-			Action action = new Action(actions.getJSONObject(i), _context);
-
-			_actions.add(action);
-		}
-	}
-
 	public List<Action> getActions() {
-		return Collections.unmodifiableList(_actions);
-	}
-
-	public String getBasePath() {
-		return _basePath;
+		return Collections.unmodifiableList(actions);
 	}
 
 	public String getContext() {
-		return _context;
+		return context;
 	}
 
-	public ArrayList<String> getDiscover() {
-		return _discover;
-	}
-
-	private ArrayList<Action> _actions = new ArrayList<>();
-	private String _basePath;
-	private String _context;
-	private ArrayList<String> _discover = new ArrayList<>();
+	protected ArrayList<Action> actions;
+	protected String context;
 
 }

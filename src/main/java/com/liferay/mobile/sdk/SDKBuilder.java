@@ -14,9 +14,14 @@
 
 package com.liferay.mobile.sdk;
 
+import com.google.gson.Gson;
+
 import com.liferay.mobile.sdk.http.Discovery;
-import com.liferay.mobile.sdk.http.DiscoveryResponseHandler;
 import com.liferay.mobile.sdk.util.Validator;
+
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,10 +31,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 
 /**
  * @author Bruno Farache
@@ -111,11 +112,16 @@ public class SDKBuilder {
 			sb.append("/*");
 		}
 
-		HttpClient client = new DefaultHttpClient();
-		HttpGet get = new HttpGet(sb.toString());
-		DiscoveryResponseHandler handler = new DiscoveryResponseHandler();
+		OkHttpClient client = new OkHttpClient();
+		Request request = new Request.Builder().url(sb.toString()).build();
+		Response response = client.newCall(request).execute();
 
-		return client.execute(get, handler);
+		if (!response.isSuccessful()) {
+			throw new IOException("Unexpected HTTP response: " + response);
+		}
+
+		return new Gson().fromJson(
+			response.body().charStream(), Discovery.class);
 	}
 
 	protected Map<String, String> parseArguments(String[] args) {
