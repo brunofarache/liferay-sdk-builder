@@ -12,26 +12,29 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.http;
+package com.liferay.mobile.sdk.json;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * @author Bruno Farache
  */
-public class Discovery {
+public class Action {
 
-	public List<Action> getActions() {
-		return Collections.unmodifiableList(actions);
+	public ArrayList<Parameter> getParameters() {
+		return parameters;
 	}
 
-	public String getContext() {
-		return context;
+	public String getPath() {
+		return path;
 	}
 
-	protected ArrayList<Action> actions;
-	protected String context;
+	public String getResponse() {
+		return response;
+	}
+
+	protected ArrayList<Parameter> parameters = new ArrayList<>();
+	protected String path;
+	protected String response;
 
 }

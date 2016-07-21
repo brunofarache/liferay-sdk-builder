@@ -16,7 +16,7 @@ package com.liferay.mobile.sdk;
 
 import com.google.gson.Gson;
 
-import com.liferay.mobile.sdk.http.Discovery;
+import com.liferay.mobile.sdk.json.Discovery;
 import com.liferay.mobile.sdk.util.Validator;
 
 import com.squareup.okhttp.OkHttpClient;

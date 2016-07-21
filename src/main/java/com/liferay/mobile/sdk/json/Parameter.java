@@ -12,29 +12,22 @@
  * details.
  */
 
-package com.liferay.mobile.sdk.http;
-
-import java.util.ArrayList;
+package com.liferay.mobile.sdk.json;
 
 /**
  * @author Bruno Farache
  */
-public class Action {
+public class Parameter {
 
-	public ArrayList<Parameter> getParameters() {
-		return parameters;
+	public String getName() {
+		return name;
 	}
 
-	public String getPath() {
-		return path;
+	public String getType() {
+		return type;
 	}
 
-	public String getResponse() {
-		return response;
-	}
-
-	protected ArrayList<Parameter> parameters = new ArrayList<>();
-	protected String path;
-	protected String response;
+	protected String name;
+	protected String type;
 
 }

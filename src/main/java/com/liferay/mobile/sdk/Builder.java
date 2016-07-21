@@ -14,8 +14,8 @@
 
 package com.liferay.mobile.sdk;
 
-import com.liferay.mobile.sdk.http.Action;
-import com.liferay.mobile.sdk.http.Discovery;
+import com.liferay.mobile.sdk.json.Action;
+import com.liferay.mobile.sdk.json.Discovery;
 
 import java.util.List;
 
