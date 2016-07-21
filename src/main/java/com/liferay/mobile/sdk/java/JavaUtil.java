@@ -26,16 +26,6 @@ import org.json.JSONObject;
  */
 public class JavaUtil extends LanguageUtil {
 
-	public static final String INTEGER = "Integer";
-
-	public static final String JSON_ARRAY = "JSONArray";
-
-	public static final String JSON_OBJECT = "JSONObject";
-
-	public static final String JSON_OBJECT_WRAPPER = "JSONObjectWrapper";
-
-	public static final String UPLOAD_DATA = "UploadData";
-
 	public String className(String type) {
 		if (!type.startsWith(OBJECT_PREFIX)) {
 			return "";
@@ -44,113 +34,74 @@ public class JavaUtil extends LanguageUtil {
 		return type.substring(7, type.length() - 1);
 	}
 
-	public String getType(String type) {
-		type = super.getType(type);
-
-		if (type.equals(BOOLEAN) || type.equals(BYTE_ARRAY) ||
-			type.equals(DOUBLE) || type.equals(INT) || type.equals(LONG) ||
-			type.equals(VOID)) {
-
-			return type;
-		}
-
-		if (isArray(type)) {
-			return JSON_ARRAY;
-		}
-
-		if (type.equals(STRING)) {
-			return "String";
-		}
-
-		if (type.equals(FILE)) {
-			return UPLOAD_DATA;
-		}
-
-		if (type.startsWith(OBJECT_PREFIX)) {
-			return JSON_OBJECT_WRAPPER;
-		}
-
-		return JSON_OBJECT;
-	}
-
 	public Class returnType(String type) {
 		type = super.getType(type);
-
-		if (type.equals(BOOLEAN)) {
-			return Boolean.class;
-		}
-
-		if (type.equals(DOUBLE)) {
-			return Double.class;
-		}
-
-		if (type.equals(INT)) {
-			return Integer.class;
-		}
-
-		if (type.equals(LONG)) {
-			return Long.class;
-		}
-
-		if (type.equals(VOID)) {
-			return Response.class;
-		}
 
 		if (isArray(type)) {
 			return JSONArray.class;
 		}
 
-		if (type.equals(STRING)) {
-			return String.class;
-		}
+		switch (type) {
+			case BOOLEAN:
+				return Boolean.class;
 
-		return JSONObject.class;
+			case DOUBLE:
+				return Double.class;
+
+			case INT:
+				return Integer.class;
+
+			case LONG:
+				return Long.class;
+
+			case VOID:
+				return Response.class;
+
+			case STRING:
+				return String.class;
+
+			default:
+				return JSONObject.class;
+		}
 	}
 
 	public Class type(String type) {
 		type = super.getType(type);
 
-		if (type.equals(BOOLEAN)) {
-			return boolean.class;
-		}
-
-		if (type.equals(BYTE_ARRAY)) {
-			return byte[].class;
-		}
-
-		if (type.equals(DOUBLE)) {
-			return double.class;
-		}
-
-		if (type.equals(INT)) {
-			return int.class;
-		}
-
-		if (type.equals(LONG)) {
-			return long.class;
-		}
-
-		if (type.equals(VOID)) {
-			return Response.class;
-		}
-
 		if (isArray(type)) {
-			return JSONArray.class;
+			if (type.equals(BYTE_ARRAY)) {
+				return byte[].class;
+			}
+			else {
+				return JSONArray.class;
+			}
 		}
 
-		if (type.equals(STRING)) {
-			return String.class;
-		}
+		switch (type) {
+			case BOOLEAN:
+				return boolean.class;
 
-		if (type.equals(FILE)) {
-			return UploadData.class;
-		}
+			case DOUBLE:
+				return double.class;
 
-		if (type.startsWith(OBJECT_PREFIX)) {
-			return JSONObject.class;
-		}
+			case INT:
+				return int.class;
 
-		return JSONObject.class;
+			case LONG:
+				return long.class;
+
+			case VOID:
+				return Response.class;
+
+			case STRING:
+				return String.class;
+
+			case FILE:
+				return UploadData.class;
+
+			default:
+				return JSONObject.class;
+		}
 	}
 
 }

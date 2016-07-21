@@ -146,23 +146,22 @@ public class LanguageUtil {
 	}
 
 	public String getType(String type) {
-		if (type.equals("object<java.lang.Boolean>")) {
-			return BOOLEAN;
-		}
+		switch (type) {
+			case "object<java.lang.Boolean>":
+				return BOOLEAN;
 
-		if (type.equals("object<java.lang.Double>")) {
-			return DOUBLE;
-		}
+			case "object<java.lang.Double>":
+				return DOUBLE;
 
-		if (type.equals("object<java.lang.Integer>")) {
-			return INT;
-		}
+			case "object<java.lang.Integer>":
+				return INT;
 
-		if (type.equals("object<java.lang.Long>")) {
-			return LONG;
-		}
+			case "object<java.lang.Long>":
+				return LONG;
 
-		return type;
+			default:
+				return type;
+		}
 	}
 
 	public boolean isArray(String type) {

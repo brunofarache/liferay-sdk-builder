@@ -47,77 +47,75 @@ public class ObjectiveCUtil extends LanguageUtil {
 			case DOUBLE:
 			case INT:
 			case LONG_LONG:
-				name = "@(" + name + ")";
-				break;
+				return "@(" + name + ")";
 
 			case NS_DATA:
-				name = "[self toString:" + name + "]";
-				break;
+				return "[self toString:" + name + "]";
 
 			default:
-				name = "[self checkNull: " + name + "]";
-				break;
+				return "[self checkNull: " + name + "]";
 		}
-
-		return name;
 	}
 
 	public String getReturnType(String type) {
 		type = getType(type);
 
-		if (type.equals(DOUBLE) || type.equals(INT) || type.equals(LONG_LONG)) {
-			type = NS_NUMBER;
+		switch (type) {
+			case DOUBLE:
+			case INT:
+			case LONG_LONG:
+				return NS_NUMBER;
+
+			case LR_JSON_OBJECT_WRAPPER:
+			case LR_UPLOAD_DATA:
+				return NS_DICTIONARY;
+
+			case NS_DATA:
+				return NS_ARRAY;
+
+			default:
+				return type;
 		}
-
-		if (type.equals(LR_JSON_OBJECT_WRAPPER) ||
-			type.equals(LR_UPLOAD_DATA)) {
-
-			return NS_DICTIONARY;
-		}
-
-		if (type.equals(NS_DATA)) {
-			return NS_ARRAY;
-		}
-
-		return type;
 	}
 
 	public String getType(String type) {
 		type = super.getType(type);
 
-		if (type.equals(DOUBLE) || type.equals(INT) || type.equals(VOID)) {
-			return type;
-		}
-
-		if (type.equals(BYTE_ARRAY)) {
-			return NS_DATA;
-		}
-
 		if (isArray(type)) {
-			return NS_ARRAY;
+			if (type.equals(BYTE_ARRAY)) {
+				return NS_DATA;
+			}
+			else {
+				return NS_ARRAY;
+			}
 		}
 
-		if (type.equals(BOOLEAN)) {
-			return BOOL;
-		}
+		switch (type) {
+			case DOUBLE:
+			case INT:
+			case VOID:
+				return type;
 
-		if (type.equals(LONG)) {
-			return LONG_LONG;
-		}
+			case BOOLEAN:
+				return BOOL;
 
-		if (type.equals(STRING)) {
-			return NS_STRING;
-		}
+			case LONG:
+				return LONG_LONG;
 
-		if (type.equals(FILE)) {
-			return LR_UPLOAD_DATA;
-		}
+			case STRING:
+				return NS_STRING;
 
-		if (type.startsWith(OBJECT_PREFIX)) {
-			return LR_JSON_OBJECT_WRAPPER;
-		}
+			case FILE:
+				return LR_UPLOAD_DATA;
 
-		return NS_DICTIONARY;
+			default:
+				if (type.startsWith(OBJECT_PREFIX)) {
+					return LR_JSON_OBJECT_WRAPPER;
+				}
+				else {
+					return NS_DICTIONARY;
+				}
+		}
 	}
 
 }
