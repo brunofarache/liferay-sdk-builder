@@ -98,6 +98,14 @@ public class LanguageUtil {
 		return context;
 	}
 
+	public String getJSONWrapperClassName(String type) {
+		if (type.startsWith(OBJECT_PREFIX)) {
+			return type.substring(7, type.length() - 1);
+		}
+
+		return type;
+	}
+
 	public String getMethodName(String path) {
 		String last = getMethodURL(path);
 
