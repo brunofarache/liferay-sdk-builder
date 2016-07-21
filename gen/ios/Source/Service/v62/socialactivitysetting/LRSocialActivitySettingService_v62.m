@@ -82,7 +82,7 @@
 		@"activityType": @(activityType),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"activityCounterDefinition" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:activityCounterDefinition];
+	[self mangleWrapperWithParams:_params name:@"activityCounterDefinition" className:@"com.liferay.portlet.social.model.SocialActivityCounterDefinition" wrapper:activityCounterDefinition];
 
 	NSDictionary *_command = @{@"/socialactivitysetting/update-activity-setting": _params};
 

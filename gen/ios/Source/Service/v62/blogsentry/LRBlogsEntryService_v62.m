@@ -55,7 +55,7 @@
 		@"entryURL": [self checkNull: entryURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:themeDisplay];
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/blogsentry/get-company-entries-rss": _params};
 
@@ -171,7 +171,7 @@
 		@"entryURL": [self checkNull: entryURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:themeDisplay];
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/blogsentry/get-group-entries-rss": _params};
 
@@ -218,7 +218,7 @@
 		@"entryURL": [self checkNull: entryURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:themeDisplay];
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/blogsentry/get-organization-entries-rss": _params};
 

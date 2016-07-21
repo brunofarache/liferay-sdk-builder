@@ -32,7 +32,7 @@
 		@"friendlyURL": [self checkNull: friendlyURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/add-layout": _params};
 
@@ -54,7 +54,7 @@
 		@"friendlyURL": [self checkNull: friendlyURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/add-layout": _params};
 
@@ -77,7 +77,7 @@
 		@"friendlyURLMap": [self checkNull: friendlyURLMap],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/add-layout": _params};
 
@@ -89,7 +89,7 @@
 		@"plid": @(plid),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/delete-layout": _params};
 
@@ -103,7 +103,7 @@
 		@"layoutId": @(layoutId),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/delete-layout": _params};
 
@@ -544,7 +544,7 @@
 		@"layoutIds": [self checkNull: layoutIds],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/set-layouts": _params};
 
@@ -593,7 +593,7 @@
 		@"iconBytes": [self toString:iconBytes],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/update-layout": _params};
 
@@ -618,7 +618,7 @@
 		@"iconBytes": [self toString:iconBytes],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/layout/update-layout": _params};
 

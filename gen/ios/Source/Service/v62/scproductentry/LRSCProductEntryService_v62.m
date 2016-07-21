@@ -35,7 +35,7 @@
 		@"fullImages": [self checkNull: fullImages],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/scproductentry/add-product-entry": _params};
 

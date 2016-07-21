@@ -32,7 +32,7 @@
 		@"choices": [self checkNull: choices],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/pollsquestion/add-question": _params};
 
@@ -73,7 +73,7 @@
 		@"choices": [self checkNull: choices],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/pollsquestion/update-question": _params};
 

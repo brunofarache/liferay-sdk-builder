@@ -24,7 +24,7 @@
 		@"title": [self checkNull: title],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/assetvocabulary/add-vocabulary": _params};
 
@@ -38,7 +38,7 @@
 		@"settings": [self checkNull: settings],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/assetvocabulary/add-vocabulary": _params};
 
@@ -53,7 +53,7 @@
 		@"settings": [self checkNull: settings],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/assetvocabulary/add-vocabulary": _params};
 
@@ -75,7 +75,7 @@
 		@"vocabularyIds": [self checkNull: vocabularyIds],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/assetvocabulary/delete-vocabularies": _params};
 
@@ -130,7 +130,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-group-vocabularies": _params};
 
@@ -145,7 +145,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-group-vocabularies": _params};
 
@@ -181,7 +181,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-group-vocabularies-display": _params};
 
@@ -197,7 +197,7 @@
 		@"addDefaultVocabulary": @(addDefaultVocabulary),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-group-vocabularies-display": _params};
 
@@ -233,7 +233,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/assetvocabulary/get-json-group-vocabularies": _params};
 
@@ -268,7 +268,7 @@
 		@"settings": [self checkNull: settings],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/assetvocabulary/update-vocabulary": _params};
 
@@ -284,7 +284,7 @@
 		@"settings": [self checkNull: settings],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/assetvocabulary/update-vocabulary": _params};
 

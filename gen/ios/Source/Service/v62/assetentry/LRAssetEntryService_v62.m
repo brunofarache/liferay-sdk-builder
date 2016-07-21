@@ -45,7 +45,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"entryQuery" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:entryQuery];
+	[self mangleWrapperWithParams:_params name:@"entryQuery" className:@"com.liferay.portlet.asset.service.persistence.AssetEntryQuery" wrapper:entryQuery];
 
 	NSDictionary *_command = @{@"/assetentry/get-entries": _params};
 
@@ -56,7 +56,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"entryQuery" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:entryQuery];
+	[self mangleWrapperWithParams:_params name:@"entryQuery" className:@"com.liferay.portlet.asset.service.persistence.AssetEntryQuery" wrapper:entryQuery];
 
 	NSDictionary *_command = @{@"/assetentry/get-entries-count": _params};
 

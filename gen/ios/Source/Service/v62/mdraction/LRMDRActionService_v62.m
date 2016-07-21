@@ -28,7 +28,7 @@
 		@"typeSettings": [self checkNull: typeSettings],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mdraction/add-action": _params};
 
@@ -43,8 +43,8 @@
 		@"type": [self checkNull: type],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"typeSettingsProperties" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:typeSettingsProperties];
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"typeSettingsProperties" className:@"com.liferay.portal.kernel.util.UnicodeProperties" wrapper:typeSettingsProperties];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mdraction/add-action": _params};
 
@@ -90,7 +90,7 @@
 		@"typeSettings": [self checkNull: typeSettings],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mdraction/update-action": _params};
 
@@ -105,8 +105,8 @@
 		@"type": [self checkNull: type],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"typeSettingsProperties" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:typeSettingsProperties];
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"typeSettingsProperties" className:@"com.liferay.portal.kernel.util.UnicodeProperties" wrapper:typeSettingsProperties];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mdraction/update-action": _params};
 

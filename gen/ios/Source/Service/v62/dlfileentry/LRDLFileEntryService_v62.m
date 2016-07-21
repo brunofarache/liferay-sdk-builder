@@ -46,7 +46,7 @@
 		@"lockUuid": [self checkNull: lockUuid],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileentry/check-in-file-entry": _params};
 
@@ -60,7 +60,7 @@
 		@"changeLog": [self checkNull: changeLog],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileentry/check-in-file-entry": _params};
 
@@ -82,7 +82,7 @@
 		@"fileEntryId": @(fileEntryId),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileentry/check-out-file-entry": _params};
 
@@ -108,7 +108,7 @@
 		@"expirationTime": @(expirationTime),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileentry/check-out-file-entry": _params};
 
@@ -123,7 +123,7 @@
 		@"destFolderId": @(destFolderId),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileentry/copy-file-entry": _params};
 
@@ -181,7 +181,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/dlfileentry/get-file-entries": _params};
 
@@ -197,7 +197,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/dlfileentry/get-file-entries": _params};
 
@@ -213,7 +213,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/dlfileentry/get-file-entries": _params};
 
@@ -229,7 +229,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/dlfileentry/get-file-entries": _params};
 
@@ -347,7 +347,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/dlfileentry/get-group-file-entries": _params};
 
@@ -365,7 +365,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/dlfileentry/get-group-file-entries": _params};
 
@@ -424,7 +424,7 @@
 		@"newFolderId": @(newFolderId),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileentry/move-file-entry": _params};
 
@@ -449,7 +449,7 @@
 		@"version": [self checkNull: version],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileentry/revert-file-entry": _params};
 

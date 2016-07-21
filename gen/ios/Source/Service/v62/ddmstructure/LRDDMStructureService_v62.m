@@ -32,7 +32,7 @@
 		@"type": @(type),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmstructure/add-structure": _params};
 
@@ -53,7 +53,7 @@
 		@"type": @(type),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmstructure/add-structure": _params};
 
@@ -70,7 +70,7 @@
 		@"xsd": [self checkNull: xsd],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmstructure/add-structure": _params};
 
@@ -82,7 +82,7 @@
 		@"structureId": @(structureId),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmstructure/copy-structure": _params};
 
@@ -96,7 +96,7 @@
 		@"descriptionMap": [self checkNull: descriptionMap],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmstructure/copy-structure": _params};
 
@@ -194,7 +194,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:orderByComparator];
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/ddmstructure/search": _params};
 
@@ -211,7 +211,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:orderByComparator];
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/ddmstructure/search": _params};
 
@@ -257,7 +257,7 @@
 		@"xsd": [self checkNull: xsd],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmstructure/update-structure": _params};
 
@@ -275,7 +275,7 @@
 		@"xsd": [self checkNull: xsd],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddmstructure/update-structure": _params};
 

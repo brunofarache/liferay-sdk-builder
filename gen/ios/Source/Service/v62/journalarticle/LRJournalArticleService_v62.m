@@ -55,7 +55,7 @@
 		@"articleURL": [self checkNull: articleURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/add-article": _params};
 
@@ -102,7 +102,7 @@
 		@"articleURL": [self checkNull: articleURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/add-article": _params};
 
@@ -130,7 +130,7 @@
 		@"articleURL": [self checkNull: articleURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/delete-article": _params};
 
@@ -145,7 +145,7 @@
 		@"articleURL": [self checkNull: articleURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/delete-article": _params};
 
@@ -159,7 +159,7 @@
 		@"articleURL": [self checkNull: articleURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/expire-article": _params};
 
@@ -174,7 +174,7 @@
 		@"articleURL": [self checkNull: articleURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/expire-article": _params};
 
@@ -244,7 +244,7 @@
 		@"languageId": [self checkNull: languageId],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:themeDisplay];
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/journalarticle/get-article-content": _params};
 
@@ -259,7 +259,7 @@
 		@"languageId": [self checkNull: languageId],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:themeDisplay];
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/journalarticle/get-article-content": _params};
 
@@ -285,7 +285,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles": _params};
 
@@ -300,7 +300,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-by-article-id": _params};
 
@@ -326,7 +326,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-by-structure-id": _params};
 
@@ -343,7 +343,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/journalarticle/get-articles-by-structure-id": _params};
 
@@ -439,7 +439,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:orderByComparator];
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/journalarticle/get-group-articles": _params};
 
@@ -456,7 +456,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:orderByComparator];
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/journalarticle/get-group-articles": _params};
 
@@ -541,7 +541,7 @@
 		@"newFolderId": @(newFolderId),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/move-article-from-trash": _params};
 
@@ -555,7 +555,7 @@
 		@"newFolderId": @(newFolderId),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/move-article-from-trash": _params};
 
@@ -637,7 +637,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/journalarticle/search": _params};
 
@@ -667,7 +667,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/journalarticle/search": _params};
 
@@ -697,7 +697,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"obc" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:obc];
+	[self mangleWrapperWithParams:_params name:@"obc" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:obc];
 
 	NSDictionary *_command = @{@"/journalarticle/search": _params};
 
@@ -825,7 +825,7 @@
 		@"layoutUuid": [self checkNull: layoutUuid],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/update-article": _params};
 
@@ -870,7 +870,7 @@
 		@"articleURL": [self checkNull: articleURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/update-article": _params};
 
@@ -886,7 +886,7 @@
 		@"content": [self checkNull: content],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/update-article": _params};
 
@@ -922,7 +922,7 @@
 		@"images": [self checkNull: images],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/update-article-translation": _params};
 
@@ -951,7 +951,7 @@
 		@"articleURL": [self checkNull: articleURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/journalarticle/update-status": _params};
 

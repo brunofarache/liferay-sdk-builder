@@ -25,7 +25,7 @@
 		@"status": @(status),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:themeDisplay];
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/socialrequest/update-request": _params};
 

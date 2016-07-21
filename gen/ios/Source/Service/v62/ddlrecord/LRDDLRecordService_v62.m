@@ -26,8 +26,8 @@
 		@"displayIndex": @(displayIndex),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"fields" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:fields];
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"fields" className:@"com.liferay.portlet.dynamicdatamapping.storage.Fields" wrapper:fields];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddlrecord/add-record": _params};
 
@@ -42,7 +42,7 @@
 		@"fieldsMap": [self checkNull: fieldsMap],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddlrecord/add-record": _params};
 
@@ -55,7 +55,7 @@
 		@"locale": [self checkNull: locale],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddlrecord/delete-record-locale": _params};
 
@@ -80,7 +80,7 @@
 		@"mergeFields": @(mergeFields),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddlrecord/update-record": _params};
 
@@ -95,8 +95,8 @@
 		@"mergeFields": @(mergeFields),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"fields" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:fields];
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"fields" className:@"com.liferay.portlet.dynamicdatamapping.storage.Fields" wrapper:fields];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/ddlrecord/update-record": _params};
 

@@ -27,7 +27,7 @@
 		@"ddmStructureIds": [self checkNull: ddmStructureIds],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileentrytype/add-file-entry-type": _params};
 
@@ -43,7 +43,7 @@
 		@"ddmStructureIds": [self checkNull: ddmStructureIds],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileentrytype/add-file-entry-type": _params};
 
@@ -124,7 +124,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:orderByComparator];
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/dlfileentrytype/search": _params};
 
@@ -152,7 +152,7 @@
 		@"ddmStructureIds": [self checkNull: ddmStructureIds],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileentrytype/update-file-entry-type": _params};
 
@@ -167,7 +167,7 @@
 		@"ddmStructureIds": [self checkNull: ddmStructureIds],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/dlfileentrytype/update-file-entry-type": _params};
 

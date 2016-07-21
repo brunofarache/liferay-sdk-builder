@@ -33,7 +33,7 @@
 		@"body": [self checkNull: body],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/add-discussion-message": _params};
 
@@ -53,7 +53,7 @@
 		@"allowPingbacks": @(allowPingbacks),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/add-message": _params};
 
@@ -75,7 +75,7 @@
 		@"allowPingbacks": @(allowPingbacks),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/add-message": _params};
 
@@ -89,7 +89,7 @@
 		@"body": [self checkNull: body],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/add-message": _params};
 
@@ -108,7 +108,7 @@
 		@"allowPingbacks": @(allowPingbacks),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/add-message": _params};
 
@@ -190,7 +190,7 @@
 		@"entryURL": [self checkNull: entryURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:themeDisplay];
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/mbmessage/get-category-messages-rss": _params};
 
@@ -209,7 +209,7 @@
 		@"entryURL": [self checkNull: entryURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:themeDisplay];
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/mbmessage/get-company-messages-rss": _params};
 
@@ -240,7 +240,7 @@
 		@"entryURL": [self checkNull: entryURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:themeDisplay];
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/mbmessage/get-group-messages-rss": _params};
 
@@ -259,7 +259,7 @@
 		@"entryURL": [self checkNull: entryURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:themeDisplay];
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/mbmessage/get-group-messages-rss": _params};
 
@@ -341,7 +341,7 @@
 		@"entryURL": [self checkNull: entryURL],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:themeDisplay];
+	[self mangleWrapperWithParams:_params name:@"themeDisplay" className:@"com.liferay.portal.theme.ThemeDisplay" wrapper:themeDisplay];
 
 	NSDictionary *_command = @{@"/mbmessage/get-thread-messages-rss": _params};
 
@@ -403,7 +403,7 @@
 		@"body": [self checkNull: body],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/update-discussion-message": _params};
 
@@ -421,7 +421,7 @@
 		@"allowPingbacks": @(allowPingbacks),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/mbmessage/update-message": _params};
 

@@ -37,7 +37,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:orderByComparator];
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/contact/get-contacts": _params};
 

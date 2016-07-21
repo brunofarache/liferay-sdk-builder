@@ -28,7 +28,7 @@
 		@"description": [self checkNull: description],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/bookmarksentry/add-entry": _params};
 
@@ -66,7 +66,7 @@
 		@"end": @(end),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:orderByComparator];
+	[self mangleWrapperWithParams:_params name:@"orderByComparator" className:@"com.liferay.portal.kernel.util.OrderByComparator" wrapper:orderByComparator];
 
 	NSDictionary *_command = @{@"/bookmarksentry/get-entries": _params};
 
@@ -225,7 +225,7 @@
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"entry" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:entry];
+	[self mangleWrapperWithParams:_params name:@"entry" className:@"com.liferay.portlet.bookmarks.model.BookmarksEntry" wrapper:entry];
 
 	NSDictionary *_command = @{@"/bookmarksentry/open-entry": _params};
 
@@ -296,7 +296,7 @@
 		@"description": [self checkNull: description],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:serviceContext];
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
 
 	NSDictionary *_command = @{@"/bookmarksentry/update-entry": _params};
 

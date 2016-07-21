@@ -35,9 +35,9 @@
 		@"portletId": [self checkNull: portletId],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"layout" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:layout];
-	[self mangleWrapperWithParams:_params name:@"portletItem" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:portletItem];
-	[self mangleWrapperWithParams:_params name:@"preferences" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:preferences];
+	[self mangleWrapperWithParams:_params name:@"layout" className:@"com.liferay.portal.model.Layout" wrapper:layout];
+	[self mangleWrapperWithParams:_params name:@"portletItem" className:@"com.liferay.portal.model.PortletItem" wrapper:portletItem];
+	[self mangleWrapperWithParams:_params name:@"preferences" className:@"javax.portlet.PortletPreferences" wrapper:preferences];
 
 	NSDictionary *_command = @{@"/portletpreferences/restore-archived-preferences": _params};
 
@@ -51,8 +51,8 @@
 		@"portletItemId": @(portletItemId),
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"layout" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:layout];
-	[self mangleWrapperWithParams:_params name:@"preferences" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:preferences];
+	[self mangleWrapperWithParams:_params name:@"layout" className:@"com.liferay.portal.model.Layout" wrapper:layout];
+	[self mangleWrapperWithParams:_params name:@"preferences" className:@"javax.portlet.PortletPreferences" wrapper:preferences];
 
 	NSDictionary *_command = @{@"/portletpreferences/restore-archived-preferences": _params};
 
@@ -66,8 +66,8 @@
 		@"portletId": [self checkNull: portletId],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"layout" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:layout];
-	[self mangleWrapperWithParams:_params name:@"preferences" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:preferences];
+	[self mangleWrapperWithParams:_params name:@"layout" className:@"com.liferay.portal.model.Layout" wrapper:layout];
+	[self mangleWrapperWithParams:_params name:@"preferences" className:@"javax.portlet.PortletPreferences" wrapper:preferences];
 
 	NSDictionary *_command = @{@"/portletpreferences/restore-archived-preferences": _params};
 
@@ -82,7 +82,7 @@
 		@"portletId": [self checkNull: portletId],
 	}];
 
-	[self mangleWrapperWithParams:_params name:@"preferences" className:@"$languageUtil.getJSONWrapperClassName($parameter.type)" wrapper:preferences];
+	[self mangleWrapperWithParams:_params name:@"preferences" className:@"javax.portlet.PortletPreferences" wrapper:preferences];
 
 	NSDictionary *_command = @{@"/portletpreferences/update-archive-preferences": _params};
 
