@@ -71,7 +71,7 @@ public class SDKBuilder {
 			String filter, int portalVersion, String destination)
 		throws Exception {
 
-		Discovery discovery = discover(url, context, filter);
+		Discovery discovery = discover(url, context, filter, portalVersion);
 
 		for (String platform : platforms) {
 			String className = _properties.getProperty(platform);
@@ -89,31 +89,33 @@ public class SDKBuilder {
 		}
 	}
 
-	public Discovery discover(String url, String context, String filter)
+	public Discovery discover(
+			String url, String context, String filter, int portalVersion)
 		throws Exception {
 
-		StringBuilder sb = new StringBuilder();
-
-		sb.append(url);
-
-		if (Validator.isNotNull(context)) {
-			sb.append("/");
-			sb.append(context);
-		}
-
-		sb.append("/api/jsonws?discover");
-
 		if (Validator.isNull(filter)) {
-			sb.append("=/*");
+			filter = "*";
 		}
 		else {
-			sb.append("=/");
-			sb.append(filter);
-			sb.append("/*");
+			filter = filter + "/*";
+		}
+
+		if (portalVersion == 62) {
+			if (Validator.isNotNull(context)) {
+				context = "/" + context;
+			}
+
+			url = String.format(
+				"%s%s/api/jsonws?discover=/%s", url, context, filter);
+		}
+		else if (portalVersion == 7) {
+			url = String.format(
+				"%s/api/jsonws?discover=/%s&contextName=%s", url, filter,
+				context);
 		}
 
 		OkHttpClient client = new OkHttpClient();
-		Request request = new Request.Builder().url(sb.toString()).build();
+		Request request = new Request.Builder().url(url).build();
 		Response response = client.newCall(request).execute();
 
 		if (!response.isSuccessful()) {
