@@ -66,9 +66,9 @@ public class Discovery {
 		return _discover;
 	}
 
-	private ArrayList<Action> _actions = new ArrayList<Action>();
+	private ArrayList<Action> _actions = new ArrayList<>();
 	private String _basePath;
 	private String _context;
-	private ArrayList<String> _discover = new ArrayList<String>();
+	private ArrayList<String> _discover = new ArrayList<>();
 
 }

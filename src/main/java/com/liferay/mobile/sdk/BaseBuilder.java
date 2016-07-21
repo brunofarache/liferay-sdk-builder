@@ -34,9 +34,7 @@ public abstract class BaseBuilder implements Builder {
 		Discovery discovery, String packageName, int version,
 		String destination) {
 
-		HashMap<String, List<Action>> actionsMap =
-			new HashMap<String, List<Action>>();
-
+		HashMap<String, List<Action>> actionsMap = new HashMap<>();
 		List<Action> actions = discovery.getActions();
 
 		for (Action action : actions) {
@@ -55,7 +53,7 @@ public abstract class BaseBuilder implements Builder {
 			List<Action> classActions = actionsMap.get(className);
 
 			if (classActions == null) {
-				classActions = new ArrayList<Action>();
+				classActions = new ArrayList<>();
 
 				actionsMap.put(className, classActions);
 			}
@@ -74,8 +72,6 @@ public abstract class BaseBuilder implements Builder {
 					Level.SEVERE, "Could not generate classes for action " +
 						entry.getKey(),
 					e);
-
-				continue;
 			}
 		}
 	}

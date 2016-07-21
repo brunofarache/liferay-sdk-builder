@@ -18,8 +18,6 @@ import com.liferay.mobile.sdk.file.UploadData;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.util.LanguageUtil;
 
-import org.apache.commons.lang.WordUtils;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -44,28 +42,6 @@ public class JavaUtil extends LanguageUtil {
 		}
 
 		return type.substring(7, type.length() - 1);
-	}
-
-	public String getReturnType(String type) {
-		type = getType(type);
-
-		if (type.equals(VOID)) {
-			return type;
-		}
-
-		if (type.equals(INT)) {
-			return INTEGER;
-		}
-
-		if (type.equals(JSON_OBJECT_WRAPPER) || type.equals(UPLOAD_DATA)) {
-			return JSON_OBJECT;
-		}
-
-		if (type.equals(BYTE_ARRAY)) {
-			return JSON_ARRAY;
-		}
-
-		return WordUtils.capitalize(type);
 	}
 
 	public String getType(String type) {
@@ -95,16 +71,6 @@ public class JavaUtil extends LanguageUtil {
 		}
 
 		return JSON_OBJECT;
-	}
-
-	public boolean isPrimitive(String type) {
-		if (type.equals(BOOLEAN) || type.equals(DOUBLE) || type.equals(INT) ||
-			type.equals(LONG)) {
-
-			return true;
-		}
-
-		return false;
 	}
 
 	public Class returnType(String type) {

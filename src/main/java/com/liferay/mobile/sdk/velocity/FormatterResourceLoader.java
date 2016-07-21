@@ -51,12 +51,11 @@ public class FormatterResourceLoader extends ClasspathResourceLoader {
 	protected String read(InputStream is) throws IOException {
 		StringBuilder sb = new StringBuilder();
 
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
 		String line;
+		InputStreamReader reader = new InputStreamReader(is);
 
-		try {
-			while ((line = reader.readLine()) != null) {
+		try (BufferedReader buffer = new BufferedReader(reader)) {
+			while ((line = buffer.readLine()) != null) {
 				if (line.trim().equals("")) {
 					continue;
 				}
@@ -78,9 +77,6 @@ public class FormatterResourceLoader extends ClasspathResourceLoader {
 				sb.append(line.replaceAll("\t", ""));
 				sb.append('\n');
 			}
-		}
-		finally {
-			reader.close();
 		}
 
 		return sb.toString().trim();

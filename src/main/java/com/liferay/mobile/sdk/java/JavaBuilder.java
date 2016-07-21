@@ -20,8 +20,8 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.file.UploadData;
 import com.liferay.mobile.sdk.http.Action;
-import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.ContentType;
+import com.liferay.mobile.sdk.http.Discovery;
 import com.liferay.mobile.sdk.http.Parameter;
 import com.liferay.mobile.sdk.util.Validator;
 

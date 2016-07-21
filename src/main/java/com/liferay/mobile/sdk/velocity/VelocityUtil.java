@@ -21,7 +21,6 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.apache.velocity.runtime.RuntimeConstants;
-import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 
 /**
  * @author Bruno Farache
@@ -32,19 +31,7 @@ public class VelocityUtil {
 			VelocityContext context, String templatePath, String filePath)
 		throws Exception {
 
-		generate(context, templatePath, filePath, false);
-	}
-
-	public static void generate(
-			VelocityContext context, String templatePath, String filePath,
-			boolean format)
-		throws Exception {
-
-		String resourceLoader = ClasspathResourceLoader.class.getName();
-
-		if (format) {
-			resourceLoader = FormatterResourceLoader.class.getName();
-		}
+		String resourceLoader = FormatterResourceLoader.class.getName();
 
 		Velocity.setProperty(
 			RuntimeConstants.VM_LIBRARY, "templates/macros.vm");

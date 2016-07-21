@@ -79,14 +79,6 @@ public class LanguageUtil {
 		return WordUtils.capitalize(word);
 	}
 
-	public String getJSONWrapperClassName(String type) {
-		if (type.startsWith(OBJECT_PREFIX)) {
-			return type.substring(7, type.length() - 1);
-		}
-
-		return type;
-	}
-
 	public String getMethodName(String path) {
 		String last = getMethodURL(path);
 
@@ -149,14 +141,9 @@ public class LanguageUtil {
 	}
 
 	public boolean isArray(String type) {
-		if (type.endsWith("[]") || type.equals("object<list>") ||
+		return type.endsWith("[]") || type.equals("object<list>") ||
 			type.equals("object<com.liferay.portal.kernel.json.JSONArray>") ||
-			type.startsWith("list")) {
-
-			return true;
-		}
-
-		return false;
+			type.startsWith("list");
 	}
 
 	private static final Logger _log = Logger.getLogger(

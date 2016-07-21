@@ -79,7 +79,7 @@ public class Action {
 	}
 
 	private String _method;
-	private ArrayList<Parameter> _parameters = new ArrayList<Parameter>();
+	private ArrayList<Parameter> _parameters = new ArrayList<>();
 	private String _path;
 	private String _response;
 

@@ -42,16 +42,21 @@ public class ObjectiveCUtil extends LanguageUtil {
 	public String getParamValue(String name, String type) {
 		type = getType(type);
 
-		if (type.equals(BOOL) || type.equals(DOUBLE) || type.equals(INT) ||
-			type.equals(LONG_LONG)) {
+		switch (type) {
+			case BOOL:
+			case DOUBLE:
+			case INT:
+			case LONG_LONG:
+				name = "@(" + name + ")";
+				break;
 
-			name = "@("  + name + ")";
-		}
-		else if (type.equals(NS_DATA)) {
-			name = "[self toString:" + name + "]";
-		}
-		else {
-			name = "[self checkNull: " + name + "]";
+			case NS_DATA:
+				name = "[self toString:" + name + "]";
+				break;
+
+			default:
+				name = "[self checkNull: " + name + "]";
+				break;
 		}
 
 		return name;

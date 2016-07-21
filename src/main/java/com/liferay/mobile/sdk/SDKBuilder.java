@@ -119,7 +119,7 @@ public class SDKBuilder {
 	}
 
 	protected Map<String, String> parseArguments(String[] args) {
-		Map<String, String> arguments = new HashMap<String, String>();
+		Map<String, String> arguments = new HashMap<>();
 
 		for (String arg : args) {
 			int pos = arg.indexOf('=');

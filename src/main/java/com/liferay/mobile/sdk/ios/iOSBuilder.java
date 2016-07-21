@@ -56,13 +56,13 @@ public class iOSBuilder extends BaseBuilder {
 		String headerPath = getFilePath(
 			context, version, true, destination, filter);
 
-		VelocityUtil.generate(context, headerTemplate, headerPath, true);
+		VelocityUtil.generate(context, headerTemplate, headerPath);
 
 		String implTemplate = "templates/ios/m.vm";
 		String implPath = getFilePath(
 			context, version, false, destination, filter);
 
-		VelocityUtil.generate(context, implTemplate, implPath, true);
+		VelocityUtil.generate(context, implTemplate, implPath);
 	}
 
 	protected String getFilePath(
@@ -117,7 +117,7 @@ public class iOSBuilder extends BaseBuilder {
 		context.put(ESCAPE_TOOL, new EscapeTool());
 		context.put(JSON_OBJECT_WRAPPER, ObjectiveCUtil.LR_JSON_OBJECT_WRAPPER);
 		context.put(LANGUAGE_UTIL, objectiveCUtil);
-		context.put(LR_UPLOAD_DATA, objectiveCUtil.LR_UPLOAD_DATA);
+		context.put(LR_UPLOAD_DATA, ObjectiveCUtil.LR_UPLOAD_DATA);
 		context.put(VOID, LanguageUtil.VOID);
 
 		return context;
