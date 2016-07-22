@@ -331,7 +331,7 @@
 	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
-- (NSString *)getGroupDisplayUrlWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout secureConnection:(BOOL)secureConnection error:(NSError **)error {
+- (NSString *)getGroupDisplayURLWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout secureConnection:(BOOL)secureConnection error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
@@ -408,7 +408,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateFriendlyUrlWithGroupId:(long long)groupId friendlyURL:(NSString *)friendlyURL error:(NSError **)error {
+- (NSDictionary *)updateFriendlyURLWithGroupId:(long long)groupId friendlyURL:(NSString *)friendlyURL error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"friendlyURL": [self checkNull: friendlyURL]

@@ -32,7 +32,7 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getWarPortlets:(NSError **)error {
+- (NSDictionary *)getWARPortlets:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
 

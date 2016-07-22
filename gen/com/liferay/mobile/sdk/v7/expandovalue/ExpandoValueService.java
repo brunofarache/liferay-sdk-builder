@@ -23,5 +23,5 @@ public interface ExpandoValueService {
   Call<Response> addValues(@Param(name = "companyId") long companyId, @Param(name = "className") String className, @Param(name = "tableName") String tableName, @Param(name = "classPK") long classPK, @Param(name = "attributeValues", className = "") JSONObject attributeValues);
 
   @Path("/get-json-data")
-  Call<JSONObject> getJsonData(@Param(name = "companyId") long companyId, @Param(name = "className") String className, @Param(name = "tableName") String tableName, @Param(name = "columnName") String columnName, @Param(name = "classPK") long classPK);
+  Call<JSONObject> getJSONData(@Param(name = "companyId") long companyId, @Param(name = "className") String className, @Param(name = "tableName") String tableName, @Param(name = "columnName") String columnName, @Param(name = "classPK") long classPK);
 }

@@ -7,7 +7,7 @@ import com.liferay.mobile.sdk.http.Response;
 import org.json.JSONObject;
 
 @Path("/dltrash")
-public interface DltrashService {
+public interface DLTrashService {
   @Path("/move-file-entry-from-trash")
   Call<JSONObject> moveFileEntryFromTrash(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "newFolderId") long newFolderId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 

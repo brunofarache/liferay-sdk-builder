@@ -12,12 +12,12 @@
  * details.
  */
 
-#import "LRDltrashService_v7.h"
+#import "LRDLTrashService_v7.h"
 
 /**
  * @author Bruno Farache
  */
-@implementation LRDltrashService_v7
+@implementation LRDLTrashService_v7
 
 - (NSDictionary *)moveFileEntryFromTrashWithFileEntryId:(long long)fileEntryId newFolderId:(long long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{

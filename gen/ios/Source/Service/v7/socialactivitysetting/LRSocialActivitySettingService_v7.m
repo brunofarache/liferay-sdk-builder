@@ -42,7 +42,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getJsonActivityDefinitionsWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error {
+- (NSDictionary *)getJSONActivityDefinitionsWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": [self checkNull: className]

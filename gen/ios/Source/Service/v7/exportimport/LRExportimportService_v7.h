@@ -17,7 +17,7 @@
 /**
  * @author Bruno Farache
  */
-@interface LRExportimportService_v7 : LRBaseService
+@interface LRExportImportService_v7 : LRBaseService
 
 - (NSDictionary *)exportLayoutsAsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error;
 - (NSNumber *)exportLayoutsAsFileInBackgroundWithExportImportConfigurationId:(long long)exportImportConfigurationId error:(NSError **)error;

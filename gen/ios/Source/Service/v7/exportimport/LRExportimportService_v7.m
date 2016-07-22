@@ -12,12 +12,12 @@
  * details.
  */
 
-#import "LRExportimportService_v7.h"
+#import "LRExportImportService_v7.h"
 
 /**
  * @author Bruno Farache
  */
-@implementation LRExportimportService_v7
+@implementation LRExportImportService_v7
 
 - (NSDictionary *)exportLayoutsAsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{

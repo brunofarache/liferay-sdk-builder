@@ -17,7 +17,7 @@
 /**
  * @author Bruno Farache
  */
-@interface LRDltrashService_v7 : LRBaseService
+@interface LRDLTrashService_v7 : LRBaseService
 
 - (NSDictionary *)moveFileEntryFromTrashWithFileEntryId:(long long)fileEntryId newFolderId:(long long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)moveFileShortcutFromTrashWithFileShortcutId:(long long)fileShortcutId newFolderId:(long long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;

@@ -12,12 +12,12 @@
  * details.
  */
 
-#import "LRExportimportconfigurationService_v7.h"
+#import "LRExportImportConfigurationService_v7.h"
 
 /**
  * @author Bruno Farache
  */
-@implementation LRExportimportconfigurationService_v7
+@implementation LRExportImportConfigurationService_v7
 
 - (void)deleteExportImportConfigurationWithExportImportConfigurationId:(long long)exportImportConfigurationId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{

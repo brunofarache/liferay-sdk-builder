@@ -82,7 +82,7 @@ public interface GroupService {
   Call<Boolean> hasUserGroup(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId);
 
   @Path("/get-group-display-url")
-  Call<String> getGroupDisplayUrl(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "secureConnection") boolean secureConnection);
+  Call<String> getGroupDisplayURL(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "secureConnection") boolean secureConnection);
 
   @Path("/add-role-groups")
   Call<Response> addRoleGroups(@Param(name = "roleId") long roleId, @Param(name = "groupIds") JSONArray groupIds);
@@ -103,7 +103,7 @@ public interface GroupService {
   Call<Response> unsetRoleGroups(@Param(name = "roleId") long roleId, @Param(name = "groupIds") JSONArray groupIds);
 
   @Path("/update-friendly-url")
-  Call<JSONObject> updateFriendlyUrl(@Param(name = "groupId") long groupId, @Param(name = "friendlyURL") String friendlyURL);
+  Call<JSONObject> updateFriendlyURL(@Param(name = "groupId") long groupId, @Param(name = "friendlyURL") String friendlyURL);
 
   @Path("/check-remote-staging-group")
   Call<Response> checkRemoteStagingGroup(@Param(name = "groupId") long groupId);

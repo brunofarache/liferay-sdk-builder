@@ -7,7 +7,7 @@ import com.liferay.mobile.sdk.http.Response;
 import org.json.JSONObject;
 
 @Path("/exportimportconfiguration")
-public interface ExportimportconfigurationService {
+public interface ExportImportConfigurationService {
   @Path("/delete-export-import-configuration")
   Call<Response> deleteExportImportConfiguration(@Param(name = "exportImportConfigurationId") long exportImportConfigurationId);
 

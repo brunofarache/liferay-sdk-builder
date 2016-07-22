@@ -20,6 +20,6 @@
 @interface LRThemeService_v7 : LRBaseService
 
 - (NSArray *)getThemesWithCompanyId:(long long)companyId error:(NSError **)error;
-- (NSDictionary *)getWarThemes:(NSError **)error;
+- (NSDictionary *)getWARThemes:(NSError **)error;
 
 @end

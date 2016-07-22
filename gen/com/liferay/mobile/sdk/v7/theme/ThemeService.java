@@ -12,5 +12,5 @@ public interface ThemeService {
   Call<JSONArray> getThemes(@Param(name = "companyId") long companyId);
 
   @Path("/get-war-themes")
-  Call<JSONObject> getWarThemes();
+  Call<JSONObject> getWARThemes();
 }

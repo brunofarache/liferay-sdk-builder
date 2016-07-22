@@ -8,7 +8,7 @@ import java.lang.Long;
 import org.json.JSONObject;
 
 @Path("/exportimport")
-public interface ExportimportService {
+public interface ExportImportService {
   @Path("/export-layouts-as-file")
   Call<JSONObject> exportLayoutsAsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
 

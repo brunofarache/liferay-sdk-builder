@@ -42,14 +42,14 @@
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params error:(NSError **)error;
 - (void)disableStagingWithGroupId:(long long)groupId error:(NSError **)error;
 - (BOOL)hasUserGroupWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error;
-- (NSString *)getGroupDisplayUrlWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout secureConnection:(BOOL)secureConnection error:(NSError **)error;
+- (NSString *)getGroupDisplayURLWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout secureConnection:(BOOL)secureConnection error:(NSError **)error;
 - (void)addRoleGroupsWithRoleId:(long long)roleId groupIds:(NSArray *)groupIds error:(NSError **)error;
 - (NSArray *)getOrganizationsGroupsWithOrganizations:(NSArray *)organizations error:(NSError **)error;
 - (NSArray *)getUserGroupsGroupsWithUserGroups:(NSArray *)userGroups error:(NSError **)error;
 - (NSArray *)getUserOrganizationsGroupsWithUserId:(long long)userId start:(int)start end:(int)end error:(NSError **)error;
 - (void)setRoleGroupsWithRoleId:(long long)roleId groupIds:(NSArray *)groupIds error:(NSError **)error;
 - (void)unsetRoleGroupsWithRoleId:(long long)roleId groupIds:(NSArray *)groupIds error:(NSError **)error;
-- (NSDictionary *)updateFriendlyUrlWithGroupId:(long long)groupId friendlyURL:(NSString *)friendlyURL error:(NSError **)error;
+- (NSDictionary *)updateFriendlyURLWithGroupId:(long long)groupId friendlyURL:(NSString *)friendlyURL error:(NSError **)error;
 - (void)checkRemoteStagingGroupWithGroupId:(long long)groupId error:(NSError **)error;
 - (NSArray *)getManageableSiteGroupsWithPortlets:(NSArray *)portlets max:(int)max error:(NSError **)error;
 - (NSNumber *)getUserSitesGroupsCount:(NSError **)error;

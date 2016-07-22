@@ -17,7 +17,7 @@
 /**
  * @author Bruno Farache
  */
-@interface LRExportimportconfigurationService_v7 : LRBaseService
+@interface LRExportImportConfigurationService_v7 : LRBaseService
 
 - (void)deleteExportImportConfigurationWithExportImportConfigurationId:(long long)exportImportConfigurationId error:(NSError **)error;
 - (NSDictionary *)moveExportImportConfigurationToTrashWithExportImportConfigurationId:(long long)exportImportConfigurationId error:(NSError **)error;

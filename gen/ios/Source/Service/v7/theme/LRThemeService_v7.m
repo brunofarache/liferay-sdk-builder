@@ -29,7 +29,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getWarThemes:(NSError **)error {
+- (NSDictionary *)getWARThemes:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
 
