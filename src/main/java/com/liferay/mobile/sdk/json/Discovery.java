@@ -23,9 +23,6 @@ import java.util.List;
  */
 public class Discovery {
 
-	public Discovery() {
-	}
-
 	public Discovery(String contextName, ArrayList<Action> services) {
 		context = contextName;
 		actions = services;

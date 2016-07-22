@@ -25,9 +25,6 @@ import org.apache.commons.lang.WordUtils;
  */
 public class Action {
 
-	public Action() {
-	}
-
 	public Action(
 		String serviceClassName, String methodName, String path,
 		String response, ArrayList<Parameter> parameters) {
