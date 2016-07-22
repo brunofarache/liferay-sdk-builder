@@ -49,10 +49,10 @@ public class JavaBuilder extends BaseBuilder {
 	@Override
 	public void build(
 			Discovery discovery, List<Action> actions, String packageName,
-			int version, String filter, String destination)
+			int version, String destination)
 		throws Exception {
 
-		TypeSpec.Builder classBuilder = classBuilder(discovery, filter);
+		TypeSpec.Builder classBuilder = classBuilder(discovery, actions.get(0));
 
 		for (Action action : actions) {
 			MethodSpec.Builder methodBuilder = methodBuilder(action);
@@ -64,7 +64,7 @@ public class JavaBuilder extends BaseBuilder {
 		sb.append(".v");
 		sb.append(version);
 		sb.append(".");
-		sb.append(filter);
+		sb.append(actions.get(0).getFilter());
 
 		packageName = sb.toString();
 
@@ -79,10 +79,10 @@ public class JavaBuilder extends BaseBuilder {
 	}
 
 	protected TypeSpec.Builder classBuilder(
-		Discovery discovery, String filter) {
+		Discovery discovery, Action action) {
 
 		String contextPath = javaUtil.contextPath(
-			discovery.getContext(), filter);
+			discovery.getContext(), action.getFilter());
 
 		AnnotationSpec servicePathAnnotation = AnnotationSpec
 			.builder(Path.class)
@@ -90,7 +90,7 @@ public class JavaBuilder extends BaseBuilder {
 			.build();
 
 		return TypeSpec
-			.interfaceBuilder(javaUtil.getServiceClassName(filter))
+			.interfaceBuilder(action.getServiceClassName())
 			.addModifiers(Modifier.PUBLIC)
 			.addAnnotation(servicePathAnnotation);
 	}

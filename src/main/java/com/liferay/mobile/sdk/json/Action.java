@@ -14,6 +14,8 @@
 
 package com.liferay.mobile.sdk.json;
 
+import com.liferay.mobile.sdk.util.ClassNames;
+
 import java.util.ArrayList;
 
 import org.apache.commons.lang.WordUtils;
@@ -27,10 +29,11 @@ public class Action {
 	}
 
 	public Action(
-		String filter, String methodName, String path, String response,
-		ArrayList<Parameter> parameters) {
+		String serviceClassName, String methodName, String path,
+		String response, ArrayList<Parameter> parameters) {
 
-		this.filter = filter;
+		this.serviceClassName = serviceClassName;
+		this.filter = serviceClassName.toLowerCase();
 		this.methodName = methodName;
 		this.path = path;
 		this.response = response;
@@ -71,6 +74,24 @@ public class Action {
 		return response;
 	}
 
+	public String getServiceClassName() {
+		if (serviceClassName == null) {
+			StringBuilder sb = new StringBuilder();
+			String className = ClassNames.className(filter);
+
+			if (className == null) {
+				className = WordUtils.capitalize(filter);
+			}
+
+			sb.append(className);
+			sb.append("Service");
+
+			serviceClassName = sb.toString();
+		}
+
+		return serviceClassName;
+	}
+
 	protected String getMethodNameFromPath() {
 		String last = getMethodPath();
 		String[] methodName = last.split("-");
@@ -94,5 +115,6 @@ public class Action {
 	protected ArrayList<Parameter> parameters = new ArrayList<>();
 	protected String path;
 	protected String response;
+	protected String serviceClassName;
 
 }

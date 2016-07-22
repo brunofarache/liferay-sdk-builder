@@ -14,15 +14,6 @@
 
 package com.liferay.mobile.sdk.util;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import org.apache.commons.lang.WordUtils;
-
 /**
  * @author Bruno Farache
  */
@@ -46,35 +37,6 @@ public class LanguageUtil {
 
 	public static final String VOID = "void";
 
-	public LanguageUtil() {
-		_classNames = new Properties();
-
-		InputStream is = getClass().getResourceAsStream(
-			"/class-names.properties");
-
-		try {
-			_classNames.load(is);
-		}
-		catch (IOException ioe) {
-			_log.log(
-				Level.SEVERE, "Could not load class-names.properties", ioe);
-		}
-
-		InputStream ext = getClass().getResourceAsStream(
-			"/class-names-ext.properties");
-
-		if (ext != null) {
-			try {
-				_classNames.load(ext);
-			}
-			catch (IOException ioe) {
-				_log.log(
-					Level.SEVERE, "Could not load class-names-ext.properties",
-					ioe);
-			}
-		}
-	}
-
 	public String contextPath(String context, String filter) {
 		if (Validator.isNotNull(context)) {
 			context = context + "." + filter;
@@ -96,21 +58,6 @@ public class LanguageUtil {
 		}
 
 		return type;
-	}
-
-	public String getServiceClassName(String filter) {
-		StringBuilder sb = new StringBuilder();
-
-		String className = _classNames.getProperty(filter);
-
-		if (className == null) {
-			className = WordUtils.capitalize(filter);
-		}
-
-		sb.append(className);
-		sb.append("Service");
-
-		return sb.toString();
 	}
 
 	public String getType(String type) {
@@ -137,10 +84,5 @@ public class LanguageUtil {
 			type.equals("object<com.liferay.portal.kernel.json.JSONArray>") ||
 			type.startsWith("list");
 	}
-
-	private static final Logger _log = Logger.getLogger(
-		LanguageUtil.class.getName());
-
-	private Properties _classNames;
 
 }

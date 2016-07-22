@@ -53,7 +53,7 @@ public abstract class BaseBuilder implements Builder {
 			try {
 				build(
 					discovery, entry.getValue(), packageName, version,
-					entry.getKey(), destination);
+					destination);
 			}
 			catch (Exception e) {
 				_log.log(

@@ -36,7 +36,7 @@ public class iOSBuilder extends BaseBuilder {
 	@Override
 	public void build(
 			Discovery discovery, List<Action> actions, String packageName,
-			int version, String filter, String destination)
+			int version, String destination)
 		throws Exception {
 
 		StringBuilder sb = new StringBuilder();
@@ -49,8 +49,10 @@ public class iOSBuilder extends BaseBuilder {
 		sb.append("Source/Service");
 		destination = sb.toString();
 
+		String filter = actions.get(0).getFilter();
+
 		VelocityContext context = getVelocityContext(
-			discovery, actions, version, filter);
+			discovery, actions, version);
 
 		String headerTemplate = "templates/ios/h.vm";
 		String headerPath = getFilePath(
@@ -98,15 +100,13 @@ public class iOSBuilder extends BaseBuilder {
 	}
 
 	protected VelocityContext getVelocityContext(
-		Discovery discovery, List<Action> actions, int version, String filter) {
+		Discovery discovery, List<Action> actions, int version) {
 
 		VelocityContext context = new VelocityContext();
-
 		ObjectiveCUtil objectiveCUtil = new ObjectiveCUtil();
 
 		StringBuilder className = new StringBuilder("LR");
-
-		className.append(objectiveCUtil.getServiceClassName(filter));
+		className.append(actions.get(0).getServiceClassName());
 		className.append("_v");
 		className.append(version);
 

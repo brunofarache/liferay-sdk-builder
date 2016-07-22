@@ -26,7 +26,7 @@ public interface Builder {
 
 	void build(
 			Discovery discovery, List<Action> actions, String packageName,
-			int version, String filter, String destination)
+			int version, String destination)
 		throws Exception;
 
 	void buildAll(
