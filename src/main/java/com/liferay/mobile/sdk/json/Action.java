@@ -32,7 +32,7 @@ public class Action {
 		String serviceClassName, String methodName, String path,
 		String response, ArrayList<Parameter> parameters) {
 
-		this.serviceClassName = serviceClassName;
+		this.serviceClassName = serviceClassName + "Service";
 		this.filter = serviceClassName.toLowerCase();
 		this.methodName = methodName;
 		this.path = path;
@@ -62,8 +62,7 @@ public class Action {
 	}
 
 	public String getMethodPath() {
-		int index = path.lastIndexOf("/") + 1;
-		return path.substring(index);
+		return path.substring(path.lastIndexOf("/"));
 	}
 
 	public ArrayList<Parameter> getParameters() {
@@ -93,7 +92,7 @@ public class Action {
 	}
 
 	protected String getMethodNameFromPath() {
-		String last = getMethodPath();
+		String last = getMethodPath().substring(1);
 		String[] methodName = last.split("-");
 		StringBuilder sb = new StringBuilder();
 

@@ -16,6 +16,8 @@ package com.liferay.mobile.sdk.ios;
 
 import com.liferay.mobile.sdk.util.LanguageUtil;
 
+import org.apache.commons.lang.WordUtils;
+
 /**
  * @author Bruno Farache
  */
@@ -38,6 +40,10 @@ public class ObjectiveCUtil extends LanguageUtil {
 	public static final String NS_NUMBER = "NSNumber *";
 
 	public static final String NS_STRING = "NSString *";
+
+	public String capitalize(String word) {
+		return WordUtils.capitalize(word);
+	}
 
 	public String getParamValue(String name, String type) {
 		type = getType(type);
