@@ -19,30 +19,6 @@
  */
 @implementation LRUserGroupRoleService_v7
 
-- (void)addUserGroupRolesWithUserIds:(NSArray *)userIds groupId:(long long)groupId roleId:(long long)roleId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userIds": [self checkNull: userIds],
-		@"groupId": @(groupId),
-		@"roleId": @(roleId)
-	}];
-
-	NSDictionary *_command = @{@"/usergrouprole/add-user-group-roles": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)addUserGroupRolesWithUserId:(long long)userId groupId:(long long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userId": @(userId),
-		@"groupId": @(groupId),
-		@"roleIds": [self checkNull: roleIds]
-	}];
-
-	NSDictionary *_command = @{@"/usergrouprole/add-user-group-roles": _params};
-
-	[self.session invoke:_command error:error];
-}
-
 - (void)deleteUserGroupRolesWithUserIds:(NSArray *)userIds groupId:(long long)groupId roleId:(long long)roleId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userIds": [self checkNull: userIds],
@@ -63,6 +39,30 @@
 	}];
 
 	NSDictionary *_command = @{@"/usergrouprole/delete-user-group-roles": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)addUserGroupRolesWithUserIds:(NSArray *)userIds groupId:(long long)groupId roleId:(long long)roleId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"userIds": [self checkNull: userIds],
+		@"groupId": @(groupId),
+		@"roleId": @(roleId)
+	}];
+
+	NSDictionary *_command = @{@"/usergrouprole/add-user-group-roles": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)addUserGroupRolesWithUserId:(long long)userId groupId:(long long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"userId": @(userId),
+		@"groupId": @(groupId),
+		@"roleIds": [self checkNull: roleIds]
+	}];
+
+	NSDictionary *_command = @{@"/usergrouprole/add-user-group-roles": _params};
 
 	[self.session invoke:_command error:error];
 }

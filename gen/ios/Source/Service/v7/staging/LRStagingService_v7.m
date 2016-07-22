@@ -19,18 +19,6 @@
  */
 @implementation LRStagingService_v7
 
-- (NSDictionary *)validateStagingRequestWithStagingRequestId:(long long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"stagingRequestId": @(stagingRequestId),
-		@"privateLayout": @(privateLayout),
-		@"parameterMap": [self checkNull: parameterMap]
-	}];
-
-	NSDictionary *_command = @{@"/staging/validate-staging-request": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSNumber *)createStagingRequestWithGroupId:(long long)groupId checksum:(NSString *)checksum error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -85,6 +73,18 @@
 	NSDictionary *_command = @{@"/staging/update-staging-request": _params};
 
 	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)validateStagingRequestWithStagingRequestId:(long long)stagingRequestId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"stagingRequestId": @(stagingRequestId),
+		@"privateLayout": @(privateLayout),
+		@"parameterMap": [self checkNull: parameterMap]
+	}];
+
+	NSDictionary *_command = @{@"/staging/validate-staging-request": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

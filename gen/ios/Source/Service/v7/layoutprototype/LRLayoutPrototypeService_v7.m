@@ -95,16 +95,6 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteLayoutPrototypeWithLayoutPrototypeId:(long long)layoutPrototypeId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"layoutPrototypeId": @(layoutPrototypeId)
-	}];
-
-	NSDictionary *_command = @{@"/layoutprototype/delete-layout-prototype": _params};
-
-	[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)fetchLayoutPrototypeWithLayoutPrototypeId:(long long)layoutPrototypeId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutPrototypeId": @(layoutPrototypeId)
@@ -113,6 +103,16 @@
 	NSDictionary *_command = @{@"/layoutprototype/fetch-layout-prototype": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteLayoutPrototypeWithLayoutPrototypeId:(long long)layoutPrototypeId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"layoutPrototypeId": @(layoutPrototypeId)
+	}];
+
+	NSDictionary *_command = @{@"/layoutprototype/delete-layout-prototype": _params};
+
+	[self.session invoke:_command error:error];
 }
 
 @end

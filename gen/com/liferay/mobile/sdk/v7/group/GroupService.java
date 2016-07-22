@@ -22,13 +22,16 @@ public interface GroupService {
   Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "classNameIds") JSONArray classNameIds, @Param(name = "keywords") String keywords, @Param(name = "params", className = "") JSONObject params, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-group")
-  Call<JSONObject> getGroup(@Param(name = "companyId") long companyId, @Param(name = "groupKey") String groupKey);
+  Call<JSONObject> getGroup(@Param(name = "groupId") long groupId);
 
   @Path("/get-group")
-  Call<JSONObject> getGroup(@Param(name = "groupId") long groupId);
+  Call<JSONObject> getGroup(@Param(name = "companyId") long companyId, @Param(name = "groupKey") String groupKey);
 
   @Path("/get-groups")
   Call<JSONArray> getGroups(@Param(name = "companyId") long companyId, @Param(name = "parentGroupId") long parentGroupId, @Param(name = "site") boolean site);
+
+  @Path("/add-group")
+  Call<JSONObject> addGroup(@Param(name = "parentGroupId") long parentGroupId, @Param(name = "liveGroupId") long liveGroupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "site") boolean site, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/add-group")
   Call<JSONObject> addGroup(@Param(name = "parentGroupId") long parentGroupId, @Param(name = "liveGroupId") long liveGroupId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "site") boolean site, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
@@ -36,32 +39,38 @@ public interface GroupService {
   @Path("/add-group")
   Call<JSONObject> addGroup(@Param(name = "parentGroupId") long parentGroupId, @Param(name = "liveGroupId") long liveGroupId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "site") boolean site, @Param(name = "inheritContent") boolean inheritContent, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
-  @Path("/add-group")
-  Call<JSONObject> addGroup(@Param(name = "parentGroupId") long parentGroupId, @Param(name = "liveGroupId") long liveGroupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "site") boolean site, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
-  @Path("/get-user-group")
-  Call<JSONObject> getUserGroup(@Param(name = "companyId") long companyId, @Param(name = "userId") long userId);
-
-  @Path("/update-group")
-  Call<JSONObject> updateGroup(@Param(name = "groupId") long groupId, @Param(name = "parentGroupId") long parentGroupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "inheritContent") boolean inheritContent, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
   @Path("/update-group")
   Call<JSONObject> updateGroup(@Param(name = "groupId") long groupId, @Param(name = "typeSettings") String typeSettings);
 
   @Path("/update-group")
   Call<JSONObject> updateGroup(@Param(name = "groupId") long groupId, @Param(name = "parentGroupId") long parentGroupId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "inheritContent") boolean inheritContent, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
+  @Path("/update-group")
+  Call<JSONObject> updateGroup(@Param(name = "groupId") long groupId, @Param(name = "parentGroupId") long parentGroupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "inheritContent") boolean inheritContent, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+
   @Path("/get-user-sites-groups")
-  Call<JSONArray> getUserSitesGroups();
+  Call<JSONArray> getUserSitesGroups(@Param(name = "classNames") JSONArray classNames, @Param(name = "max") int max);
 
   @Path("/get-user-sites-groups")
   Call<JSONArray> getUserSitesGroups(@Param(name = "userId") long userId, @Param(name = "classNames") JSONArray classNames, @Param(name = "max") int max);
 
   @Path("/get-user-sites-groups")
-  Call<JSONArray> getUserSitesGroups(@Param(name = "classNames") JSONArray classNames, @Param(name = "max") int max);
+  Call<JSONArray> getUserSitesGroups();
 
   @Path("/get-company-group")
   Call<JSONObject> getCompanyGroup(@Param(name = "companyId") long companyId);
+
+  @Path("/get-user-group")
+  Call<JSONObject> getUserGroup(@Param(name = "companyId") long companyId, @Param(name = "userId") long userId);
+
+  @Path("/disable-staging")
+  Call<Response> disableStaging(@Param(name = "groupId") long groupId);
+
+  @Path("/search-count")
+  Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "params") JSONArray params);
+
+  @Path("/has-user-group")
+  Call<Boolean> hasUserGroup(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId);
 
   @Path("/update-staged-portlets")
   Call<Response> updateStagedPortlets(@Param(name = "groupId") long groupId, @Param(name = "stagedPortletIds", className = "") JSONObject stagedPortletIds);
@@ -71,18 +80,6 @@ public interface GroupService {
 
   @Path("/enable-staging")
   Call<Response> enableStaging(@Param(name = "groupId") long groupId);
-
-  @Path("/search-count")
-  Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "params") JSONArray params);
-
-  @Path("/disable-staging")
-  Call<Response> disableStaging(@Param(name = "groupId") long groupId);
-
-  @Path("/has-user-group")
-  Call<Boolean> hasUserGroup(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId);
-
-  @Path("/get-group-display-url")
-  Call<String> getGroupDisplayURL(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "secureConnection") boolean secureConnection);
 
   @Path("/add-role-groups")
   Call<Response> addRoleGroups(@Param(name = "roleId") long roleId, @Param(name = "groupIds") JSONArray groupIds);
@@ -107,6 +104,9 @@ public interface GroupService {
 
   @Path("/check-remote-staging-group")
   Call<Response> checkRemoteStagingGroup(@Param(name = "groupId") long groupId);
+
+  @Path("/get-group-display-url")
+  Call<String> getGroupDisplayURL(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "secureConnection") boolean secureConnection);
 
   @Path("/get-manageable-site-groups")
   Call<JSONArray> getManageableSiteGroups(@Param(name = "portlets") JSONArray portlets, @Param(name = "max") int max);

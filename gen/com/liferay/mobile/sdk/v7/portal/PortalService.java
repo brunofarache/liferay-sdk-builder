@@ -10,11 +10,11 @@ import java.lang.String;
 
 @Path("/portal")
 public interface PortalService {
-  @Path("/get-build-number")
-  Call<Integer> getBuildNumber();
-
   @Path("/get-version")
   Call<String> getVersion();
+
+  @Path("/get-build-number")
+  Call<Integer> getBuildNumber();
 
   @Path("/test-add-class-name_-rollback")
   Call<Response> testAddClassName_Rollback(@Param(name = "classNameValue") String classNameValue);

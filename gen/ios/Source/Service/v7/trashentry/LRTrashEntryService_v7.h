@@ -19,17 +19,17 @@
  */
 @interface LRTrashEntryService_v7 : LRBaseService
 
+- (NSDictionary *)getEntriesWithGroupId:(long long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSDictionary *)getEntriesWithGroupId:(long long)groupId error:(NSError **)error;
 - (NSArray *)getEntriesWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error;
-- (NSDictionary *)getEntriesWithGroupId:(long long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (void)deleteEntriesWithGroupId:(long long)groupId error:(NSError **)error;
-- (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error;
-- (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
-- (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error;
-- (void)moveEntryWithClassName:(NSString *)className classPK:(long long)classPK destinationContainerModelId:(long long)destinationContainerModelId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (NSDictionary *)restoreEntryWithEntryId:(long long)entryId error:(NSError **)error;
-- (NSDictionary *)restoreEntryWithEntryId:(long long)entryId overrideClassPK:(long long)overrideClassPK name:(NSString *)name error:(NSError **)error;
 - (NSDictionary *)restoreEntryWithClassName:(NSString *)className classPK:(long long)classPK overrideClassPK:(long long)overrideClassPK name:(NSString *)name error:(NSError **)error;
+- (NSDictionary *)restoreEntryWithEntryId:(long long)entryId overrideClassPK:(long long)overrideClassPK name:(NSString *)name error:(NSError **)error;
 - (NSDictionary *)restoreEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
+- (NSDictionary *)restoreEntryWithEntryId:(long long)entryId error:(NSError **)error;
+- (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error;
+- (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
+- (void)moveEntryWithClassName:(NSString *)className classPK:(long long)classPK destinationContainerModelId:(long long)destinationContainerModelId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error;
+- (void)deleteEntriesWithGroupId:(long long)groupId error:(NSError **)error;
 
 @end

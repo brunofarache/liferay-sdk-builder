@@ -19,16 +19,6 @@
  */
 @implementation LROrgLaborService_v7
 
-- (NSDictionary *)getOrgLaborWithOrgLaborId:(long long)orgLaborId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"orgLaborId": @(orgLaborId)
-	}];
-
-	NSDictionary *_command = @{@"/orglabor/get-org-labor": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addOrgLaborWithOrganizationId:(long long)organizationId typeId:(long long)typeId sunOpen:(int)sunOpen sunClose:(int)sunClose monOpen:(int)monOpen monClose:(int)monClose tueOpen:(int)tueOpen tueClose:(int)tueClose wedOpen:(int)wedOpen wedClose:(int)wedClose thuOpen:(int)thuOpen thuClose:(int)thuClose friOpen:(int)friOpen friClose:(int)friClose satOpen:(int)satOpen satClose:(int)satClose error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"organizationId": @(organizationId),
@@ -79,14 +69,14 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getOrgLaborsWithOrganizationId:(long long)organizationId error:(NSError **)error {
+- (NSDictionary *)getOrgLaborWithOrgLaborId:(long long)orgLaborId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"organizationId": @(organizationId)
+		@"orgLaborId": @(orgLaborId)
 	}];
 
-	NSDictionary *_command = @{@"/orglabor/get-org-labors": _params};
+	NSDictionary *_command = @{@"/orglabor/get-org-labor": _params};
 
-	return (NSArray *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 - (void)deleteOrgLaborWithOrgLaborId:(long long)orgLaborId error:(NSError **)error {
@@ -97,6 +87,16 @@
 	NSDictionary *_command = @{@"/orglabor/delete-org-labor": _params};
 
 	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getOrgLaborsWithOrganizationId:(long long)organizationId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"organizationId": @(organizationId)
+	}];
+
+	NSDictionary *_command = @{@"/orglabor/get-org-labors": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 @end

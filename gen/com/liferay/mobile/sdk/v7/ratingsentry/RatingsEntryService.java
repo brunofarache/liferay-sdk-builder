@@ -9,9 +9,9 @@ import org.json.JSONObject;
 
 @Path("/ratingsentry")
 public interface RatingsEntryService {
-  @Path("/delete-entry")
-  Call<Response> deleteEntry(@Param(name = "className") String className, @Param(name = "classPK") long classPK);
-
   @Path("/update-entry")
   Call<JSONObject> updateEntry(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "score") double score);
+
+  @Path("/delete-entry")
+  Call<Response> deleteEntry(@Param(name = "className") String className, @Param(name = "classPK") long classPK);
 }

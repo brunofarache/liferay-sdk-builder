@@ -28,34 +28,28 @@ public interface DLFileEntryService {
   Call<JSONObject> getFileEntryByUuidAndGroupId(@Param(name = "uuid") String uuid, @Param(name = "groupId") long groupId);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-file-entries")
   Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
-
-  @Path("/get-file-entries-count")
-  Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status);
-
-  @Path("/get-file-entries-count")
-  Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId);
+  Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-file-entries-count")
   Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/get-file-entries-count")
+  Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status);
+
+  @Path("/get-file-entries-count")
   Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes);
 
-  @Path("/has-file-entry-lock")
-  Call<Boolean> hasFileEntryLock(@Param(name = "fileEntryId") long fileEntryId);
-
-  @Path("/is-file-entry-checked-out")
-  Call<Boolean> isFileEntryCheckedOut(@Param(name = "fileEntryId") long fileEntryId);
+  @Path("/get-file-entries-count")
+  Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId);
 
   @Path("/move-file-entry")
   Call<JSONObject> moveFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "newFolderId") long newFolderId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
@@ -63,20 +57,32 @@ public interface DLFileEntryService {
   @Path("/copy-file-entry")
   Call<JSONObject> copyFileEntry(@Param(name = "groupId") long groupId, @Param(name = "repositoryId") long repositoryId, @Param(name = "fileEntryId") long fileEntryId, @Param(name = "destFolderId") long destFolderId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
-  @Path("/check-out-file-entry")
-  Call<JSONObject> checkOutFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "owner") String owner, @Param(name = "expirationTime") long expirationTime, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  @Path("/has-file-entry-lock")
+  Call<Boolean> hasFileEntryLock(@Param(name = "fileEntryId") long fileEntryId);
 
-  @Path("/check-out-file-entry")
-  Call<JSONObject> checkOutFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  @Path("/is-file-entry-checked-out")
+  Call<Boolean> isFileEntryCheckedOut(@Param(name = "fileEntryId") long fileEntryId);
+
+  @Path("/get-file-entry-lock")
+  Call<JSONObject> getFileEntryLock(@Param(name = "fileEntryId") long fileEntryId);
+
+  @Path("/is-keep-file-version-label")
+  Call<Boolean> isKeepFileVersionLabel(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+
+  @Path("/is-keep-file-version-label")
+  Call<Boolean> isKeepFileVersionLabel(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/delete-file-version")
   Call<Response> deleteFileVersion(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "version") String version);
 
+  @Path("/check-out-file-entry")
+  Call<JSONObject> checkOutFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+
+  @Path("/check-out-file-entry")
+  Call<JSONObject> checkOutFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "owner") String owner, @Param(name = "expirationTime") long expirationTime, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+
   @Path("/get-folders-file-entries-count")
   Call<Integer> getFoldersFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderIds") JSONArray folderIds, @Param(name = "status") int status);
-
-  @Path("/get-group-file-entries")
-  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-group-file-entries")
   Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
@@ -84,14 +90,17 @@ public interface DLFileEntryService {
   @Path("/get-group-file-entries")
   Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "repositoryId") long repositoryId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
+  @Path("/get-group-file-entries")
+  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+
   @Path("/get-group-file-entries-count")
   Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId);
 
   @Path("/get-group-file-entries-count")
-  Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "repositoryId") long repositoryId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status);
+  Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status);
 
   @Path("/get-group-file-entries-count")
-  Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status);
+  Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "repositoryId") long repositoryId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status);
 
   @Path("/refresh-file-entry-lock")
   Call<JSONObject> refreshFileEntryLock(@Param(name = "lockUuid") String lockUuid, @Param(name = "companyId") long companyId, @Param(name = "expirationTime") long expirationTime);
@@ -105,26 +114,8 @@ public interface DLFileEntryService {
   @Path("/verify-file-entry-lock")
   Call<Boolean> verifyFileEntryLock(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "lockUuid") String lockUuid);
 
-  @Path("/fetch-file-entry-by-image-id")
-  Call<JSONObject> fetchFileEntryByImageId(@Param(name = "imageId") long imageId);
-
-  @Path("/get-file-entry-lock")
-  Call<JSONObject> getFileEntryLock(@Param(name = "fileEntryId") long fileEntryId);
-
   @Path("/update-status")
   Call<JSONObject> updateStatus(@Param(name = "userId") long userId, @Param(name = "fileVersionId") long fileVersionId, @Param(name = "status") int status, @Param(name = "serviceContext", className = "") JSONObject serviceContext, @Param(name = "workflowContext", className = "") JSONObject workflowContext);
-
-  @Path("/delete-file-entry")
-  Call<Response> deleteFileEntry(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "title") String title);
-
-  @Path("/delete-file-entry")
-  Call<Response> deleteFileEntry(@Param(name = "fileEntryId") long fileEntryId);
-
-  @Path("/is-keep-file-version-label")
-  Call<Boolean> isKeepFileVersionLabel(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
-  @Path("/is-keep-file-version-label")
-  Call<Boolean> isKeepFileVersionLabel(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/check-in-file-entry")
   Call<Response> checkInFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "major") boolean major, @Param(name = "changeLog") String changeLog, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
@@ -134,4 +125,13 @@ public interface DLFileEntryService {
 
   @Path("/cancel-check-out")
   Call<JSONObject> cancelCheckOut(@Param(name = "fileEntryId") long fileEntryId);
+
+  @Path("/fetch-file-entry-by-image-id")
+  Call<JSONObject> fetchFileEntryByImageId(@Param(name = "imageId") long imageId);
+
+  @Path("/delete-file-entry")
+  Call<Response> deleteFileEntry(@Param(name = "fileEntryId") long fileEntryId);
+
+  @Path("/delete-file-entry")
+  Call<Response> deleteFileEntry(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "title") String title);
 }

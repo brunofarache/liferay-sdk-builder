@@ -16,11 +16,11 @@ public interface LayoutSetBranchService {
   @Path("/update-layout-set-branch")
   Call<JSONObject> updateLayoutSetBranch(@Param(name = "groupId") long groupId, @Param(name = "layoutSetBranchId") long layoutSetBranchId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
-  @Path("/get-layout-set-branches")
-  Call<JSONArray> getLayoutSetBranches(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout);
-
   @Path("/delete-layout-set-branch")
   Call<Response> deleteLayoutSetBranch(@Param(name = "layoutSetBranchId") long layoutSetBranchId);
+
+  @Path("/get-layout-set-branches")
+  Call<JSONArray> getLayoutSetBranches(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout);
 
   @Path("/merge-layout-set-branch")
   Call<JSONObject> mergeLayoutSetBranch(@Param(name = "layoutSetBranchId") long layoutSetBranchId, @Param(name = "mergeLayoutSetBranchId") long mergeLayoutSetBranchId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);

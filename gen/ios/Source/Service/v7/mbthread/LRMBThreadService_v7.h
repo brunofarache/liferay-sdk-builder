@@ -20,24 +20,24 @@
 @interface LRMBThreadService_v7 : LRBaseService
 
 - (NSArray *)getThreadsWithGroupId:(long long)groupId categoryId:(long long)categoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
-- (NSDictionary *)searchWithGroupId:(long long)groupId creatorUserId:(long long)creatorUserId startDate:(long long)startDate endDate:(long long)endDate status:(int)status start:(int)start end:(int)end error:(NSError **)error;
 - (NSDictionary *)searchWithGroupId:(long long)groupId creatorUserId:(long long)creatorUserId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
-- (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId modifiedDate:(long long)modifiedDate status:(int)status error:(NSError **)error;
-- (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId status:(int)status error:(NSError **)error;
-- (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed error:(NSError **)error;
+- (NSDictionary *)searchWithGroupId:(long long)groupId creatorUserId:(long long)creatorUserId startDate:(long long)startDate endDate:(long long)endDate status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (NSDictionary *)lockThreadWithThreadId:(long long)threadId error:(NSError **)error;
+- (void)unlockThreadWithThreadId:(long long)threadId error:(NSError **)error;
+- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId modifiedDate:(long long)modifiedDate status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (void)deleteThreadWithThreadId:(long long)threadId error:(NSError **)error;
 - (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous error:(NSError **)error;
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed error:(NSError **)error;
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId status:(int)status error:(NSError **)error;
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId modifiedDate:(long long)modifiedDate status:(int)status error:(NSError **)error;
 - (NSNumber *)getThreadsCountWithGroupId:(long long)groupId categoryId:(long long)categoryId status:(int)status error:(NSError **)error;
 - (NSDictionary *)moveThreadWithCategoryId:(long long)categoryId threadId:(long long)threadId error:(NSError **)error;
 - (NSDictionary *)moveThreadFromTrashWithCategoryId:(long long)categoryId threadId:(long long)threadId error:(NSError **)error;
 - (NSDictionary *)moveThreadToTrashWithThreadId:(long long)threadId error:(NSError **)error;
 - (void)restoreThreadFromTrashWithThreadId:(long long)threadId error:(NSError **)error;
 - (NSDictionary *)splitThreadWithMessageId:(long long)messageId subject:(NSString *)subject serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
-- (NSDictionary *)lockThreadWithThreadId:(long long)threadId error:(NSError **)error;
-- (void)unlockThreadWithThreadId:(long long)threadId error:(NSError **)error;
-- (void)deleteThreadWithThreadId:(long long)threadId error:(NSError **)error;
-- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed start:(int)start end:(int)end error:(NSError **)error;
-- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
-- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous start:(int)start end:(int)end error:(NSError **)error;
-- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId modifiedDate:(long long)modifiedDate status:(int)status start:(int)start end:(int)end error:(NSError **)error;
 
 @end

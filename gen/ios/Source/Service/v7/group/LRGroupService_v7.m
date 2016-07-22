@@ -68,10 +68,9 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getGroupWithCompanyId:(long long)companyId groupKey:(NSString *)groupKey error:(NSError **)error {
+- (NSDictionary *)getGroupWithGroupId:(long long)groupId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"groupKey": [self checkNull: groupKey]
+		@"groupId": @(groupId)
 	}];
 
 	NSDictionary *_command = @{@"/group/get-group": _params};
@@ -79,9 +78,10 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getGroupWithGroupId:(long long)groupId error:(NSError **)error {
+- (NSDictionary *)getGroupWithCompanyId:(long long)companyId groupKey:(NSString *)groupKey error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId)
+		@"companyId": @(companyId),
+		@"groupKey": [self checkNull: groupKey]
 	}];
 
 	NSDictionary *_command = @{@"/group/get-group": _params};
@@ -99,6 +99,26 @@
 	NSDictionary *_command = @{@"/group/get-groups": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"parentGroupId": @(parentGroupId),
+		@"liveGroupId": @(liveGroupId),
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"type": @(type),
+		@"manualMembership": @(manualMembership),
+		@"membershipRestriction": @(membershipRestriction),
+		@"friendlyURL": [self checkNull: friendlyURL],
+		@"site": @(site),
+		@"active": @(active),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/group/add-group": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
@@ -142,57 +162,6 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"parentGroupId": @(parentGroupId),
-		@"liveGroupId": @(liveGroupId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"type": @(type),
-		@"manualMembership": @(manualMembership),
-		@"membershipRestriction": @(membershipRestriction),
-		@"friendlyURL": [self checkNull: friendlyURL],
-		@"site": @(site),
-		@"active": @(active),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/group/add-group": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getUserGroupWithCompanyId:(long long)companyId userId:(long long)userId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"userId": @(userId)
-	}];
-
-	NSDictionary *_command = @{@"/group/get-user-group": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)updateGroupWithGroupId:(long long)groupId parentGroupId:(long long)parentGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL inheritContent:(BOOL)inheritContent active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"parentGroupId": @(parentGroupId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"type": @(type),
-		@"manualMembership": @(manualMembership),
-		@"membershipRestriction": @(membershipRestriction),
-		@"friendlyURL": [self checkNull: friendlyURL],
-		@"inheritContent": @(inheritContent),
-		@"active": @(active),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/group/update-group": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)updateGroupWithGroupId:(long long)groupId typeSettings:(NSString *)typeSettings error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -224,8 +193,30 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserSitesGroups:(NSError **)error {
+- (NSDictionary *)updateGroupWithGroupId:(long long)groupId parentGroupId:(long long)parentGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL inheritContent:(BOOL)inheritContent active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"parentGroupId": @(parentGroupId),
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"type": @(type),
+		@"manualMembership": @(manualMembership),
+		@"membershipRestriction": @(membershipRestriction),
+		@"friendlyURL": [self checkNull: friendlyURL],
+		@"inheritContent": @(inheritContent),
+		@"active": @(active),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/group/update-group": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getUserSitesGroupsWithClassNames:(NSArray *)classNames max:(int)max error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"classNames": [self checkNull: classNames],
+		@"max": @(max)
 	}];
 
 	NSDictionary *_command = @{@"/group/get-user-sites-groups": _params};
@@ -245,10 +236,8 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserSitesGroupsWithClassNames:(NSArray *)classNames max:(int)max error:(NSError **)error {
+- (NSArray *)getUserSitesGroups:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"classNames": [self checkNull: classNames],
-		@"max": @(max)
 	}];
 
 	NSDictionary *_command = @{@"/group/get-user-sites-groups": _params};
@@ -264,6 +253,51 @@
 	NSDictionary *_command = @{@"/group/get-company-group": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getUserGroupWithCompanyId:(long long)companyId userId:(long long)userId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"userId": @(userId)
+	}];
+
+	NSDictionary *_command = @{@"/group/get-user-group": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)disableStagingWithGroupId:(long long)groupId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId)
+	}];
+
+	NSDictionary *_command = @{@"/group/disable-staging": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)searchCountWithCompanyId:(long long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"params": [self checkNull: params]
+	}];
+
+	NSDictionary *_command = @{@"/group/search-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (BOOL)hasUserGroupWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"userId": @(userId),
+		@"groupId": @(groupId)
+	}];
+
+	NSDictionary *_command = @{@"/group/has-user-group": _params};
+
+	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
 - (void)updateStagedPortletsWithGroupId:(long long)groupId stagedPortletIds:(NSDictionary *)stagedPortletIds error:(NSError **)error {
@@ -295,52 +329,6 @@
 	NSDictionary *_command = @{@"/group/enable-staging": _params};
 
 	[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)searchCountWithCompanyId:(long long)companyId name:(NSString *)name description:(NSString *)description params:(NSArray *)params error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"params": [self checkNull: params]
-	}];
-
-	NSDictionary *_command = @{@"/group/search-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (void)disableStagingWithGroupId:(long long)groupId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId)
-	}];
-
-	NSDictionary *_command = @{@"/group/disable-staging": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (BOOL)hasUserGroupWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userId": @(userId),
-		@"groupId": @(groupId)
-	}];
-
-	NSDictionary *_command = @{@"/group/has-user-group": _params};
-
-	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
-}
-
-- (NSString *)getGroupDisplayURLWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout secureConnection:(BOOL)secureConnection error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"secureConnection": @(secureConnection)
-	}];
-
-	NSDictionary *_command = @{@"/group/get-group-display-url": _params};
-
-	return (NSString *)[self.session invoke:_command error:error];
 }
 
 - (void)addRoleGroupsWithRoleId:(long long)roleId groupIds:(NSArray *)groupIds error:(NSError **)error {
@@ -427,6 +415,18 @@
 	NSDictionary *_command = @{@"/group/check-remote-staging-group": _params};
 
 	[self.session invoke:_command error:error];
+}
+
+- (NSString *)getGroupDisplayURLWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout secureConnection:(BOOL)secureConnection error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"secureConnection": @(secureConnection)
+	}];
+
+	NSDictionary *_command = @{@"/group/get-group-display-url": _params};
+
+	return (NSString *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getManageableSiteGroupsWithPortlets:(NSArray *)portlets max:(int)max error:(NSError **)error {

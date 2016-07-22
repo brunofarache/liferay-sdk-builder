@@ -19,6 +19,30 @@
  */
 @implementation LRLayoutService_v7
 
+- (void)deleteLayoutWithPlid:(long long)plid serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"plid": @(plid),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/layout/delete-layout": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)deleteLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"layoutId": @(layoutId),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/layout/delete-layout": _params};
+
+	[self.session invoke:_command error:error];
+}
+
 - (NSArray *)getLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId incomplete:(BOOL)incomplete start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -27,18 +51,6 @@
 		@"incomplete": @(incomplete),
 		@"start": @(start),
 		@"end": @(end)
-	}];
-
-	NSDictionary *_command = @{@"/layout/get-layouts": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"parentLayoutId": @(parentLayoutId)
 	}];
 
 	NSDictionary *_command = @{@"/layout/get-layouts": _params};
@@ -57,18 +69,16 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (void)setLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId layoutIds:(NSArray *)layoutIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSArray *)getLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
-		@"parentLayoutId": @(parentLayoutId),
-		@"layoutIds": [self checkNull: layoutIds],
-		@"serviceContext": [self checkNull: serviceContext]
+		@"parentLayoutId": @(parentLayoutId)
 	}];
 
-	NSDictionary *_command = @{@"/layout/set-layouts": _params};
+	NSDictionary *_command = @{@"/layout/get-layouts": _params};
 
-	[self.session invoke:_command error:error];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 - (NSNumber *)getDefaultPlidWithGroupId:(long long)groupId scopeGroupId:(long long)scopeGroupId portletId:(NSString *)portletId error:(NSError **)error {
@@ -96,37 +106,6 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getLayoutsCountWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"parentLayoutId": @(parentLayoutId)
-	}];
-
-	NSDictionary *_command = @{@"/layout/get-layouts-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)addLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId name:(NSString *)name title:(NSString *)title description:(NSString *)description type:(NSString *)type hidden:(BOOL)hidden friendlyURL:(NSString *)friendlyURL serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"parentLayoutId": @(parentLayoutId),
-		@"name": [self checkNull: name],
-		@"title": [self checkNull: title],
-		@"description": [self checkNull: description],
-		@"type": [self checkNull: type],
-		@"hidden": @(hidden),
-		@"friendlyURL": [self checkNull: friendlyURL],
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/layout/add-layout": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId localeNamesMap:(NSDictionary *)localeNamesMap localeTitlesMap:(NSDictionary *)localeTitlesMap descriptionMap:(NSDictionary *)descriptionMap keywordsMap:(NSDictionary *)keywordsMap robotsMap:(NSDictionary *)robotsMap type:(NSString *)type typeSettings:(NSString *)typeSettings hidden:(BOOL)hidden friendlyURLMap:(NSDictionary *)friendlyURLMap serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -149,15 +128,21 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId typeSettings:(NSString *)typeSettings error:(NSError **)error {
+- (NSDictionary *)addLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId name:(NSString *)name title:(NSString *)title description:(NSString *)description type:(NSString *)type hidden:(BOOL)hidden friendlyURL:(NSString *)friendlyURL serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
-		@"layoutId": @(layoutId),
-		@"typeSettings": [self checkNull: typeSettings]
+		@"parentLayoutId": @(parentLayoutId),
+		@"name": [self checkNull: name],
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"type": [self checkNull: type],
+		@"hidden": @(hidden),
+		@"friendlyURL": [self checkNull: friendlyURL],
+		@"serviceContext": [self checkNull: serviceContext]
 	}];
 
-	NSDictionary *_command = @{@"/layout/update-layout": _params};
+	NSDictionary *_command = @{@"/layout/add-layout": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -186,6 +171,57 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)updateLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId typeSettings:(NSString *)typeSettings error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"layoutId": @(layoutId),
+		@"typeSettings": [self checkNull: typeSettings]
+	}];
+
+	NSDictionary *_command = @{@"/layout/update-layout": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)getLayoutsCountWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"parentLayoutId": @(parentLayoutId)
+	}];
+
+	NSDictionary *_command = @{@"/layout/get-layouts-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteTempFileEntryWithGroupId:(long long)groupId folderName:(NSString *)folderName fileName:(NSString *)fileName error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"folderName": [self checkNull: folderName],
+		@"fileName": [self checkNull: fileName]
+	}];
+
+	NSDictionary *_command = @{@"/layout/delete-temp-file-entry": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)setLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parentLayoutId:(long long)parentLayoutId layoutIds:(NSArray *)layoutIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"parentLayoutId": @(parentLayoutId),
+		@"layoutIds": [self checkNull: layoutIds],
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/layout/set-layouts": _params};
+
+	[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)exportLayoutsAsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"exportImportConfiguration": [self checkNull: exportImportConfiguration]
@@ -211,6 +247,232 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)getLayoutByUuidAndGroupIdWithUuid:(NSString *)uuid groupId:(long long)groupId privateLayout:(BOOL)privateLayout error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"uuid": [self checkNull: uuid],
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout)
+	}];
+
+	NSDictionary *_command = @{@"/layout/get-layout-by-uuid-and-group-id": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)exportPortletInfoAsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"exportImportConfiguration": [self checkNull: exportImportConfiguration]
+	}];
+
+	NSDictionary *_command = @{@"/layout/export-portlet-info-as-file": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)exportPortletInfoAsFileWithPortletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"portletId": [self checkNull: portletId],
+		@"parameterMap": [self checkNull: parameterMap],
+		@"startDate": @(startDate),
+		@"endDate": @(endDate)
+	}];
+
+	NSDictionary *_command = @{@"/layout/export-portlet-info-as-file": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)exportPortletInfoAsFileWithPlid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"plid": @(plid),
+		@"groupId": @(groupId),
+		@"portletId": [self checkNull: portletId],
+		@"parameterMap": [self checkNull: parameterMap],
+		@"startDate": @(startDate),
+		@"endDate": @(endDate)
+	}];
+
+	NSDictionary *_command = @{@"/layout/export-portlet-info-as-file": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getTempFileNamesWithGroupId:(long long)groupId folderName:(NSString *)folderName error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"folderName": [self checkNull: folderName]
+	}];
+
+	NSDictionary *_command = @{@"/layout/get-temp-file-names": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (void)schedulePublishToLiveWithSourceGroupId:(long long)sourceGroupId targetGroupId:(long long)targetGroupId privateLayout:(BOOL)privateLayout layoutIdMap:(NSDictionary *)layoutIdMap parameterMap:(NSDictionary *)parameterMap scope:(NSString *)scope startDate:(long long)startDate endDate:(long long)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long long)schedulerStartDate schedulerEndDate:(long long)schedulerEndDate description:(NSString *)description error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"sourceGroupId": @(sourceGroupId),
+		@"targetGroupId": @(targetGroupId),
+		@"privateLayout": @(privateLayout),
+		@"layoutIdMap": [self checkNull: layoutIdMap],
+		@"parameterMap": [self checkNull: parameterMap],
+		@"scope": [self checkNull: scope],
+		@"startDate": @(startDate),
+		@"endDate": @(endDate),
+		@"groupName": [self checkNull: groupName],
+		@"cronText": [self checkNull: cronText],
+		@"schedulerStartDate": @(schedulerStartDate),
+		@"schedulerEndDate": @(schedulerEndDate),
+		@"description": [self checkNull: description]
+	}];
+
+	NSDictionary *_command = @{@"/layout/schedule-publish-to-live": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)schedulePublishToLiveWithSourceGroupId:(long long)sourceGroupId targetGroupId:(long long)targetGroupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long long)schedulerStartDate schedulerEndDate:(long long)schedulerEndDate description:(NSString *)description error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"sourceGroupId": @(sourceGroupId),
+		@"targetGroupId": @(targetGroupId),
+		@"privateLayout": @(privateLayout),
+		@"layoutIds": [self checkNull: layoutIds],
+		@"parameterMap": [self checkNull: parameterMap],
+		@"groupName": [self checkNull: groupName],
+		@"cronText": [self checkNull: cronText],
+		@"schedulerStartDate": @(schedulerStartDate),
+		@"schedulerEndDate": @(schedulerEndDate),
+		@"description": [self checkNull: description]
+	}];
+
+	NSDictionary *_command = @{@"/layout/schedule-publish-to-live": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)schedulePublishToLiveWithSourceGroupId:(long long)sourceGroupId targetGroupId:(long long)targetGroupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap scope:(NSString *)scope startDate:(long long)startDate endDate:(long long)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long long)schedulerStartDate schedulerEndDate:(long long)schedulerEndDate description:(NSString *)description error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"sourceGroupId": @(sourceGroupId),
+		@"targetGroupId": @(targetGroupId),
+		@"privateLayout": @(privateLayout),
+		@"layoutIds": [self checkNull: layoutIds],
+		@"parameterMap": [self checkNull: parameterMap],
+		@"scope": [self checkNull: scope],
+		@"startDate": @(startDate),
+		@"endDate": @(endDate),
+		@"groupName": [self checkNull: groupName],
+		@"cronText": [self checkNull: cronText],
+		@"schedulerStartDate": @(schedulerStartDate),
+		@"schedulerEndDate": @(schedulerEndDate),
+		@"description": [self checkNull: description]
+	}];
+
+	NSDictionary *_command = @{@"/layout/schedule-publish-to-live": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)schedulePublishToRemoteWithSourceGroupId:(long long)sourceGroupId privateLayout:(BOOL)privateLayout layoutIdMap:(NSDictionary *)layoutIdMap parameterMap:(NSDictionary *)parameterMap remoteAddress:(NSString *)remoteAddress remotePort:(int)remotePort remotePathContext:(NSString *)remotePathContext secureConnection:(BOOL)secureConnection remoteGroupId:(long long)remoteGroupId remotePrivateLayout:(BOOL)remotePrivateLayout startDate:(long long)startDate endDate:(long long)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long long)schedulerStartDate schedulerEndDate:(long long)schedulerEndDate description:(NSString *)description error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"sourceGroupId": @(sourceGroupId),
+		@"privateLayout": @(privateLayout),
+		@"layoutIdMap": [self checkNull: layoutIdMap],
+		@"parameterMap": [self checkNull: parameterMap],
+		@"remoteAddress": [self checkNull: remoteAddress],
+		@"remotePort": @(remotePort),
+		@"remotePathContext": [self checkNull: remotePathContext],
+		@"secureConnection": @(secureConnection),
+		@"remoteGroupId": @(remoteGroupId),
+		@"remotePrivateLayout": @(remotePrivateLayout),
+		@"startDate": @(startDate),
+		@"endDate": @(endDate),
+		@"groupName": [self checkNull: groupName],
+		@"cronText": [self checkNull: cronText],
+		@"schedulerStartDate": @(schedulerStartDate),
+		@"schedulerEndDate": @(schedulerEndDate),
+		@"description": [self checkNull: description]
+	}];
+
+	NSDictionary *_command = @{@"/layout/schedule-publish-to-remote": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)unschedulePublishToLiveWithGroupId:(long long)groupId jobName:(NSString *)jobName groupName:(NSString *)groupName error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"jobName": [self checkNull: jobName],
+		@"groupName": [self checkNull: groupName]
+	}];
+
+	NSDictionary *_command = @{@"/layout/unschedule-publish-to-live": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)unschedulePublishToRemoteWithGroupId:(long long)groupId jobName:(NSString *)jobName groupName:(NSString *)groupName error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"jobName": [self checkNull: jobName],
+		@"groupName": [self checkNull: groupName]
+	}];
+
+	NSDictionary *_command = @{@"/layout/unschedule-publish-to-remote": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)importLayoutsWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
+		@"file": [self checkNull: file]
+	}];
+
+	NSDictionary *_command = @{@"/layout/import-layouts": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap bytes:(NSData *)bytes error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"parameterMap": [self checkNull: parameterMap],
+		@"bytes": [self toString:bytes]
+	}];
+
+	NSDictionary *_command = @{@"/layout/import-layouts": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"parameterMap": [self checkNull: parameterMap],
+		@"file": [self checkNull: file]
+	}];
+
+	NSDictionary *_command = @{@"/layout/import-layouts": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateLookAndFeelWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"layoutId": @(layoutId),
+		@"themeId": [self checkNull: themeId],
+		@"colorSchemeId": [self checkNull: colorSchemeId],
+		@"css": [self checkNull: css]
+	}];
+
+	NSDictionary *_command = @{@"/layout/update-look-and-feel": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSNumber *)exportLayoutsAsFileInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"exportImportConfiguration": [self checkNull: exportImportConfiguration]
@@ -231,22 +493,6 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)exportLayoutsAsFileInBackgroundWithTaskName:(NSString *)taskName groupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"taskName": [self checkNull: taskName],
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"layoutIds": [self checkNull: layoutIds],
-		@"parameterMap": [self checkNull: parameterMap],
-		@"startDate": @(startDate),
-		@"endDate": @(endDate)
-	}];
-
-	NSDictionary *_command = @{@"/layout/export-layouts-as-file-in-background": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
 - (NSNumber *)exportLayoutsAsFileInBackgroundWithTaskName:(NSString *)taskName groupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate fileName:(NSString *)fileName error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"taskName": [self checkNull: taskName],
@@ -257,6 +503,22 @@
 		@"startDate": @(startDate),
 		@"endDate": @(endDate),
 		@"fileName": [self checkNull: fileName]
+	}];
+
+	NSDictionary *_command = @{@"/layout/export-layouts-as-file-in-background": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)exportLayoutsAsFileInBackgroundWithTaskName:(NSString *)taskName groupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"taskName": [self checkNull: taskName],
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"layoutIds": [self checkNull: layoutIds],
+		@"parameterMap": [self checkNull: parameterMap],
+		@"startDate": @(startDate),
+		@"endDate": @(endDate)
 	}];
 
 	NSDictionary *_command = @{@"/layout/export-layouts-as-file-in-background": _params};
@@ -310,10 +572,9 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (void)importPortletInfoWithPortletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
+- (void)importPortletInfoWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"portletId": [self checkNull: portletId],
-		@"parameterMap": [self checkNull: parameterMap],
+		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
 		@"file": [self checkNull: file]
 	}];
 
@@ -322,9 +583,10 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)importPortletInfoWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
+- (void)importPortletInfoWithPortletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
+		@"portletId": [self checkNull: portletId],
+		@"parameterMap": [self checkNull: parameterMap],
 		@"file": [self checkNull: file]
 	}];
 
@@ -375,6 +637,19 @@
 	[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)validateImportLayoutsFileWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"parameterMap": [self checkNull: parameterMap],
+		@"file": [self checkNull: file]
+	}];
+
+	NSDictionary *_command = @{@"/layout/validate-import-layouts-file": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)validateImportLayoutsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
@@ -386,15 +661,13 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)validateImportLayoutsFileWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
+- (NSDictionary *)validateImportPortletInfoWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"parameterMap": [self checkNull: parameterMap],
+		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
 		@"file": [self checkNull: file]
 	}];
 
-	NSDictionary *_command = @{@"/layout/validate-import-layouts-file": _params};
+	NSDictionary *_command = @{@"/layout/validate-import-portlet-info": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -413,152 +686,40 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)validateImportPortletInfoWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
+- (NSArray *)getAncestorLayoutsWithPlid:(long long)plid error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
-		@"file": [self checkNull: file]
+		@"plid": @(plid)
 	}];
 
-	NSDictionary *_command = @{@"/layout/validate-import-portlet-info": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)exportPortletInfoAsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"exportImportConfiguration": [self checkNull: exportImportConfiguration]
-	}];
-
-	NSDictionary *_command = @{@"/layout/export-portlet-info-as-file": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)exportPortletInfoAsFileWithPlid:(long long)plid groupId:(long long)groupId portletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"plid": @(plid),
-		@"groupId": @(groupId),
-		@"portletId": [self checkNull: portletId],
-		@"parameterMap": [self checkNull: parameterMap],
-		@"startDate": @(startDate),
-		@"endDate": @(endDate)
-	}];
-
-	NSDictionary *_command = @{@"/layout/export-portlet-info-as-file": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)exportPortletInfoAsFileWithPortletId:(NSString *)portletId parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"portletId": [self checkNull: portletId],
-		@"parameterMap": [self checkNull: parameterMap],
-		@"startDate": @(startDate),
-		@"endDate": @(endDate)
-	}];
-
-	NSDictionary *_command = @{@"/layout/export-portlet-info-as-file": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getTempFileNamesWithGroupId:(long long)groupId folderName:(NSString *)folderName error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"folderName": [self checkNull: folderName]
-	}];
-
-	NSDictionary *_command = @{@"/layout/get-temp-file-names": _params};
+	NSDictionary *_command = @{@"/layout/get-ancestor-layouts": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteTempFileEntryWithGroupId:(long long)groupId folderName:(NSString *)folderName fileName:(NSString *)fileName error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"folderName": [self checkNull: folderName],
-		@"fileName": [self checkNull: fileName]
-	}];
-
-	NSDictionary *_command = @{@"/layout/delete-temp-file-entry": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)deleteLayoutWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSString *)getLayoutNameWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId languageId:(NSString *)languageId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"layoutId": @(layoutId),
-		@"serviceContext": [self checkNull: serviceContext]
+		@"languageId": [self checkNull: languageId]
 	}];
 
-	NSDictionary *_command = @{@"/layout/delete-layout": _params};
+	NSDictionary *_command = @{@"/layout/get-layout-name": _params};
 
-	[self.session invoke:_command error:error];
+	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteLayoutWithPlid:(long long)plid serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSArray *)getLayoutReferencesWithCompanyId:(long long)companyId portletId:(NSString *)portletId preferencesKey:(NSString *)preferencesKey preferencesValue:(NSString *)preferencesValue error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"plid": @(plid),
-		@"serviceContext": [self checkNull: serviceContext]
+		@"companyId": @(companyId),
+		@"portletId": [self checkNull: portletId],
+		@"preferencesKey": [self checkNull: preferencesKey],
+		@"preferencesValue": [self checkNull: preferencesValue]
 	}];
 
-	NSDictionary *_command = @{@"/layout/delete-layout": _params};
+	NSDictionary *_command = @{@"/layout/get-layout-references": _params};
 
-	[self.session invoke:_command error:error];
-}
-
-- (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap bytes:(NSData *)bytes error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"parameterMap": [self checkNull: parameterMap],
-		@"bytes": [self toString:bytes]
-	}];
-
-	NSDictionary *_command = @{@"/layout/import-layouts": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(NSDictionary *)file error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"parameterMap": [self checkNull: parameterMap],
-		@"file": [self checkNull: file]
-	}];
-
-	NSDictionary *_command = @{@"/layout/import-layouts": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)importLayoutsWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
-		@"file": [self checkNull: file]
-	}];
-
-	NSDictionary *_command = @{@"/layout/import-layouts": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)updateLookAndFeelWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"layoutId": @(layoutId),
-		@"themeId": [self checkNull: themeId],
-		@"colorSchemeId": [self checkNull: colorSchemeId],
-		@"css": [self checkNull: css]
-	}];
-
-	NSDictionary *_command = @{@"/layout/update-look-and-feel": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)exportLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap startDate:(long long)startDate endDate:(long long)endDate error:(NSError **)error {
@@ -630,6 +791,20 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)updateNameWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId name:(NSString *)name languageId:(NSString *)languageId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"layoutId": @(layoutId),
+		@"name": [self checkNull: name],
+		@"languageId": [self checkNull: languageId]
+	}];
+
+	NSDictionary *_command = @{@"/layout/update-name": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)updateNameWithPlid:(long long)plid name:(NSString *)name languageId:(NSString *)languageId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
@@ -642,16 +817,13 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateNameWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId name:(NSString *)name languageId:(NSString *)languageId error:(NSError **)error {
+- (NSDictionary *)updateParentLayoutIdWithPlid:(long long)plid parentPlid:(long long)parentPlid error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"layoutId": @(layoutId),
-		@"name": [self checkNull: name],
-		@"languageId": [self checkNull: languageId]
+		@"plid": @(plid),
+		@"parentPlid": @(parentPlid)
 	}];
 
-	NSDictionary *_command = @{@"/layout/update-name": _params};
+	NSDictionary *_command = @{@"/layout/update-parent-layout-id": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -669,17 +841,6 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateParentLayoutIdWithPlid:(long long)plid parentPlid:(long long)parentPlid error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"plid": @(plid),
-		@"parentPlid": @(parentPlid)
-	}];
-
-	NSDictionary *_command = @{@"/layout/update-parent-layout-id": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)updateParentLayoutIdAndPriorityWithPlid:(long long)plid parentPlid:(long long)parentPlid priority:(int)priority error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"plid": @(plid),
@@ -688,6 +849,20 @@
 	}];
 
 	NSDictionary *_command = @{@"/layout/update-parent-layout-id-and-priority": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updatePriorityWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId nextLayoutId:(long long)nextLayoutId previousLayoutId:(long long)previousLayoutId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"layoutId": @(layoutId),
+		@"nextLayoutId": @(nextLayoutId),
+		@"previousLayoutId": @(previousLayoutId)
+	}];
+
+	NSDictionary *_command = @{@"/layout/update-priority": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -714,181 +889,6 @@
 	NSDictionary *_command = @{@"/layout/update-priority": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)updatePriorityWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId nextLayoutId:(long long)nextLayoutId previousLayoutId:(long long)previousLayoutId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"layoutId": @(layoutId),
-		@"nextLayoutId": @(nextLayoutId),
-		@"previousLayoutId": @(previousLayoutId)
-	}];
-
-	NSDictionary *_command = @{@"/layout/update-priority": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getAncestorLayoutsWithPlid:(long long)plid error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"plid": @(plid)
-	}];
-
-	NSDictionary *_command = @{@"/layout/get-ancestor-layouts": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSString *)getLayoutNameWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutId:(long long)layoutId languageId:(NSString *)languageId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"layoutId": @(layoutId),
-		@"languageId": [self checkNull: languageId]
-	}];
-
-	NSDictionary *_command = @{@"/layout/get-layout-name": _params};
-
-	return (NSString *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getLayoutReferencesWithCompanyId:(long long)companyId portletId:(NSString *)portletId preferencesKey:(NSString *)preferencesKey preferencesValue:(NSString *)preferencesValue error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"portletId": [self checkNull: portletId],
-		@"preferencesKey": [self checkNull: preferencesKey],
-		@"preferencesValue": [self checkNull: preferencesValue]
-	}];
-
-	NSDictionary *_command = @{@"/layout/get-layout-references": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getLayoutByUuidAndGroupIdWithUuid:(NSString *)uuid groupId:(long long)groupId privateLayout:(BOOL)privateLayout error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"uuid": [self checkNull: uuid],
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout)
-	}];
-
-	NSDictionary *_command = @{@"/layout/get-layout-by-uuid-and-group-id": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)schedulePublishToLiveWithSourceGroupId:(long long)sourceGroupId targetGroupId:(long long)targetGroupId privateLayout:(BOOL)privateLayout layoutIdMap:(NSDictionary *)layoutIdMap parameterMap:(NSDictionary *)parameterMap scope:(NSString *)scope startDate:(long long)startDate endDate:(long long)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long long)schedulerStartDate schedulerEndDate:(long long)schedulerEndDate description:(NSString *)description error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"sourceGroupId": @(sourceGroupId),
-		@"targetGroupId": @(targetGroupId),
-		@"privateLayout": @(privateLayout),
-		@"layoutIdMap": [self checkNull: layoutIdMap],
-		@"parameterMap": [self checkNull: parameterMap],
-		@"scope": [self checkNull: scope],
-		@"startDate": @(startDate),
-		@"endDate": @(endDate),
-		@"groupName": [self checkNull: groupName],
-		@"cronText": [self checkNull: cronText],
-		@"schedulerStartDate": @(schedulerStartDate),
-		@"schedulerEndDate": @(schedulerEndDate),
-		@"description": [self checkNull: description]
-	}];
-
-	NSDictionary *_command = @{@"/layout/schedule-publish-to-live": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)schedulePublishToLiveWithSourceGroupId:(long long)sourceGroupId targetGroupId:(long long)targetGroupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap scope:(NSString *)scope startDate:(long long)startDate endDate:(long long)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long long)schedulerStartDate schedulerEndDate:(long long)schedulerEndDate description:(NSString *)description error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"sourceGroupId": @(sourceGroupId),
-		@"targetGroupId": @(targetGroupId),
-		@"privateLayout": @(privateLayout),
-		@"layoutIds": [self checkNull: layoutIds],
-		@"parameterMap": [self checkNull: parameterMap],
-		@"scope": [self checkNull: scope],
-		@"startDate": @(startDate),
-		@"endDate": @(endDate),
-		@"groupName": [self checkNull: groupName],
-		@"cronText": [self checkNull: cronText],
-		@"schedulerStartDate": @(schedulerStartDate),
-		@"schedulerEndDate": @(schedulerEndDate),
-		@"description": [self checkNull: description]
-	}];
-
-	NSDictionary *_command = @{@"/layout/schedule-publish-to-live": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)schedulePublishToLiveWithSourceGroupId:(long long)sourceGroupId targetGroupId:(long long)targetGroupId privateLayout:(BOOL)privateLayout layoutIds:(NSArray *)layoutIds parameterMap:(NSDictionary *)parameterMap groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long long)schedulerStartDate schedulerEndDate:(long long)schedulerEndDate description:(NSString *)description error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"sourceGroupId": @(sourceGroupId),
-		@"targetGroupId": @(targetGroupId),
-		@"privateLayout": @(privateLayout),
-		@"layoutIds": [self checkNull: layoutIds],
-		@"parameterMap": [self checkNull: parameterMap],
-		@"groupName": [self checkNull: groupName],
-		@"cronText": [self checkNull: cronText],
-		@"schedulerStartDate": @(schedulerStartDate),
-		@"schedulerEndDate": @(schedulerEndDate),
-		@"description": [self checkNull: description]
-	}];
-
-	NSDictionary *_command = @{@"/layout/schedule-publish-to-live": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)schedulePublishToRemoteWithSourceGroupId:(long long)sourceGroupId privateLayout:(BOOL)privateLayout layoutIdMap:(NSDictionary *)layoutIdMap parameterMap:(NSDictionary *)parameterMap remoteAddress:(NSString *)remoteAddress remotePort:(int)remotePort remotePathContext:(NSString *)remotePathContext secureConnection:(BOOL)secureConnection remoteGroupId:(long long)remoteGroupId remotePrivateLayout:(BOOL)remotePrivateLayout startDate:(long long)startDate endDate:(long long)endDate groupName:(NSString *)groupName cronText:(NSString *)cronText schedulerStartDate:(long long)schedulerStartDate schedulerEndDate:(long long)schedulerEndDate description:(NSString *)description error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"sourceGroupId": @(sourceGroupId),
-		@"privateLayout": @(privateLayout),
-		@"layoutIdMap": [self checkNull: layoutIdMap],
-		@"parameterMap": [self checkNull: parameterMap],
-		@"remoteAddress": [self checkNull: remoteAddress],
-		@"remotePort": @(remotePort),
-		@"remotePathContext": [self checkNull: remotePathContext],
-		@"secureConnection": @(secureConnection),
-		@"remoteGroupId": @(remoteGroupId),
-		@"remotePrivateLayout": @(remotePrivateLayout),
-		@"startDate": @(startDate),
-		@"endDate": @(endDate),
-		@"groupName": [self checkNull: groupName],
-		@"cronText": [self checkNull: cronText],
-		@"schedulerStartDate": @(schedulerStartDate),
-		@"schedulerEndDate": @(schedulerEndDate),
-		@"description": [self checkNull: description]
-	}];
-
-	NSDictionary *_command = @{@"/layout/schedule-publish-to-remote": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)unschedulePublishToLiveWithGroupId:(long long)groupId jobName:(NSString *)jobName groupName:(NSString *)groupName error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"jobName": [self checkNull: jobName],
-		@"groupName": [self checkNull: groupName]
-	}];
-
-	NSDictionary *_command = @{@"/layout/unschedule-publish-to-live": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)unschedulePublishToRemoteWithGroupId:(long long)groupId jobName:(NSString *)jobName groupName:(NSString *)groupName error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"jobName": [self checkNull: jobName],
-		@"groupName": [self checkNull: groupName]
-	}];
-
-	NSDictionary *_command = @{@"/layout/unschedule-publish-to-remote": _params};
-
-	[self.session invoke:_command error:error];
 }
 
 @end

@@ -14,6 +14,21 @@ public interface DLFileEntryTypeService {
   @Path("/search")
   Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "keywords") String keywords, @Param(name = "includeBasicFileEntryType") boolean includeBasicFileEntryType, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "") JSONObject orderByComparator);
 
+  @Path("/add-file-entry-type")
+  Call<JSONObject> addFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "fileEntryTypeKey") String fileEntryTypeKey, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+
+  @Path("/add-file-entry-type")
+  Call<JSONObject> addFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+
+  @Path("/delete-file-entry-type")
+  Call<Response> deleteFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId);
+
+  @Path("/get-file-entry-types")
+  Call<JSONArray> getFileEntryTypes(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "start") int start, @Param(name = "end") int end);
+
+  @Path("/get-file-entry-types")
+  Call<JSONArray> getFileEntryTypes(@Param(name = "groupIds") JSONArray groupIds);
+
   @Path("/get-file-entry-type")
   Call<JSONObject> getFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId);
 
@@ -26,24 +41,9 @@ public interface DLFileEntryTypeService {
   @Path("/get-folder-file-entry-types")
   Call<JSONArray> getFolderFileEntryTypes(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "folderId") long folderId, @Param(name = "inherited") boolean inherited);
 
-  @Path("/add-file-entry-type")
-  Call<JSONObject> addFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
-  @Path("/add-file-entry-type")
-  Call<JSONObject> addFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "fileEntryTypeKey") String fileEntryTypeKey, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
-  @Path("/delete-file-entry-type")
-  Call<Response> deleteFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId);
-
-  @Path("/get-file-entry-types")
-  Call<JSONArray> getFileEntryTypes(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "start") int start, @Param(name = "end") int end);
-
-  @Path("/get-file-entry-types")
-  Call<JSONArray> getFileEntryTypes(@Param(name = "groupIds") JSONArray groupIds);
+  @Path("/search-count")
+  Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "keywords") String keywords, @Param(name = "includeBasicFileEntryType") boolean includeBasicFileEntryType);
 
   @Path("/get-file-entry-types-count")
   Call<Integer> getFileEntryTypesCount(@Param(name = "groupIds") JSONArray groupIds);
-
-  @Path("/search-count")
-  Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "keywords") String keywords, @Param(name = "includeBasicFileEntryType") boolean includeBasicFileEntryType);
 }

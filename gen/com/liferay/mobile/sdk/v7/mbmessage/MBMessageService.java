@@ -20,14 +20,32 @@ public interface MBMessageService {
   @Path("/get-category-messages-count")
   Call<Integer> getCategoryMessagesCount(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "status") int status);
 
+  @Path("/get-category-messages-rss")
+  Call<String> getCategoryMessagesRSS(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "") JSONObject themeDisplay);
+
+  @Path("/get-company-messages-rss")
+  Call<String> getCompanyMessagesRSS(@Param(name = "companyId") long companyId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "") JSONObject themeDisplay);
+
+  @Path("/get-group-messages-rss")
+  Call<String> getGroupMessagesRSS(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "") JSONObject themeDisplay);
+
+  @Path("/get-group-messages-rss")
+  Call<String> getGroupMessagesRSS(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "") JSONObject themeDisplay);
+
+  @Path("/get-thread-answers-count")
+  Call<Integer> getThreadAnswersCount(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "threadId") long threadId);
+
+  @Path("/get-thread-messages-rss")
+  Call<String> getThreadMessagesRSS(@Param(name = "threadId") long threadId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "") JSONObject themeDisplay);
+
+  @Path("/add-message")
+  Call<JSONObject> addMessage(@Param(name = "categoryId") long categoryId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+
   @Path("/add-message")
   Call<JSONObject> addMessage(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "format") String format, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs, @Param(name = "anonymous") boolean anonymous, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/add-message")
   Call<JSONObject> addMessage(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "format") String format, @Param(name = "fileName") String fileName, @Param(name = "file", className = "") JSONObject file, @Param(name = "anonymous") boolean anonymous, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
-  @Path("/add-message")
-  Call<JSONObject> addMessage(@Param(name = "categoryId") long categoryId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/add-message")
   Call<JSONObject> addMessage(@Param(name = "parentMessageId") long parentMessageId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "format") String format, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs, @Param(name = "anonymous") boolean anonymous, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
@@ -88,22 +106,4 @@ public interface MBMessageService {
 
   @Path("/update-message")
   Call<JSONObject> updateMessage(@Param(name = "messageId") long messageId, @Param(name = "subject") String subject, @Param(name = "body") String body, @Param(name = "inputStreamOVPs") JSONArray inputStreamOVPs, @Param(name = "existingFiles") JSONArray existingFiles, @Param(name = "priority") double priority, @Param(name = "allowPingbacks") boolean allowPingbacks, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
-  @Path("/get-category-messages-rss")
-  Call<String> getCategoryMessagesRSS(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "") JSONObject themeDisplay);
-
-  @Path("/get-company-messages-rss")
-  Call<String> getCompanyMessagesRSS(@Param(name = "companyId") long companyId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "") JSONObject themeDisplay);
-
-  @Path("/get-group-messages-rss")
-  Call<String> getGroupMessagesRSS(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "") JSONObject themeDisplay);
-
-  @Path("/get-group-messages-rss")
-  Call<String> getGroupMessagesRSS(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "") JSONObject themeDisplay);
-
-  @Path("/get-thread-answers-count")
-  Call<Integer> getThreadAnswersCount(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "threadId") long threadId);
-
-  @Path("/get-thread-messages-rss")
-  Call<String> getThreadMessagesRSS(@Param(name = "threadId") long threadId, @Param(name = "status") int status, @Param(name = "max") int max, @Param(name = "type") String type, @Param(name = "version") double version, @Param(name = "displayStyle") String displayStyle, @Param(name = "feedURL") String feedURL, @Param(name = "entryURL") String entryURL, @Param(name = "themeDisplay", className = "") JSONObject themeDisplay);
 }

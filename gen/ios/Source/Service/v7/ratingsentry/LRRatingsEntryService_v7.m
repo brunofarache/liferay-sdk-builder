@@ -19,17 +19,6 @@
  */
 @implementation LRRatingsEntryService_v7
 
-- (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": [self checkNull: className],
-		@"classPK": @(classPK)
-	}];
-
-	NSDictionary *_command = @{@"/ratingsentry/delete-entry": _params};
-
-	[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)updateEntryWithClassName:(NSString *)className classPK:(long long)classPK score:(double)score error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": [self checkNull: className],
@@ -40,6 +29,17 @@
 	NSDictionary *_command = @{@"/ratingsentry/update-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"className": [self checkNull: className],
+		@"classPK": @(classPK)
+	}];
+
+	NSDictionary *_command = @{@"/ratingsentry/delete-entry": _params};
+
+	[self.session invoke:_command error:error];
 }
 
 @end

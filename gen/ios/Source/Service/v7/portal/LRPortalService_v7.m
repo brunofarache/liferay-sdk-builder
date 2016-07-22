@@ -19,15 +19,6 @@
  */
 @implementation LRPortalService_v7
 
-- (NSNumber *)getBuildNumber:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-	}];
-
-	NSDictionary *_command = @{@"/portal/get-build-number": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
 - (NSString *)getVersion:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
@@ -35,6 +26,15 @@
 	NSDictionary *_command = @{@"/portal/get-version": _params};
 
 	return (NSString *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)getBuildNumber:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
+
+	NSDictionary *_command = @{@"/portal/get-build-number": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)testAddClassName_RollbackWithClassNameValue:(NSString *)classNameValue error:(NSError **)error {

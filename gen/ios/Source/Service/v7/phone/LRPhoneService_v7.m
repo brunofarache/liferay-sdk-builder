@@ -19,15 +19,14 @@
  */
 @implementation LRPhoneService_v7
 
-- (NSArray *)getPhonesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
+- (NSDictionary *)getPhoneWithPhoneId:(long long)phoneId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": [self checkNull: className],
-		@"classPK": @(classPK)
+		@"phoneId": @(phoneId)
 	}];
 
-	NSDictionary *_command = @{@"/phone/get-phones": _params};
+	NSDictionary *_command = @{@"/phone/get-phone": _params};
 
-	return (NSArray *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)updatePhoneWithPhoneId:(long long)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(long long)typeId primary:(BOOL)primary error:(NSError **)error {
@@ -42,6 +41,17 @@
 	NSDictionary *_command = @{@"/phone/update-phone": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getPhonesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"className": [self checkNull: className],
+		@"classPK": @(classPK)
+	}];
+
+	NSDictionary *_command = @{@"/phone/get-phones": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(long long)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
@@ -68,16 +78,6 @@
 	NSDictionary *_command = @{@"/phone/delete-phone": _params};
 
 	[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getPhoneWithPhoneId:(long long)phoneId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"phoneId": @(phoneId)
-	}];
-
-	NSDictionary *_command = @{@"/phone/get-phone": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

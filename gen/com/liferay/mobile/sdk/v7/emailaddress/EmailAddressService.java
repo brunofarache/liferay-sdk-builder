@@ -16,9 +16,6 @@ public interface EmailAddressService {
   @Path("/get-email-address")
   Call<JSONObject> getEmailAddress(@Param(name = "emailAddressId") long emailAddressId);
 
-  @Path("/delete-email-address")
-  Call<Response> deleteEmailAddress(@Param(name = "emailAddressId") long emailAddressId);
-
   @Path("/add-email-address")
   Call<JSONObject> addEmailAddress(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "address") String address, @Param(name = "typeId") long typeId, @Param(name = "primary") boolean primary, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
@@ -27,4 +24,7 @@ public interface EmailAddressService {
 
   @Path("/fetch-email-address")
   Call<JSONObject> fetchEmailAddress(@Param(name = "emailAddressId") long emailAddressId);
+
+  @Path("/delete-email-address")
+  Call<Response> deleteEmailAddress(@Param(name = "emailAddressId") long emailAddressId);
 }

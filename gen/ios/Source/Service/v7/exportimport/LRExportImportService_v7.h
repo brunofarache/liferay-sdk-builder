@@ -20,6 +20,8 @@
 @interface LRExportImportService_v7 : LRBaseService
 
 - (NSDictionary *)exportLayoutsAsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error;
+- (NSDictionary *)exportPortletInfoAsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error;
+- (void)importLayoutsWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error;
 - (NSNumber *)exportLayoutsAsFileInBackgroundWithExportImportConfigurationId:(long long)exportImportConfigurationId error:(NSError **)error;
 - (NSNumber *)exportLayoutsAsFileInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error;
 - (NSNumber *)exportPortletInfoAsFileInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error;
@@ -28,7 +30,5 @@
 - (NSNumber *)importPortletInfoInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error;
 - (NSDictionary *)validateImportLayoutsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error;
 - (NSDictionary *)validateImportPortletInfoWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error;
-- (NSDictionary *)exportPortletInfoAsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error;
-- (void)importLayoutsWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error;
 
 @end

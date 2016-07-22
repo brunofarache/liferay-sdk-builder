@@ -28,9 +28,9 @@ public interface LayoutPrototypeService {
   @Path("/update-layout-prototype")
   Call<JSONObject> updateLayoutPrototype(@Param(name = "layoutPrototypeId") long layoutPrototypeId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "description") String description, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
-  @Path("/delete-layout-prototype")
-  Call<Response> deleteLayoutPrototype(@Param(name = "layoutPrototypeId") long layoutPrototypeId);
-
   @Path("/fetch-layout-prototype")
   Call<JSONObject> fetchLayoutPrototype(@Param(name = "layoutPrototypeId") long layoutPrototypeId);
+
+  @Path("/delete-layout-prototype")
+  Call<Response> deleteLayoutPrototype(@Param(name = "layoutPrototypeId") long layoutPrototypeId);
 }

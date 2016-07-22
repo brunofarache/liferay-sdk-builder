@@ -17,9 +17,6 @@ public interface AssetTagService {
   @Path("/search")
   Call<JSONObject> search(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);
 
-  @Path("/get-tag")
-  Call<JSONObject> getTag(@Param(name = "tagId") long tagId);
-
   @Path("/add-tag")
   Call<JSONObject> addTag(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
@@ -33,6 +30,9 @@ public interface AssetTagService {
   Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-tags")
+  Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name);
+
+  @Path("/get-tags")
   Call<JSONArray> getTags(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-tags")
@@ -41,14 +41,23 @@ public interface AssetTagService {
   @Path("/get-tags")
   Call<JSONArray> getTags(@Param(name = "className") String className, @Param(name = "classPK") long classPK);
 
-  @Path("/get-tags")
-  Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name);
-
   @Path("/delete-tags")
   Call<Response> deleteTags(@Param(name = "tagIds") JSONArray tagIds);
 
   @Path("/get-group-tags-display")
   Call<JSONObject> getGroupTagsDisplay(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);
+
+  @Path("/get-tags-count")
+  Call<Integer> getTagsCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
+
+  @Path("/get-visible-assets-tags-count")
+  Call<Integer> getVisibleAssetsTagsCount(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name);
+
+  @Path("/get-visible-assets-tags-count")
+  Call<Integer> getVisibleAssetsTagsCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
+
+  @Path("/get-tag")
+  Call<JSONObject> getTag(@Param(name = "tagId") long tagId);
 
   @Path("/delete-tag")
   Call<Response> deleteTag(@Param(name = "tagId") long tagId);
@@ -57,10 +66,10 @@ public interface AssetTagService {
   Call<JSONArray> getGroupsTags(@Param(name = "groupIds") JSONArray groupIds);
 
   @Path("/get-group-tags")
-  Call<JSONArray> getGroupTags(@Param(name = "groupId") long groupId);
+  Call<JSONArray> getGroupTags(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-group-tags")
-  Call<JSONArray> getGroupTags(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getGroupTags(@Param(name = "groupId") long groupId);
 
   @Path("/get-group-tags-count")
   Call<Integer> getGroupTagsCount(@Param(name = "groupId") long groupId);
@@ -73,13 +82,4 @@ public interface AssetTagService {
 
   @Path("/update-tag")
   Call<JSONObject> updateTag(@Param(name = "tagId") long tagId, @Param(name = "name") String name, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
-  @Path("/get-tags-count")
-  Call<Integer> getTagsCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
-
-  @Path("/get-visible-assets-tags-count")
-  Call<Integer> getVisibleAssetsTagsCount(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name);
-
-  @Path("/get-visible-assets-tags-count")
-  Call<Integer> getVisibleAssetsTagsCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
 }

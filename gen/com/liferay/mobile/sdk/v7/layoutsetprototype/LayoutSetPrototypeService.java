@@ -16,20 +16,20 @@ public interface LayoutSetPrototypeService {
   @Path("/get-layout-set-prototype")
   Call<JSONObject> getLayoutSetPrototype(@Param(name = "layoutSetPrototypeId") long layoutSetPrototypeId);
 
-  @Path("/add-layout-set-prototype")
-  Call<JSONObject> addLayoutSetPrototype(@Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "description") String description, @Param(name = "active") boolean active, @Param(name = "layoutsUpdateable") boolean layoutsUpdateable, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
-  @Path("/add-layout-set-prototype")
-  Call<JSONObject> addLayoutSetPrototype(@Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "active") boolean active, @Param(name = "layoutsUpdateable") boolean layoutsUpdateable, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  @Path("/update-layout-set-prototype")
+  Call<JSONObject> updateLayoutSetPrototype(@Param(name = "layoutSetPrototypeId") long layoutSetPrototypeId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "active") boolean active, @Param(name = "layoutsUpdateable") boolean layoutsUpdateable, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/update-layout-set-prototype")
   Call<JSONObject> updateLayoutSetPrototype(@Param(name = "layoutSetPrototypeId") long layoutSetPrototypeId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "description") String description, @Param(name = "active") boolean active, @Param(name = "layoutsUpdateable") boolean layoutsUpdateable, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/update-layout-set-prototype")
-  Call<JSONObject> updateLayoutSetPrototype(@Param(name = "layoutSetPrototypeId") long layoutSetPrototypeId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "active") boolean active, @Param(name = "layoutsUpdateable") boolean layoutsUpdateable, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
-  @Path("/update-layout-set-prototype")
   Call<JSONObject> updateLayoutSetPrototype(@Param(name = "layoutSetPrototypeId") long layoutSetPrototypeId, @Param(name = "settings") String settings);
+
+  @Path("/add-layout-set-prototype")
+  Call<JSONObject> addLayoutSetPrototype(@Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "active") boolean active, @Param(name = "layoutsUpdateable") boolean layoutsUpdateable, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+
+  @Path("/add-layout-set-prototype")
+  Call<JSONObject> addLayoutSetPrototype(@Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "description") String description, @Param(name = "active") boolean active, @Param(name = "layoutsUpdateable") boolean layoutsUpdateable, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/fetch-layout-set-prototype")
   Call<JSONObject> fetchLayoutSetPrototype(@Param(name = "layoutSetPrototypeId") long layoutSetPrototypeId);

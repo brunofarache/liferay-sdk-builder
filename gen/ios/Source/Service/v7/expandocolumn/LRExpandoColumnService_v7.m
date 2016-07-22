@@ -54,15 +54,12 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateColumnWithColumnId:(long long)columnId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error {
+- (NSDictionary *)fetchExpandoColumnWithColumnId:(long long)columnId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"columnId": @(columnId),
-		@"name": [self checkNull: name],
-		@"type": @(type),
-		@"defaultData": [self checkNull: defaultData]
+		@"columnId": @(columnId)
 	}];
 
-	NSDictionary *_command = @{@"/expandocolumn/update-column": _params};
+	NSDictionary *_command = @{@"/expandocolumn/fetch-expando-column": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -79,6 +76,19 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)updateColumnWithColumnId:(long long)columnId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"columnId": @(columnId),
+		@"name": [self checkNull: name],
+		@"type": @(type),
+		@"defaultData": [self checkNull: defaultData]
+	}];
+
+	NSDictionary *_command = @{@"/expandocolumn/update-column": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)updateTypeSettingsWithColumnId:(long long)columnId typeSettings:(NSString *)typeSettings error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"columnId": @(columnId),
@@ -86,16 +96,6 @@
 	}];
 
 	NSDictionary *_command = @{@"/expandocolumn/update-type-settings": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)fetchExpandoColumnWithColumnId:(long long)columnId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"columnId": @(columnId)
-	}];
-
-	NSDictionary *_command = @{@"/expandocolumn/fetch-expando-column": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }

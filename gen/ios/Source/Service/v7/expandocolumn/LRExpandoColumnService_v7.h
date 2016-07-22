@@ -22,9 +22,9 @@
 - (NSDictionary *)addColumnWithTableId:(long long)tableId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error;
 - (NSDictionary *)addColumnWithTableId:(long long)tableId name:(NSString *)name type:(int)type error:(NSError **)error;
 - (void)deleteColumnWithColumnId:(long long)columnId error:(NSError **)error;
-- (NSDictionary *)updateColumnWithColumnId:(long long)columnId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error;
-- (NSDictionary *)updateColumnWithColumnId:(long long)columnId name:(NSString *)name type:(int)type error:(NSError **)error;
-- (NSDictionary *)updateTypeSettingsWithColumnId:(long long)columnId typeSettings:(NSString *)typeSettings error:(NSError **)error;
 - (NSDictionary *)fetchExpandoColumnWithColumnId:(long long)columnId error:(NSError **)error;
+- (NSDictionary *)updateColumnWithColumnId:(long long)columnId name:(NSString *)name type:(int)type error:(NSError **)error;
+- (NSDictionary *)updateColumnWithColumnId:(long long)columnId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error;
+- (NSDictionary *)updateTypeSettingsWithColumnId:(long long)columnId typeSettings:(NSString *)typeSettings error:(NSError **)error;
 
 @end

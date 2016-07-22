@@ -43,20 +43,6 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLookAndFeelWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"themeId": [self checkNull: themeId],
-		@"colorSchemeId": [self checkNull: colorSchemeId],
-		@"css": [self checkNull: css]
-	}];
-
-	NSDictionary *_command = @{@"/layoutset/update-look-and-feel": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (void)updateLayoutSetPrototypeLinkEnabledWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutSetPrototypeLinkEnabled:(BOOL)layoutSetPrototypeLinkEnabled layoutSetPrototypeUuid:(NSString *)layoutSetPrototypeUuid error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -94,6 +80,20 @@
 	NSDictionary *_command = @{@"/layoutset/update-logo": _params};
 
 	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateLookAndFeelWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"themeId": [self checkNull: themeId],
+		@"colorSchemeId": [self checkNull: colorSchemeId],
+		@"css": [self checkNull: css]
+	}];
+
+	NSDictionary *_command = @{@"/layoutset/update-look-and-feel": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

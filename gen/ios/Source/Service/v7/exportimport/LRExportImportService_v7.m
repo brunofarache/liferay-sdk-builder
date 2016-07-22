@@ -29,6 +29,27 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)exportPortletInfoAsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"exportImportConfiguration": [self checkNull: exportImportConfiguration]
+	}];
+
+	NSDictionary *_command = @{@"/exportimport/export-portlet-info-as-file": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)importLayoutsWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
+		@"file": [self checkNull: file]
+	}];
+
+	NSDictionary *_command = @{@"/exportimport/import-layouts": _params};
+
+	[self.session invoke:_command error:error];
+}
+
 - (NSNumber *)exportLayoutsAsFileInBackgroundWithExportImportConfigurationId:(long long)exportImportConfigurationId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"exportImportConfigurationId": @(exportImportConfigurationId)
@@ -112,27 +133,6 @@
 	NSDictionary *_command = @{@"/exportimport/validate-import-portlet-info": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)exportPortletInfoAsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"exportImportConfiguration": [self checkNull: exportImportConfiguration]
-	}];
-
-	NSDictionary *_command = @{@"/exportimport/export-portlet-info-as-file": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)importLayoutsWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
-		@"file": [self checkNull: file]
-	}];
-
-	NSDictionary *_command = @{@"/exportimport/import-layouts": _params};
-
-	[self.session invoke:_command error:error];
 }
 
 @end

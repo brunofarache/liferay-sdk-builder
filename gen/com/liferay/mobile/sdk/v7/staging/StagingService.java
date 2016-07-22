@@ -10,9 +10,6 @@ import org.json.JSONObject;
 
 @Path("/staging")
 public interface StagingService {
-  @Path("/validate-staging-request")
-  Call<JSONObject> validateStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap);
-
   @Path("/create-staging-request")
   Call<Long> createStagingRequest(@Param(name = "groupId") long groupId, @Param(name = "checksum") String checksum);
 
@@ -27,4 +24,7 @@ public interface StagingService {
 
   @Path("/update-staging-request")
   Call<Response> updateStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "fileName") String fileName, @Param(name = "bytes") byte[] bytes);
+
+  @Path("/validate-staging-request")
+  Call<JSONObject> validateStagingRequest(@Param(name = "stagingRequestId") long stagingRequestId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap);
 }

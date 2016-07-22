@@ -19,6 +19,16 @@
  */
 @implementation LRMembershipRequestService_v7
 
+- (NSDictionary *)getMembershipRequestWithMembershipRequestId:(long long)membershipRequestId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"membershipRequestId": @(membershipRequestId)
+	}];
+
+	NSDictionary *_command = @{@"/membershiprequest/get-membership-request": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)addMembershipRequestWithGroupId:(long long)groupId comments:(NSString *)comments serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -29,19 +39,6 @@
 	NSDictionary *_command = @{@"/membershiprequest/add-membership-request": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)updateStatusWithMembershipRequestId:(long long)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(long long)statusId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"membershipRequestId": @(membershipRequestId),
-		@"reviewComments": [self checkNull: reviewComments],
-		@"statusId": @(statusId),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/membershiprequest/update-status": _params};
-
-	[self.session invoke:_command error:error];
 }
 
 - (void)deleteMembershipRequestsWithGroupId:(long long)groupId statusId:(long long)statusId error:(NSError **)error {
@@ -55,14 +52,17 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getMembershipRequestWithMembershipRequestId:(long long)membershipRequestId error:(NSError **)error {
+- (void)updateStatusWithMembershipRequestId:(long long)membershipRequestId reviewComments:(NSString *)reviewComments statusId:(long long)statusId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"membershipRequestId": @(membershipRequestId)
+		@"membershipRequestId": @(membershipRequestId),
+		@"reviewComments": [self checkNull: reviewComments],
+		@"statusId": @(statusId),
+		@"serviceContext": [self checkNull: serviceContext]
 	}];
 
-	NSDictionary *_command = @{@"/membershiprequest/get-membership-request": _params};
+	NSDictionary *_command = @{@"/membershiprequest/update-status": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	[self.session invoke:_command error:error];
 }
 
 @end

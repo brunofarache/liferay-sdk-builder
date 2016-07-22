@@ -35,6 +35,48 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)getTeamWithTeamId:(long long)teamId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"teamId": @(teamId)
+	}];
+
+	NSDictionary *_command = @{@"/team/get-team": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getTeamWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"name": [self checkNull: name]
+	}];
+
+	NSDictionary *_command = @{@"/team/get-team": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getUserTeamsWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"userId": @(userId),
+		@"groupId": @(groupId)
+	}];
+
+	NSDictionary *_command = @{@"/team/get-user-teams": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getUserTeamsWithUserId:(long long)userId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"userId": @(userId)
+	}];
+
+	NSDictionary *_command = @{@"/team/get-user-teams": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)addTeamWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -68,48 +110,6 @@
 	}];
 
 	NSDictionary *_command = @{@"/team/update-team": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getUserTeamsWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userId": @(userId),
-		@"groupId": @(groupId)
-	}];
-
-	NSDictionary *_command = @{@"/team/get-user-teams": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getUserTeamsWithUserId:(long long)userId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userId": @(userId)
-	}];
-
-	NSDictionary *_command = @{@"/team/get-user-teams": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getTeamWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"name": [self checkNull: name]
-	}];
-
-	NSDictionary *_command = @{@"/team/get-team": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getTeamWithTeamId:(long long)teamId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"teamId": @(teamId)
-	}];
-
-	NSDictionary *_command = @{@"/team/get-team": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }

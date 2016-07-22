@@ -20,13 +20,13 @@
 @interface LRTeamService_v7 : LRBaseService
 
 - (NSArray *)searchWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description params:(NSDictionary *)params start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSDictionary *)getTeamWithTeamId:(long long)teamId error:(NSError **)error;
+- (NSDictionary *)getTeamWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error;
+- (NSArray *)getUserTeamsWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error;
+- (NSArray *)getUserTeamsWithUserId:(long long)userId error:(NSError **)error;
 - (NSDictionary *)addTeamWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addTeamWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description error:(NSError **)error;
 - (NSDictionary *)updateTeamWithTeamId:(long long)teamId name:(NSString *)name description:(NSString *)description error:(NSError **)error;
-- (NSArray *)getUserTeamsWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error;
-- (NSArray *)getUserTeamsWithUserId:(long long)userId error:(NSError **)error;
-- (NSDictionary *)getTeamWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error;
-- (NSDictionary *)getTeamWithTeamId:(long long)teamId error:(NSError **)error;
 - (NSNumber *)searchCountWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description params:(NSDictionary *)params error:(NSError **)error;
 - (void)deleteTeamWithTeamId:(long long)teamId error:(NSError **)error;
 - (NSArray *)getGroupTeamsWithGroupId:(long long)groupId error:(NSError **)error;

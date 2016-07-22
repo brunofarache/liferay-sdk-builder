@@ -58,16 +58,6 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"entryId": @(entryId)
-	}];
-
-	NSDictionary *_command = @{@"/announcementsentry/delete-entry": _params};
-
-	[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)updateEntryWithEntryId:(long long)entryId title:(NSString *)title content:(NSString *)content url:(NSString *)url type:(NSString *)type displayDateMonth:(int)displayDateMonth displayDateDay:(int)displayDateDay displayDateYear:(int)displayDateYear displayDateHour:(int)displayDateHour displayDateMinute:(int)displayDateMinute displayImmediately:(BOOL)displayImmediately expirationDateMonth:(int)expirationDateMonth expirationDateDay:(int)expirationDateDay expirationDateYear:(int)expirationDateYear expirationDateHour:(int)expirationDateHour expirationDateMinute:(int)expirationDateMinute priority:(int)priority error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId),
@@ -92,6 +82,16 @@
 	NSDictionary *_command = @{@"/announcementsentry/update-entry": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"entryId": @(entryId)
+	}];
+
+	NSDictionary *_command = @{@"/announcementsentry/delete-entry": _params};
+
+	[self.session invoke:_command error:error];
 }
 
 @end

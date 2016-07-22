@@ -19,10 +19,10 @@
  */
 @interface LRPhoneService_v7 : LRBaseService
 
-- (NSArray *)getPhonesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
+- (NSDictionary *)getPhoneWithPhoneId:(long long)phoneId error:(NSError **)error;
 - (NSDictionary *)updatePhoneWithPhoneId:(long long)phoneId number:(NSString *)number extension:(NSString *)extension typeId:(long long)typeId primary:(BOOL)primary error:(NSError **)error;
+- (NSArray *)getPhonesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
 - (NSDictionary *)addPhoneWithClassName:(NSString *)className classPK:(long long)classPK number:(NSString *)number extension:(NSString *)extension typeId:(long long)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deletePhoneWithPhoneId:(long long)phoneId error:(NSError **)error;
-- (NSDictionary *)getPhoneWithPhoneId:(long long)phoneId error:(NSError **)error;
 
 @end

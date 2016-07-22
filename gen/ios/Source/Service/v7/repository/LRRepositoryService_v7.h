@@ -19,12 +19,12 @@
  */
 @interface LRRepositoryService_v7 : LRBaseService
 
-- (NSDictionary *)getTypeSettingsPropertiesWithRepositoryId:(long long)repositoryId error:(NSError **)error;
 - (NSDictionary *)getRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error;
-- (NSDictionary *)addRepositoryWithGroupId:(long long)groupId classNameId:(long long)classNameId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)getTypeSettingsPropertiesWithRepositoryId:(long long)repositoryId error:(NSError **)error;
 - (void)updateRepositoryWithRepositoryId:(long long)repositoryId name:(NSString *)name description:(NSString *)description error:(NSError **)error;
-- (void)deleteRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error;
+- (NSDictionary *)addRepositoryWithGroupId:(long long)groupId classNameId:(long long)classNameId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)checkRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error;
+- (void)deleteRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error;
 - (NSArray *)getSupportedParametersWithClassNameId:(long long)classNameId configuration:(NSString *)configuration error:(NSError **)error;
 - (NSArray *)getSupportedParametersWithClassName:(NSString *)className configuration:(NSString *)configuration error:(NSError **)error;
 - (NSArray *)getSupportedConfigurationsWithClassNameId:(long long)classNameId error:(NSError **)error;

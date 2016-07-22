@@ -90,16 +90,6 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)fetchPasswordPolicyWithPasswordPolicyId:(long long)passwordPolicyId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"passwordPolicyId": @(passwordPolicyId)
-	}];
-
-	NSDictionary *_command = @{@"/passwordpolicy/fetch-password-policy": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (void)deletePasswordPolicyWithPasswordPolicyId:(long long)passwordPolicyId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"passwordPolicyId": @(passwordPolicyId)
@@ -108,6 +98,16 @@
 	NSDictionary *_command = @{@"/passwordpolicy/delete-password-policy": _params};
 
 	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)fetchPasswordPolicyWithPasswordPolicyId:(long long)passwordPolicyId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"passwordPolicyId": @(passwordPolicyId)
+	}];
+
+	NSDictionary *_command = @{@"/passwordpolicy/fetch-password-policy": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

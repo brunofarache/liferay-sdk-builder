@@ -10,6 +10,9 @@ import org.json.JSONObject;
 
 @Path("/listtype")
 public interface ListTypeService {
+  @Path("/get-list-types")
+  Call<JSONArray> getListTypes(@Param(name = "type") String type);
+
   @Path("/validate")
   Call<Response> validate(@Param(name = "listTypeId") long listTypeId, @Param(name = "classNameId") long classNameId, @Param(name = "type") String type);
 
@@ -18,7 +21,4 @@ public interface ListTypeService {
 
   @Path("/get-list-type")
   Call<JSONObject> getListType(@Param(name = "listTypeId") long listTypeId);
-
-  @Path("/get-list-types")
-  Call<JSONArray> getListTypes(@Param(name = "type") String type);
 }

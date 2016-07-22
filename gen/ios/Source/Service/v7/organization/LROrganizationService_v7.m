@@ -19,181 +19,6 @@
  */
 @implementation LROrganizationService_v7
 
-- (NSArray *)getOrganizationsWithCompanyId:(long long)companyId parentOrganizationId:(long long)parentOrganizationId start:(int)start end:(int)end error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"parentOrganizationId": @(parentOrganizationId),
-		@"start": @(start),
-		@"end": @(end)
-	}];
-
-	NSDictionary *_command = @{@"/organization/get-organizations": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getOrganizationsWithCompanyId:(long long)companyId parentOrganizationId:(long long)parentOrganizationId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"parentOrganizationId": @(parentOrganizationId)
-	}];
-
-	NSDictionary *_command = @{@"/organization/get-organizations": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getOrganizationWithOrganizationId:(long long)organizationId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"organizationId": @(organizationId)
-	}];
-
-	NSDictionary *_command = @{@"/organization/get-organization": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getOrganizationIdWithCompanyId:(long long)companyId name:(NSString *)name error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"name": [self checkNull: name]
-	}];
-
-	NSDictionary *_command = @{@"/organization/get-organization-id": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getUserOrganizationsWithUserId:(long long)userId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userId": @(userId)
-	}];
-
-	NSDictionary *_command = @{@"/organization/get-user-organizations": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)fetchOrganizationWithOrganizationId:(long long)organizationId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"organizationId": @(organizationId)
-	}];
-
-	NSDictionary *_command = @{@"/organization/fetch-organization": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(long long)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": [self checkNull: name],
-		@"type": [self checkNull: type],
-		@"regionId": @(regionId),
-		@"countryId": @(countryId),
-		@"statusId": @(statusId),
-		@"comments": [self checkNull: comments],
-		@"site": @(site),
-		@"addresses": [self checkNull: addresses],
-		@"emailAddresses": [self checkNull: emailAddresses],
-		@"orgLabors": [self checkNull: orgLabors],
-		@"phones": [self checkNull: phones],
-		@"websites": [self checkNull: websites],
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/organization/add-organization": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(long long)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": [self checkNull: name],
-		@"type": [self checkNull: type],
-		@"regionId": @(regionId),
-		@"countryId": @(countryId),
-		@"statusId": @(statusId),
-		@"comments": [self checkNull: comments],
-		@"site": @(site),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/organization/add-organization": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(long long)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"organizationId": @(organizationId),
-		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": [self checkNull: name],
-		@"type": [self checkNull: type],
-		@"regionId": @(regionId),
-		@"countryId": @(countryId),
-		@"statusId": @(statusId),
-		@"comments": [self checkNull: comments],
-		@"site": @(site),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/organization/update-organization": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(long long)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"organizationId": @(organizationId),
-		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": [self checkNull: name],
-		@"type": [self checkNull: type],
-		@"regionId": @(regionId),
-		@"countryId": @(countryId),
-		@"statusId": @(statusId),
-		@"comments": [self checkNull: comments],
-		@"site": @(site),
-		@"addresses": [self checkNull: addresses],
-		@"emailAddresses": [self checkNull: emailAddresses],
-		@"orgLabors": [self checkNull: orgLabors],
-		@"phones": [self checkNull: phones],
-		@"websites": [self checkNull: websites],
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/organization/update-organization": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(long long)statusId comments:(NSString *)comments logo:(BOOL)logo logoBytes:(NSData *)logoBytes site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"organizationId": @(organizationId),
-		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": [self checkNull: name],
-		@"type": [self checkNull: type],
-		@"regionId": @(regionId),
-		@"countryId": @(countryId),
-		@"statusId": @(statusId),
-		@"comments": [self checkNull: comments],
-		@"logo": @(logo),
-		@"logoBytes": [self toString:logoBytes],
-		@"site": @(site),
-		@"addresses": [self checkNull: addresses],
-		@"emailAddresses": [self checkNull: emailAddresses],
-		@"orgLabors": [self checkNull: orgLabors],
-		@"phones": [self checkNull: phones],
-		@"websites": [self checkNull: websites],
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/organization/update-organization": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (void)addGroupOrganizationsWithGroupId:(long long)groupId organizationIds:(NSArray *)organizationIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -268,6 +93,181 @@
 	NSDictionary *_command = @{@"/organization/unset-password-policy-organizations": _params};
 
 	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getOrganizationsWithCompanyId:(long long)companyId parentOrganizationId:(long long)parentOrganizationId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"parentOrganizationId": @(parentOrganizationId)
+	}];
+
+	NSDictionary *_command = @{@"/organization/get-organizations": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getOrganizationsWithCompanyId:(long long)companyId parentOrganizationId:(long long)parentOrganizationId start:(int)start end:(int)end error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"parentOrganizationId": @(parentOrganizationId),
+		@"start": @(start),
+		@"end": @(end)
+	}];
+
+	NSDictionary *_command = @{@"/organization/get-organizations": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getUserOrganizationsWithUserId:(long long)userId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"userId": @(userId)
+	}];
+
+	NSDictionary *_command = @{@"/organization/get-user-organizations": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)getOrganizationIdWithCompanyId:(long long)companyId name:(NSString *)name error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"name": [self checkNull: name]
+	}];
+
+	NSDictionary *_command = @{@"/organization/get-organization-id": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)fetchOrganizationWithOrganizationId:(long long)organizationId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"organizationId": @(organizationId)
+	}];
+
+	NSDictionary *_command = @{@"/organization/fetch-organization": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(long long)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"parentOrganizationId": @(parentOrganizationId),
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
+		@"regionId": @(regionId),
+		@"countryId": @(countryId),
+		@"statusId": @(statusId),
+		@"comments": [self checkNull: comments],
+		@"site": @(site),
+		@"addresses": [self checkNull: addresses],
+		@"emailAddresses": [self checkNull: emailAddresses],
+		@"orgLabors": [self checkNull: orgLabors],
+		@"phones": [self checkNull: phones],
+		@"websites": [self checkNull: websites],
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/organization/add-organization": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(long long)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"parentOrganizationId": @(parentOrganizationId),
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
+		@"regionId": @(regionId),
+		@"countryId": @(countryId),
+		@"statusId": @(statusId),
+		@"comments": [self checkNull: comments],
+		@"site": @(site),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/organization/add-organization": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(long long)statusId comments:(NSString *)comments site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"organizationId": @(organizationId),
+		@"parentOrganizationId": @(parentOrganizationId),
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
+		@"regionId": @(regionId),
+		@"countryId": @(countryId),
+		@"statusId": @(statusId),
+		@"comments": [self checkNull: comments],
+		@"site": @(site),
+		@"addresses": [self checkNull: addresses],
+		@"emailAddresses": [self checkNull: emailAddresses],
+		@"orgLabors": [self checkNull: orgLabors],
+		@"phones": [self checkNull: phones],
+		@"websites": [self checkNull: websites],
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/organization/update-organization": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(long long)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"organizationId": @(organizationId),
+		@"parentOrganizationId": @(parentOrganizationId),
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
+		@"regionId": @(regionId),
+		@"countryId": @(countryId),
+		@"statusId": @(statusId),
+		@"comments": [self checkNull: comments],
+		@"site": @(site),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/organization/update-organization": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateOrganizationWithOrganizationId:(long long)organizationId parentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(long long)statusId comments:(NSString *)comments logo:(BOOL)logo logoBytes:(NSData *)logoBytes site:(BOOL)site addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses orgLabors:(NSArray *)orgLabors phones:(NSArray *)phones websites:(NSArray *)websites serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"organizationId": @(organizationId),
+		@"parentOrganizationId": @(parentOrganizationId),
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
+		@"regionId": @(regionId),
+		@"countryId": @(countryId),
+		@"statusId": @(statusId),
+		@"comments": [self checkNull: comments],
+		@"logo": @(logo),
+		@"logoBytes": [self toString:logoBytes],
+		@"site": @(site),
+		@"addresses": [self checkNull: addresses],
+		@"emailAddresses": [self checkNull: emailAddresses],
+		@"orgLabors": [self checkNull: orgLabors],
+		@"phones": [self checkNull: phones],
+		@"websites": [self checkNull: websites],
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/organization/update-organization": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getOrganizationWithOrganizationId:(long long)organizationId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"organizationId": @(organizationId)
+	}];
+
+	NSDictionary *_command = @{@"/organization/get-organization": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 - (void)deleteLogoWithOrganizationId:(long long)organizationId error:(NSError **)error {

@@ -18,15 +18,15 @@ public interface ExpandoColumnService {
   @Path("/delete-column")
   Call<Response> deleteColumn(@Param(name = "columnId") long columnId);
 
-  @Path("/update-column")
-  Call<JSONObject> updateColumn(@Param(name = "columnId") long columnId, @Param(name = "name") String name, @Param(name = "type") int type, @Param(name = "defaultData", className = "") JSONObject defaultData);
+  @Path("/fetch-expando-column")
+  Call<JSONObject> fetchExpandoColumn(@Param(name = "columnId") long columnId);
 
   @Path("/update-column")
   Call<JSONObject> updateColumn(@Param(name = "columnId") long columnId, @Param(name = "name") String name, @Param(name = "type") int type);
 
+  @Path("/update-column")
+  Call<JSONObject> updateColumn(@Param(name = "columnId") long columnId, @Param(name = "name") String name, @Param(name = "type") int type, @Param(name = "defaultData", className = "") JSONObject defaultData);
+
   @Path("/update-type-settings")
   Call<JSONObject> updateTypeSettings(@Param(name = "columnId") long columnId, @Param(name = "typeSettings") String typeSettings);
-
-  @Path("/fetch-expando-column")
-  Call<JSONObject> fetchExpandoColumn(@Param(name = "columnId") long columnId);
 }

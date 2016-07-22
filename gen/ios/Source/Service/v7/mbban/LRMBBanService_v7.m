@@ -19,17 +19,6 @@
  */
 @implementation LRMBBanService_v7
 
-- (void)deleteBanWithBanUserId:(long long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"banUserId": @(banUserId),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/mbban/delete-ban": _params};
-
-	[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addBanWithBanUserId:(long long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"banUserId": @(banUserId),
@@ -39,6 +28,17 @@
 	NSDictionary *_command = @{@"/mbban/add-ban": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteBanWithBanUserId:(long long)banUserId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"banUserId": @(banUserId),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/mbban/delete-ban": _params};
+
+	[self.session invoke:_command error:error];
 }
 
 @end

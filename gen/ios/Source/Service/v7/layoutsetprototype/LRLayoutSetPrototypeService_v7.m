@@ -41,22 +41,9 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addLayoutSetPrototypeWithNameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateLayoutSetPrototypeWithLayoutSetPrototypeId:(long long)layoutSetPrototypeId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"nameMap": [self checkNull: nameMap],
-		@"description": [self checkNull: description],
-		@"active": @(active),
-		@"layoutsUpdateable": @(layoutsUpdateable),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/layoutsetprototype/add-layout-set-prototype": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)addLayoutSetPrototypeWithNameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"layoutSetPrototypeId": @(layoutSetPrototypeId),
 		@"nameMap": [self checkNull: nameMap],
 		@"descriptionMap": [self checkNull: descriptionMap],
 		@"active": @(active),
@@ -64,7 +51,7 @@
 		@"serviceContext": [self checkNull: serviceContext]
 	}];
 
-	NSDictionary *_command = @{@"/layoutsetprototype/add-layout-set-prototype": _params};
+	NSDictionary *_command = @{@"/layoutsetprototype/update-layout-set-prototype": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -84,21 +71,6 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLayoutSetPrototypeWithLayoutSetPrototypeId:(long long)layoutSetPrototypeId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"layoutSetPrototypeId": @(layoutSetPrototypeId),
-		@"nameMap": [self checkNull: nameMap],
-		@"descriptionMap": [self checkNull: descriptionMap],
-		@"active": @(active),
-		@"layoutsUpdateable": @(layoutsUpdateable),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/layoutsetprototype/update-layout-set-prototype": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)updateLayoutSetPrototypeWithLayoutSetPrototypeId:(long long)layoutSetPrototypeId settings:(NSString *)settings error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutSetPrototypeId": @(layoutSetPrototypeId),
@@ -106,6 +78,34 @@
 	}];
 
 	NSDictionary *_command = @{@"/layoutsetprototype/update-layout-set-prototype": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addLayoutSetPrototypeWithNameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
+		@"active": @(active),
+		@"layoutsUpdateable": @(layoutsUpdateable),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/layoutsetprototype/add-layout-set-prototype": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addLayoutSetPrototypeWithNameMap:(NSDictionary *)nameMap description:(NSString *)description active:(BOOL)active layoutsUpdateable:(BOOL)layoutsUpdateable serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"nameMap": [self checkNull: nameMap],
+		@"description": [self checkNull: description],
+		@"active": @(active),
+		@"layoutsUpdateable": @(layoutsUpdateable),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/layoutsetprototype/add-layout-set-prototype": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }

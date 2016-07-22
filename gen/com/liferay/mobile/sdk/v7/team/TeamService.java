@@ -15,6 +15,18 @@ public interface TeamService {
   @Path("/search")
   Call<JSONArray> search(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "params", className = "") JSONObject params, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
+  @Path("/get-team")
+  Call<JSONObject> getTeam(@Param(name = "teamId") long teamId);
+
+  @Path("/get-team")
+  Call<JSONObject> getTeam(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
+
+  @Path("/get-user-teams")
+  Call<JSONArray> getUserTeams(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId);
+
+  @Path("/get-user-teams")
+  Call<JSONArray> getUserTeams(@Param(name = "userId") long userId);
+
   @Path("/add-team")
   Call<JSONObject> addTeam(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
@@ -23,18 +35,6 @@ public interface TeamService {
 
   @Path("/update-team")
   Call<JSONObject> updateTeam(@Param(name = "teamId") long teamId, @Param(name = "name") String name, @Param(name = "description") String description);
-
-  @Path("/get-user-teams")
-  Call<JSONArray> getUserTeams(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId);
-
-  @Path("/get-user-teams")
-  Call<JSONArray> getUserTeams(@Param(name = "userId") long userId);
-
-  @Path("/get-team")
-  Call<JSONObject> getTeam(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
-
-  @Path("/get-team")
-  Call<JSONObject> getTeam(@Param(name = "teamId") long teamId);
 
   @Path("/search-count")
   Call<Integer> searchCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "params", className = "") JSONObject params);

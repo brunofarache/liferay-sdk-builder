@@ -19,6 +19,16 @@
  */
 @implementation LRAnnouncementsFlagService_v7
 
+- (void)deleteFlagWithFlagId:(long long)flagId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"flagId": @(flagId)
+	}];
+
+	NSDictionary *_command = @{@"/announcementsflag/delete-flag": _params};
+
+	[self.session invoke:_command error:error];
+}
+
 - (void)addFlagWithEntryId:(long long)entryId value:(int)value error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId),
@@ -39,16 +49,6 @@
 	NSDictionary *_command = @{@"/announcementsflag/get-flag": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)deleteFlagWithFlagId:(long long)flagId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"flagId": @(flagId)
-	}];
-
-	NSDictionary *_command = @{@"/announcementsflag/delete-flag": _params};
-
-	[self.session invoke:_command error:error];
 }
 
 @end

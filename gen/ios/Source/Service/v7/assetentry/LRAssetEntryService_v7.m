@@ -136,6 +136,16 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (NSNumber *)getEntriesCountWithEntryQuery:(NSDictionary *)entryQuery error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"entryQuery": [self checkNull: entryQuery]
+	}];
+
+	NSDictionary *_command = @{@"/assetentry/get-entries-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)fetchEntryWithEntryId:(long long)entryId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
@@ -177,16 +187,6 @@
 	NSDictionary *_command = @{@"/assetentry/increment-view-counter": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getEntriesCountWithEntryQuery:(NSDictionary *)entryQuery error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"entryQuery": [self checkNull: entryQuery]
-	}];
-
-	NSDictionary *_command = @{@"/assetentry/get-entries-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 @end

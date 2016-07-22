@@ -19,6 +19,16 @@
  */
 @implementation LRRepositoryService_v7
 
+- (NSDictionary *)getRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"repositoryId": @(repositoryId)
+	}];
+
+	NSDictionary *_command = @{@"/repository/get-repository": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)getTypeSettingsPropertiesWithRepositoryId:(long long)repositoryId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId)
@@ -29,14 +39,16 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error {
+- (void)updateRepositoryWithRepositoryId:(long long)repositoryId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"repositoryId": @(repositoryId)
+		@"repositoryId": @(repositoryId),
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description]
 	}];
 
-	NSDictionary *_command = @{@"/repository/get-repository": _params};
+	NSDictionary *_command = @{@"/repository/update-repository": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)addRepositoryWithGroupId:(long long)groupId classNameId:(long long)classNameId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
@@ -56,14 +68,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)updateRepositoryWithRepositoryId:(long long)repositoryId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
+- (void)checkRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"repositoryId": @(repositoryId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description]
+		@"repositoryId": @(repositoryId)
 	}];
 
-	NSDictionary *_command = @{@"/repository/update-repository": _params};
+	NSDictionary *_command = @{@"/repository/check-repository": _params};
 
 	[self.session invoke:_command error:error];
 }
@@ -74,16 +84,6 @@
 	}];
 
 	NSDictionary *_command = @{@"/repository/delete-repository": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)checkRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"repositoryId": @(repositoryId)
-	}];
-
-	NSDictionary *_command = @{@"/repository/check-repository": _params};
 
 	[self.session invoke:_command error:error];
 }

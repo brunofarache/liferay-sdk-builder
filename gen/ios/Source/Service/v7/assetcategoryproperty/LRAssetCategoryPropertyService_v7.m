@@ -31,35 +31,17 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteCategoryPropertyWithCategoryPropertyId:(long long)categoryPropertyId error:(NSError **)error {
+- (NSDictionary *)updateCategoryPropertyWithUserId:(long long)userId categoryPropertyId:(long long)categoryPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"categoryPropertyId": @(categoryPropertyId)
+		@"userId": @(userId),
+		@"categoryPropertyId": @(categoryPropertyId),
+		@"key": [self checkNull: key],
+		@"value": [self checkNull: value]
 	}];
 
-	NSDictionary *_command = @{@"/assetcategoryproperty/delete-category-property": _params};
+	NSDictionary *_command = @{@"/assetcategoryproperty/update-category-property": _params};
 
-	[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getCategoryPropertiesWithEntryId:(long long)entryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"entryId": @(entryId)
-	}];
-
-	NSDictionary *_command = @{@"/assetcategoryproperty/get-category-properties": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getCategoryPropertyValuesWithCompanyId:(long long)companyId key:(NSString *)key error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"key": [self checkNull: key]
-	}];
-
-	NSDictionary *_command = @{@"/assetcategoryproperty/get-category-property-values": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)updateCategoryPropertyWithCategoryPropertyId:(long long)categoryPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
@@ -74,17 +56,35 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateCategoryPropertyWithUserId:(long long)userId categoryPropertyId:(long long)categoryPropertyId key:(NSString *)key value:(NSString *)value error:(NSError **)error {
+- (NSArray *)getCategoryPropertyValuesWithCompanyId:(long long)companyId key:(NSString *)key error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userId": @(userId),
-		@"categoryPropertyId": @(categoryPropertyId),
-		@"key": [self checkNull: key],
-		@"value": [self checkNull: value]
+		@"companyId": @(companyId),
+		@"key": [self checkNull: key]
 	}];
 
-	NSDictionary *_command = @{@"/assetcategoryproperty/update-category-property": _params};
+	NSDictionary *_command = @{@"/assetcategoryproperty/get-category-property-values": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getCategoryPropertiesWithEntryId:(long long)entryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"entryId": @(entryId)
+	}];
+
+	NSDictionary *_command = @{@"/assetcategoryproperty/get-category-properties": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteCategoryPropertyWithCategoryPropertyId:(long long)categoryPropertyId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"categoryPropertyId": @(categoryPropertyId)
+	}];
+
+	NSDictionary *_command = @{@"/assetcategoryproperty/delete-category-property": _params};
+
+	[self.session invoke:_command error:error];
 }
 
 @end

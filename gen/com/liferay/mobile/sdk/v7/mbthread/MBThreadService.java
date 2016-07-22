@@ -15,22 +15,43 @@ public interface MBThreadService {
   Call<JSONArray> getThreads(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search")
-  Call<JSONObject> search(@Param(name = "groupId") long groupId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
-
-  @Path("/search")
   Call<JSONObject> search(@Param(name = "groupId") long groupId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
-  @Path("/get-group-threads-count")
-  Call<Integer> getGroupThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "modifiedDate") long modifiedDate, @Param(name = "status") int status);
+  @Path("/search")
+  Call<JSONObject> search(@Param(name = "groupId") long groupId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
+
+  @Path("/lock-thread")
+  Call<JSONObject> lockThread(@Param(name = "threadId") long threadId);
+
+  @Path("/unlock-thread")
+  Call<Response> unlockThread(@Param(name = "threadId") long threadId);
+
+  @Path("/get-group-threads")
+  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed, @Param(name = "includeAnonymous") boolean includeAnonymous, @Param(name = "start") int start, @Param(name = "end") int end);
+
+  @Path("/get-group-threads")
+  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "modifiedDate") long modifiedDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
+
+  @Path("/get-group-threads")
+  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed, @Param(name = "start") int start, @Param(name = "end") int end);
+
+  @Path("/get-group-threads")
+  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
+
+  @Path("/delete-thread")
+  Call<Response> deleteThread(@Param(name = "threadId") long threadId);
 
   @Path("/get-group-threads-count")
-  Call<Integer> getGroupThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status);
+  Call<Integer> getGroupThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed, @Param(name = "includeAnonymous") boolean includeAnonymous);
 
   @Path("/get-group-threads-count")
   Call<Integer> getGroupThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed);
 
   @Path("/get-group-threads-count")
-  Call<Integer> getGroupThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed, @Param(name = "includeAnonymous") boolean includeAnonymous);
+  Call<Integer> getGroupThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status);
+
+  @Path("/get-group-threads-count")
+  Call<Integer> getGroupThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "modifiedDate") long modifiedDate, @Param(name = "status") int status);
 
   @Path("/get-threads-count")
   Call<Integer> getThreadsCount(@Param(name = "groupId") long groupId, @Param(name = "categoryId") long categoryId, @Param(name = "status") int status);
@@ -49,25 +70,4 @@ public interface MBThreadService {
 
   @Path("/split-thread")
   Call<JSONObject> splitThread(@Param(name = "messageId") long messageId, @Param(name = "subject") String subject, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
-  @Path("/lock-thread")
-  Call<JSONObject> lockThread(@Param(name = "threadId") long threadId);
-
-  @Path("/unlock-thread")
-  Call<Response> unlockThread(@Param(name = "threadId") long threadId);
-
-  @Path("/delete-thread")
-  Call<Response> deleteThread(@Param(name = "threadId") long threadId);
-
-  @Path("/get-group-threads")
-  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed, @Param(name = "start") int start, @Param(name = "end") int end);
-
-  @Path("/get-group-threads")
-  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
-
-  @Path("/get-group-threads")
-  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed, @Param(name = "includeAnonymous") boolean includeAnonymous, @Param(name = "start") int start, @Param(name = "end") int end);
-
-  @Path("/get-group-threads")
-  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "modifiedDate") long modifiedDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 }

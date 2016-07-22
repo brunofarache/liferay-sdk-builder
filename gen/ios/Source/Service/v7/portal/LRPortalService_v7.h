@@ -19,8 +19,8 @@
  */
 @interface LRPortalService_v7 : LRBaseService
 
-- (NSNumber *)getBuildNumber:(NSError **)error;
 - (NSString *)getVersion:(NSError **)error;
+- (NSNumber *)getBuildNumber:(NSError **)error;
 - (void)testAddClassName_RollbackWithClassNameValue:(NSString *)classNameValue error:(NSError **)error;
 - (void)testAddClassNameAndTestTransactionPortletBar_PortletRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
 - (void)testAddClassNameAndTestTransactionPortletBar_PortalRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
