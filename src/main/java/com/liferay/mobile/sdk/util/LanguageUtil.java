@@ -72,9 +72,9 @@ public class LanguageUtil {
 	}
 
 	public boolean isArray(String type) {
-		return type.endsWith("[]") || type.equals("object<list>") ||
-			type.equals("object<com.liferay.portal.kernel.json.JSONArray>") ||
-			type.startsWith("list");
+		return type.endsWith("[]") ||
+			type.contains("com.liferay.portal.kernel.json.JSONArray") ||
+			type.equals("object<list>") || type.startsWith("list");
 	}
 
 }
