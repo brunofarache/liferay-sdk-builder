@@ -19,27 +19,6 @@
  */
 @implementation LRRegionService_v7
 
-- (NSDictionary *)getRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"countryId": @(countryId),
-		@"regionCode": [self checkNull: regionCode]
-	}];
-
-	NSDictionary *_command = @{@"/region/get-region": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getRegionWithRegionId:(long long)regionId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"regionId": @(regionId)
-	}];
-
-	NSDictionary *_command = @{@"/region/get-region": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode name:(NSString *)name active:(BOOL)active error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"countryId": @(countryId),
@@ -70,6 +49,27 @@
 	}];
 
 	NSDictionary *_command = @{@"/region/fetch-region": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"countryId": @(countryId),
+		@"regionCode": [self checkNull: regionCode]
+	}];
+
+	NSDictionary *_command = @{@"/region/get-region": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getRegionWithRegionId:(long long)regionId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"regionId": @(regionId)
+	}];
+
+	NSDictionary *_command = @{@"/region/get-region": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }

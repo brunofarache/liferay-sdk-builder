@@ -33,6 +33,16 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (void)deleteLayoutBranchWithLayoutBranchId:(long long)layoutBranchId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"layoutBranchId": @(layoutBranchId)
+	}];
+
+	NSDictionary *_command = @{@"/layoutbranch/delete-layout-branch": _params};
+
+	[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)updateLayoutBranchWithLayoutBranchId:(long long)layoutBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutBranchId": @(layoutBranchId),
@@ -44,16 +54,6 @@
 	NSDictionary *_command = @{@"/layoutbranch/update-layout-branch": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)deleteLayoutBranchWithLayoutBranchId:(long long)layoutBranchId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"layoutBranchId": @(layoutBranchId)
-	}];
-
-	NSDictionary *_command = @{@"/layoutbranch/delete-layout-branch": _params};
-
-	[self.session invoke:_command error:error];
 }
 
 @end

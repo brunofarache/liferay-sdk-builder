@@ -19,7 +19,7 @@
  */
 @interface LRPortletService_v7 : LRBaseService
 
-- (NSDictionary *)updatePortletWithCompanyId:(long long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active error:(NSError **)error;
 - (NSArray *)getWARPortlets:(NSError **)error;
+- (NSDictionary *)updatePortletWithCompanyId:(long long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active error:(NSError **)error;
 
 @end

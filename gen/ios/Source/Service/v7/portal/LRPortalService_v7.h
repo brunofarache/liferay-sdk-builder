@@ -19,18 +19,18 @@
  */
 @interface LRPortalService_v7 : LRBaseService
 
-- (NSString *)getVersion:(NSError **)error;
-- (NSNumber *)getBuildNumber:(NSError **)error;
-- (void)testAddClassName_RollbackWithClassNameValue:(NSString *)classNameValue error:(NSError **)error;
-- (void)testAddClassNameAndTestTransactionPortletBar_PortletRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
-- (void)testAddClassNameAndTestTransactionPortletBar_PortalRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
 - (NSString *)getAutoDeployDirectory:(NSError **)error;
+- (NSNumber *)getBuildNumber:(NSError **)error;
+- (NSString *)getVersion:(NSError **)error;
+- (void)testAddClassNameAndTestTransactionPortletBar_PortalRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
+- (void)testAddClassNameAndTestTransactionPortletBar_PortletRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
 - (void)testAddClassNameAndTestTransactionPortletBar_SuccessWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error;
+- (void)testAddClassName_RollbackWithClassNameValue:(NSString *)classNameValue error:(NSError **)error;
+- (void)testAddClassName_SuccessWithClassNameValue:(NSString *)classNameValue error:(NSError **)error;
 - (void)testAutoSyncHibernateSessionStateOnTxCreation:(NSError **)error;
 - (void)testDeleteClassName:(NSError **)error;
 - (NSNumber *)testGetBuildNumber:(NSError **)error;
 - (void)testGetUserId:(NSError **)error;
 - (BOOL)testHasClassName:(NSError **)error;
-- (void)testAddClassName_SuccessWithClassNameValue:(NSString *)classNameValue error:(NSError **)error;
 
 @end

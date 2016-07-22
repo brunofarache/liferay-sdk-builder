@@ -10,18 +10,18 @@ import org.json.JSONObject;
 
 @Path("/website")
 public interface WebsiteService {
-  @Path("/get-websites")
-  Call<JSONArray> getWebsites(@Param(name = "className") String className, @Param(name = "classPK") long classPK);
+  @Path("/add-website")
+  Call<JSONObject> addWebsite(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "url") String url, @Param(name = "typeId") long typeId, @Param(name = "primary") boolean primary, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+
+  @Path("/delete-website")
+  Call<Response> deleteWebsite(@Param(name = "websiteId") long websiteId);
 
   @Path("/get-website")
   Call<JSONObject> getWebsite(@Param(name = "websiteId") long websiteId);
 
-  @Path("/add-website")
-  Call<JSONObject> addWebsite(@Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "url") String url, @Param(name = "typeId") long typeId, @Param(name = "primary") boolean primary, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  @Path("/get-websites")
+  Call<JSONArray> getWebsites(@Param(name = "className") String className, @Param(name = "classPK") long classPK);
 
   @Path("/update-website")
   Call<JSONObject> updateWebsite(@Param(name = "websiteId") long websiteId, @Param(name = "url") String url, @Param(name = "typeId") long typeId, @Param(name = "primary") boolean primary);
-
-  @Path("/delete-website")
-  Call<Response> deleteWebsite(@Param(name = "websiteId") long websiteId);
 }

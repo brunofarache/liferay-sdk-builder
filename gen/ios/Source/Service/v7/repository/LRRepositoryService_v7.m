@@ -19,38 +19,6 @@
  */
 @implementation LRRepositoryService_v7
 
-- (NSDictionary *)getRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"repositoryId": @(repositoryId)
-	}];
-
-	NSDictionary *_command = @{@"/repository/get-repository": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getTypeSettingsPropertiesWithRepositoryId:(long long)repositoryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"repositoryId": @(repositoryId)
-	}];
-
-	NSDictionary *_command = @{@"/repository/get-type-settings-properties": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)updateRepositoryWithRepositoryId:(long long)repositoryId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"repositoryId": @(repositoryId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description]
-	}];
-
-	NSDictionary *_command = @{@"/repository/update-repository": _params};
-
-	[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addRepositoryWithGroupId:(long long)groupId classNameId:(long long)classNameId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description portletId:(NSString *)portletId typeSettingsProperties:(NSDictionary *)typeSettingsProperties serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -88,6 +56,26 @@
 	[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)getRepositoryWithRepositoryId:(long long)repositoryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"repositoryId": @(repositoryId)
+	}];
+
+	NSDictionary *_command = @{@"/repository/get-repository": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getSupportedConfigurationsWithClassNameId:(long long)classNameId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"classNameId": @(classNameId)
+	}];
+
+	NSDictionary *_command = @{@"/repository/get-supported-configurations": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
 - (NSArray *)getSupportedParametersWithClassNameId:(long long)classNameId configuration:(NSString *)configuration error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"classNameId": @(classNameId),
@@ -110,14 +98,26 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getSupportedConfigurationsWithClassNameId:(long long)classNameId error:(NSError **)error {
+- (NSDictionary *)getTypeSettingsPropertiesWithRepositoryId:(long long)repositoryId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"classNameId": @(classNameId)
+		@"repositoryId": @(repositoryId)
 	}];
 
-	NSDictionary *_command = @{@"/repository/get-supported-configurations": _params};
+	NSDictionary *_command = @{@"/repository/get-type-settings-properties": _params};
 
-	return (NSArray *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)updateRepositoryWithRepositoryId:(long long)repositoryId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"repositoryId": @(repositoryId),
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description]
+	}];
+
+	NSDictionary *_command = @{@"/repository/update-repository": _params};
+
+	[self.session invoke:_command error:error];
 }
 
 @end

@@ -12,20 +12,20 @@ public interface ExportImportService {
   @Path("/export-layouts-as-file")
   Call<JSONObject> exportLayoutsAsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
 
-  @Path("/export-portlet-info-as-file")
-  Call<JSONObject> exportPortletInfoAsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
-
-  @Path("/import-layouts")
-  Call<Response> importLayouts(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  @Path("/export-layouts-as-file-in-background")
+  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
 
   @Path("/export-layouts-as-file-in-background")
   Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfigurationId") long exportImportConfigurationId);
 
-  @Path("/export-layouts-as-file-in-background")
-  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
+  @Path("/export-portlet-info-as-file")
+  Call<JSONObject> exportPortletInfoAsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
 
   @Path("/export-portlet-info-as-file-in-background")
   Call<Long> exportPortletInfoAsFileInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
+
+  @Path("/import-layouts")
+  Call<Response> importLayouts(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
 
   @Path("/import-layouts-in-background")
   Call<Long> importLayoutsInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);

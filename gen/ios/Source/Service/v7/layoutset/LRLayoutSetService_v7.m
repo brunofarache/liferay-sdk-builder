@@ -19,30 +19,6 @@
  */
 @implementation LRLayoutSetService_v7
 
-- (NSDictionary *)updateVirtualHostWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout virtualHost:(NSString *)virtualHost error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"virtualHost": [self checkNull: virtualHost]
-	}];
-
-	NSDictionary *_command = @{@"/layoutset/update-virtual-host": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)updateSettingsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout settings:(NSString *)settings error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"settings": [self checkNull: settings]
-	}];
-
-	NSDictionary *_command = @{@"/layoutset/update-settings": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (void)updateLayoutSetPrototypeLinkEnabledWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout layoutSetPrototypeLinkEnabled:(BOOL)layoutSetPrototypeLinkEnabled layoutSetPrototypeUuid:(NSString *)layoutSetPrototypeUuid error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -52,19 +28,6 @@
 	}];
 
 	NSDictionary *_command = @{@"/layoutset/update-layout-set-prototype-link-enabled": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(NSDictionary *)file error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"privateLayout": @(privateLayout),
-		@"logo": @(logo),
-		@"file": [self checkNull: file]
-	}];
-
-	NSDictionary *_command = @{@"/layoutset/update-logo": _params};
 
 	[self.session invoke:_command error:error];
 }
@@ -82,6 +45,19 @@
 	[self.session invoke:_command error:error];
 }
 
+- (void)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(NSDictionary *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"logo": @(logo),
+		@"file": [self checkNull: file]
+	}];
+
+	NSDictionary *_command = @{@"/layoutset/update-logo": _params};
+
+	[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)updateLookAndFeelWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout themeId:(NSString *)themeId colorSchemeId:(NSString *)colorSchemeId css:(NSString *)css error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -92,6 +68,30 @@
 	}];
 
 	NSDictionary *_command = @{@"/layoutset/update-look-and-feel": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateSettingsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout settings:(NSString *)settings error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"settings": [self checkNull: settings]
+	}];
+
+	NSDictionary *_command = @{@"/layoutset/update-settings": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateVirtualHostWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout virtualHost:(NSString *)virtualHost error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"privateLayout": @(privateLayout),
+		@"virtualHost": [self checkNull: virtualHost]
+	}];
+
+	NSDictionary *_command = @{@"/layoutset/update-virtual-host": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }

@@ -19,6 +19,38 @@
  */
 @implementation LRAssetEntryService_v7
 
+- (NSDictionary *)fetchEntryWithEntryId:(long long)entryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"entryId": @(entryId)
+	}];
+
+	NSDictionary *_command = @{@"/assetentry/fetch-entry": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getCompanyEntriesWithCompanyId:(long long)companyId start:(int)start end:(int)end error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"start": @(start),
+		@"end": @(end)
+	}];
+
+	NSDictionary *_command = @{@"/assetentry/get-company-entries": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)getCompanyEntriesCountWithCompanyId:(long long)companyId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId)
+	}];
+
+	NSDictionary *_command = @{@"/assetentry/get-company-entries-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
 - (NSArray *)getEntriesWithEntryQuery:(NSDictionary *)entryQuery error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryQuery": [self checkNull: entryQuery]
@@ -29,12 +61,33 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
+- (NSNumber *)getEntriesCountWithEntryQuery:(NSDictionary *)entryQuery error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"entryQuery": [self checkNull: entryQuery]
+	}];
+
+	NSDictionary *_command = @{@"/assetentry/get-entries-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)getEntryWithEntryId:(long long)entryId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"entryId": @(entryId)
 	}];
 
 	NSDictionary *_command = @{@"/assetentry/get-entry": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)incrementViewCounterWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"className": [self checkNull: className],
+		@"classPK": @(classPK)
+	}];
+
+	NSDictionary *_command = @{@"/assetentry/increment-view-counter": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -132,59 +185,6 @@
 	}];
 
 	NSDictionary *_command = @{@"/assetentry/update-entry": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getEntriesCountWithEntryQuery:(NSDictionary *)entryQuery error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"entryQuery": [self checkNull: entryQuery]
-	}];
-
-	NSDictionary *_command = @{@"/assetentry/get-entries-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)fetchEntryWithEntryId:(long long)entryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"entryId": @(entryId)
-	}];
-
-	NSDictionary *_command = @{@"/assetentry/fetch-entry": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getCompanyEntriesWithCompanyId:(long long)companyId start:(int)start end:(int)end error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"start": @(start),
-		@"end": @(end)
-	}];
-
-	NSDictionary *_command = @{@"/assetentry/get-company-entries": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getCompanyEntriesCountWithCompanyId:(long long)companyId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId)
-	}];
-
-	NSDictionary *_command = @{@"/assetentry/get-company-entries-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)incrementViewCounterWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": [self checkNull: className],
-		@"classPK": @(classPK)
-	}];
-
-	NSDictionary *_command = @{@"/assetentry/increment-view-counter": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }

@@ -9,21 +9,21 @@ import org.json.JSONObject;
 
 @Path("/layoutset")
 public interface LayoutSetService {
-  @Path("/update-virtual-host")
-  Call<JSONObject> updateVirtualHost(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "virtualHost") String virtualHost);
-
-  @Path("/update-settings")
-  Call<JSONObject> updateSettings(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "settings") String settings);
-
   @Path("/update-layout-set-prototype-link-enabled")
   Call<Response> updateLayoutSetPrototypeLinkEnabled(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutSetPrototypeLinkEnabled") boolean layoutSetPrototypeLinkEnabled, @Param(name = "layoutSetPrototypeUuid") String layoutSetPrototypeUuid);
 
   @Path("/update-logo")
-  Call<Response> updateLogo(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "logo") boolean logo, @Param(name = "file", className = "") JSONObject file);
+  Call<Response> updateLogo(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "logo") boolean logo, @Param(name = "bytes") byte[] bytes);
 
   @Path("/update-logo")
-  Call<Response> updateLogo(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "logo") boolean logo, @Param(name = "bytes") byte[] bytes);
+  Call<Response> updateLogo(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "logo") boolean logo, @Param(name = "file", className = "") JSONObject file);
 
   @Path("/update-look-and-feel")
   Call<JSONObject> updateLookAndFeel(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "themeId") String themeId, @Param(name = "colorSchemeId") String colorSchemeId, @Param(name = "css") String css);
+
+  @Path("/update-settings")
+  Call<JSONObject> updateSettings(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "settings") String settings);
+
+  @Path("/update-virtual-host")
+  Call<JSONObject> updateVirtualHost(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "virtualHost") String virtualHost);
 }

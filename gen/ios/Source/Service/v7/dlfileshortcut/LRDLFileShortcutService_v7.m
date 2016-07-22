@@ -19,16 +19,6 @@
  */
 @implementation LRDLFileShortcutService_v7
 
-- (NSDictionary *)getFileShortcutWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"fileShortcutId": @(fileShortcutId)
-	}];
-
-	NSDictionary *_command = @{@"/dlfileshortcut/get-file-shortcut": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addFileShortcutWithGroupId:(long long)groupId repositoryId:(long long)repositoryId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -51,6 +41,16 @@
 	NSDictionary *_command = @{@"/dlfileshortcut/delete-file-shortcut": _params};
 
 	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getFileShortcutWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"fileShortcutId": @(fileShortcutId)
+	}];
+
+	NSDictionary *_command = @{@"/dlfileshortcut/get-file-shortcut": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)updateFileShortcutWithFileShortcutId:(long long)fileShortcutId repositoryId:(long long)repositoryId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {

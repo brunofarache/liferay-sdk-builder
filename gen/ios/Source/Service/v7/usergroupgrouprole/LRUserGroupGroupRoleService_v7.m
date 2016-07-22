@@ -19,30 +19,6 @@
  */
 @implementation LRUserGroupGroupRoleService_v7
 
-- (void)deleteUserGroupGroupRolesWithUserGroupId:(long long)userGroupId groupId:(long long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userGroupId": @(userGroupId),
-		@"groupId": @(groupId),
-		@"roleIds": [self checkNull: roleIds]
-	}];
-
-	NSDictionary *_command = @{@"/usergroupgrouprole/delete-user-group-group-roles": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)deleteUserGroupGroupRolesWithUserGroupIds:(NSArray *)userGroupIds groupId:(long long)groupId roleId:(long long)roleId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userGroupIds": [self checkNull: userGroupIds],
-		@"groupId": @(groupId),
-		@"roleId": @(roleId)
-	}];
-
-	NSDictionary *_command = @{@"/usergroupgrouprole/delete-user-group-group-roles": _params};
-
-	[self.session invoke:_command error:error];
-}
-
 - (void)addUserGroupGroupRolesWithUserGroupId:(long long)userGroupId groupId:(long long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userGroupId": @(userGroupId),
@@ -63,6 +39,30 @@
 	}];
 
 	NSDictionary *_command = @{@"/usergroupgrouprole/add-user-group-group-roles": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)deleteUserGroupGroupRolesWithUserGroupId:(long long)userGroupId groupId:(long long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"userGroupId": @(userGroupId),
+		@"groupId": @(groupId),
+		@"roleIds": [self checkNull: roleIds]
+	}];
+
+	NSDictionary *_command = @{@"/usergroupgrouprole/delete-user-group-group-roles": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)deleteUserGroupGroupRolesWithUserGroupIds:(NSArray *)userGroupIds groupId:(long long)groupId roleId:(long long)roleId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"userGroupIds": [self checkNull: userGroupIds],
+		@"groupId": @(groupId),
+		@"roleId": @(roleId)
+	}];
+
+	NSDictionary *_command = @{@"/usergroupgrouprole/delete-user-group-group-roles": _params};
 
 	[self.session invoke:_command error:error];
 }

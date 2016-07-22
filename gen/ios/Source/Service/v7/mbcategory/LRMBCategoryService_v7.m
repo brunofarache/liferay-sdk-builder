@@ -19,10 +19,76 @@
  */
 @implementation LRMBCategoryService_v7
 
-- (NSArray *)getCategoriesWithGroupId:(long long)groupId excludedCategoryId:(long long)excludedCategoryId parentCategoryId:(long long)parentCategoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSDictionary *)addCategoryWithParentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description displayStyle:(NSString *)displayStyle emailAddress:(NSString *)emailAddress inProtocol:(NSString *)inProtocol inServerName:(NSString *)inServerName inServerPort:(int)inServerPort inUseSSL:(BOOL)inUseSSL inUserName:(NSString *)inUserName inPassword:(NSString *)inPassword inReadInterval:(int)inReadInterval outEmailAddress:(NSString *)outEmailAddress outCustom:(BOOL)outCustom outServerName:(NSString *)outServerName outServerPort:(int)outServerPort outUseSSL:(BOOL)outUseSSL outUserName:(NSString *)outUserName outPassword:(NSString *)outPassword mailingListActive:(BOOL)mailingListActive allowAnonymousEmail:(BOOL)allowAnonymousEmail serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"parentCategoryId": @(parentCategoryId),
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"displayStyle": [self checkNull: displayStyle],
+		@"emailAddress": [self checkNull: emailAddress],
+		@"inProtocol": [self checkNull: inProtocol],
+		@"inServerName": [self checkNull: inServerName],
+		@"inServerPort": @(inServerPort),
+		@"inUseSSL": @(inUseSSL),
+		@"inUserName": [self checkNull: inUserName],
+		@"inPassword": [self checkNull: inPassword],
+		@"inReadInterval": @(inReadInterval),
+		@"outEmailAddress": [self checkNull: outEmailAddress],
+		@"outCustom": @(outCustom),
+		@"outServerName": [self checkNull: outServerName],
+		@"outServerPort": @(outServerPort),
+		@"outUseSSL": @(outUseSSL),
+		@"outUserName": [self checkNull: outUserName],
+		@"outPassword": [self checkNull: outPassword],
+		@"mailingListActive": @(mailingListActive),
+		@"allowAnonymousEmail": @(allowAnonymousEmail),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/add-category": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addCategoryWithUserId:(long long)userId parentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"userId": @(userId),
+		@"parentCategoryId": @(parentCategoryId),
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/add-category": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteCategoryWithCategoryId:(long long)categoryId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"categoryId": @(categoryId),
+		@"includeTrashedEntries": @(includeTrashedEntries)
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/delete-category": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)deleteCategoryWithGroupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"excludedCategoryId": @(excludedCategoryId),
+		@"categoryId": @(categoryId)
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/delete-category": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
 		@"parentCategoryId": @(parentCategoryId),
 		@"status": @(status),
 		@"start": @(start),
@@ -34,9 +100,10 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getCategoriesWithGroupId:(long long)groupId excludedCategoryId:(long long)excludedCategoryId parentCategoryId:(long long)parentCategoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
+		@"excludedCategoryId": @(excludedCategoryId),
 		@"parentCategoryId": @(parentCategoryId),
 		@"status": @(status),
 		@"start": @(start),
@@ -124,223 +191,6 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoryIdsWithGroupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"categoryId": @(categoryId)
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/get-category-ids": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"parentCategoryId": @(parentCategoryId)
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId excludedCategoryId:(long long)excludedCategoryId parentCategoryId:(long long)parentCategoryId status:(int)status error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"excludedCategoryId": @(excludedCategoryId),
-		@"parentCategoryId": @(parentCategoryId),
-		@"status": @(status)
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId status:(int)status error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"parentCategoryId": @(parentCategoryId),
-		@"status": @(status)
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId excludedCategoryIds:(NSArray *)excludedCategoryIds parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"excludedCategoryIds": [self checkNull: excludedCategoryIds],
-		@"parentCategoryIds": [self checkNull: parentCategoryIds],
-		@"status": @(status)
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"parentCategoryIds": [self checkNull: parentCategoryIds],
-		@"status": @(status)
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"parentCategoryIds": [self checkNull: parentCategoryIds]
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getCategoryWithCategoryId:(long long)categoryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"categoryId": @(categoryId)
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/get-category": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)addCategoryWithParentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description displayStyle:(NSString *)displayStyle emailAddress:(NSString *)emailAddress inProtocol:(NSString *)inProtocol inServerName:(NSString *)inServerName inServerPort:(int)inServerPort inUseSSL:(BOOL)inUseSSL inUserName:(NSString *)inUserName inPassword:(NSString *)inPassword inReadInterval:(int)inReadInterval outEmailAddress:(NSString *)outEmailAddress outCustom:(BOOL)outCustom outServerName:(NSString *)outServerName outServerPort:(int)outServerPort outUseSSL:(BOOL)outUseSSL outUserName:(NSString *)outUserName outPassword:(NSString *)outPassword mailingListActive:(BOOL)mailingListActive allowAnonymousEmail:(BOOL)allowAnonymousEmail serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"parentCategoryId": @(parentCategoryId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"displayStyle": [self checkNull: displayStyle],
-		@"emailAddress": [self checkNull: emailAddress],
-		@"inProtocol": [self checkNull: inProtocol],
-		@"inServerName": [self checkNull: inServerName],
-		@"inServerPort": @(inServerPort),
-		@"inUseSSL": @(inUseSSL),
-		@"inUserName": [self checkNull: inUserName],
-		@"inPassword": [self checkNull: inPassword],
-		@"inReadInterval": @(inReadInterval),
-		@"outEmailAddress": [self checkNull: outEmailAddress],
-		@"outCustom": @(outCustom),
-		@"outServerName": [self checkNull: outServerName],
-		@"outServerPort": @(outServerPort),
-		@"outUseSSL": @(outUseSSL),
-		@"outUserName": [self checkNull: outUserName],
-		@"outPassword": [self checkNull: outPassword],
-		@"mailingListActive": @(mailingListActive),
-		@"allowAnonymousEmail": @(allowAnonymousEmail),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/add-category": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)addCategoryWithUserId:(long long)userId parentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userId": @(userId),
-		@"parentCategoryId": @(parentCategoryId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/add-category": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)deleteCategoryWithGroupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"categoryId": @(categoryId)
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/delete-category": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)deleteCategoryWithCategoryId:(long long)categoryId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"categoryId": @(categoryId),
-		@"includeTrashedEntries": @(includeTrashedEntries)
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/delete-category": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getSubcategoryIdsWithCategoryIds:(NSArray *)categoryIds groupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"categoryIds": [self checkNull: categoryIds],
-		@"groupId": @(groupId),
-		@"categoryId": @(categoryId)
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/get-subcategory-ids": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)moveCategoryWithCategoryId:(long long)categoryId parentCategoryId:(long long)parentCategoryId mergeWithParentCategory:(BOOL)mergeWithParentCategory error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"categoryId": @(categoryId),
-		@"parentCategoryId": @(parentCategoryId),
-		@"mergeWithParentCategory": @(mergeWithParentCategory)
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/move-category": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)updateCategoryWithCategoryId:(long long)categoryId parentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description displayStyle:(NSString *)displayStyle emailAddress:(NSString *)emailAddress inProtocol:(NSString *)inProtocol inServerName:(NSString *)inServerName inServerPort:(int)inServerPort inUseSSL:(BOOL)inUseSSL inUserName:(NSString *)inUserName inPassword:(NSString *)inPassword inReadInterval:(int)inReadInterval outEmailAddress:(NSString *)outEmailAddress outCustom:(BOOL)outCustom outServerName:(NSString *)outServerName outServerPort:(int)outServerPort outUseSSL:(BOOL)outUseSSL outUserName:(NSString *)outUserName outPassword:(NSString *)outPassword mailingListActive:(BOOL)mailingListActive allowAnonymousEmail:(BOOL)allowAnonymousEmail mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"categoryId": @(categoryId),
-		@"parentCategoryId": @(parentCategoryId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"displayStyle": [self checkNull: displayStyle],
-		@"emailAddress": [self checkNull: emailAddress],
-		@"inProtocol": [self checkNull: inProtocol],
-		@"inServerName": [self checkNull: inServerName],
-		@"inServerPort": @(inServerPort),
-		@"inUseSSL": @(inUseSSL),
-		@"inUserName": [self checkNull: inUserName],
-		@"inPassword": [self checkNull: inPassword],
-		@"inReadInterval": @(inReadInterval),
-		@"outEmailAddress": [self checkNull: outEmailAddress],
-		@"outCustom": @(outCustom),
-		@"outServerName": [self checkNull: outServerName],
-		@"outServerPort": @(outServerPort),
-		@"outUseSSL": @(outUseSSL),
-		@"outUserName": [self checkNull: outUserName],
-		@"outPassword": [self checkNull: outPassword],
-		@"mailingListActive": @(mailingListActive),
-		@"allowAnonymousEmail": @(allowAnonymousEmail),
-		@"mergeWithParentCategory": @(mergeWithParentCategory),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/mbcategory/update-category": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSArray *)getCategoriesAndThreadsWithGroupId:(long long)groupId categoryId:(long long)categoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -401,6 +251,111 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
+- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId status:(int)status error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"parentCategoryId": @(parentCategoryId),
+		@"status": @(status)
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId excludedCategoryId:(long long)excludedCategoryId parentCategoryId:(long long)parentCategoryId status:(int)status error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"excludedCategoryId": @(excludedCategoryId),
+		@"parentCategoryId": @(parentCategoryId),
+		@"status": @(status)
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"parentCategoryId": @(parentCategoryId)
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId excludedCategoryIds:(NSArray *)excludedCategoryIds parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"excludedCategoryIds": [self checkNull: excludedCategoryIds],
+		@"parentCategoryIds": [self checkNull: parentCategoryIds],
+		@"status": @(status)
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"parentCategoryIds": [self checkNull: parentCategoryIds],
+		@"status": @(status)
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)getCategoriesCountWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"parentCategoryIds": [self checkNull: parentCategoryIds]
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/get-categories-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getCategoryWithCategoryId:(long long)categoryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"categoryId": @(categoryId)
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/get-category": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getCategoryIdsWithGroupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"categoryId": @(categoryId)
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/get-category-ids": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getSubcategoryIdsWithCategoryIds:(NSArray *)categoryIds groupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"categoryIds": [self checkNull: categoryIds],
+		@"groupId": @(groupId),
+		@"categoryId": @(categoryId)
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/get-subcategory-ids": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
 - (NSArray *)getSubscribedCategoriesWithGroupId:(long long)groupId userId:(long long)userId start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -423,6 +378,18 @@
 	NSDictionary *_command = @{@"/mbcategory/get-subscribed-categories-count": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)moveCategoryWithCategoryId:(long long)categoryId parentCategoryId:(long long)parentCategoryId mergeWithParentCategory:(BOOL)mergeWithParentCategory error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"categoryId": @(categoryId),
+		@"parentCategoryId": @(parentCategoryId),
+		@"mergeWithParentCategory": @(mergeWithParentCategory)
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/move-category": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)moveCategoryFromTrashWithCategoryId:(long long)categoryId newCategoryId:(long long)newCategoryId error:(NSError **)error {
@@ -476,6 +443,39 @@
 	NSDictionary *_command = @{@"/mbcategory/unsubscribe-category": _params};
 
 	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateCategoryWithCategoryId:(long long)categoryId parentCategoryId:(long long)parentCategoryId name:(NSString *)name description:(NSString *)description displayStyle:(NSString *)displayStyle emailAddress:(NSString *)emailAddress inProtocol:(NSString *)inProtocol inServerName:(NSString *)inServerName inServerPort:(int)inServerPort inUseSSL:(BOOL)inUseSSL inUserName:(NSString *)inUserName inPassword:(NSString *)inPassword inReadInterval:(int)inReadInterval outEmailAddress:(NSString *)outEmailAddress outCustom:(BOOL)outCustom outServerName:(NSString *)outServerName outServerPort:(int)outServerPort outUseSSL:(BOOL)outUseSSL outUserName:(NSString *)outUserName outPassword:(NSString *)outPassword mailingListActive:(BOOL)mailingListActive allowAnonymousEmail:(BOOL)allowAnonymousEmail mergeWithParentCategory:(BOOL)mergeWithParentCategory serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"categoryId": @(categoryId),
+		@"parentCategoryId": @(parentCategoryId),
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"displayStyle": [self checkNull: displayStyle],
+		@"emailAddress": [self checkNull: emailAddress],
+		@"inProtocol": [self checkNull: inProtocol],
+		@"inServerName": [self checkNull: inServerName],
+		@"inServerPort": @(inServerPort),
+		@"inUseSSL": @(inUseSSL),
+		@"inUserName": [self checkNull: inUserName],
+		@"inPassword": [self checkNull: inPassword],
+		@"inReadInterval": @(inReadInterval),
+		@"outEmailAddress": [self checkNull: outEmailAddress],
+		@"outCustom": @(outCustom),
+		@"outServerName": [self checkNull: outServerName],
+		@"outServerPort": @(outServerPort),
+		@"outUseSSL": @(outUseSSL),
+		@"outUserName": [self checkNull: outUserName],
+		@"outPassword": [self checkNull: outPassword],
+		@"mailingListActive": @(mailingListActive),
+		@"allowAnonymousEmail": @(allowAnonymousEmail),
+		@"mergeWithParentCategory": @(mergeWithParentCategory),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/mbcategory/update-category": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

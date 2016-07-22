@@ -19,6 +19,15 @@
  */
 @implementation LRPortletService_v7
 
+- (NSArray *)getWARPortlets:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+	}];
+
+	NSDictionary *_command = @{@"/portlet/get-war-portlets": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)updatePortletWithCompanyId:(long long)companyId portletId:(NSString *)portletId roles:(NSString *)roles active:(BOOL)active error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
@@ -30,15 +39,6 @@
 	NSDictionary *_command = @{@"/portlet/update-portlet": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getWARPortlets:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-	}];
-
-	NSDictionary *_command = @{@"/portlet/get-war-portlets": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 @end

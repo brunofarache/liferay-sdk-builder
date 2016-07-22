@@ -20,13 +20,13 @@
 @interface LRDLTrashService_v7 : LRBaseService
 
 - (NSDictionary *)moveFileEntryFromTrashWithFileEntryId:(long long)fileEntryId newFolderId:(long long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)moveFileEntryToTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error;
 - (NSDictionary *)moveFileShortcutFromTrashWithFileShortcutId:(long long)fileShortcutId newFolderId:(long long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)moveFileShortcutToTrashWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error;
 - (NSDictionary *)moveFolderFromTrashWithFolderId:(long long)folderId parentFolderId:(long long)parentFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)moveFolderToTrashWithFolderId:(long long)folderId error:(NSError **)error;
+- (void)restoreFileEntryFromTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error;
 - (void)restoreFileShortcutFromTrashWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error;
 - (void)restoreFolderFromTrashWithFolderId:(long long)folderId error:(NSError **)error;
-- (NSDictionary *)moveFileEntryToTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error;
-- (void)restoreFileEntryFromTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error;
 
 @end

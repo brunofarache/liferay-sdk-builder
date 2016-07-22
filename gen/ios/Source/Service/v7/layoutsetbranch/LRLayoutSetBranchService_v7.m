@@ -35,20 +35,6 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateLayoutSetBranchWithGroupId:(long long)groupId layoutSetBranchId:(long long)layoutSetBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"layoutSetBranchId": @(layoutSetBranchId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/layoutsetbranch/update-layout-set-branch": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (void)deleteLayoutSetBranchWithLayoutSetBranchId:(long long)layoutSetBranchId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"layoutSetBranchId": @(layoutSetBranchId)
@@ -78,6 +64,20 @@
 	}];
 
 	NSDictionary *_command = @{@"/layoutsetbranch/merge-layout-set-branch": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateLayoutSetBranchWithGroupId:(long long)groupId layoutSetBranchId:(long long)layoutSetBranchId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"layoutSetBranchId": @(layoutSetBranchId),
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/layoutsetbranch/update-layout-set-branch": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }

@@ -8,15 +8,15 @@ import org.json.JSONArray;
 
 @Path("/usergroupgrouprole")
 public interface UserGroupGroupRoleService {
-  @Path("/delete-user-group-group-roles")
-  Call<Response> deleteUserGroupGroupRoles(@Param(name = "userGroupId") long userGroupId, @Param(name = "groupId") long groupId, @Param(name = "roleIds") JSONArray roleIds);
-
-  @Path("/delete-user-group-group-roles")
-  Call<Response> deleteUserGroupGroupRoles(@Param(name = "userGroupIds") JSONArray userGroupIds, @Param(name = "groupId") long groupId, @Param(name = "roleId") long roleId);
-
   @Path("/add-user-group-group-roles")
   Call<Response> addUserGroupGroupRoles(@Param(name = "userGroupId") long userGroupId, @Param(name = "groupId") long groupId, @Param(name = "roleIds") JSONArray roleIds);
 
   @Path("/add-user-group-group-roles")
   Call<Response> addUserGroupGroupRoles(@Param(name = "userGroupIds") JSONArray userGroupIds, @Param(name = "groupId") long groupId, @Param(name = "roleId") long roleId);
+
+  @Path("/delete-user-group-group-roles")
+  Call<Response> deleteUserGroupGroupRoles(@Param(name = "userGroupId") long userGroupId, @Param(name = "groupId") long groupId, @Param(name = "roleIds") JSONArray roleIds);
+
+  @Path("/delete-user-group-group-roles")
+  Call<Response> deleteUserGroupGroupRoles(@Param(name = "userGroupIds") JSONArray userGroupIds, @Param(name = "groupId") long groupId, @Param(name = "roleId") long roleId);
 }

@@ -19,27 +19,6 @@
  */
 @implementation LRWebsiteService_v7
 
-- (NSArray *)getWebsitesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": [self checkNull: className],
-		@"classPK": @(classPK)
-	}];
-
-	NSDictionary *_command = @{@"/website/get-websites": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getWebsiteWithWebsiteId:(long long)websiteId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"websiteId": @(websiteId)
-	}];
-
-	NSDictionary *_command = @{@"/website/get-website": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addWebsiteWithClassName:(NSString *)className classPK:(long long)classPK url:(NSString *)url typeId:(long long)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": [self checkNull: className],
@@ -55,6 +34,37 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (void)deleteWebsiteWithWebsiteId:(long long)websiteId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"websiteId": @(websiteId)
+	}];
+
+	NSDictionary *_command = @{@"/website/delete-website": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getWebsiteWithWebsiteId:(long long)websiteId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"websiteId": @(websiteId)
+	}];
+
+	NSDictionary *_command = @{@"/website/get-website": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getWebsitesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"className": [self checkNull: className],
+		@"classPK": @(classPK)
+	}];
+
+	NSDictionary *_command = @{@"/website/get-websites": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)updateWebsiteWithWebsiteId:(long long)websiteId url:(NSString *)url typeId:(long long)typeId primary:(BOOL)primary error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"websiteId": @(websiteId),
@@ -66,16 +76,6 @@
 	NSDictionary *_command = @{@"/website/update-website": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)deleteWebsiteWithWebsiteId:(long long)websiteId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"websiteId": @(websiteId)
-	}];
-
-	NSDictionary *_command = @{@"/website/delete-website": _params};
-
-	[self.session invoke:_command error:error];
 }
 
 @end

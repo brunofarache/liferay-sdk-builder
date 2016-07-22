@@ -19,32 +19,6 @@
  */
 @implementation LRAssetTagService_v7
 
-- (NSArray *)searchWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"name": [self checkNull: name],
-		@"start": @(start),
-		@"end": @(end)
-	}];
-
-	NSDictionary *_command = @{@"/assettag/search": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": [self checkNull: groupIds],
-		@"name": [self checkNull: name],
-		@"start": @(start),
-		@"end": @(end)
-	}];
-
-	NSDictionary *_command = @{@"/assettag/search": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addTagWithGroupId:(long long)groupId name:(NSString *)name serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -53,6 +27,92 @@
 	}];
 
 	NSDictionary *_command = @{@"/assettag/add-tag": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (void)deleteTagWithTagId:(long long)tagId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"tagId": @(tagId)
+	}];
+
+	NSDictionary *_command = @{@"/assettag/delete-tag": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)deleteTagsWithTagIds:(NSArray *)tagIds error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"tagIds": [self checkNull: tagIds]
+	}];
+
+	NSDictionary *_command = @{@"/assettag/delete-tags": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getGroupTagsWithGroupId:(long long)groupId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId)
+	}];
+
+	NSDictionary *_command = @{@"/assettag/get-group-tags": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getGroupTagsWithGroupId:(long long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"start": @(start),
+		@"end": @(end),
+		@"obc": [self checkNull: obc]
+	}];
+
+	NSDictionary *_command = @{@"/assettag/get-group-tags": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)getGroupTagsCountWithGroupId:(long long)groupId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId)
+	}];
+
+	NSDictionary *_command = @{@"/assettag/get-group-tags-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getGroupTagsDisplayWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"name": [self checkNull: name],
+		@"start": @(start),
+		@"end": @(end)
+	}];
+
+	NSDictionary *_command = @{@"/assettag/get-group-tags-display": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getGroupsTagsWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupIds": [self checkNull: groupIds]
+	}];
+
+	NSDictionary *_command = @{@"/assettag/get-groups-tags": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getTagWithTagId:(long long)tagId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"tagId": @(tagId)
+	}];
+
+	NSDictionary *_command = @{@"/assettag/get-tag": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -149,29 +209,6 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteTagsWithTagIds:(NSArray *)tagIds error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"tagIds": [self checkNull: tagIds]
-	}];
-
-	NSDictionary *_command = @{@"/assettag/delete-tags": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getGroupTagsDisplayWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"name": [self checkNull: name],
-		@"start": @(start),
-		@"end": @(end)
-	}];
-
-	NSDictionary *_command = @{@"/assettag/get-group-tags-display": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSNumber *)getTagsCountWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -206,69 +243,6 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getTagWithTagId:(long long)tagId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"tagId": @(tagId)
-	}];
-
-	NSDictionary *_command = @{@"/assettag/get-tag": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)deleteTagWithTagId:(long long)tagId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"tagId": @(tagId)
-	}];
-
-	NSDictionary *_command = @{@"/assettag/delete-tag": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getGroupsTagsWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": [self checkNull: groupIds]
-	}];
-
-	NSDictionary *_command = @{@"/assettag/get-groups-tags": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getGroupTagsWithGroupId:(long long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"start": @(start),
-		@"end": @(end),
-		@"obc": [self checkNull: obc]
-	}];
-
-	NSDictionary *_command = @{@"/assettag/get-group-tags": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getGroupTagsWithGroupId:(long long)groupId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId)
-	}];
-
-	NSDictionary *_command = @{@"/assettag/get-group-tags": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getGroupTagsCountWithGroupId:(long long)groupId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId)
-	}];
-
-	NSDictionary *_command = @{@"/assettag/get-group-tags-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
 - (void)mergeTagsWithFromTagIds:(NSArray *)fromTagIds toTagId:(long long)toTagId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fromTagIds": [self checkNull: fromTagIds],
@@ -289,6 +263,32 @@
 	NSDictionary *_command = @{@"/assettag/merge-tags": _params};
 
 	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)searchWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"name": [self checkNull: name],
+		@"start": @(start),
+		@"end": @(end)
+	}];
+
+	NSDictionary *_command = @{@"/assettag/search": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupIds": [self checkNull: groupIds],
+		@"name": [self checkNull: name],
+		@"start": @(start),
+		@"end": @(end)
+	}];
+
+	NSDictionary *_command = @{@"/assettag/search": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)updateTagWithTagId:(long long)tagId name:(NSString *)name serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {

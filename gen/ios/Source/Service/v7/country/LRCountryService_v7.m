@@ -19,16 +19,6 @@
  */
 @implementation LRCountryService_v7
 
-- (NSDictionary *)getCountryWithCountryId:(long long)countryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"countryId": @(countryId)
-	}];
-
-	NSDictionary *_command = @{@"/country/get-country": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addCountryWithName:(NSString *)name a2:(NSString *)a2 a3:(NSString *)a3 number:(NSString *)number idd:(NSString *)idd active:(BOOL)active error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": [self checkNull: name],
@@ -91,6 +81,16 @@
 	NSDictionary *_command = @{@"/country/get-countries": _params};
 
 	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getCountryWithCountryId:(long long)countryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"countryId": @(countryId)
+	}];
+
+	NSDictionary *_command = @{@"/country/get-country": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getCountryByA2WithA2:(NSString *)a2 error:(NSError **)error {

@@ -29,25 +29,14 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)exportPortletInfoAsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
+- (NSNumber *)exportLayoutsAsFileInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"exportImportConfiguration": [self checkNull: exportImportConfiguration]
 	}];
 
-	NSDictionary *_command = @{@"/exportimport/export-portlet-info-as-file": _params};
+	NSDictionary *_command = @{@"/exportimport/export-layouts-as-file-in-background": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)importLayoutsWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
-		@"file": [self checkNull: file]
-	}];
-
-	NSDictionary *_command = @{@"/exportimport/import-layouts": _params};
-
-	[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (NSNumber *)exportLayoutsAsFileInBackgroundWithExportImportConfigurationId:(long long)exportImportConfigurationId error:(NSError **)error {
@@ -60,14 +49,14 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)exportLayoutsAsFileInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
+- (NSDictionary *)exportPortletInfoAsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"exportImportConfiguration": [self checkNull: exportImportConfiguration]
 	}];
 
-	NSDictionary *_command = @{@"/exportimport/export-layouts-as-file-in-background": _params};
+	NSDictionary *_command = @{@"/exportimport/export-portlet-info-as-file": _params};
 
-	return (NSNumber *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 - (NSNumber *)exportPortletInfoAsFileInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
@@ -78,6 +67,17 @@
 	NSDictionary *_command = @{@"/exportimport/export-portlet-info-as-file-in-background": _params};
 
 	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (void)importLayoutsWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
+		@"file": [self checkNull: file]
+	}];
+
+	NSDictionary *_command = @{@"/exportimport/import-layouts": _params};
+
+	[self.session invoke:_command error:error];
 }
 
 - (NSNumber *)importLayoutsInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {

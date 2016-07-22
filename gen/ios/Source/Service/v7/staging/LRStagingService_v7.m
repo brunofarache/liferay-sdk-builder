@@ -19,6 +19,16 @@
  */
 @implementation LRStagingService_v7
 
+- (void)cleanUpStagingRequestWithStagingRequestId:(long long)stagingRequestId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"stagingRequestId": @(stagingRequestId)
+	}];
+
+	NSDictionary *_command = @{@"/staging/clean-up-staging-request": _params};
+
+	[self.session invoke:_command error:error];
+}
+
 - (NSNumber *)createStagingRequestWithGroupId:(long long)groupId checksum:(NSString *)checksum error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -51,16 +61,6 @@
 	NSDictionary *_command = @{@"/staging/publish-staging-request": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)cleanUpStagingRequestWithStagingRequestId:(long long)stagingRequestId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"stagingRequestId": @(stagingRequestId)
-	}];
-
-	NSDictionary *_command = @{@"/staging/clean-up-staging-request": _params};
-
-	[self.session invoke:_command error:error];
 }
 
 - (void)updateStagingRequestWithStagingRequestId:(long long)stagingRequestId fileName:(NSString *)fileName bytes:(NSData *)bytes error:(NSError **)error {

@@ -13,18 +13,18 @@ public interface AssetCategoryPropertyService {
   @Path("/add-category-property")
   Call<JSONObject> addCategoryProperty(@Param(name = "entryId") long entryId, @Param(name = "key") String key, @Param(name = "value") String value);
 
-  @Path("/update-category-property")
-  Call<JSONObject> updateCategoryProperty(@Param(name = "userId") long userId, @Param(name = "categoryPropertyId") long categoryPropertyId, @Param(name = "key") String key, @Param(name = "value") String value);
-
-  @Path("/update-category-property")
-  Call<JSONObject> updateCategoryProperty(@Param(name = "categoryPropertyId") long categoryPropertyId, @Param(name = "key") String key, @Param(name = "value") String value);
-
-  @Path("/get-category-property-values")
-  Call<JSONArray> getCategoryPropertyValues(@Param(name = "companyId") long companyId, @Param(name = "key") String key);
+  @Path("/delete-category-property")
+  Call<Response> deleteCategoryProperty(@Param(name = "categoryPropertyId") long categoryPropertyId);
 
   @Path("/get-category-properties")
   Call<JSONArray> getCategoryProperties(@Param(name = "entryId") long entryId);
 
-  @Path("/delete-category-property")
-  Call<Response> deleteCategoryProperty(@Param(name = "categoryPropertyId") long categoryPropertyId);
+  @Path("/get-category-property-values")
+  Call<JSONArray> getCategoryPropertyValues(@Param(name = "companyId") long companyId, @Param(name = "key") String key);
+
+  @Path("/update-category-property")
+  Call<JSONObject> updateCategoryProperty(@Param(name = "categoryPropertyId") long categoryPropertyId, @Param(name = "key") String key, @Param(name = "value") String value);
+
+  @Path("/update-category-property")
+  Call<JSONObject> updateCategoryProperty(@Param(name = "userId") long userId, @Param(name = "categoryPropertyId") long categoryPropertyId, @Param(name = "key") String key, @Param(name = "value") String value);
 }

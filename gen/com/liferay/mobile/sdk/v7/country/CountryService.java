@@ -9,9 +9,6 @@ import org.json.JSONObject;
 
 @Path("/country")
 public interface CountryService {
-  @Path("/get-country")
-  Call<JSONObject> getCountry(@Param(name = "countryId") long countryId);
-
   @Path("/add-country")
   Call<JSONObject> addCountry(@Param(name = "name") String name, @Param(name = "a2") String a2, @Param(name = "a3") String a3, @Param(name = "number") String number, @Param(name = "idd") String idd, @Param(name = "active") boolean active);
 
@@ -29,6 +26,9 @@ public interface CountryService {
 
   @Path("/get-countries")
   Call<JSONArray> getCountries();
+
+  @Path("/get-country")
+  Call<JSONObject> getCountry(@Param(name = "countryId") long countryId);
 
   @Path("/get-country-by-a2")
   Call<JSONObject> getCountryByA2(@Param(name = "a2") String a2);

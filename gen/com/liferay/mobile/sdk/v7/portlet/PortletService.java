@@ -9,9 +9,9 @@ import org.json.JSONObject;
 
 @Path("/portlet")
 public interface PortletService {
-  @Path("/update-portlet")
-  Call<JSONObject> updatePortlet(@Param(name = "companyId") long companyId, @Param(name = "portletId") String portletId, @Param(name = "roles") String roles, @Param(name = "active") boolean active);
-
   @Path("/get-war-portlets")
   Call<JSONArray> getWARPortlets();
+
+  @Path("/update-portlet")
+  Call<JSONObject> updatePortlet(@Param(name = "companyId") long companyId, @Param(name = "portletId") String portletId, @Param(name = "roles") String roles, @Param(name = "active") boolean active);
 }

@@ -19,27 +19,6 @@
  */
 @implementation LREmailAddressService_v7
 
-- (NSArray *)getEmailAddressesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": [self checkNull: className],
-		@"classPK": @(classPK)
-	}];
-
-	NSDictionary *_command = @{@"/emailaddress/get-email-addresses": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"emailAddressId": @(emailAddressId)
-	}];
-
-	NSDictionary *_command = @{@"/emailaddress/get-email-address": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addEmailAddressWithClassName:(NSString *)className classPK:(long long)classPK address:(NSString *)address typeId:(long long)typeId primary:(BOOL)primary serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": [self checkNull: className],
@@ -55,17 +34,14 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateEmailAddressWithEmailAddressId:(long long)emailAddressId address:(NSString *)address typeId:(long long)typeId primary:(BOOL)primary error:(NSError **)error {
+- (void)deleteEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"emailAddressId": @(emailAddressId),
-		@"address": [self checkNull: address],
-		@"typeId": @(typeId),
-		@"primary": @(primary)
+		@"emailAddressId": @(emailAddressId)
 	}];
 
-	NSDictionary *_command = @{@"/emailaddress/update-email-address": _params};
+	NSDictionary *_command = @{@"/emailaddress/delete-email-address": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)fetchEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error {
@@ -78,14 +54,38 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error {
+- (NSDictionary *)getEmailAddressWithEmailAddressId:(long long)emailAddressId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"emailAddressId": @(emailAddressId)
 	}];
 
-	NSDictionary *_command = @{@"/emailaddress/delete-email-address": _params};
+	NSDictionary *_command = @{@"/emailaddress/get-email-address": _params};
 
-	[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getEmailAddressesWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"className": [self checkNull: className],
+		@"classPK": @(classPK)
+	}];
+
+	NSDictionary *_command = @{@"/emailaddress/get-email-addresses": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateEmailAddressWithEmailAddressId:(long long)emailAddressId address:(NSString *)address typeId:(long long)typeId primary:(BOOL)primary error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"emailAddressId": @(emailAddressId),
+		@"address": [self checkNull: address],
+		@"typeId": @(typeId),
+		@"primary": @(primary)
+	}];
+
+	NSDictionary *_command = @{@"/emailaddress/update-email-address": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end

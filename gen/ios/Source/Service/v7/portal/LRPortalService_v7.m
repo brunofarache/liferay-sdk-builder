@@ -19,11 +19,11 @@
  */
 @implementation LRPortalService_v7
 
-- (NSString *)getVersion:(NSError **)error {
+- (NSString *)getAutoDeployDirectory:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
 
-	NSDictionary *_command = @{@"/portal/get-version": _params};
+	NSDictionary *_command = @{@"/portal/get-auto-deploy-directory": _params};
 
 	return (NSString *)[self.session invoke:_command error:error];
 }
@@ -37,12 +37,21 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (void)testAddClassName_RollbackWithClassNameValue:(NSString *)classNameValue error:(NSError **)error {
+- (NSString *)getVersion:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"classNameValue": [self checkNull: classNameValue]
 	}];
 
-	NSDictionary *_command = @{@"/portal/test-add-class-name_-rollback": _params};
+	NSDictionary *_command = @{@"/portal/get-version": _params};
+
+	return (NSString *)[self.session invoke:_command error:error];
+}
+
+- (void)testAddClassNameAndTestTransactionPortletBar_PortalRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"transactionPortletBarText": [self checkNull: transactionPortletBarText]
+	}];
+
+	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-portal-rollback": _params};
 
 	[self.session invoke:_command error:error];
 }
@@ -57,31 +66,32 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)testAddClassNameAndTestTransactionPortletBar_PortalRollbackWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"transactionPortletBarText": [self checkNull: transactionPortletBarText]
-	}];
-
-	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-portal-rollback": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (NSString *)getAutoDeployDirectory:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-	}];
-
-	NSDictionary *_command = @{@"/portal/get-auto-deploy-directory": _params};
-
-	return (NSString *)[self.session invoke:_command error:error];
-}
-
 - (void)testAddClassNameAndTestTransactionPortletBar_SuccessWithTransactionPortletBarText:(NSString *)transactionPortletBarText error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"transactionPortletBarText": [self checkNull: transactionPortletBarText]
 	}];
 
 	NSDictionary *_command = @{@"/portal/test-add-class-name-and-test-transaction-portlet-bar_-success": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)testAddClassName_RollbackWithClassNameValue:(NSString *)classNameValue error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"classNameValue": [self checkNull: classNameValue]
+	}];
+
+	NSDictionary *_command = @{@"/portal/test-add-class-name_-rollback": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (void)testAddClassName_SuccessWithClassNameValue:(NSString *)classNameValue error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"classNameValue": [self checkNull: classNameValue]
+	}];
+
+	NSDictionary *_command = @{@"/portal/test-add-class-name_-success": _params};
 
 	[self.session invoke:_command error:error];
 }
@@ -129,16 +139,6 @@
 	NSDictionary *_command = @{@"/portal/test-has-class-name": _params};
 
 	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
-}
-
-- (void)testAddClassName_SuccessWithClassNameValue:(NSString *)classNameValue error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"classNameValue": [self checkNull: classNameValue]
-	}];
-
-	NSDictionary *_command = @{@"/portal/test-add-class-name_-success": _params};
-
-	[self.session invoke:_command error:error];
 }
 
 @end

@@ -19,22 +19,6 @@
  */
 @implementation LRDLFileEntryTypeService_v7
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"groupIds": [self checkNull: groupIds],
-		@"keywords": [self checkNull: keywords],
-		@"includeBasicFileEntryType": @(includeBasicFileEntryType),
-		@"start": @(start),
-		@"end": @(end),
-		@"orderByComparator": [self checkNull: orderByComparator]
-	}];
-
-	NSDictionary *_command = @{@"/dlfileentrytype/search": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addFileEntryTypeWithGroupId:(long long)groupId fileEntryTypeKey:(NSString *)fileEntryTypeKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -74,6 +58,16 @@
 	[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)getFileEntryTypeWithFileEntryTypeId:(long long)fileEntryTypeId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"fileEntryTypeId": @(fileEntryTypeId)
+	}];
+
+	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-type": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupIds": [self checkNull: groupIds],
@@ -96,14 +90,55 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getFileEntryTypeWithFileEntryTypeId:(long long)fileEntryTypeId error:(NSError **)error {
+- (NSNumber *)getFileEntryTypesCountWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"fileEntryTypeId": @(fileEntryTypeId)
+		@"groupIds": [self checkNull: groupIds]
 	}];
 
-	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-type": _params};
+	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-types-count": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFolderFileEntryTypesWithGroupIds:(NSArray *)groupIds folderId:(long long)folderId inherited:(BOOL)inherited error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupIds": [self checkNull: groupIds],
+		@"folderId": @(folderId),
+		@"inherited": @(inherited)
+	}];
+
+	NSDictionary *_command = @{@"/dlfileentrytype/get-folder-file-entry-types": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType start:(int)start end:(int)end orderByComparator:(NSDictionary *)orderByComparator error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"groupIds": [self checkNull: groupIds],
+		@"keywords": [self checkNull: keywords],
+		@"includeBasicFileEntryType": @(includeBasicFileEntryType),
+		@"start": @(start),
+		@"end": @(end),
+		@"orderByComparator": [self checkNull: orderByComparator]
+	}];
+
+	NSDictionary *_command = @{@"/dlfileentrytype/search": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"groupIds": [self checkNull: groupIds],
+		@"keywords": [self checkNull: keywords],
+		@"includeBasicFileEntryType": @(includeBasicFileEntryType)
+	}];
+
+	NSDictionary *_command = @{@"/dlfileentrytype/search-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 - (void)updateFileEntryTypeWithFileEntryTypeId:(long long)fileEntryTypeId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
@@ -132,41 +167,6 @@
 	NSDictionary *_command = @{@"/dlfileentrytype/update-file-entry-type": _params};
 
 	[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getFolderFileEntryTypesWithGroupIds:(NSArray *)groupIds folderId:(long long)folderId inherited:(BOOL)inherited error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": [self checkNull: groupIds],
-		@"folderId": @(folderId),
-		@"inherited": @(inherited)
-	}];
-
-	NSDictionary *_command = @{@"/dlfileentrytype/get-folder-file-entry-types": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords includeBasicFileEntryType:(BOOL)includeBasicFileEntryType error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"groupIds": [self checkNull: groupIds],
-		@"keywords": [self checkNull: keywords],
-		@"includeBasicFileEntryType": @(includeBasicFileEntryType)
-	}];
-
-	NSDictionary *_command = @{@"/dlfileentrytype/search-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getFileEntryTypesCountWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": [self checkNull: groupIds]
-	}];
-
-	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-types-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
 @end

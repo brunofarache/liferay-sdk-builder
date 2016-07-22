@@ -10,18 +10,6 @@ import org.json.JSONObject;
 
 @Path("/resourceblock")
 public interface ResourceBlockService {
-  @Path("/set-company-scope-permissions")
-  Call<Response> setCompanyScopePermissions(@Param(name = "scopeGroupId") long scopeGroupId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "roleId") long roleId, @Param(name = "actionIds") JSONArray actionIds);
-
-  @Path("/set-group-scope-permissions")
-  Call<Response> setGroupScopePermissions(@Param(name = "scopeGroupId") long scopeGroupId, @Param(name = "companyId") long companyId, @Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "roleId") long roleId, @Param(name = "actionIds") JSONArray actionIds);
-
-  @Path("/set-individual-scope-permissions")
-  Call<Response> setIndividualScopePermissions(@Param(name = "companyId") long companyId, @Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "primKey") long primKey, @Param(name = "roleId") long roleId, @Param(name = "actionIds") JSONArray actionIds);
-
-  @Path("/set-individual-scope-permissions")
-  Call<Response> setIndividualScopePermissions(@Param(name = "companyId") long companyId, @Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "primKey") long primKey, @Param(name = "roleIdsToActionIds", className = "") JSONObject roleIdsToActionIds);
-
   @Path("/add-company-scope-permission")
   Call<Response> addCompanyScopePermission(@Param(name = "scopeGroupId") long scopeGroupId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "roleId") long roleId, @Param(name = "actionId") String actionId);
 
@@ -42,4 +30,16 @@ public interface ResourceBlockService {
 
   @Path("/remove-individual-scope-permission")
   Call<Response> removeIndividualScopePermission(@Param(name = "companyId") long companyId, @Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "primKey") long primKey, @Param(name = "roleId") long roleId, @Param(name = "actionId") String actionId);
+
+  @Path("/set-company-scope-permissions")
+  Call<Response> setCompanyScopePermissions(@Param(name = "scopeGroupId") long scopeGroupId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "roleId") long roleId, @Param(name = "actionIds") JSONArray actionIds);
+
+  @Path("/set-group-scope-permissions")
+  Call<Response> setGroupScopePermissions(@Param(name = "scopeGroupId") long scopeGroupId, @Param(name = "companyId") long companyId, @Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "roleId") long roleId, @Param(name = "actionIds") JSONArray actionIds);
+
+  @Path("/set-individual-scope-permissions")
+  Call<Response> setIndividualScopePermissions(@Param(name = "companyId") long companyId, @Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "primKey") long primKey, @Param(name = "roleId") long roleId, @Param(name = "actionIds") JSONArray actionIds);
+
+  @Path("/set-individual-scope-permissions")
+  Call<Response> setIndividualScopePermissions(@Param(name = "companyId") long companyId, @Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "primKey") long primKey, @Param(name = "roleIdsToActionIds", className = "") JSONObject roleIdsToActionIds);
 }

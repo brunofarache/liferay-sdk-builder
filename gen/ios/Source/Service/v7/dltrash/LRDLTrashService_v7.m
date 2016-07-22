@@ -31,6 +31,16 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)moveFileEntryToTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"fileEntryId": @(fileEntryId)
+	}];
+
+	NSDictionary *_command = @{@"/dltrash/move-file-entry-to-trash": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)moveFileShortcutFromTrashWithFileShortcutId:(long long)fileShortcutId newFolderId:(long long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileShortcutId": @(fileShortcutId),
@@ -75,6 +85,16 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (void)restoreFileEntryFromTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"fileEntryId": @(fileEntryId)
+	}];
+
+	NSDictionary *_command = @{@"/dltrash/restore-file-entry-from-trash": _params};
+
+	[self.session invoke:_command error:error];
+}
+
 - (void)restoreFileShortcutFromTrashWithFileShortcutId:(long long)fileShortcutId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileShortcutId": @(fileShortcutId)
@@ -91,26 +111,6 @@
 	}];
 
 	NSDictionary *_command = @{@"/dltrash/restore-folder-from-trash": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)moveFileEntryToTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"fileEntryId": @(fileEntryId)
-	}];
-
-	NSDictionary *_command = @{@"/dltrash/move-file-entry-to-trash": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)restoreFileEntryFromTrashWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"fileEntryId": @(fileEntryId)
-	}];
-
-	NSDictionary *_command = @{@"/dltrash/restore-file-entry-from-trash": _params};
 
 	[self.session invoke:_command error:error];
 }

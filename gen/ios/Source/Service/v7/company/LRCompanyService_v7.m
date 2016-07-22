@@ -19,12 +19,62 @@
  */
 @implementation LRCompanyService_v7
 
+- (void)deleteLogoWithCompanyId:(long long)companyId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId)
+	}];
+
+	NSDictionary *_command = @{@"/company/delete-logo": _params};
+
+	[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)getCompanyByIdWithCompanyId:(long long)companyId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId)
 	}];
 
 	NSDictionary *_command = @{@"/company/get-company-by-id": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getCompanyByLogoIdWithLogoId:(long long)logoId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"logoId": @(logoId)
+	}];
+
+	NSDictionary *_command = @{@"/company/get-company-by-logo-id": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getCompanyByMxWithMx:(NSString *)mx error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"mx": [self checkNull: mx]
+	}];
+
+	NSDictionary *_command = @{@"/company/get-company-by-mx": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getCompanyByVirtualHostWithVirtualHost:(NSString *)virtualHost error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"virtualHost": [self checkNull: virtualHost]
+	}];
+
+	NSDictionary *_command = @{@"/company/get-company-by-virtual-host": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)getCompanyByWebIdWithWebId:(NSString *)webId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"webId": [self checkNull: webId]
+	}];
+
+	NSDictionary *_command = @{@"/company/get-company-by-web-id": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -85,56 +135,6 @@
 	}];
 
 	NSDictionary *_command = @{@"/company/update-company": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)deleteLogoWithCompanyId:(long long)companyId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId)
-	}];
-
-	NSDictionary *_command = @{@"/company/delete-logo": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getCompanyByLogoIdWithLogoId:(long long)logoId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"logoId": @(logoId)
-	}];
-
-	NSDictionary *_command = @{@"/company/get-company-by-logo-id": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getCompanyByMxWithMx:(NSString *)mx error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"mx": [self checkNull: mx]
-	}];
-
-	NSDictionary *_command = @{@"/company/get-company-by-mx": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getCompanyByVirtualHostWithVirtualHost:(NSString *)virtualHost error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"virtualHost": [self checkNull: virtualHost]
-	}];
-
-	NSDictionary *_command = @{@"/company/get-company-by-virtual-host": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getCompanyByWebIdWithWebId:(NSString *)webId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"webId": [self checkNull: webId]
-	}];
-
-	NSDictionary *_command = @{@"/company/get-company-by-web-id": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }

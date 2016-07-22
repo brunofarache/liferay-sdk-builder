@@ -19,6 +19,16 @@
  */
 @implementation LRListTypeService_v7
 
+- (NSDictionary *)getListTypeWithListTypeId:(long long)listTypeId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"listTypeId": @(listTypeId)
+	}];
+
+	NSDictionary *_command = @{@"/listtype/get-list-type": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSArray *)getListTypesWithType:(NSString *)type error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"type": [self checkNull: type]
@@ -50,16 +60,6 @@
 	NSDictionary *_command = @{@"/listtype/validate": _params};
 
 	[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getListTypeWithListTypeId:(long long)listTypeId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"listTypeId": @(listTypeId)
-	}];
-
-	NSDictionary *_command = @{@"/listtype/get-list-type": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
 @end
