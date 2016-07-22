@@ -45,6 +45,14 @@ public class ObjectiveCUtil extends LanguageUtil {
 		return WordUtils.capitalize(word);
 	}
 
+	public String getJSONWrapperClassName(String type) {
+		if (type.startsWith(OBJECT_PREFIX)) {
+			return type.substring(7, type.length() - 1);
+		}
+
+		return type;
+	}
+
 	public String getParamValue(String name, String type) {
 		type = getType(type);
 
