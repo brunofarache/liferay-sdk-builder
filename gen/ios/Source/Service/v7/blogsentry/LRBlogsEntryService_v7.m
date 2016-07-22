@@ -86,10 +86,9 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getEntryWithGroupId:(long long)groupId urlTitle:(NSString *)urlTitle error:(NSError **)error {
+- (NSDictionary *)getEntryWithEntryId:(long long)entryId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"urlTitle": [self checkNull: urlTitle]
+		@"entryId": @(entryId)
 	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-entry": _params};
@@ -97,9 +96,10 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getEntryWithEntryId:(long long)entryId error:(NSError **)error {
+- (NSDictionary *)getEntryWithGroupId:(long long)groupId urlTitle:(NSString *)urlTitle error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"entryId": @(entryId)
+		@"groupId": @(groupId),
+		@"urlTitle": [self checkNull: urlTitle]
 	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-entry": _params};
@@ -112,6 +112,32 @@
 		@"groupId": @(groupId),
 		@"status": @(status),
 		@"max": @(max)
+	}];
+
+	NSDictionary *_command = @{@"/blogsentry/get-group-entries": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getGroupEntriesWithGroupId:(long long)groupId displayDate:(long long)displayDate status:(int)status max:(int)max error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"displayDate": @(displayDate),
+		@"status": @(status),
+		@"max": @(max)
+	}];
+
+	NSDictionary *_command = @{@"/blogsentry/get-group-entries": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getGroupEntriesWithGroupId:(long long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"status": @(status),
+		@"start": @(start),
+		@"end": @(end)
 	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-group-entries": _params};
@@ -133,19 +159,6 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupEntriesWithGroupId:(long long)groupId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"status": @(status),
-		@"start": @(start),
-		@"end": @(end)
-	}];
-
-	NSDictionary *_command = @{@"/blogsentry/get-group-entries": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
 - (NSArray *)getGroupEntriesWithGroupId:(long long)groupId status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -153,19 +166,6 @@
 		@"start": @(start),
 		@"end": @(end),
 		@"obc": [self checkNull: obc]
-	}];
-
-	NSDictionary *_command = @{@"/blogsentry/get-group-entries": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getGroupEntriesWithGroupId:(long long)groupId displayDate:(long long)displayDate status:(int)status max:(int)max error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"displayDate": @(displayDate),
-		@"status": @(status),
-		@"max": @(max)
 	}];
 
 	NSDictionary *_command = @{@"/blogsentry/get-group-entries": _params};

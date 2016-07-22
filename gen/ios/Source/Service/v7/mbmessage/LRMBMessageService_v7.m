@@ -36,25 +36,6 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addMessageWithGroupId:(long long)groupId categoryId:(long long)categoryId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"categoryId": @(categoryId),
-		@"subject": [self checkNull: subject],
-		@"body": [self checkNull: body],
-		@"format": [self checkNull: format],
-		@"inputStreamOVPs": [self checkNull: inputStreamOVPs],
-		@"anonymous": @(anonymous),
-		@"priority": @(priority),
-		@"allowPingbacks": @(allowPingbacks),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/mbmessage/add-message": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addMessageWithCategoryId:(long long)categoryId subject:(NSString *)subject body:(NSString *)body serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"categoryId": @(categoryId),
@@ -71,6 +52,25 @@
 - (NSDictionary *)addMessageWithParentMessageId:(long long)parentMessageId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentMessageId": @(parentMessageId),
+		@"subject": [self checkNull: subject],
+		@"body": [self checkNull: body],
+		@"format": [self checkNull: format],
+		@"inputStreamOVPs": [self checkNull: inputStreamOVPs],
+		@"anonymous": @(anonymous),
+		@"priority": @(priority),
+		@"allowPingbacks": @(allowPingbacks),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/mbmessage/add-message": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addMessageWithGroupId:(long long)groupId categoryId:(long long)categoryId subject:(NSString *)subject body:(NSString *)body format:(NSString *)format inputStreamOVPs:(NSArray *)inputStreamOVPs anonymous:(BOOL)anonymous priority:(double)priority allowPingbacks:(BOOL)allowPingbacks serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"categoryId": @(categoryId),
 		@"subject": [self checkNull: subject],
 		@"body": [self checkNull: body],
 		@"format": [self checkNull: format],
@@ -119,14 +119,8 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteDiscussionMessageWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId messageId:(long long)messageId error:(NSError **)error {
+- (void)deleteDiscussionMessageWithMessageId:(long long)messageId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"className": [self checkNull: className],
-		@"classPK": @(classPK),
-		@"permissionClassName": [self checkNull: permissionClassName],
-		@"permissionClassPK": @(permissionClassPK),
-		@"permissionOwnerId": @(permissionOwnerId),
 		@"messageId": @(messageId)
 	}];
 
@@ -135,8 +129,14 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteDiscussionMessageWithMessageId:(long long)messageId error:(NSError **)error {
+- (void)deleteDiscussionMessageWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK permissionClassName:(NSString *)permissionClassName permissionClassPK:(long long)permissionClassPK permissionOwnerId:(long long)permissionOwnerId messageId:(long long)messageId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"className": [self checkNull: className],
+		@"classPK": @(classPK),
+		@"permissionClassName": [self checkNull: permissionClassName],
+		@"permissionClassPK": @(permissionClassPK),
+		@"permissionOwnerId": @(permissionOwnerId),
 		@"messageId": @(messageId)
 	}];
 
@@ -260,10 +260,9 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getGroupMessagesRSSWithGroupId:(long long)groupId userId:(long long)userId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
+- (NSString *)getGroupMessagesRSSWithGroupId:(long long)groupId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"userId": @(userId),
 		@"status": @(status),
 		@"max": @(max),
 		@"type": [self checkNull: type],
@@ -279,9 +278,10 @@
 	return (NSString *)[self.session invoke:_command error:error];
 }
 
-- (NSString *)getGroupMessagesRSSWithGroupId:(long long)groupId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
+- (NSString *)getGroupMessagesRSSWithGroupId:(long long)groupId userId:(long long)userId status:(int)status max:(int)max type:(NSString *)type version:(double)version displayStyle:(NSString *)displayStyle feedURL:(NSString *)feedURL entryURL:(NSString *)entryURL themeDisplay:(NSDictionary *)themeDisplay error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
+		@"userId": @(userId),
 		@"status": @(status),
 		@"max": @(max),
 		@"type": [self checkNull: type],

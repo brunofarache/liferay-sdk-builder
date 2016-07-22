@@ -33,43 +33,43 @@ public interface AssetVocabularyService {
   Call<JSONArray> getGroupVocabularies(@Param(name = "groupIds") JSONArray groupIds);
 
   @Path("/get-group-vocabularies")
-  Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId);
 
   @Path("/get-group-vocabularies")
   Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId, @Param(name = "createDefaultVocabulary") boolean createDefaultVocabulary);
 
   @Path("/get-group-vocabularies")
-  Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId);
+  Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+
+  @Path("/get-group-vocabularies")
+  Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-group-vocabularies")
   Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId, @Param(name = "createDefaultVocabulary") boolean createDefaultVocabulary, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
-
-  @Path("/get-group-vocabularies")
-  Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
-
-  @Path("/get-group-vocabularies-count")
-  Call<Integer> getGroupVocabulariesCount(@Param(name = "groupId") long groupId);
 
   @Path("/get-group-vocabularies-count")
   Call<Integer> getGroupVocabulariesCount(@Param(name = "groupIds") JSONArray groupIds);
 
   @Path("/get-group-vocabularies-count")
-  Call<Integer> getGroupVocabulariesCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
+  Call<Integer> getGroupVocabulariesCount(@Param(name = "groupId") long groupId);
 
-  @Path("/get-group-vocabularies-display")
-  Call<JSONObject> getGroupVocabulariesDisplay(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "addDefaultVocabulary") boolean addDefaultVocabulary, @Param(name = "obc", className = "") JSONObject obc);
+  @Path("/get-group-vocabularies-count")
+  Call<Integer> getGroupVocabulariesCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
 
   @Path("/get-group-vocabularies-display")
   Call<JSONObject> getGroupVocabulariesDisplay(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
+  @Path("/get-group-vocabularies-display")
+  Call<JSONObject> getGroupVocabulariesDisplay(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "addDefaultVocabulary") boolean addDefaultVocabulary, @Param(name = "obc", className = "") JSONObject obc);
+
   @Path("/get-groups-vocabularies")
-  Call<JSONArray> getGroupsVocabularies(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "className") String className, @Param(name = "classTypePK") long classTypePK);
+  Call<JSONArray> getGroupsVocabularies(@Param(name = "groupIds") JSONArray groupIds);
 
   @Path("/get-groups-vocabularies")
   Call<JSONArray> getGroupsVocabularies(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "className") String className);
 
   @Path("/get-groups-vocabularies")
-  Call<JSONArray> getGroupsVocabularies(@Param(name = "groupIds") JSONArray groupIds);
+  Call<JSONArray> getGroupsVocabularies(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "className") String className, @Param(name = "classTypePK") long classTypePK);
 
   @Path("/get-vocabularies")
   Call<JSONArray> getVocabularies(@Param(name = "vocabularyIds") JSONArray vocabularyIds);

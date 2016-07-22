@@ -19,12 +19,11 @@
  */
 @implementation LRDLFileEntryTypeService_v7
 
-- (NSDictionary *)addFileEntryTypeWithGroupId:(long long)groupId fileEntryTypeKey:(NSString *)fileEntryTypeKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addFileEntryTypeWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"fileEntryTypeKey": [self checkNull: fileEntryTypeKey],
-		@"nameMap": [self checkNull: nameMap],
-		@"descriptionMap": [self checkNull: descriptionMap],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"ddmStructureIds": [self checkNull: ddmStructureIds],
 		@"serviceContext": [self checkNull: serviceContext]
 	}];
@@ -34,11 +33,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addFileEntryTypeWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addFileEntryTypeWithGroupId:(long long)groupId fileEntryTypeKey:(NSString *)fileEntryTypeKey nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap ddmStructureIds:(NSArray *)ddmStructureIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
+		@"fileEntryTypeKey": [self checkNull: fileEntryTypeKey],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"ddmStructureIds": [self checkNull: ddmStructureIds],
 		@"serviceContext": [self checkNull: serviceContext]
 	}];
@@ -68,11 +68,9 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": [self checkNull: groupIds],
-		@"start": @(start),
-		@"end": @(end)
+		@"groupIds": [self checkNull: groupIds]
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-types": _params};
@@ -80,9 +78,11 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds error:(NSError **)error {
+- (NSArray *)getFileEntryTypesWithGroupIds:(NSArray *)groupIds start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": [self checkNull: groupIds]
+		@"groupIds": [self checkNull: groupIds],
+		@"start": @(start),
+		@"end": @(end)
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentrytype/get-file-entry-types": _params};

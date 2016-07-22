@@ -32,6 +32,16 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)fetchRegionWithRegionId:(long long)regionId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"regionId": @(regionId)
+	}];
+
+	NSDictionary *_command = @{@"/region/fetch-region": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)fetchRegionWithCountryId:(long long)countryId regionCode:(NSString *)regionCode error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"countryId": @(countryId),
@@ -43,12 +53,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)fetchRegionWithRegionId:(long long)regionId error:(NSError **)error {
+- (NSDictionary *)getRegionWithRegionId:(long long)regionId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"regionId": @(regionId)
 	}];
 
-	NSDictionary *_command = @{@"/region/fetch-region": _params};
+	NSDictionary *_command = @{@"/region/get-region": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -64,20 +74,8 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getRegionWithRegionId:(long long)regionId error:(NSError **)error {
+- (NSArray *)getRegions:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"regionId": @(regionId)
-	}];
-
-	NSDictionary *_command = @{@"/region/get-region": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSArray *)getRegionsWithCountryId:(long long)countryId active:(BOOL)active error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"countryId": @(countryId),
-		@"active": @(active)
 	}];
 
 	NSDictionary *_command = @{@"/region/get-regions": _params};
@@ -105,8 +103,10 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getRegions:(NSError **)error {
+- (NSArray *)getRegionsWithCountryId:(long long)countryId active:(BOOL)active error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"countryId": @(countryId),
+		@"active": @(active)
 	}];
 
 	NSDictionary *_command = @{@"/region/get-regions": _params};

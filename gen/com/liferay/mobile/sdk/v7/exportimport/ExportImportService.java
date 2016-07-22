@@ -13,10 +13,10 @@ public interface ExportImportService {
   Call<JSONObject> exportLayoutsAsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
 
   @Path("/export-layouts-as-file-in-background")
-  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
+  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfigurationId") long exportImportConfigurationId);
 
   @Path("/export-layouts-as-file-in-background")
-  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfigurationId") long exportImportConfigurationId);
+  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
 
   @Path("/export-portlet-info-as-file")
   Call<JSONObject> exportPortletInfoAsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);

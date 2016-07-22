@@ -16,10 +16,10 @@ public interface DLFileEntryService {
   Call<JSONObject> cancelCheckOut(@Param(name = "fileEntryId") long fileEntryId);
 
   @Path("/check-in-file-entry")
-  Call<Response> checkInFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "major") boolean major, @Param(name = "changeLog") String changeLog, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<Response> checkInFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "lockUuid") String lockUuid, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/check-in-file-entry")
-  Call<Response> checkInFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "lockUuid") String lockUuid, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<Response> checkInFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "major") boolean major, @Param(name = "changeLog") String changeLog, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/check-out-file-entry")
   Call<JSONObject> checkOutFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
@@ -55,22 +55,22 @@ public interface DLFileEntryService {
   Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-file-entries-count")
-  Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId);
-
-  @Path("/get-file-entries-count")
-  Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status);
+  Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/get-file-entries-count")
   Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes);
 
   @Path("/get-file-entries-count")
-  Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
+  Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId);
 
-  @Path("/get-file-entry")
-  Call<JSONObject> getFileEntry(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "title") String title);
+  @Path("/get-file-entries-count")
+  Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status);
 
   @Path("/get-file-entry")
   Call<JSONObject> getFileEntry(@Param(name = "fileEntryId") long fileEntryId);
+
+  @Path("/get-file-entry")
+  Call<JSONObject> getFileEntry(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "title") String title);
 
   @Path("/get-file-entry-by-uuid-and-group-id")
   Call<JSONObject> getFileEntryByUuidAndGroupId(@Param(name = "uuid") String uuid, @Param(name = "groupId") long groupId);
@@ -85,10 +85,10 @@ public interface DLFileEntryService {
   Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-group-file-entries")
-  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "repositoryId") long repositoryId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-group-file-entries")
-  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "repositoryId") long repositoryId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-group-file-entries-count")
   Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId);

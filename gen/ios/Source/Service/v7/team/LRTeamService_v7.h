@@ -19,12 +19,12 @@
  */
 @interface LRTeamService_v7 : LRBaseService
 
-- (NSDictionary *)addTeamWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addTeamWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description error:(NSError **)error;
+- (NSDictionary *)addTeamWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteTeamWithTeamId:(long long)teamId error:(NSError **)error;
 - (NSArray *)getGroupTeamsWithGroupId:(long long)groupId error:(NSError **)error;
-- (NSDictionary *)getTeamWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error;
 - (NSDictionary *)getTeamWithTeamId:(long long)teamId error:(NSError **)error;
+- (NSDictionary *)getTeamWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error;
 - (NSArray *)getUserTeamsWithUserId:(long long)userId error:(NSError **)error;
 - (NSArray *)getUserTeamsWithUserId:(long long)userId groupId:(long long)groupId error:(NSError **)error;
 - (BOOL)hasUserTeamWithUserId:(long long)userId teamId:(long long)teamId error:(NSError **)error;

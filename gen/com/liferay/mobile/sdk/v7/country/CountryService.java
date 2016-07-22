@@ -22,10 +22,10 @@ public interface CountryService {
   Call<JSONObject> fetchCountryByA3(@Param(name = "a3") String a3);
 
   @Path("/get-countries")
-  Call<JSONArray> getCountries(@Param(name = "active") boolean active);
+  Call<JSONArray> getCountries();
 
   @Path("/get-countries")
-  Call<JSONArray> getCountries();
+  Call<JSONArray> getCountries(@Param(name = "active") boolean active);
 
   @Path("/get-country")
   Call<JSONObject> getCountry(@Param(name = "countryId") long countryId);

@@ -16,28 +16,28 @@ public interface DLFolderService {
   Call<JSONObject> addFolder(@Param(name = "groupId") long groupId, @Param(name = "repositoryId") long repositoryId, @Param(name = "mountPoint") boolean mountPoint, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/delete-folder")
-  Call<Response> deleteFolder(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name);
-
-  @Path("/delete-folder")
   Call<Response> deleteFolder(@Param(name = "folderId") long folderId);
 
   @Path("/delete-folder")
   Call<Response> deleteFolder(@Param(name = "folderId") long folderId, @Param(name = "includeTrashedEntries") boolean includeTrashedEntries);
 
+  @Path("/delete-folder")
+  Call<Response> deleteFolder(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name);
+
   @Path("/get-file-entries-and-file-shortcuts")
   Call<JSONArray> getFileEntriesAndFileShortcuts(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-file-entries-and-file-shortcuts-count")
-  Call<Integer> getFileEntriesAndFileShortcutsCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes);
-
-  @Path("/get-file-entries-and-file-shortcuts-count")
   Call<Integer> getFileEntriesAndFileShortcutsCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status);
 
-  @Path("/get-folder")
-  Call<JSONObject> getFolder(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name);
+  @Path("/get-file-entries-and-file-shortcuts-count")
+  Call<Integer> getFileEntriesAndFileShortcutsCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes);
 
   @Path("/get-folder")
   Call<JSONObject> getFolder(@Param(name = "folderId") long folderId);
+
+  @Path("/get-folder")
+  Call<JSONObject> getFolder(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name);
 
   @Path("/get-folder-ids")
   Call<JSONArray> getFolderIds(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
@@ -49,10 +49,10 @@ public interface DLFolderService {
   Call<JSONArray> getFolders(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "status") int status, @Param(name = "includeMountfolders") boolean includeMountfolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts")
-  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "queryDefinition", className = "") JSONObject queryDefinition);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts")
-  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "queryDefinition", className = "") JSONObject queryDefinition);
+  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts")
   Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
@@ -82,10 +82,10 @@ public interface DLFolderService {
   Call<JSONArray> getSubfolderIds(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "recurse") boolean recurse);
 
   @Path("/get-subfolder-ids")
-  Call<Response> getSubfolderIds(@Param(name = "folderIds") JSONArray folderIds, @Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "recurse") boolean recurse);
+  Call<Response> getSubfolderIds(@Param(name = "folderIds") JSONArray folderIds, @Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/get-subfolder-ids")
-  Call<Response> getSubfolderIds(@Param(name = "folderIds") JSONArray folderIds, @Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
+  Call<Response> getSubfolderIds(@Param(name = "folderIds") JSONArray folderIds, @Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "recurse") boolean recurse);
 
   @Path("/has-folder-lock")
   Call<Boolean> hasFolderLock(@Param(name = "folderId") long folderId);
@@ -97,10 +97,10 @@ public interface DLFolderService {
   Call<Boolean> isFolderLocked(@Param(name = "folderId") long folderId);
 
   @Path("/lock-folder")
-  Call<JSONObject> lockFolder(@Param(name = "folderId") long folderId, @Param(name = "owner") String owner, @Param(name = "inheritable") boolean inheritable, @Param(name = "expirationTime") long expirationTime);
+  Call<JSONObject> lockFolder(@Param(name = "folderId") long folderId);
 
   @Path("/lock-folder")
-  Call<JSONObject> lockFolder(@Param(name = "folderId") long folderId);
+  Call<JSONObject> lockFolder(@Param(name = "folderId") long folderId, @Param(name = "owner") String owner, @Param(name = "inheritable") boolean inheritable, @Param(name = "expirationTime") long expirationTime);
 
   @Path("/move-folder")
   Call<JSONObject> moveFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
@@ -115,13 +115,13 @@ public interface DLFolderService {
   Call<Response> unlockFolder(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "lockUuid") String lockUuid);
 
   @Path("/update-folder")
+  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "restrictionType") int restrictionType, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+
+  @Path("/update-folder")
   Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "overrideFileEntryTypes") boolean overrideFileEntryTypes, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/update-folder")
   Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "restrictionType") int restrictionType, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
-  @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "restrictionType") int restrictionType, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/verify-inheritable-lock")
   Call<Boolean> verifyInheritableLock(@Param(name = "folderId") long folderId, @Param(name = "lockUuid") String lockUuid);

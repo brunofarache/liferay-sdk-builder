@@ -71,11 +71,9 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getActivitiesCountWithMirrorActivityId:(long long)mirrorActivityId classNameId:(long long)classNameId classPK:(long long)classPK error:(NSError **)error {
+- (NSNumber *)getActivitiesCountWithClassNameId:(long long)classNameId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"mirrorActivityId": @(mirrorActivityId),
-		@"classNameId": @(classNameId),
-		@"classPK": @(classPK)
+		@"classNameId": @(classNameId)
 	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
@@ -105,9 +103,11 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getActivitiesCountWithClassNameId:(long long)classNameId error:(NSError **)error {
+- (NSNumber *)getActivitiesCountWithMirrorActivityId:(long long)mirrorActivityId classNameId:(long long)classNameId classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"classNameId": @(classNameId)
+		@"mirrorActivityId": @(mirrorActivityId),
+		@"classNameId": @(classNameId),
+		@"classPK": @(classPK)
 	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};

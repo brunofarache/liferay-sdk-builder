@@ -13,19 +13,19 @@ public interface RegionService {
   Call<JSONObject> addRegion(@Param(name = "countryId") long countryId, @Param(name = "regionCode") String regionCode, @Param(name = "name") String name, @Param(name = "active") boolean active);
 
   @Path("/fetch-region")
-  Call<JSONObject> fetchRegion(@Param(name = "countryId") long countryId, @Param(name = "regionCode") String regionCode);
-
-  @Path("/fetch-region")
   Call<JSONObject> fetchRegion(@Param(name = "regionId") long regionId);
 
-  @Path("/get-region")
-  Call<JSONObject> getRegion(@Param(name = "countryId") long countryId, @Param(name = "regionCode") String regionCode);
+  @Path("/fetch-region")
+  Call<JSONObject> fetchRegion(@Param(name = "countryId") long countryId, @Param(name = "regionCode") String regionCode);
 
   @Path("/get-region")
   Call<JSONObject> getRegion(@Param(name = "regionId") long regionId);
 
+  @Path("/get-region")
+  Call<JSONObject> getRegion(@Param(name = "countryId") long countryId, @Param(name = "regionCode") String regionCode);
+
   @Path("/get-regions")
-  Call<JSONArray> getRegions(@Param(name = "countryId") long countryId, @Param(name = "active") boolean active);
+  Call<JSONArray> getRegions();
 
   @Path("/get-regions")
   Call<JSONArray> getRegions(@Param(name = "countryId") long countryId);
@@ -34,5 +34,5 @@ public interface RegionService {
   Call<JSONArray> getRegions(@Param(name = "active") boolean active);
 
   @Path("/get-regions")
-  Call<JSONArray> getRegions();
+  Call<JSONArray> getRegions(@Param(name = "countryId") long countryId, @Param(name = "active") boolean active);
 }

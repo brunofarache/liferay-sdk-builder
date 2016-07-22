@@ -19,12 +19,11 @@
  */
 @implementation LRExpandoColumnService_v7
 
-- (NSDictionary *)addColumnWithTableId:(long long)tableId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error {
+- (NSDictionary *)addColumnWithTableId:(long long)tableId name:(NSString *)name type:(int)type error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tableId": @(tableId),
 		@"name": [self checkNull: name],
-		@"type": @(type),
-		@"defaultData": [self checkNull: defaultData]
+		@"type": @(type)
 	}];
 
 	NSDictionary *_command = @{@"/expandocolumn/add-column": _params};
@@ -32,11 +31,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addColumnWithTableId:(long long)tableId name:(NSString *)name type:(int)type error:(NSError **)error {
+- (NSDictionary *)addColumnWithTableId:(long long)tableId name:(NSString *)name type:(int)type defaultData:(NSDictionary *)defaultData error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"tableId": @(tableId),
 		@"name": [self checkNull: name],
-		@"type": @(type)
+		@"type": @(type),
+		@"defaultData": [self checkNull: defaultData]
 	}];
 
 	NSDictionary *_command = @{@"/expandocolumn/add-column": _params};

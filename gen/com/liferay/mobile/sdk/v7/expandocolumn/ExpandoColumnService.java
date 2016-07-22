@@ -10,10 +10,10 @@ import org.json.JSONObject;
 @Path("/expandocolumn")
 public interface ExpandoColumnService {
   @Path("/add-column")
-  Call<JSONObject> addColumn(@Param(name = "tableId") long tableId, @Param(name = "name") String name, @Param(name = "type") int type, @Param(name = "defaultData", className = "") JSONObject defaultData);
+  Call<JSONObject> addColumn(@Param(name = "tableId") long tableId, @Param(name = "name") String name, @Param(name = "type") int type);
 
   @Path("/add-column")
-  Call<JSONObject> addColumn(@Param(name = "tableId") long tableId, @Param(name = "name") String name, @Param(name = "type") int type);
+  Call<JSONObject> addColumn(@Param(name = "tableId") long tableId, @Param(name = "name") String name, @Param(name = "type") int type, @Param(name = "defaultData", className = "") JSONObject defaultData);
 
   @Path("/delete-column")
   Call<Response> deleteColumn(@Param(name = "columnId") long columnId);

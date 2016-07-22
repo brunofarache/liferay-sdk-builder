@@ -39,10 +39,9 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (void)validateWithListTypeId:(long long)listTypeId classNameId:(long long)classNameId type:(NSString *)type error:(NSError **)error {
+- (void)validateWithListTypeId:(long long)listTypeId type:(NSString *)type error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"listTypeId": @(listTypeId),
-		@"classNameId": @(classNameId),
 		@"type": [self checkNull: type]
 	}];
 
@@ -51,9 +50,10 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)validateWithListTypeId:(long long)listTypeId type:(NSString *)type error:(NSError **)error {
+- (void)validateWithListTypeId:(long long)listTypeId classNameId:(long long)classNameId type:(NSString *)type error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"listTypeId": @(listTypeId),
+		@"classNameId": @(classNameId),
 		@"type": [self checkNull: type]
 	}];
 

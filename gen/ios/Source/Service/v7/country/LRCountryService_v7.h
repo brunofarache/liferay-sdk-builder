@@ -23,8 +23,8 @@
 - (NSDictionary *)fetchCountryWithCountryId:(long long)countryId error:(NSError **)error;
 - (NSDictionary *)fetchCountryByA2WithA2:(NSString *)a2 error:(NSError **)error;
 - (NSDictionary *)fetchCountryByA3WithA3:(NSString *)a3 error:(NSError **)error;
-- (NSArray *)getCountriesWithActive:(BOOL)active error:(NSError **)error;
 - (NSArray *)getCountries:(NSError **)error;
+- (NSArray *)getCountriesWithActive:(BOOL)active error:(NSError **)error;
 - (NSDictionary *)getCountryWithCountryId:(long long)countryId error:(NSError **)error;
 - (NSDictionary *)getCountryByA2WithA2:(NSString *)a2 error:(NSError **)error;
 - (NSDictionary *)getCountryByA3WithA3:(NSString *)a3 error:(NSError **)error;

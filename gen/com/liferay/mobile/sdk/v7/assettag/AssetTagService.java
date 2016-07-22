@@ -39,40 +39,40 @@ public interface AssetTagService {
   Call<JSONObject> getTag(@Param(name = "tagId") long tagId);
 
   @Path("/get-tags")
-  Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
-
-  @Path("/get-tags")
-  Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);
-
-  @Path("/get-tags")
-  Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getTags(@Param(name = "className") String className, @Param(name = "classPK") long classPK);
 
   @Path("/get-tags")
   Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name);
 
   @Path("/get-tags")
+  Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);
+
+  @Path("/get-tags")
   Call<JSONArray> getTags(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);
+
+  @Path("/get-tags")
+  Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-tags")
   Call<JSONArray> getTags(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-tags")
-  Call<JSONArray> getTags(@Param(name = "className") String className, @Param(name = "classPK") long classPK);
+  Call<JSONArray> getTags(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-tags-count")
   Call<Integer> getTagsCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
 
   @Path("/get-visible-assets-tags-count")
-  Call<Integer> getVisibleAssetsTagsCount(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name);
-
-  @Path("/get-visible-assets-tags-count")
   Call<Integer> getVisibleAssetsTagsCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
 
-  @Path("/merge-tags")
-  Call<Response> mergeTags(@Param(name = "fromTagIds") JSONArray fromTagIds, @Param(name = "toTagId") long toTagId);
+  @Path("/get-visible-assets-tags-count")
+  Call<Integer> getVisibleAssetsTagsCount(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name);
 
   @Path("/merge-tags")
   Call<Response> mergeTags(@Param(name = "fromTagId") long fromTagId, @Param(name = "toTagId") long toTagId);
+
+  @Path("/merge-tags")
+  Call<Response> mergeTags(@Param(name = "fromTagIds") JSONArray fromTagIds, @Param(name = "toTagId") long toTagId);
 
   @Path("/search")
   Call<JSONArray> search(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);

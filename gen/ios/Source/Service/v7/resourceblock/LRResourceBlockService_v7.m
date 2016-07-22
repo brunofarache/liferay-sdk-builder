@@ -150,6 +150,20 @@
 	[self.session invoke:_command error:error];
 }
 
+- (void)setIndividualScopePermissionsWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name primKey:(long long)primKey roleIdsToActionIds:(NSDictionary *)roleIdsToActionIds error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"groupId": @(groupId),
+		@"name": [self checkNull: name],
+		@"primKey": @(primKey),
+		@"roleIdsToActionIds": [self checkNull: roleIdsToActionIds]
+	}];
+
+	NSDictionary *_command = @{@"/resourceblock/set-individual-scope-permissions": _params};
+
+	[self.session invoke:_command error:error];
+}
+
 - (void)setIndividualScopePermissionsWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name primKey:(long long)primKey roleId:(long long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
@@ -158,20 +172,6 @@
 		@"primKey": @(primKey),
 		@"roleId": @(roleId),
 		@"actionIds": [self checkNull: actionIds]
-	}];
-
-	NSDictionary *_command = @{@"/resourceblock/set-individual-scope-permissions": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)setIndividualScopePermissionsWithCompanyId:(long long)companyId groupId:(long long)groupId name:(NSString *)name primKey:(long long)primKey roleIdsToActionIds:(NSDictionary *)roleIdsToActionIds error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"groupId": @(groupId),
-		@"name": [self checkNull: name],
-		@"primKey": @(primKey),
-		@"roleIdsToActionIds": [self checkNull: roleIdsToActionIds]
 	}];
 
 	NSDictionary *_command = @{@"/resourceblock/set-individual-scope-permissions": _params};

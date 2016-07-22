@@ -75,6 +75,41 @@
 	[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)addUserWithCompanyId:(long long)companyId autoPassword:(BOOL)autoPassword password1:(NSString *)password1 password2:(NSString *)password2 autoScreenName:(BOOL)autoScreenName screenName:(NSString *)screenName emailAddress:(NSString *)emailAddress facebookId:(long long)facebookId openId:(NSString *)openId locale:(NSString *)locale firstName:(NSString *)firstName middleName:(NSString *)middleName lastName:(NSString *)lastName prefixId:(long long)prefixId suffixId:(long long)suffixId male:(BOOL)male birthdayMonth:(int)birthdayMonth birthdayDay:(int)birthdayDay birthdayYear:(int)birthdayYear jobTitle:(NSString *)jobTitle groupIds:(NSArray *)groupIds organizationIds:(NSArray *)organizationIds roleIds:(NSArray *)roleIds userGroupIds:(NSArray *)userGroupIds sendEmail:(BOOL)sendEmail serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"autoPassword": @(autoPassword),
+		@"password1": [self checkNull: password1],
+		@"password2": [self checkNull: password2],
+		@"autoScreenName": @(autoScreenName),
+		@"screenName": [self checkNull: screenName],
+		@"emailAddress": [self checkNull: emailAddress],
+		@"facebookId": @(facebookId),
+		@"openId": [self checkNull: openId],
+		@"locale": [self checkNull: locale],
+		@"firstName": [self checkNull: firstName],
+		@"middleName": [self checkNull: middleName],
+		@"lastName": [self checkNull: lastName],
+		@"prefixId": @(prefixId),
+		@"suffixId": @(suffixId),
+		@"male": @(male),
+		@"birthdayMonth": @(birthdayMonth),
+		@"birthdayDay": @(birthdayDay),
+		@"birthdayYear": @(birthdayYear),
+		@"jobTitle": [self checkNull: jobTitle],
+		@"groupIds": [self checkNull: groupIds],
+		@"organizationIds": [self checkNull: organizationIds],
+		@"roleIds": [self checkNull: roleIds],
+		@"userGroupIds": [self checkNull: userGroupIds],
+		@"sendEmail": @(sendEmail),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/user/add-user": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)addUserWithCompanyId:(long long)companyId autoPassword:(BOOL)autoPassword password1:(NSString *)password1 password2:(NSString *)password2 autoScreenName:(BOOL)autoScreenName screenName:(NSString *)screenName emailAddress:(NSString *)emailAddress facebookId:(long long)facebookId openId:(NSString *)openId locale:(NSString *)locale firstName:(NSString *)firstName middleName:(NSString *)middleName lastName:(NSString *)lastName prefixId:(long long)prefixId suffixId:(long long)suffixId male:(BOOL)male birthdayMonth:(int)birthdayMonth birthdayDay:(int)birthdayDay birthdayYear:(int)birthdayYear jobTitle:(NSString *)jobTitle groupIds:(NSArray *)groupIds organizationIds:(NSArray *)organizationIds roleIds:(NSArray *)roleIds userGroupIds:(NSArray *)userGroupIds addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses phones:(NSArray *)phones websites:(NSArray *)websites announcementsDelivers:(NSArray *)announcementsDelivers sendEmail:(BOOL)sendEmail serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
@@ -115,7 +150,18 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addUserWithCompanyId:(long long)companyId autoPassword:(BOOL)autoPassword password1:(NSString *)password1 password2:(NSString *)password2 autoScreenName:(BOOL)autoScreenName screenName:(NSString *)screenName emailAddress:(NSString *)emailAddress facebookId:(long long)facebookId openId:(NSString *)openId locale:(NSString *)locale firstName:(NSString *)firstName middleName:(NSString *)middleName lastName:(NSString *)lastName prefixId:(long long)prefixId suffixId:(long long)suffixId male:(BOOL)male birthdayMonth:(int)birthdayMonth birthdayDay:(int)birthdayDay birthdayYear:(int)birthdayYear jobTitle:(NSString *)jobTitle groupIds:(NSArray *)groupIds organizationIds:(NSArray *)organizationIds roleIds:(NSArray *)roleIds userGroupIds:(NSArray *)userGroupIds sendEmail:(BOOL)sendEmail serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (void)addUserGroupUsersWithUserGroupId:(long long)userGroupId userIds:(NSArray *)userIds error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"userGroupId": @(userGroupId),
+		@"userIds": [self checkNull: userIds]
+	}];
+
+	NSDictionary *_command = @{@"/user/add-user-group-users": _params};
+
+	[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addUserWithWorkflowWithCompanyId:(long long)companyId autoPassword:(BOOL)autoPassword password1:(NSString *)password1 password2:(NSString *)password2 autoScreenName:(BOOL)autoScreenName screenName:(NSString *)screenName emailAddress:(NSString *)emailAddress facebookId:(long long)facebookId openId:(NSString *)openId locale:(NSString *)locale firstName:(NSString *)firstName middleName:(NSString *)middleName lastName:(NSString *)lastName prefixId:(long long)prefixId suffixId:(long long)suffixId male:(BOOL)male birthdayMonth:(int)birthdayMonth birthdayDay:(int)birthdayDay birthdayYear:(int)birthdayYear jobTitle:(NSString *)jobTitle groupIds:(NSArray *)groupIds organizationIds:(NSArray *)organizationIds roleIds:(NSArray *)roleIds userGroupIds:(NSArray *)userGroupIds sendEmail:(BOOL)sendEmail serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"autoPassword": @(autoPassword),
@@ -145,20 +191,9 @@
 		@"serviceContext": [self checkNull: serviceContext]
 	}];
 
-	NSDictionary *_command = @{@"/user/add-user": _params};
+	NSDictionary *_command = @{@"/user/add-user-with-workflow": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (void)addUserGroupUsersWithUserGroupId:(long long)userGroupId userIds:(NSArray *)userIds error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userGroupId": @(userGroupId),
-		@"userIds": [self checkNull: userIds]
-	}];
-
-	NSDictionary *_command = @{@"/user/add-user-group-users": _params};
-
-	[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)addUserWithWorkflowWithCompanyId:(long long)companyId autoPassword:(BOOL)autoPassword password1:(NSString *)password1 password2:(NSString *)password2 autoScreenName:(BOOL)autoScreenName screenName:(NSString *)screenName emailAddress:(NSString *)emailAddress facebookId:(long long)facebookId openId:(NSString *)openId locale:(NSString *)locale firstName:(NSString *)firstName middleName:(NSString *)middleName lastName:(NSString *)lastName prefixId:(long long)prefixId suffixId:(long long)suffixId male:(BOOL)male birthdayMonth:(int)birthdayMonth birthdayDay:(int)birthdayDay birthdayYear:(int)birthdayYear jobTitle:(NSString *)jobTitle groupIds:(NSArray *)groupIds organizationIds:(NSArray *)organizationIds roleIds:(NSArray *)roleIds userGroupIds:(NSArray *)userGroupIds addresses:(NSArray *)addresses emailAddresses:(NSArray *)emailAddresses phones:(NSArray *)phones websites:(NSArray *)websites announcementsDelivers:(NSArray *)announcementsDelivers sendEmail:(BOOL)sendEmail serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
@@ -192,41 +227,6 @@
 		@"phones": [self checkNull: phones],
 		@"websites": [self checkNull: websites],
 		@"announcementsDelivers": [self checkNull: announcementsDelivers],
-		@"sendEmail": @(sendEmail),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/user/add-user-with-workflow": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)addUserWithWorkflowWithCompanyId:(long long)companyId autoPassword:(BOOL)autoPassword password1:(NSString *)password1 password2:(NSString *)password2 autoScreenName:(BOOL)autoScreenName screenName:(NSString *)screenName emailAddress:(NSString *)emailAddress facebookId:(long long)facebookId openId:(NSString *)openId locale:(NSString *)locale firstName:(NSString *)firstName middleName:(NSString *)middleName lastName:(NSString *)lastName prefixId:(long long)prefixId suffixId:(long long)suffixId male:(BOOL)male birthdayMonth:(int)birthdayMonth birthdayDay:(int)birthdayDay birthdayYear:(int)birthdayYear jobTitle:(NSString *)jobTitle groupIds:(NSArray *)groupIds organizationIds:(NSArray *)organizationIds roleIds:(NSArray *)roleIds userGroupIds:(NSArray *)userGroupIds sendEmail:(BOOL)sendEmail serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"autoPassword": @(autoPassword),
-		@"password1": [self checkNull: password1],
-		@"password2": [self checkNull: password2],
-		@"autoScreenName": @(autoScreenName),
-		@"screenName": [self checkNull: screenName],
-		@"emailAddress": [self checkNull: emailAddress],
-		@"facebookId": @(facebookId),
-		@"openId": [self checkNull: openId],
-		@"locale": [self checkNull: locale],
-		@"firstName": [self checkNull: firstName],
-		@"middleName": [self checkNull: middleName],
-		@"lastName": [self checkNull: lastName],
-		@"prefixId": @(prefixId),
-		@"suffixId": @(suffixId),
-		@"male": @(male),
-		@"birthdayMonth": @(birthdayMonth),
-		@"birthdayDay": @(birthdayDay),
-		@"birthdayYear": @(birthdayYear),
-		@"jobTitle": [self checkNull: jobTitle],
-		@"groupIds": [self checkNull: groupIds],
-		@"organizationIds": [self checkNull: organizationIds],
-		@"roleIds": [self checkNull: roleIds],
-		@"userGroupIds": [self checkNull: userGroupIds],
 		@"sendEmail": @(sendEmail),
 		@"serviceContext": [self checkNull: serviceContext]
 	}];
@@ -423,12 +423,10 @@
 	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
-- (BOOL)hasRoleUserWithCompanyId:(long long)companyId name:(NSString *)name userId:(long long)userId inherited:(BOOL)inherited error:(NSError **)error {
+- (BOOL)hasRoleUserWithRoleId:(long long)roleId userId:(long long)userId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"name": [self checkNull: name],
-		@"userId": @(userId),
-		@"inherited": @(inherited)
+		@"roleId": @(roleId),
+		@"userId": @(userId)
 	}];
 
 	NSDictionary *_command = @{@"/user/has-role-user": _params};
@@ -436,10 +434,12 @@
 	return [self boolValue:(NSNumber *)[self.session invoke:_command error:error]];
 }
 
-- (BOOL)hasRoleUserWithRoleId:(long long)roleId userId:(long long)userId error:(NSError **)error {
+- (BOOL)hasRoleUserWithCompanyId:(long long)companyId name:(NSString *)name userId:(long long)userId inherited:(BOOL)inherited error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"roleId": @(roleId),
-		@"userId": @(userId)
+		@"companyId": @(companyId),
+		@"name": [self checkNull: name],
+		@"userId": @(userId),
+		@"inherited": @(inherited)
 	}];
 
 	NSDictionary *_command = @{@"/user/has-role-user": _params};
@@ -717,6 +717,17 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)updateStatusWithUserId:(long long)userId status:(int)status error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"userId": @(userId),
+		@"status": @(status)
+	}];
+
+	NSDictionary *_command = @{@"/user/update-status": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)updateStatusWithUserId:(long long)userId status:(int)status serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
@@ -729,13 +740,47 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateStatusWithUserId:(long long)userId status:(int)status error:(NSError **)error {
+- (NSDictionary *)updateUserWithUserId:(long long)userId oldPassword:(NSString *)oldPassword newPassword1:(NSString *)newPassword1 newPassword2:(NSString *)newPassword2 passwordReset:(BOOL)passwordReset reminderQueryQuestion:(NSString *)reminderQueryQuestion reminderQueryAnswer:(NSString *)reminderQueryAnswer screenName:(NSString *)screenName emailAddress:(NSString *)emailAddress facebookId:(long long)facebookId openId:(NSString *)openId languageId:(NSString *)languageId timeZoneId:(NSString *)timeZoneId greeting:(NSString *)greeting comments:(NSString *)comments firstName:(NSString *)firstName middleName:(NSString *)middleName lastName:(NSString *)lastName prefixId:(long long)prefixId suffixId:(long long)suffixId male:(BOOL)male birthdayMonth:(int)birthdayMonth birthdayDay:(int)birthdayDay birthdayYear:(int)birthdayYear smsSn:(NSString *)smsSn facebookSn:(NSString *)facebookSn jabberSn:(NSString *)jabberSn skypeSn:(NSString *)skypeSn twitterSn:(NSString *)twitterSn jobTitle:(NSString *)jobTitle groupIds:(NSArray *)groupIds organizationIds:(NSArray *)organizationIds roleIds:(NSArray *)roleIds userGroupRoles:(NSArray *)userGroupRoles userGroupIds:(NSArray *)userGroupIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userId": @(userId),
-		@"status": @(status)
+		@"oldPassword": [self checkNull: oldPassword],
+		@"newPassword1": [self checkNull: newPassword1],
+		@"newPassword2": [self checkNull: newPassword2],
+		@"passwordReset": @(passwordReset),
+		@"reminderQueryQuestion": [self checkNull: reminderQueryQuestion],
+		@"reminderQueryAnswer": [self checkNull: reminderQueryAnswer],
+		@"screenName": [self checkNull: screenName],
+		@"emailAddress": [self checkNull: emailAddress],
+		@"facebookId": @(facebookId),
+		@"openId": [self checkNull: openId],
+		@"languageId": [self checkNull: languageId],
+		@"timeZoneId": [self checkNull: timeZoneId],
+		@"greeting": [self checkNull: greeting],
+		@"comments": [self checkNull: comments],
+		@"firstName": [self checkNull: firstName],
+		@"middleName": [self checkNull: middleName],
+		@"lastName": [self checkNull: lastName],
+		@"prefixId": @(prefixId),
+		@"suffixId": @(suffixId),
+		@"male": @(male),
+		@"birthdayMonth": @(birthdayMonth),
+		@"birthdayDay": @(birthdayDay),
+		@"birthdayYear": @(birthdayYear),
+		@"smsSn": [self checkNull: smsSn],
+		@"facebookSn": [self checkNull: facebookSn],
+		@"jabberSn": [self checkNull: jabberSn],
+		@"skypeSn": [self checkNull: skypeSn],
+		@"twitterSn": [self checkNull: twitterSn],
+		@"jobTitle": [self checkNull: jobTitle],
+		@"groupIds": [self checkNull: groupIds],
+		@"organizationIds": [self checkNull: organizationIds],
+		@"roleIds": [self checkNull: roleIds],
+		@"userGroupRoles": [self checkNull: userGroupRoles],
+		@"userGroupIds": [self checkNull: userGroupIds],
+		@"serviceContext": [self checkNull: serviceContext]
 	}];
 
-	NSDictionary *_command = @{@"/user/update-status": _params};
+	NSDictionary *_command = @{@"/user/update-user": _params};
 
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
@@ -834,51 +879,6 @@
 		@"phones": [self checkNull: phones],
 		@"websites": [self checkNull: websites],
 		@"announcementsDelivers": [self checkNull: announcementsDelivers],
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/user/update-user": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)updateUserWithUserId:(long long)userId oldPassword:(NSString *)oldPassword newPassword1:(NSString *)newPassword1 newPassword2:(NSString *)newPassword2 passwordReset:(BOOL)passwordReset reminderQueryQuestion:(NSString *)reminderQueryQuestion reminderQueryAnswer:(NSString *)reminderQueryAnswer screenName:(NSString *)screenName emailAddress:(NSString *)emailAddress facebookId:(long long)facebookId openId:(NSString *)openId languageId:(NSString *)languageId timeZoneId:(NSString *)timeZoneId greeting:(NSString *)greeting comments:(NSString *)comments firstName:(NSString *)firstName middleName:(NSString *)middleName lastName:(NSString *)lastName prefixId:(long long)prefixId suffixId:(long long)suffixId male:(BOOL)male birthdayMonth:(int)birthdayMonth birthdayDay:(int)birthdayDay birthdayYear:(int)birthdayYear smsSn:(NSString *)smsSn facebookSn:(NSString *)facebookSn jabberSn:(NSString *)jabberSn skypeSn:(NSString *)skypeSn twitterSn:(NSString *)twitterSn jobTitle:(NSString *)jobTitle groupIds:(NSArray *)groupIds organizationIds:(NSArray *)organizationIds roleIds:(NSArray *)roleIds userGroupRoles:(NSArray *)userGroupRoles userGroupIds:(NSArray *)userGroupIds serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userId": @(userId),
-		@"oldPassword": [self checkNull: oldPassword],
-		@"newPassword1": [self checkNull: newPassword1],
-		@"newPassword2": [self checkNull: newPassword2],
-		@"passwordReset": @(passwordReset),
-		@"reminderQueryQuestion": [self checkNull: reminderQueryQuestion],
-		@"reminderQueryAnswer": [self checkNull: reminderQueryAnswer],
-		@"screenName": [self checkNull: screenName],
-		@"emailAddress": [self checkNull: emailAddress],
-		@"facebookId": @(facebookId),
-		@"openId": [self checkNull: openId],
-		@"languageId": [self checkNull: languageId],
-		@"timeZoneId": [self checkNull: timeZoneId],
-		@"greeting": [self checkNull: greeting],
-		@"comments": [self checkNull: comments],
-		@"firstName": [self checkNull: firstName],
-		@"middleName": [self checkNull: middleName],
-		@"lastName": [self checkNull: lastName],
-		@"prefixId": @(prefixId),
-		@"suffixId": @(suffixId),
-		@"male": @(male),
-		@"birthdayMonth": @(birthdayMonth),
-		@"birthdayDay": @(birthdayDay),
-		@"birthdayYear": @(birthdayYear),
-		@"smsSn": [self checkNull: smsSn],
-		@"facebookSn": [self checkNull: facebookSn],
-		@"jabberSn": [self checkNull: jabberSn],
-		@"skypeSn": [self checkNull: skypeSn],
-		@"twitterSn": [self checkNull: twitterSn],
-		@"jobTitle": [self checkNull: jobTitle],
-		@"groupIds": [self checkNull: groupIds],
-		@"organizationIds": [self checkNull: organizationIds],
-		@"roleIds": [self checkNull: roleIds],
-		@"userGroupRoles": [self checkNull: userGroupRoles],
-		@"userGroupIds": [self checkNull: userGroupIds],
 		@"serviceContext": [self checkNull: serviceContext]
 	}];
 

@@ -12,10 +12,10 @@ import org.json.JSONObject;
 @Path("/dlfileentrytype")
 public interface DLFileEntryTypeService {
   @Path("/add-file-entry-type")
-  Call<JSONObject> addFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "fileEntryTypeKey") String fileEntryTypeKey, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/add-file-entry-type")
-  Call<JSONObject> addFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "fileEntryTypeKey") String fileEntryTypeKey, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/delete-file-entry-type")
   Call<Response> deleteFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId);
@@ -24,10 +24,10 @@ public interface DLFileEntryTypeService {
   Call<JSONObject> getFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId);
 
   @Path("/get-file-entry-types")
-  Call<JSONArray> getFileEntryTypes(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONArray> getFileEntryTypes(@Param(name = "groupIds") JSONArray groupIds);
 
   @Path("/get-file-entry-types")
-  Call<JSONArray> getFileEntryTypes(@Param(name = "groupIds") JSONArray groupIds);
+  Call<JSONArray> getFileEntryTypes(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-file-entry-types-count")
   Call<Integer> getFileEntryTypesCount(@Param(name = "groupIds") JSONArray groupIds);

@@ -66,6 +66,20 @@
 	[self.session invoke:_command error:error];
 }
 
+- (void)setIndividualResourcePermissionsWithGroupId:(long long)groupId companyId:(long long)companyId name:(NSString *)name primKey:(NSString *)primKey roleIdsToActionIds:(NSDictionary *)roleIdsToActionIds error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"companyId": @(companyId),
+		@"name": [self checkNull: name],
+		@"primKey": [self checkNull: primKey],
+		@"roleIdsToActionIds": [self checkNull: roleIdsToActionIds]
+	}];
+
+	NSDictionary *_command = @{@"/resourcepermission/set-individual-resource-permissions": _params};
+
+	[self.session invoke:_command error:error];
+}
+
 - (void)setIndividualResourcePermissionsWithGroupId:(long long)groupId companyId:(long long)companyId name:(NSString *)name primKey:(NSString *)primKey roleId:(long long)roleId actionIds:(NSArray *)actionIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -74,20 +88,6 @@
 		@"primKey": [self checkNull: primKey],
 		@"roleId": @(roleId),
 		@"actionIds": [self checkNull: actionIds]
-	}];
-
-	NSDictionary *_command = @{@"/resourcepermission/set-individual-resource-permissions": _params};
-
-	[self.session invoke:_command error:error];
-}
-
-- (void)setIndividualResourcePermissionsWithGroupId:(long long)groupId companyId:(long long)companyId name:(NSString *)name primKey:(NSString *)primKey roleIdsToActionIds:(NSDictionary *)roleIdsToActionIds error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"companyId": @(companyId),
-		@"name": [self checkNull: name],
-		@"primKey": [self checkNull: primKey],
-		@"roleIdsToActionIds": [self checkNull: roleIdsToActionIds]
 	}];
 
 	NSDictionary *_command = @{@"/resourcepermission/set-individual-resource-permissions": _params};

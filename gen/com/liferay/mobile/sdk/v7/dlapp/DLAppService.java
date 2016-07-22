@@ -31,16 +31,16 @@ public interface DLAppService {
   Call<Response> cancelCheckOut(@Param(name = "fileEntryId") long fileEntryId);
 
   @Path("/check-in-file-entry")
-  Call<Response> checkInFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "changeLog") String changeLog, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
-
-  @Path("/check-in-file-entry")
   Call<Response> checkInFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "lockUuid") String lockUuid, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
-  @Path("/check-out-file-entry")
-  Call<JSONObject> checkOutFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "owner") String owner, @Param(name = "expirationTime") long expirationTime, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  @Path("/check-in-file-entry")
+  Call<Response> checkInFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "changeLog") String changeLog, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/check-out-file-entry")
   Call<Response> checkOutFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+
+  @Path("/check-out-file-entry")
+  Call<JSONObject> checkOutFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "owner") String owner, @Param(name = "expirationTime") long expirationTime, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/copy-folder")
   Call<JSONObject> copyFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "sourceFolderId") long sourceFolderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
@@ -70,25 +70,25 @@ public interface DLAppService {
   Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId);
 
   @Path("/get-file-entries")
   Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-file-entries")
   Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end);
-
-  @Path("/get-file-entries")
   Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId);
+  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+
+  @Path("/get-file-entries")
+  Call<JSONArray> getFileEntries(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-file-entries-and-file-shortcuts")
   Call<JSONArray> getFileEntriesAndFileShortcuts(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
@@ -130,46 +130,46 @@ public interface DLAppService {
   Call<JSONObject> getFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name);
 
   @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId);
 
   @Path("/get-folders")
   Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "includeMountFolders") boolean includeMountFolders);
 
   @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId);
+  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "start") int start, @Param(name = "end") int end);
+
+  @Path("/get-folders")
+  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+
+  @Path("/get-folders")
+  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-folders")
   Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "start") int start, @Param(name = "end") int end);
-
-  @Path("/get-folders")
   Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
-
-  @Path("/get-folders")
-  Call<JSONArray> getFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts")
   Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts")
-  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
-
-  @Path("/get-folders-and-file-entries-and-file-shortcuts")
   Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
-  @Path("/get-folders-and-file-entries-and-file-shortcuts-count")
-  Call<Integer> getFoldersAndFileEntriesAndFileShortcutsCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders);
+  @Path("/get-folders-and-file-entries-and-file-shortcuts")
+  Call<JSONArray> getFoldersAndFileEntriesAndFileShortcuts(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-folders-and-file-entries-and-file-shortcuts-count")
   Call<Integer> getFoldersAndFileEntriesAndFileShortcutsCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders);
 
-  @Path("/get-folders-count")
-  Call<Integer> getFoldersCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "includeMountFolders") boolean includeMountFolders);
+  @Path("/get-folders-and-file-entries-and-file-shortcuts-count")
+  Call<Integer> getFoldersAndFileEntriesAndFileShortcutsCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "includeMountFolders") boolean includeMountFolders);
 
   @Path("/get-folders-count")
   Call<Integer> getFoldersCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId);
+
+  @Path("/get-folders-count")
+  Call<Integer> getFoldersCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "includeMountFolders") boolean includeMountFolders);
 
   @Path("/get-folders-count")
   Call<Integer> getFoldersCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "status") int status, @Param(name = "includeMountFolders") boolean includeMountFolders);
@@ -178,28 +178,28 @@ public interface DLAppService {
   Call<Integer> getFoldersFileEntriesCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderIds") JSONArray folderIds, @Param(name = "status") int status);
 
   @Path("/get-group-file-entries")
-  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "start") int start, @Param(name = "end") int end);
+
+  @Path("/get-group-file-entries")
+  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-file-entries")
   Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-group-file-entries")
-  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "start") int start, @Param(name = "end") int end);
-
-  @Path("/get-group-file-entries")
   Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-group-file-entries")
-  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONArray> getGroupFileEntries(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-group-file-entries-count")
   Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId);
 
   @Path("/get-group-file-entries-count")
-  Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status);
+  Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId);
 
   @Path("/get-group-file-entries-count")
-  Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId);
+  Call<Integer> getGroupFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "rootFolderId") long rootFolderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status);
 
   @Path("/get-mount-folders")
   Call<JSONArray> getMountFolders(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId);
@@ -214,13 +214,13 @@ public interface DLAppService {
   Call<Integer> getMountFoldersCount(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId);
 
   @Path("/get-subfolder-ids")
+  Call<JSONArray> getSubfolderIds(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId);
+
+  @Path("/get-subfolder-ids")
   Call<JSONArray> getSubfolderIds(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "recurse") boolean recurse);
 
   @Path("/get-subfolder-ids")
   Call<Response> getSubfolderIds(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderIds") JSONArray folderIds, @Param(name = "folderId") long folderId);
-
-  @Path("/get-subfolder-ids")
-  Call<JSONArray> getSubfolderIds(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId);
 
   @Path("/get-temp-file-names")
   Call<JSONArray> getTempFileNames(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "folderName") String folderName);
@@ -247,16 +247,16 @@ public interface DLAppService {
   Call<Response> revertFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "version") String version, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/search")
-  Call<JSONObject> search(@Param(name = "repositoryId") long repositoryId, @Param(name = "searchContext", className = "") JSONObject searchContext, @Param(name = "query", className = "") JSONObject query);
-
-  @Path("/search")
   Call<JSONObject> search(@Param(name = "repositoryId") long repositoryId, @Param(name = "searchContext", className = "") JSONObject searchContext);
 
   @Path("/search")
-  Call<JSONObject> search(@Param(name = "repositoryId") long repositoryId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONObject> search(@Param(name = "repositoryId") long repositoryId, @Param(name = "searchContext", className = "") JSONObject searchContext, @Param(name = "query", className = "") JSONObject query);
 
   @Path("/search")
   Call<JSONObject> search(@Param(name = "repositoryId") long repositoryId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
+
+  @Path("/search")
+  Call<JSONObject> search(@Param(name = "repositoryId") long repositoryId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/subscribe-file-entry-type")
   Call<Response> subscribeFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "fileEntryTypeId") long fileEntryTypeId);
@@ -265,10 +265,10 @@ public interface DLAppService {
   Call<Response> subscribeFolder(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/unlock-folder")
-  Call<Response> unlockFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "lockUuid") String lockUuid);
+  Call<Response> unlockFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "lockUuid") String lockUuid);
 
   @Path("/unlock-folder")
-  Call<Response> unlockFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "folderId") long folderId, @Param(name = "lockUuid") String lockUuid);
+  Call<Response> unlockFolder(@Param(name = "repositoryId") long repositoryId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "lockUuid") String lockUuid);
 
   @Path("/unsubscribe-file-entry-type")
   Call<Response> unsubscribeFileEntryType(@Param(name = "groupId") long groupId, @Param(name = "fileEntryTypeId") long fileEntryTypeId);
@@ -277,10 +277,10 @@ public interface DLAppService {
   Call<Response> unsubscribeFolder(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/update-file-entry")
-  Call<JSONObject> updateFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "sourceFileName") String sourceFileName, @Param(name = "mimeType") String mimeType, @Param(name = "title") String title, @Param(name = "description") String description, @Param(name = "changeLog") String changeLog, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "file", className = "") JSONObject file, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "sourceFileName") String sourceFileName, @Param(name = "mimeType") String mimeType, @Param(name = "title") String title, @Param(name = "description") String description, @Param(name = "changeLog") String changeLog, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "bytes") byte[] bytes, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/update-file-entry")
-  Call<JSONObject> updateFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "sourceFileName") String sourceFileName, @Param(name = "mimeType") String mimeType, @Param(name = "title") String title, @Param(name = "description") String description, @Param(name = "changeLog") String changeLog, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "bytes") byte[] bytes, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateFileEntry(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "sourceFileName") String sourceFileName, @Param(name = "mimeType") String mimeType, @Param(name = "title") String title, @Param(name = "description") String description, @Param(name = "changeLog") String changeLog, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "file", className = "") JSONObject file, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/update-file-entry-and-check-in")
   Call<JSONObject> updateFileEntryAndCheckIn(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "sourceFileName") String sourceFileName, @Param(name = "mimeType") String mimeType, @Param(name = "title") String title, @Param(name = "description") String description, @Param(name = "changeLog") String changeLog, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "file", className = "") JSONObject file, @Param(name = "serviceContext", className = "") JSONObject serviceContext);

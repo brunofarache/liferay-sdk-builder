@@ -41,11 +41,10 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"serviceContext": [self checkNull: serviceContext]
+		@"description": [self checkNull: description]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/add-user-group": _params};
@@ -53,10 +52,11 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description error:(NSError **)error {
+- (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": [self checkNull: name],
-		@"description": [self checkNull: description]
+		@"description": [self checkNull: description],
+		@"serviceContext": [self checkNull: serviceContext]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/add-user-group": _params};
@@ -84,9 +84,9 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getUserGroupWithName:(NSString *)name error:(NSError **)error {
+- (NSDictionary *)getUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": [self checkNull: name]
+		@"userGroupId": @(userGroupId)
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/get-user-group": _params};
@@ -94,9 +94,9 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error {
+- (NSDictionary *)getUserGroupWithName:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userGroupId": @(userGroupId)
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/get-user-group": _params};
@@ -146,12 +146,11 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userGroupId": @(userGroupId),
 		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"serviceContext": [self checkNull: serviceContext]
+		@"description": [self checkNull: description]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/update-user-group": _params};
@@ -159,11 +158,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
+- (NSDictionary *)updateUserGroupWithUserGroupId:(long long)userGroupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"userGroupId": @(userGroupId),
 		@"name": [self checkNull: name],
-		@"description": [self checkNull: description]
+		@"description": [self checkNull: description],
+		@"serviceContext": [self checkNull: serviceContext]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/update-user-group": _params};

@@ -19,12 +19,12 @@
  */
 @implementation LRGroupService_v7
 
-- (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentGroupId": @(parentGroupId),
 		@"liveGroupId": @(liveGroupId),
-		@"nameMap": [self checkNull: nameMap],
-		@"descriptionMap": [self checkNull: descriptionMap],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"type": @(type),
 		@"manualMembership": @(manualMembership),
 		@"membershipRestriction": @(membershipRestriction),
@@ -39,12 +39,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentGroupId": @(parentGroupId),
 		@"liveGroupId": @(liveGroupId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"type": @(type),
 		@"manualMembership": @(manualMembership),
 		@"membershipRestriction": @(membershipRestriction),
@@ -141,10 +141,9 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getGroupWithCompanyId:(long long)companyId groupKey:(NSString *)groupKey error:(NSError **)error {
+- (NSDictionary *)getGroupWithGroupId:(long long)groupId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"groupKey": [self checkNull: groupKey]
+		@"groupId": @(groupId)
 	}];
 
 	NSDictionary *_command = @{@"/group/get-group": _params};
@@ -152,9 +151,10 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getGroupWithGroupId:(long long)groupId error:(NSError **)error {
+- (NSDictionary *)getGroupWithCompanyId:(long long)companyId groupKey:(NSString *)groupKey error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId)
+		@"companyId": @(companyId),
+		@"groupKey": [self checkNull: groupKey]
 	}];
 
 	NSDictionary *_command = @{@"/group/get-group": _params};
@@ -240,18 +240,6 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getUserSitesGroupsWithUserId:(long long)userId classNames:(NSArray *)classNames max:(int)max error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userId": @(userId),
-		@"classNames": [self checkNull: classNames],
-		@"max": @(max)
-	}];
-
-	NSDictionary *_command = @{@"/group/get-user-sites-groups": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
 - (NSArray *)getUserSitesGroups:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
@@ -263,6 +251,18 @@
 
 - (NSArray *)getUserSitesGroupsWithClassNames:(NSArray *)classNames max:(int)max error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"classNames": [self checkNull: classNames],
+		@"max": @(max)
+	}];
+
+	NSDictionary *_command = @{@"/group/get-user-sites-groups": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getUserSitesGroupsWithUserId:(long long)userId classNames:(NSArray *)classNames max:(int)max error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"userId": @(userId),
 		@"classNames": [self checkNull: classNames],
 		@"max": @(max)
 	}];
@@ -307,14 +307,12 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId classNameIds:(NSArray *)classNameIds name:(NSString *)name description:(NSString *)description params:(NSDictionary *)params andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)searchWithCompanyId:(long long)companyId classNameIds:(NSArray *)classNameIds keywords:(NSString *)keywords params:(NSDictionary *)params start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"classNameIds": [self checkNull: classNameIds],
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
+		@"keywords": [self checkNull: keywords],
 		@"params": [self checkNull: params],
-		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end),
 		@"obc": [self checkNull: obc]
@@ -325,12 +323,14 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId classNameIds:(NSArray *)classNameIds keywords:(NSString *)keywords params:(NSDictionary *)params start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)searchWithCompanyId:(long long)companyId classNameIds:(NSArray *)classNameIds name:(NSString *)name description:(NSString *)description params:(NSDictionary *)params andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"classNameIds": [self checkNull: classNameIds],
-		@"keywords": [self checkNull: keywords],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"params": [self checkNull: params],
+		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end),
 		@"obc": [self checkNull: obc]
@@ -398,12 +398,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateGroupWithGroupId:(long long)groupId parentGroupId:(long long)parentGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL inheritContent:(BOOL)inheritContent active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateGroupWithGroupId:(long long)groupId parentGroupId:(long long)parentGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL inheritContent:(BOOL)inheritContent active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentGroupId": @(parentGroupId),
-		@"nameMap": [self checkNull: nameMap],
-		@"descriptionMap": [self checkNull: descriptionMap],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"type": @(type),
 		@"manualMembership": @(manualMembership),
 		@"membershipRestriction": @(membershipRestriction),
@@ -418,12 +418,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateGroupWithGroupId:(long long)groupId parentGroupId:(long long)parentGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL inheritContent:(BOOL)inheritContent active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)updateGroupWithGroupId:(long long)groupId parentGroupId:(long long)parentGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL inheritContent:(BOOL)inheritContent active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"parentGroupId": @(parentGroupId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"type": @(type),
 		@"manualMembership": @(manualMembership),
 		@"membershipRestriction": @(membershipRestriction),

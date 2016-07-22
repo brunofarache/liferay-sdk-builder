@@ -19,16 +19,6 @@
  */
 @implementation LRTrashEntryService_v7
 
-- (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"entryIds": [self checkNull: entryIds]
-	}];
-
-	NSDictionary *_command = @{@"/trashentry/delete-entries": _params};
-
-	[self.session invoke:_command error:error];
-}
-
 - (void)deleteEntriesWithGroupId:(long long)groupId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId)
@@ -39,13 +29,12 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
+- (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": [self checkNull: className],
-		@"classPK": @(classPK)
+		@"entryIds": [self checkNull: entryIds]
 	}];
 
-	NSDictionary *_command = @{@"/trashentry/delete-entry": _params};
+	NSDictionary *_command = @{@"/trashentry/delete-entries": _params};
 
 	[self.session invoke:_command error:error];
 }
@@ -60,17 +49,15 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getEntriesWithGroupId:(long long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"start": @(start),
-		@"end": @(end),
-		@"obc": [self checkNull: obc]
+		@"className": [self checkNull: className],
+		@"classPK": @(classPK)
 	}];
 
-	NSDictionary *_command = @{@"/trashentry/get-entries": _params};
+	NSDictionary *_command = @{@"/trashentry/delete-entry": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)getEntriesWithGroupId:(long long)groupId error:(NSError **)error {
@@ -94,6 +81,19 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)getEntriesWithGroupId:(long long)groupId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"start": @(start),
+		@"end": @(end),
+		@"obc": [self checkNull: obc]
+	}];
+
+	NSDictionary *_command = @{@"/trashentry/get-entries": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (void)moveEntryWithClassName:(NSString *)className classPK:(long long)classPK destinationContainerModelId:(long long)destinationContainerModelId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": [self checkNull: className],
@@ -107,10 +107,9 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)restoreEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
+- (NSDictionary *)restoreEntryWithEntryId:(long long)entryId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": [self checkNull: className],
-		@"classPK": @(classPK)
+		@"entryId": @(entryId)
 	}];
 
 	NSDictionary *_command = @{@"/trashentry/restore-entry": _params};
@@ -118,12 +117,10 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)restoreEntryWithClassName:(NSString *)className classPK:(long long)classPK overrideClassPK:(long long)overrideClassPK name:(NSString *)name error:(NSError **)error {
+- (NSDictionary *)restoreEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"className": [self checkNull: className],
-		@"classPK": @(classPK),
-		@"overrideClassPK": @(overrideClassPK),
-		@"name": [self checkNull: name]
+		@"classPK": @(classPK)
 	}];
 
 	NSDictionary *_command = @{@"/trashentry/restore-entry": _params};
@@ -143,9 +140,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)restoreEntryWithEntryId:(long long)entryId error:(NSError **)error {
+- (NSDictionary *)restoreEntryWithClassName:(NSString *)className classPK:(long long)classPK overrideClassPK:(long long)overrideClassPK name:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"entryId": @(entryId)
+		@"className": [self checkNull: className],
+		@"classPK": @(classPK),
+		@"overrideClassPK": @(overrideClassPK),
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/trashentry/restore-entry": _params};

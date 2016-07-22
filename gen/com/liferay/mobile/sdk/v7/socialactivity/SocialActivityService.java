@@ -23,7 +23,7 @@ public interface SocialActivityService {
   Call<JSONArray> getActivities(@Param(name = "mirrorActivityId") long mirrorActivityId, @Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-activities-count")
-  Call<Integer> getActivitiesCount(@Param(name = "mirrorActivityId") long mirrorActivityId, @Param(name = "classNameId") long classNameId, @Param(name = "classPK") long classPK);
+  Call<Integer> getActivitiesCount(@Param(name = "classNameId") long classNameId);
 
   @Path("/get-activities-count")
   Call<Integer> getActivitiesCount(@Param(name = "className") String className);
@@ -32,7 +32,7 @@ public interface SocialActivityService {
   Call<Integer> getActivitiesCount(@Param(name = "mirrorActivityId") long mirrorActivityId, @Param(name = "className") String className, @Param(name = "classPK") long classPK);
 
   @Path("/get-activities-count")
-  Call<Integer> getActivitiesCount(@Param(name = "classNameId") long classNameId);
+  Call<Integer> getActivitiesCount(@Param(name = "mirrorActivityId") long mirrorActivityId, @Param(name = "classNameId") long classNameId, @Param(name = "classPK") long classPK);
 
   @Path("/get-activity")
   Call<JSONObject> getActivity(@Param(name = "activityId") long activityId);

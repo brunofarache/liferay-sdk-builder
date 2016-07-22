@@ -17,8 +17,8 @@ public interface ListTypeService {
   Call<JSONArray> getListTypes(@Param(name = "type") String type);
 
   @Path("/validate")
-  Call<Response> validate(@Param(name = "listTypeId") long listTypeId, @Param(name = "classNameId") long classNameId, @Param(name = "type") String type);
+  Call<Response> validate(@Param(name = "listTypeId") long listTypeId, @Param(name = "type") String type);
 
   @Path("/validate")
-  Call<Response> validate(@Param(name = "listTypeId") long listTypeId, @Param(name = "type") String type);
+  Call<Response> validate(@Param(name = "listTypeId") long listTypeId, @Param(name = "classNameId") long classNameId, @Param(name = "type") String type);
 }

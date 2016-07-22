@@ -20,8 +20,8 @@ public interface ResourcePermissionService {
   Call<Response> removeResourcePermissions(@Param(name = "groupId") long groupId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "scope") int scope, @Param(name = "roleId") long roleId, @Param(name = "actionId") String actionId);
 
   @Path("/set-individual-resource-permissions")
-  Call<Response> setIndividualResourcePermissions(@Param(name = "groupId") long groupId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "primKey") String primKey, @Param(name = "roleId") long roleId, @Param(name = "actionIds") JSONArray actionIds);
+  Call<Response> setIndividualResourcePermissions(@Param(name = "groupId") long groupId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "primKey") String primKey, @Param(name = "roleIdsToActionIds", className = "") JSONObject roleIdsToActionIds);
 
   @Path("/set-individual-resource-permissions")
-  Call<Response> setIndividualResourcePermissions(@Param(name = "groupId") long groupId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "primKey") String primKey, @Param(name = "roleIdsToActionIds", className = "") JSONObject roleIdsToActionIds);
+  Call<Response> setIndividualResourcePermissions(@Param(name = "groupId") long groupId, @Param(name = "companyId") long companyId, @Param(name = "name") String name, @Param(name = "primKey") String primKey, @Param(name = "roleId") long roleId, @Param(name = "actionIds") JSONArray actionIds);
 }

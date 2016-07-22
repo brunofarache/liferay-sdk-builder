@@ -64,9 +64,8 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCountriesWithActive:(BOOL)active error:(NSError **)error {
+- (NSArray *)getCountries:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"active": @(active)
 	}];
 
 	NSDictionary *_command = @{@"/country/get-countries": _params};
@@ -74,8 +73,9 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCountries:(NSError **)error {
+- (NSArray *)getCountriesWithActive:(BOOL)active error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"active": @(active)
 	}];
 
 	NSDictionary *_command = @{@"/country/get-countries": _params};

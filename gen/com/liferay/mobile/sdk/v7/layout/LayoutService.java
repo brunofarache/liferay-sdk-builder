@@ -28,28 +28,28 @@ public interface LayoutService {
   Call<Response> deleteTempFileEntry(@Param(name = "groupId") long groupId, @Param(name = "folderName") String folderName, @Param(name = "fileName") String fileName);
 
   @Path("/export-layouts")
-  Call<JSONArray> exportLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutIds") JSONArray layoutIds, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
-
-  @Path("/export-layouts")
   Call<JSONArray> exportLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
 
-  @Path("/export-layouts-as-file")
-  Call<JSONObject> exportLayoutsAsFile(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutIds") JSONArray layoutIds, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
+  @Path("/export-layouts")
+  Call<JSONArray> exportLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutIds") JSONArray layoutIds, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
 
   @Path("/export-layouts-as-file")
   Call<JSONObject> exportLayoutsAsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
 
-  @Path("/export-layouts-as-file-in-background")
-  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "taskName") String taskName, @Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutIds") JSONArray layoutIds, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate, @Param(name = "fileName") String fileName);
-
-  @Path("/export-layouts-as-file-in-background")
-  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "taskName") String taskName, @Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutIds") JSONArray layoutIds, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
+  @Path("/export-layouts-as-file")
+  Call<JSONObject> exportLayoutsAsFile(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutIds") JSONArray layoutIds, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
 
   @Path("/export-layouts-as-file-in-background")
   Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
 
   @Path("/export-layouts-as-file-in-background")
   Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfigurationId") long exportImportConfigurationId);
+
+  @Path("/export-layouts-as-file-in-background")
+  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "taskName") String taskName, @Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutIds") JSONArray layoutIds, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
+
+  @Path("/export-layouts-as-file-in-background")
+  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "taskName") String taskName, @Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutIds") JSONArray layoutIds, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate, @Param(name = "fileName") String fileName);
 
   @Path("/export-portlet-info")
   Call<JSONArray> exportPortletInfo(@Param(name = "companyId") long companyId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
@@ -58,19 +58,19 @@ public interface LayoutService {
   Call<JSONArray> exportPortletInfo(@Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
 
   @Path("/export-portlet-info-as-file")
-  Call<JSONObject> exportPortletInfoAsFile(@Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
+  Call<JSONObject> exportPortletInfoAsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
 
   @Path("/export-portlet-info-as-file")
-  Call<JSONObject> exportPortletInfoAsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
+  Call<JSONObject> exportPortletInfoAsFile(@Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
 
   @Path("/export-portlet-info-as-file")
   Call<JSONObject> exportPortletInfoAsFile(@Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
 
   @Path("/export-portlet-info-as-file-in-background")
-  Call<Long> exportPortletInfoAsFileInBackground(@Param(name = "taskName") String taskName, @Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate, @Param(name = "fileName") String fileName);
+  Call<Long> exportPortletInfoAsFileInBackground(@Param(name = "taskName") String taskName, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate, @Param(name = "fileName") String fileName);
 
   @Path("/export-portlet-info-as-file-in-background")
-  Call<Long> exportPortletInfoAsFileInBackground(@Param(name = "taskName") String taskName, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate, @Param(name = "fileName") String fileName);
+  Call<Long> exportPortletInfoAsFileInBackground(@Param(name = "taskName") String taskName, @Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate, @Param(name = "fileName") String fileName);
 
   @Path("/get-ancestor-layouts")
   Call<JSONArray> getAncestorLayouts(@Param(name = "plid") long plid);
@@ -91,13 +91,13 @@ public interface LayoutService {
   Call<JSONArray> getLayoutReferences(@Param(name = "companyId") long companyId, @Param(name = "portletId") String portletId, @Param(name = "preferencesKey") String preferencesKey, @Param(name = "preferencesValue") String preferencesValue);
 
   @Path("/get-layouts")
-  Call<JSONArray> getLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parentLayoutId") long parentLayoutId, @Param(name = "incomplete") boolean incomplete, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONArray> getLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout);
 
   @Path("/get-layouts")
   Call<JSONArray> getLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parentLayoutId") long parentLayoutId);
 
   @Path("/get-layouts")
-  Call<JSONArray> getLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout);
+  Call<JSONArray> getLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parentLayoutId") long parentLayoutId, @Param(name = "incomplete") boolean incomplete, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-layouts-count")
   Call<Integer> getLayoutsCount(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parentLayoutId") long parentLayoutId);
@@ -106,31 +106,31 @@ public interface LayoutService {
   Call<JSONArray> getTempFileNames(@Param(name = "groupId") long groupId, @Param(name = "folderName") String folderName);
 
   @Path("/import-layouts")
-  Call<Response> importLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "bytes") byte[] bytes);
+  Call<Response> importLayouts(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
 
   @Path("/import-layouts")
   Call<Response> importLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
 
   @Path("/import-layouts")
-  Call<Response> importLayouts(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  Call<Response> importLayouts(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "bytes") byte[] bytes);
 
   @Path("/import-layouts-in-background")
   Call<Long> importLayoutsInBackground(@Param(name = "taskName") String taskName, @Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
 
   @Path("/import-portlet-info")
-  Call<Response> importPortletInfo(@Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  Call<Response> importPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
 
   @Path("/import-portlet-info")
-  Call<Response> importPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+  Call<Response> importPortletInfo(@Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
 
   @Path("/import-portlet-info")
   Call<Response> importPortletInfo(@Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
 
   @Path("/import-portlet-info-in-background")
-  Call<Long> importPortletInfoInBackground(@Param(name = "taskName") String taskName, @Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  Call<Response> importPortletInfoInBackground(@Param(name = "taskName") String taskName, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
 
   @Path("/import-portlet-info-in-background")
-  Call<Response> importPortletInfoInBackground(@Param(name = "taskName") String taskName, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  Call<Long> importPortletInfoInBackground(@Param(name = "taskName") String taskName, @Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
 
   @Path("/schedule-publish-to-live")
   Call<Response> schedulePublishToLive(@Param(name = "sourceGroupId") long sourceGroupId, @Param(name = "targetGroupId") long targetGroupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutIds") JSONArray layoutIds, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "groupName") String groupName, @Param(name = "cronText") String cronText, @Param(name = "schedulerStartDate") long schedulerStartDate, @Param(name = "schedulerEndDate") long schedulerEndDate, @Param(name = "description") String description);
@@ -166,10 +166,10 @@ public interface LayoutService {
   Call<JSONObject> updateLookAndFeel(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutId") long layoutId, @Param(name = "themeId") String themeId, @Param(name = "colorSchemeId") String colorSchemeId, @Param(name = "css") String css);
 
   @Path("/update-name")
-  Call<JSONObject> updateName(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutId") long layoutId, @Param(name = "name") String name, @Param(name = "languageId") String languageId);
+  Call<JSONObject> updateName(@Param(name = "plid") long plid, @Param(name = "name") String name, @Param(name = "languageId") String languageId);
 
   @Path("/update-name")
-  Call<JSONObject> updateName(@Param(name = "plid") long plid, @Param(name = "name") String name, @Param(name = "languageId") String languageId);
+  Call<JSONObject> updateName(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutId") long layoutId, @Param(name = "name") String name, @Param(name = "languageId") String languageId);
 
   @Path("/update-parent-layout-id")
   Call<JSONObject> updateParentLayoutId(@Param(name = "plid") long plid, @Param(name = "parentPlid") long parentPlid);
@@ -181,23 +181,23 @@ public interface LayoutService {
   Call<JSONObject> updateParentLayoutIdAndPriority(@Param(name = "plid") long plid, @Param(name = "parentPlid") long parentPlid, @Param(name = "priority") int priority);
 
   @Path("/update-priority")
-  Call<JSONObject> updatePriority(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutId") long layoutId, @Param(name = "nextLayoutId") long nextLayoutId, @Param(name = "previousLayoutId") long previousLayoutId);
+  Call<JSONObject> updatePriority(@Param(name = "plid") long plid, @Param(name = "priority") int priority);
 
   @Path("/update-priority")
   Call<JSONObject> updatePriority(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutId") long layoutId, @Param(name = "priority") int priority);
 
   @Path("/update-priority")
-  Call<JSONObject> updatePriority(@Param(name = "plid") long plid, @Param(name = "priority") int priority);
-
-  @Path("/validate-import-layouts-file")
-  Call<JSONObject> validateImportLayoutsFile(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  Call<JSONObject> updatePriority(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutId") long layoutId, @Param(name = "nextLayoutId") long nextLayoutId, @Param(name = "previousLayoutId") long previousLayoutId);
 
   @Path("/validate-import-layouts-file")
   Call<JSONObject> validateImportLayoutsFile(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
 
-  @Path("/validate-import-portlet-info")
-  Call<JSONObject> validateImportPortletInfo(@Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
+  @Path("/validate-import-layouts-file")
+  Call<JSONObject> validateImportLayoutsFile(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
 
   @Path("/validate-import-portlet-info")
   Call<JSONObject> validateImportPortletInfo(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration, @Param(name = "file", className = "") JSONObject file);
+
+  @Path("/validate-import-portlet-info")
+  Call<JSONObject> validateImportPortletInfo(@Param(name = "plid") long plid, @Param(name = "groupId") long groupId, @Param(name = "portletId") String portletId, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "file", className = "") JSONObject file);
 }

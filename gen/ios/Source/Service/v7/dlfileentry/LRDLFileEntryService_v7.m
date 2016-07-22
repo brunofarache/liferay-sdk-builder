@@ -29,11 +29,10 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)checkInFileEntryWithFileEntryId:(long long)fileEntryId major:(BOOL)major changeLog:(NSString *)changeLog serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (void)checkInFileEntryWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"major": @(major),
-		@"changeLog": [self checkNull: changeLog],
+		@"lockUuid": [self checkNull: lockUuid],
 		@"serviceContext": [self checkNull: serviceContext]
 	}];
 
@@ -42,10 +41,11 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)checkInFileEntryWithFileEntryId:(long long)fileEntryId lockUuid:(NSString *)lockUuid serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (void)checkInFileEntryWithFileEntryId:(long long)fileEntryId major:(BOOL)major changeLog:(NSString *)changeLog serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"fileEntryId": @(fileEntryId),
-		@"lockUuid": [self checkNull: lockUuid],
+		@"major": @(major),
+		@"changeLog": [self checkNull: changeLog],
 		@"serviceContext": [self checkNull: serviceContext]
 	}];
 
@@ -194,6 +194,29 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
+- (NSNumber *)getFileEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId)
+	}];
+
+	NSDictionary *_command = @{@"/dlfileentry/get-file-entries-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)getFileEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId mimeTypes:(NSArray *)mimeTypes error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
+		@"mimeTypes": [self checkNull: mimeTypes]
+	}];
+
+	NSDictionary *_command = @{@"/dlfileentry/get-file-entries-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
 - (NSNumber *)getFileEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -218,34 +241,9 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getFileEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId mimeTypes:(NSArray *)mimeTypes error:(NSError **)error {
+- (NSDictionary *)getFileEntryWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"folderId": @(folderId),
-		@"mimeTypes": [self checkNull: mimeTypes]
-	}];
-
-	NSDictionary *_command = @{@"/dlfileentry/get-file-entries-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)getFileEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"folderId": @(folderId)
-	}];
-
-	NSDictionary *_command = @{@"/dlfileentry/get-file-entries-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)getFileEntryWithGroupId:(long long)groupId folderId:(long long)folderId title:(NSString *)title error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"folderId": @(folderId),
-		@"title": [self checkNull: title]
+		@"fileEntryId": @(fileEntryId)
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentry/get-file-entry": _params};
@@ -253,9 +251,11 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getFileEntryWithFileEntryId:(long long)fileEntryId error:(NSError **)error {
+- (NSDictionary *)getFileEntryWithGroupId:(long long)groupId folderId:(long long)folderId title:(NSString *)title error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"fileEntryId": @(fileEntryId)
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
+		@"title": [self checkNull: title]
 	}];
 
 	NSDictionary *_command = @{@"/dlfileentry/get-file-entry": _params};
@@ -311,11 +311,10 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupFileEntriesWithGroupId:(long long)groupId userId:(long long)userId repositoryId:(long long)repositoryId rootFolderId:(long long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)getGroupFileEntriesWithGroupId:(long long)groupId userId:(long long)userId rootFolderId:(long long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
-		@"repositoryId": @(repositoryId),
 		@"rootFolderId": @(rootFolderId),
 		@"mimeTypes": [self checkNull: mimeTypes],
 		@"status": @(status),
@@ -329,10 +328,11 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupFileEntriesWithGroupId:(long long)groupId userId:(long long)userId rootFolderId:(long long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)getGroupFileEntriesWithGroupId:(long long)groupId userId:(long long)userId repositoryId:(long long)repositoryId rootFolderId:(long long)rootFolderId mimeTypes:(NSArray *)mimeTypes status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
+		@"repositoryId": @(repositoryId),
 		@"rootFolderId": @(rootFolderId),
 		@"mimeTypes": [self checkNull: mimeTypes],
 		@"status": @(status),

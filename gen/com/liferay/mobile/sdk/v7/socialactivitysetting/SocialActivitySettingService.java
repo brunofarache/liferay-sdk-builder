@@ -23,10 +23,10 @@ public interface SocialActivitySettingService {
   Call<JSONArray> getJSONActivityDefinitions(@Param(name = "groupId") long groupId, @Param(name = "className") String className);
 
   @Path("/update-activity-setting")
-  Call<Response> updateActivitySetting(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "activityType") int activityType, @Param(name = "activityCounterDefinition", className = "") JSONObject activityCounterDefinition);
+  Call<Response> updateActivitySetting(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "enabled") boolean enabled);
 
   @Path("/update-activity-setting")
-  Call<Response> updateActivitySetting(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "enabled") boolean enabled);
+  Call<Response> updateActivitySetting(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "activityType") int activityType, @Param(name = "activityCounterDefinition", className = "") JSONObject activityCounterDefinition);
 
   @Path("/update-activity-settings")
   Call<Response> updateActivitySettings(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "activityType") int activityType, @Param(name = "activityCounterDefinitions") JSONArray activityCounterDefinitions);

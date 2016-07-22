@@ -19,12 +19,11 @@
  */
 @implementation LRTeamService_v7
 
-- (NSDictionary *)addTeamWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addTeamWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"serviceContext": [self checkNull: serviceContext]
+		@"description": [self checkNull: description]
 	}];
 
 	NSDictionary *_command = @{@"/team/add-team": _params};
@@ -32,11 +31,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addTeamWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description error:(NSError **)error {
+- (NSDictionary *)addTeamWithGroupId:(long long)groupId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"name": [self checkNull: name],
-		@"description": [self checkNull: description]
+		@"description": [self checkNull: description],
+		@"serviceContext": [self checkNull: serviceContext]
 	}];
 
 	NSDictionary *_command = @{@"/team/add-team": _params};
@@ -64,10 +64,9 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getTeamWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error {
+- (NSDictionary *)getTeamWithTeamId:(long long)teamId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"name": [self checkNull: name]
+		@"teamId": @(teamId)
 	}];
 
 	NSDictionary *_command = @{@"/team/get-team": _params};
@@ -75,9 +74,10 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getTeamWithTeamId:(long long)teamId error:(NSError **)error {
+- (NSDictionary *)getTeamWithGroupId:(long long)groupId name:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"teamId": @(teamId)
+		@"groupId": @(groupId),
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/team/get-team": _params};
