@@ -18,6 +18,7 @@ import com.liferay.mobile.sdk.json.Action;
 import com.liferay.mobile.sdk.json.Discovery;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
@@ -36,6 +37,10 @@ public abstract class BaseBuilder implements Builder {
 
 		HashMap<String, List<Action>> actionsMap = new HashMap<>();
 		List<Action> actions = discovery.getActions();
+
+		Collections.sort(actions, (action1, action2) ->
+			action1.getPath().compareTo(action2.getPath())
+		);
 
 		for (Action action : actions) {
 			String filter = action.getFilter();

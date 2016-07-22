@@ -15,7 +15,6 @@
 package com.liferay.mobile.sdk.json;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,7 +28,7 @@ public class Discovery {
 	}
 
 	public List<Action> getActions() {
-		return Collections.unmodifiableList(actions);
+		return new ArrayList<>(actions);
 	}
 
 	public String getContext() {
