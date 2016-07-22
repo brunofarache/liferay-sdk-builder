@@ -40,6 +40,17 @@ public class ActionDeserializer implements JsonDeserializer<Action> {
 		String response = root.getAsJsonObject("returns").get("type")
 			.getAsString();
 
+		String filter = null;
+		String methodName = null;
+
+		String name = root.get("name").getAsString();
+		String[] values = name.split("#");
+
+		if (values.length == 2) {
+			filter = values[0].toLowerCase();
+			methodName = values[1];
+		}
+
 		JsonArray jsonArray = root.getAsJsonArray("parameters")
 			.getAsJsonArray();
 
@@ -47,7 +58,7 @@ public class ActionDeserializer implements JsonDeserializer<Action> {
 			ArrayList<Parameter> parameters = JSONParser.fromJSON(
 				jsonArray, new GenericListType<>(Parameter.class));
 
-			return new Action(path, response, parameters);
+			return new Action(filter, methodName, path, response, parameters);
 		}
 		catch (Exception e) {
 			throw new JsonParseException(e);

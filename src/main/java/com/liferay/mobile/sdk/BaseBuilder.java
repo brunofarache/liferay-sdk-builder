@@ -38,27 +38,15 @@ public abstract class BaseBuilder implements Builder {
 		List<Action> actions = discovery.getActions();
 
 		for (Action action : actions) {
-			String path = action.getPath();
-			int index = path.indexOf("/", 1);
+			String filter = action.getFilter();
+			List<Action> filterActions = actionsMap.get(filter);
 
-			if (index == -1) {
-				_log.log(
-					Level.WARNING, "Action {0} skipped, unexpected path format",
-					action.getPath());
-
-				continue;
+			if (filterActions == null) {
+				filterActions = new ArrayList<>();
+				actionsMap.put(filter, filterActions);
 			}
 
-			String className = path.substring(1, index);
-			List<Action> classActions = actionsMap.get(className);
-
-			if (classActions == null) {
-				classActions = new ArrayList<>();
-
-				actionsMap.put(className, classActions);
-			}
-
-			classActions.add(action);
+			filterActions.add(action);
 		}
 
 		for (Entry<String, List<Action>> entry : actionsMap.entrySet()) {

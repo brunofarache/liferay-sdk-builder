@@ -1,6 +1,6 @@
 #macro(objectiveCMethodSignature $action $suffix)
 	#set ($returnType = $languageUtil.getReturnType($action.response))
-	#set ($methodName = $languageUtil.getMethodName($action.path))
+	#set ($methodName = $action.getMethodName())
 	#set ($parameters = $action.parameters)
 	#set ($parameterList = "")
 

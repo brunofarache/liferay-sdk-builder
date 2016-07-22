@@ -114,7 +114,7 @@ public class JavaBuilder extends BaseBuilder {
 		TypeName returnType = ParameterizedTypeName.get(
 			Call.class, javaUtil.returnType(action.getResponse()));
 
-		String methodName = javaUtil.getMethodName(methodPath(action));
+		String methodName = action.getMethodName();
 
 		MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder(methodName)
 			.addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
@@ -131,19 +131,14 @@ public class JavaBuilder extends BaseBuilder {
 		return methodBuilder;
 	}
 
-	protected String methodPath(Action action) {
-		String path = action.getPath();
-		return path.substring(path.lastIndexOf("/"));
-	}
-
 	protected AnnotationSpec.Builder methodPathAnnotationBuilder(
 		Action action) {
 
-		String path = methodPath(action);
+		String methodPath = action.getMethodPath();
 
 		AnnotationSpec.Builder methodPathAnnotationBuilder = AnnotationSpec
 			.builder(Path.class)
-			.addMember("value", "$S", path);
+			.addMember("value", "$S", methodPath);
 
 		if (hasUploadData(action.getParameters())) {
 			methodPathAnnotationBuilder.addMember(

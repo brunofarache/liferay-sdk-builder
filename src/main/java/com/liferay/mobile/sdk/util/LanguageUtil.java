@@ -75,20 +75,12 @@ public class LanguageUtil {
 		}
 	}
 
-	public String capitalize(String word) {
-		return WordUtils.capitalize(word);
-	}
-
-	public String contextPath(String context, String path) {
+	public String contextPath(String context, String filter) {
 		if (Validator.isNotNull(context)) {
-			if (path.startsWith("/")) {
-				path = path.substring(1);
-			}
-
-			context = context + "." + path;
+			context = context + "." + filter;
 		}
 		else {
-			context = path;
+			context = filter;
 		}
 
 		if (!context.startsWith("/")) {
@@ -106,37 +98,13 @@ public class LanguageUtil {
 		return type;
 	}
 
-	public String getMethodName(String path) {
-		String last = getMethodURL(path);
-		String[] methodName = last.split("-");
+	public String getServiceClassName(String filter) {
 		StringBuilder sb = new StringBuilder();
 
-		for (int i = 0; i < methodName.length; i++) {
-			String word = methodName[i];
-
-			if (i > 0) {
-				word = capitalize(word);
-			}
-
-			sb.append(word);
-		}
-
-		return sb.toString();
-	}
-
-	public String getMethodURL(String path) {
-		int index = path.lastIndexOf("/") + 1;
-
-		return path.substring(index);
-	}
-
-	public String getServiceClassName(String serviceContext) {
-		StringBuilder sb = new StringBuilder();
-
-		String className = _classNames.getProperty(serviceContext);
+		String className = _classNames.getProperty(filter);
 
 		if (className == null) {
-			className = WordUtils.capitalize(serviceContext);
+			className = WordUtils.capitalize(filter);
 		}
 
 		sb.append(className);

@@ -16,6 +16,8 @@ package com.liferay.mobile.sdk.json;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang.WordUtils;
+
 /**
  * @author Bruno Farache
  */
@@ -25,25 +27,70 @@ public class Action {
 	}
 
 	public Action(
-		String path, String response, ArrayList<Parameter> parameters) {
+		String filter, String methodName, String path, String response,
+		ArrayList<Parameter> parameters) {
 
+		this.filter = filter;
+		this.methodName = methodName;
 		this.path = path;
 		this.response = response;
 		this.parameters = parameters;
+	}
+
+	public String capitalize(String word) {
+		return WordUtils.capitalize(word);
+	}
+
+	public String getFilter() {
+		if (filter == null) {
+			int index = path.indexOf("/", 1);
+			filter = path.substring(1, index);
+		}
+
+		return filter;
+	}
+
+	public String getMethodName() {
+		if (methodName == null) {
+			methodName = getMethodNameFromPath();
+		}
+
+		return methodName;
+	}
+
+	public String getMethodPath() {
+		int index = path.lastIndexOf("/") + 1;
+		return path.substring(index);
 	}
 
 	public ArrayList<Parameter> getParameters() {
 		return parameters;
 	}
 
-	public String getPath() {
-		return path;
-	}
-
 	public String getResponse() {
 		return response;
 	}
 
+	protected String getMethodNameFromPath() {
+		String last = getMethodPath();
+		String[] methodName = last.split("-");
+		StringBuilder sb = new StringBuilder();
+
+		for (int i = 0; i < methodName.length; i++) {
+			String word = methodName[i];
+
+			if (i > 0) {
+				word = capitalize(word);
+			}
+
+			sb.append(word);
+		}
+
+		return sb.toString();
+	}
+
+	protected String filter;
+	protected String methodName;
 	protected ArrayList<Parameter> parameters = new ArrayList<>();
 	protected String path;
 	protected String response;
