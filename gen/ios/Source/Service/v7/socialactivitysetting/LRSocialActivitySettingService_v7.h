@@ -25,6 +25,6 @@
 - (void)updateActivitySettingsWithGroupId:(long long)groupId className:(NSString *)className activityType:(int)activityType activityCounterDefinitions:(NSArray *)activityCounterDefinitions error:(NSError **)error;
 - (NSDictionary *)getActivityDefinitionWithGroupId:(long long)groupId className:(NSString *)className activityType:(int)activityType error:(NSError **)error;
 - (NSArray *)getActivityDefinitionsWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error;
-- (NSDictionary *)getJSONActivityDefinitionsWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error;
+- (NSArray *)getJSONActivityDefinitionsWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error;
 
 @end

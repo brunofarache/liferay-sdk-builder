@@ -15,10 +15,10 @@ public interface AssetCategoryService {
   Call<JSONArray> search(@Param(name = "groupId") long groupId, @Param(name = "keywords") String keywords, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/search")
-  Call<JSONObject> search(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "categoryProperties") JSONArray categoryProperties, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONArray> search(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "categoryProperties") JSONArray categoryProperties, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search")
-  Call<JSONObject> search(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONArray> search(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/fetch-category")
   Call<JSONObject> fetchCategory(@Param(name = "categoryId") long categoryId);

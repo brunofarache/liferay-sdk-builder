@@ -32,13 +32,13 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getWARPortlets:(NSError **)error {
+- (NSArray *)getWARPortlets:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
 
 	NSDictionary *_command = @{@"/portlet/get-war-portlets": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 @end

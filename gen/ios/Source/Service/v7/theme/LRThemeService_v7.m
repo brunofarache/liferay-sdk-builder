@@ -29,13 +29,13 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getWARThemes:(NSError **)error {
+- (NSArray *)getWARThemes:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 	}];
 
 	NSDictionary *_command = @{@"/theme/get-war-themes": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 @end

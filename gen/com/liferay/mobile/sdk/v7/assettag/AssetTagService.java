@@ -12,10 +12,10 @@ import org.json.JSONObject;
 @Path("/assettag")
 public interface AssetTagService {
   @Path("/search")
-  Call<JSONObject> search(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONArray> search(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search")
-  Call<JSONObject> search(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONArray> search(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/add-tag")
   Call<JSONObject> addTag(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "serviceContext", className = "") JSONObject serviceContext);

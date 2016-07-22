@@ -90,7 +90,7 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getJSONActivityDefinitionsWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error {
+- (NSArray *)getJSONActivityDefinitionsWithGroupId:(long long)groupId className:(NSString *)className error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"className": [self checkNull: className]
@@ -98,7 +98,7 @@
 
 	NSDictionary *_command = @{@"/socialactivitysetting/get-json-activity-definitions": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 @end

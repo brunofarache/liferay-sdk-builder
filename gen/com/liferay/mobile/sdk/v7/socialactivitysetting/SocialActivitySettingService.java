@@ -29,5 +29,5 @@ public interface SocialActivitySettingService {
   Call<JSONArray> getActivityDefinitions(@Param(name = "groupId") long groupId, @Param(name = "className") String className);
 
   @Path("/get-json-activity-definitions")
-  Call<JSONObject> getJSONActivityDefinitions(@Param(name = "groupId") long groupId, @Param(name = "className") String className);
+  Call<JSONArray> getJSONActivityDefinitions(@Param(name = "groupId") long groupId, @Param(name = "className") String className);
 }

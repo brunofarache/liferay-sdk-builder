@@ -19,8 +19,8 @@
  */
 @interface LRAssetTagService_v7 : LRBaseService
 
-- (NSDictionary *)searchWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error;
-- (NSDictionary *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)searchWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error;
 - (NSDictionary *)addTagWithGroupId:(long long)groupId name:(NSString *)name serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSArray *)getTagsWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getTagsWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error;

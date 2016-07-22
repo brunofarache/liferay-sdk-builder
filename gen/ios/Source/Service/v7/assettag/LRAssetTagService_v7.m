@@ -19,7 +19,7 @@
  */
 @implementation LRAssetTagService_v7
 
-- (NSDictionary *)searchWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)searchWithGroupId:(long long)groupId name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"name": [self checkNull: name],
@@ -29,10 +29,10 @@
 
 	NSDictionary *_command = @{@"/assettag/search": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)searchWithGroupIds:(NSArray *)groupIds name:(NSString *)name start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupIds": [self checkNull: groupIds],
 		@"name": [self checkNull: name],
@@ -42,7 +42,7 @@
 
 	NSDictionary *_command = @{@"/assettag/search": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 - (NSDictionary *)addTagWithGroupId:(long long)groupId name:(NSString *)name serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
