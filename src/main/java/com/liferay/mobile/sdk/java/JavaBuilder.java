@@ -68,7 +68,8 @@ public class JavaBuilder extends BaseBuilder {
 
 		packageName = sb.toString();
 
-		JavaFile file = JavaFile.builder(packageName, classBuilder.build())
+		JavaFile file = JavaFile
+			.builder(packageName, classBuilder.build())
 			.build();
 
 		if (Validator.isNull(destination)) {
@@ -116,7 +117,8 @@ public class JavaBuilder extends BaseBuilder {
 
 		String methodName = action.getMethodName();
 
-		MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder(methodName)
+		MethodSpec.Builder methodBuilder = MethodSpec
+			.methodBuilder(methodName)
 			.addModifiers(Modifier.PUBLIC, Modifier.ABSTRACT)
 			.addAnnotation(methodPathAnnotationBuilder.build())
 			.returns(returnType);

@@ -29,7 +29,7 @@ public class Action {
 		String serviceClassName, String methodName, String path,
 		String response, ArrayList<Parameter> parameters) {
 
-		this.serviceClassName = serviceClassName + "Service";
+		this.serviceClassName = serviceClassName + SERVICE_CLASS_NAME_SUFFIX;
 		this.filter = serviceClassName.toLowerCase();
 		this.methodName = methodName;
 		this.path = path;
@@ -80,7 +80,7 @@ public class Action {
 			}
 
 			sb.append(className);
-			sb.append("Service");
+			sb.append(SERVICE_CLASS_NAME_SUFFIX);
 
 			serviceClassName = sb.toString();
 		}
@@ -105,6 +105,8 @@ public class Action {
 
 		return sb.toString();
 	}
+
+	protected final String SERVICE_CLASS_NAME_SUFFIX = "Service";
 
 	protected String filter;
 	protected String methodName;
