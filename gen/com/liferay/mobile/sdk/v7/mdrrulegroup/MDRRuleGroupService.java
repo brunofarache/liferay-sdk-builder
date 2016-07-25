@@ -11,10 +11,10 @@ import org.json.JSONObject;
 @Path("/mdr.mdrrulegroup")
 public interface MDRRuleGroupService {
   @Path("/add-rule-group")
-  Call<JSONObject> addRuleGroup(@Param(name = "groupId") long groupId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addRuleGroup(@Param(name = "groupId") long groupId, @Param(name = "nameMap", className = "map<string,string>") JSONObject nameMap, @Param(name = "descriptionMap", className = "map<string,string>") JSONObject descriptionMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/copy-rule-group")
-  Call<JSONObject> copyRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId, @Param(name = "groupId") long groupId, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> copyRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId, @Param(name = "groupId") long groupId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-rule-group")
   Call<Response> deleteRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId);
@@ -32,5 +32,5 @@ public interface MDRRuleGroupService {
   Call<Integer> getRuleGroupsCount(@Param(name = "groupIds") JSONArray groupIds);
 
   @Path("/update-rule-group")
-  Call<JSONObject> updateRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateRuleGroup(@Param(name = "ruleGroupId") long ruleGroupId, @Param(name = "nameMap", className = "map<string,string>") JSONObject nameMap, @Param(name = "descriptionMap", className = "map<string,string>") JSONObject descriptionMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

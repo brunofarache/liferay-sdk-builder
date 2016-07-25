@@ -11,7 +11,7 @@ import org.json.JSONObject;
 @Path("/repository")
 public interface RepositoryService {
   @Path("/add-repository")
-  Call<JSONObject> addRepository(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "portletId") String portletId, @Param(name = "typeSettingsProperties", className = "") JSONObject typeSettingsProperties, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> addRepository(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "portletId") String portletId, @Param(name = "typeSettingsProperties", className = "map") JSONObject typeSettingsProperties, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/check-repository")
   Call<Response> checkRepository(@Param(name = "repositoryId") long repositoryId);

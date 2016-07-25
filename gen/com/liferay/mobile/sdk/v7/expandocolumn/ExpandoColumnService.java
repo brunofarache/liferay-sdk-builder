@@ -13,7 +13,7 @@ public interface ExpandoColumnService {
   Call<JSONObject> addColumn(@Param(name = "tableId") long tableId, @Param(name = "name") String name, @Param(name = "type") int type);
 
   @Path("/add-column")
-  Call<JSONObject> addColumn(@Param(name = "tableId") long tableId, @Param(name = "name") String name, @Param(name = "type") int type, @Param(name = "defaultData", className = "") JSONObject defaultData);
+  Call<JSONObject> addColumn(@Param(name = "tableId") long tableId, @Param(name = "name") String name, @Param(name = "type") int type, @Param(name = "defaultData", className = "map") JSONObject defaultData);
 
   @Path("/delete-column")
   Call<Response> deleteColumn(@Param(name = "columnId") long columnId);
@@ -25,7 +25,7 @@ public interface ExpandoColumnService {
   Call<JSONObject> updateColumn(@Param(name = "columnId") long columnId, @Param(name = "name") String name, @Param(name = "type") int type);
 
   @Path("/update-column")
-  Call<JSONObject> updateColumn(@Param(name = "columnId") long columnId, @Param(name = "name") String name, @Param(name = "type") int type, @Param(name = "defaultData", className = "") JSONObject defaultData);
+  Call<JSONObject> updateColumn(@Param(name = "columnId") long columnId, @Param(name = "name") String name, @Param(name = "type") int type, @Param(name = "defaultData", className = "map") JSONObject defaultData);
 
   @Path("/update-type-settings")
   Call<JSONObject> updateTypeSettings(@Param(name = "columnId") long columnId, @Param(name = "typeSettings") String typeSettings);

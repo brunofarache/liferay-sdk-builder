@@ -66,7 +66,7 @@ public interface MBThreadService {
   Call<JSONObject> search(@Param(name = "groupId") long groupId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/split-thread")
-  Call<JSONObject> splitThread(@Param(name = "messageId") long messageId, @Param(name = "subject") String subject, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> splitThread(@Param(name = "messageId") long messageId, @Param(name = "subject") String subject, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/unlock-thread")
   Call<Response> unlockThread(@Param(name = "threadId") long threadId);
