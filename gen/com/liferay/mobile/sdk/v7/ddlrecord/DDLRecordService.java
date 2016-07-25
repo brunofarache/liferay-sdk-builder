@@ -5,12 +5,13 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.String;
+import java.util.Map;
 import org.json.JSONObject;
 
 @Path("/ddl.ddlrecord")
 public interface DDLRecordService {
   @Path("/add-record")
-  Call<JSONObject> addRecord(@Param(name = "groupId") long groupId, @Param(name = "recordSetId") long recordSetId, @Param(name = "displayIndex") int displayIndex, @Param(name = "fieldsMap", className = "map<string,map>") JSONObject fieldsMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addRecord(@Param(name = "groupId") long groupId, @Param(name = "recordSetId") long recordSetId, @Param(name = "displayIndex") int displayIndex, @Param(name = "fieldsMap") Map fieldsMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-record")
   Call<JSONObject> addRecord(@Param(name = "groupId") long groupId, @Param(name = "recordSetId") long recordSetId, @Param(name = "displayIndex") int displayIndex, @Param(name = "fields", className = "com.liferay.dynamic.data.mapping.storage.Fields") JSONObject fields, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
@@ -34,7 +35,7 @@ public interface DDLRecordService {
   Call<Response> revertRecordVersion(@Param(name = "recordId") long recordId, @Param(name = "version") String version, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-record")
-  Call<JSONObject> updateRecord(@Param(name = "recordId") long recordId, @Param(name = "displayIndex") int displayIndex, @Param(name = "fieldsMap", className = "map<string,map>") JSONObject fieldsMap, @Param(name = "mergeFields") boolean mergeFields, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateRecord(@Param(name = "recordId") long recordId, @Param(name = "displayIndex") int displayIndex, @Param(name = "fieldsMap") Map fieldsMap, @Param(name = "mergeFields") boolean mergeFields, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-record")
   Call<JSONObject> updateRecord(@Param(name = "recordId") long recordId, @Param(name = "majorVersion") boolean majorVersion, @Param(name = "displayIndex") int displayIndex, @Param(name = "ddmFormValues", className = "com.liferay.dynamic.data.mapping.storage.DDMFormValues") JSONObject ddmFormValues, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);

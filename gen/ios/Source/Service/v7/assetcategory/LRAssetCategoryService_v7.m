@@ -170,10 +170,10 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getVocabularyCategoriesWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)getVocabularyCategoriesWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"parentCategoryId": @(parentCategoryId),
+		@"name": [self checkNull: name],
 		@"vocabularyId": @(vocabularyId),
 		@"start": @(start),
 		@"end": @(end),
@@ -185,10 +185,10 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getVocabularyCategoriesWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)getVocabularyCategoriesWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId vocabularyId:(long long)vocabularyId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": [self checkNull: name],
+		@"parentCategoryId": @(parentCategoryId),
 		@"vocabularyId": @(vocabularyId),
 		@"start": @(start),
 		@"end": @(end),
@@ -211,10 +211,10 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long long)groupId parentCategory:(long long)parentCategory vocabularyId:(long long)vocabularyId error:(NSError **)error {
+- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"parentCategory": @(parentCategory),
+		@"name": [self checkNull: name],
 		@"vocabularyId": @(vocabularyId)
 	}];
 
@@ -223,10 +223,10 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId error:(NSError **)error {
+- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long long)groupId parentCategory:(long long)parentCategory vocabularyId:(long long)vocabularyId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": [self checkNull: name],
+		@"parentCategory": @(parentCategory),
 		@"vocabularyId": @(vocabularyId)
 	}];
 

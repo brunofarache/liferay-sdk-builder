@@ -64,10 +64,10 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (void)deleteCategoryWithGroupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
+- (void)deleteCategoryWithCategoryId:(long long)categoryId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"categoryId": @(categoryId)
+		@"categoryId": @(categoryId),
+		@"includeTrashedEntries": @(includeTrashedEntries)
 	}];
 
 	NSDictionary *_command = @{@"/mbcategory/delete-category": _params};
@@ -75,10 +75,10 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteCategoryWithCategoryId:(long long)categoryId includeTrashedEntries:(BOOL)includeTrashedEntries error:(NSError **)error {
+- (void)deleteCategoryWithGroupId:(long long)groupId categoryId:(long long)categoryId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"categoryId": @(categoryId),
-		@"includeTrashedEntries": @(includeTrashedEntries)
+		@"groupId": @(groupId),
+		@"categoryId": @(categoryId)
 	}];
 
 	NSDictionary *_command = @{@"/mbcategory/delete-category": _params};
@@ -107,10 +107,10 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"parentCategoryIds": [self checkNull: parentCategoryIds],
+		@"parentCategoryId": @(parentCategoryId),
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -120,10 +120,10 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryId:(long long)parentCategoryId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getCategoriesWithGroupId:(long long)groupId parentCategoryIds:(NSArray *)parentCategoryIds start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"parentCategoryId": @(parentCategoryId),
+		@"parentCategoryIds": [self checkNull: parentCategoryIds],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -161,11 +161,11 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoriesWithGroupId:(long long)groupId excludedCategoryId:(long long)excludedCategoryId parentCategoryId:(long long)parentCategoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getCategoriesWithGroupId:(long long)groupId excludedCategoryIds:(NSArray *)excludedCategoryIds parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"excludedCategoryId": @(excludedCategoryId),
-		@"parentCategoryId": @(parentCategoryId),
+		@"excludedCategoryIds": [self checkNull: excludedCategoryIds],
+		@"parentCategoryIds": [self checkNull: parentCategoryIds],
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)
@@ -176,11 +176,11 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getCategoriesWithGroupId:(long long)groupId excludedCategoryIds:(NSArray *)excludedCategoryIds parentCategoryIds:(NSArray *)parentCategoryIds status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getCategoriesWithGroupId:(long long)groupId excludedCategoryId:(long long)excludedCategoryId parentCategoryId:(long long)parentCategoryId status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"excludedCategoryIds": [self checkNull: excludedCategoryIds],
-		@"parentCategoryIds": [self checkNull: parentCategoryIds],
+		@"excludedCategoryId": @(excludedCategoryId),
+		@"parentCategoryId": @(parentCategoryId),
 		@"status": @(status),
 		@"start": @(start),
 		@"end": @(end)

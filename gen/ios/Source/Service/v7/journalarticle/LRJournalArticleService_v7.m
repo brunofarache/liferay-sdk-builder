@@ -580,11 +580,11 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getLatestArticleWithGroupId:(long long)groupId articleId:(NSString *)articleId status:(int)status error:(NSError **)error {
+- (NSDictionary *)getLatestArticleWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": [self checkNull: articleId],
-		@"status": @(status)
+		@"className": [self checkNull: className],
+		@"classPK": @(classPK)
 	}];
 
 	NSDictionary *_command = @{@"/journal.journalarticle/get-latest-article": _params};
@@ -592,11 +592,11 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getLatestArticleWithGroupId:(long long)groupId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error {
+- (NSDictionary *)getLatestArticleWithGroupId:(long long)groupId articleId:(NSString *)articleId status:(int)status error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"className": [self checkNull: className],
-		@"classPK": @(classPK)
+		@"articleId": [self checkNull: articleId],
+		@"status": @(status)
 	}];
 
 	NSDictionary *_command = @{@"/journal.journalarticle/get-latest-article": _params};
@@ -639,10 +639,10 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveArticleFromTrashWithGroupId:(long long)groupId articleId:(NSString *)articleId newFolderId:(long long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)moveArticleFromTrashWithGroupId:(long long)groupId resourcePrimKey:(long long)resourcePrimKey newFolderId:(long long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"articleId": [self checkNull: articleId],
+		@"resourcePrimKey": @(resourcePrimKey),
 		@"newFolderId": @(newFolderId),
 		@"serviceContext": [self checkNull: serviceContext]
 	}];
@@ -652,10 +652,10 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)moveArticleFromTrashWithGroupId:(long long)groupId resourcePrimKey:(long long)resourcePrimKey newFolderId:(long long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)moveArticleFromTrashWithGroupId:(long long)groupId articleId:(NSString *)articleId newFolderId:(long long)newFolderId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"resourcePrimKey": @(resourcePrimKey),
+		@"articleId": [self checkNull: articleId],
 		@"newFolderId": @(newFolderId),
 		@"serviceContext": [self checkNull: serviceContext]
 	}];
@@ -836,31 +836,6 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId articleId:(NSString *)articleId version:(double)version title:(NSString *)title description:(NSString *)description content:(NSString *)content ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate andOperator:(BOOL)andOperator error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"groupId": @(groupId),
-		@"folderIds": [self checkNull: folderIds],
-		@"classNameId": @(classNameId),
-		@"articleId": [self checkNull: articleId],
-		@"version": @(version),
-		@"title": [self checkNull: title],
-		@"description": [self checkNull: description],
-		@"content": [self checkNull: content],
-		@"ddmStructureKey": [self checkNull: ddmStructureKey],
-		@"ddmTemplateKey": [self checkNull: ddmTemplateKey],
-		@"displayDateGT": @(displayDateGT),
-		@"displayDateLT": @(displayDateLT),
-		@"status": @(status),
-		@"reviewDate": @(reviewDate),
-		@"andOperator": @(andOperator)
-	}];
-
-	NSDictionary *_command = @{@"/journal.journalarticle/search-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId articleId:(NSString *)articleId version:(double)version title:(NSString *)title description:(NSString *)description content:(NSString *)content ddmStructureKeys:(NSArray *)ddmStructureKeys ddmTemplateKeys:(NSArray *)ddmTemplateKeys displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate andOperator:(BOOL)andOperator error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
@@ -874,6 +849,31 @@
 		@"content": [self checkNull: content],
 		@"ddmStructureKeys": [self checkNull: ddmStructureKeys],
 		@"ddmTemplateKeys": [self checkNull: ddmTemplateKeys],
+		@"displayDateGT": @(displayDateGT),
+		@"displayDateLT": @(displayDateLT),
+		@"status": @(status),
+		@"reviewDate": @(reviewDate),
+		@"andOperator": @(andOperator)
+	}];
+
+	NSDictionary *_command = @{@"/journal.journalarticle/search-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId folderIds:(NSArray *)folderIds classNameId:(long long)classNameId articleId:(NSString *)articleId version:(double)version title:(NSString *)title description:(NSString *)description content:(NSString *)content ddmStructureKey:(NSString *)ddmStructureKey ddmTemplateKey:(NSString *)ddmTemplateKey displayDateGT:(long long)displayDateGT displayDateLT:(long long)displayDateLT status:(int)status reviewDate:(long long)reviewDate andOperator:(BOOL)andOperator error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"groupId": @(groupId),
+		@"folderIds": [self checkNull: folderIds],
+		@"classNameId": @(classNameId),
+		@"articleId": [self checkNull: articleId],
+		@"version": @(version),
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"content": [self checkNull: content],
+		@"ddmStructureKey": [self checkNull: ddmStructureKey],
+		@"ddmTemplateKey": [self checkNull: ddmTemplateKey],
 		@"displayDateGT": @(displayDateGT),
 		@"displayDateLT": @(displayDateLT),
 		@"status": @(status),

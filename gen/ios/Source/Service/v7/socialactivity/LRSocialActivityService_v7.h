@@ -23,8 +23,8 @@
 - (NSArray *)getActivitiesWithClassName:(NSString *)className start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getActivitiesWithMirrorActivityId:(long long)mirrorActivityId classNameId:(long long)classNameId classPK:(long long)classPK start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getActivitiesWithMirrorActivityId:(long long)mirrorActivityId className:(NSString *)className classPK:(long long)classPK start:(int)start end:(int)end error:(NSError **)error;
-- (NSNumber *)getActivitiesCountWithClassNameId:(long long)classNameId error:(NSError **)error;
 - (NSNumber *)getActivitiesCountWithClassName:(NSString *)className error:(NSError **)error;
+- (NSNumber *)getActivitiesCountWithClassNameId:(long long)classNameId error:(NSError **)error;
 - (NSNumber *)getActivitiesCountWithMirrorActivityId:(long long)mirrorActivityId className:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
 - (NSNumber *)getActivitiesCountWithMirrorActivityId:(long long)mirrorActivityId classNameId:(long long)classNameId classPK:(long long)classPK error:(NSError **)error;
 - (NSDictionary *)getActivityWithActivityId:(long long)activityId error:(NSError **)error;

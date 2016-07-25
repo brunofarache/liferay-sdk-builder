@@ -19,8 +19,8 @@
  */
 @interface LRTrashEntryService_v7 : LRBaseService
 
-- (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error;
 - (void)deleteEntriesWithGroupId:(long long)groupId error:(NSError **)error;
+- (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error;
 - (void)deleteEntryWithEntryId:(long long)entryId error:(NSError **)error;
 - (void)deleteEntryWithClassName:(NSString *)className classPK:(long long)classPK error:(NSError **)error;
 - (NSDictionary *)getEntriesWithGroupId:(long long)groupId error:(NSError **)error;

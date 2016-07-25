@@ -447,12 +447,12 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(LRUploadData *)file error:(NSError **)error {
+- (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap bytes:(NSData *)bytes error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parameterMap": [self checkNull: parameterMap],
-		@"file": [self checkNull: file]
+		@"bytes": [self toString:bytes]
 	}];
 
 	NSDictionary *_command = @{@"/layout/import-layouts": _params};
@@ -460,12 +460,12 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap bytes:(NSData *)bytes error:(NSError **)error {
+- (void)importLayoutsWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout parameterMap:(NSDictionary *)parameterMap file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"parameterMap": [self checkNull: parameterMap],
-		@"bytes": [self toString:bytes]
+		@"file": [self checkNull: file]
 	}];
 
 	NSDictionary *_command = @{@"/layout/import-layouts": _params};

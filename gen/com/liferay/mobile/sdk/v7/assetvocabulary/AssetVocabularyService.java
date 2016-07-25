@@ -6,6 +6,7 @@ import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,7 +16,7 @@ public interface AssetVocabularyService {
   Call<JSONObject> addVocabulary(@Param(name = "groupId") long groupId, @Param(name = "title") String title, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-vocabulary")
-  Call<JSONObject> addVocabulary(@Param(name = "groupId") long groupId, @Param(name = "title") String title, @Param(name = "titleMap", className = "map<string,string>") JSONObject titleMap, @Param(name = "descriptionMap", className = "map<string,string>") JSONObject descriptionMap, @Param(name = "settings") String settings, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addVocabulary(@Param(name = "groupId") long groupId, @Param(name = "title") String title, @Param(name = "titleMap") Map titleMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "settings") String settings, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-vocabularies")
   Call<JSONArray> deleteVocabularies(@Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
@@ -84,5 +85,5 @@ public interface AssetVocabularyService {
   Call<JSONObject> searchVocabulariesDisplay(@Param(name = "groupId") long groupId, @Param(name = "title") String title, @Param(name = "addDefaultVocabulary") boolean addDefaultVocabulary, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "sort", className = "com.liferay.portal.kernel.search.Sort") JSONObject sort);
 
   @Path("/update-vocabulary")
-  Call<JSONObject> updateVocabulary(@Param(name = "vocabularyId") long vocabularyId, @Param(name = "title") String title, @Param(name = "titleMap", className = "map<string,string>") JSONObject titleMap, @Param(name = "descriptionMap", className = "map<string,string>") JSONObject descriptionMap, @Param(name = "settings") String settings, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateVocabulary(@Param(name = "vocabularyId") long vocabularyId, @Param(name = "title") String title, @Param(name = "titleMap") Map titleMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "settings") String settings, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

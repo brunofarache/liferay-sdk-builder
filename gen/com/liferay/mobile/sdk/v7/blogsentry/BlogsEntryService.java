@@ -39,10 +39,10 @@ public interface BlogsEntryService {
   Call<JSONArray> getGroupEntries(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-entries")
-  Call<JSONArray> getGroupEntries(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blogs.kernel.model.BlogsEntry>") JSONObject obc);
+  Call<JSONArray> getGroupEntries(@Param(name = "groupId") long groupId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-entries")
-  Call<JSONArray> getGroupEntries(@Param(name = "groupId") long groupId, @Param(name = "displayDate") long displayDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONArray> getGroupEntries(@Param(name = "groupId") long groupId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.blogs.kernel.model.BlogsEntry>") JSONObject obc);
 
   @Path("/get-group-entries-count")
   Call<Integer> getGroupEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "status") int status);

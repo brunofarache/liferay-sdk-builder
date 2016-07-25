@@ -5,13 +5,14 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Path("/sap.sapentry")
 public interface SAPEntryService {
   @Path("/add-sap-entry")
-  Call<JSONObject> addSAPEntry(@Param(name = "allowedServiceSignatures") String allowedServiceSignatures, @Param(name = "defaultSAPEntry") boolean defaultSAPEntry, @Param(name = "enabled") boolean enabled, @Param(name = "name") String name, @Param(name = "titleMap", className = "map<string,string>") JSONObject titleMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addSAPEntry(@Param(name = "allowedServiceSignatures") String allowedServiceSignatures, @Param(name = "defaultSAPEntry") boolean defaultSAPEntry, @Param(name = "enabled") boolean enabled, @Param(name = "name") String name, @Param(name = "titleMap") Map titleMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-sap-entry")
   Call<JSONObject> deleteSAPEntry(@Param(name = "sapEntry", className = "com.liferay.portal.security.service.access.policy.model.SAPEntry") JSONObject sapEntry);
@@ -38,5 +39,5 @@ public interface SAPEntryService {
   Call<JSONObject> getSAPEntry(@Param(name = "companyId") long companyId, @Param(name = "name") String name);
 
   @Path("/update-sap-entry")
-  Call<JSONObject> updateSAPEntry(@Param(name = "sapEntryId") long sapEntryId, @Param(name = "allowedServiceSignatures") String allowedServiceSignatures, @Param(name = "defaultSAPEntry") boolean defaultSAPEntry, @Param(name = "enabled") boolean enabled, @Param(name = "name") String name, @Param(name = "titleMap", className = "map<string,string>") JSONObject titleMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateSAPEntry(@Param(name = "sapEntryId") long sapEntryId, @Param(name = "allowedServiceSignatures") String allowedServiceSignatures, @Param(name = "defaultSAPEntry") boolean defaultSAPEntry, @Param(name = "enabled") boolean enabled, @Param(name = "name") String name, @Param(name = "titleMap") Map titleMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

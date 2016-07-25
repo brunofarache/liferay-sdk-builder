@@ -19,9 +19,9 @@
  */
 @implementation LRTrashEntryService_v7
 
-- (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error {
+- (void)deleteEntriesWithGroupId:(long long)groupId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"entryIds": [self checkNull: entryIds]
+		@"groupId": @(groupId)
 	}];
 
 	NSDictionary *_command = @{@"/trashentry/delete-entries": _params};
@@ -29,9 +29,9 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)deleteEntriesWithGroupId:(long long)groupId error:(NSError **)error {
+- (void)deleteEntriesWithEntryIds:(NSArray *)entryIds error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId)
+		@"entryIds": [self checkNull: entryIds]
 	}];
 
 	NSDictionary *_command = @{@"/trashentry/delete-entries": _params};

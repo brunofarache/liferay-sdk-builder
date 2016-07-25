@@ -101,12 +101,12 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed error:(NSError **)error {
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId modifiedDate:(long long)modifiedDate status:(int)status error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
-		@"status": @(status),
-		@"subscribed": @(subscribed)
+		@"modifiedDate": @(modifiedDate),
+		@"status": @(status)
 	}];
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads-count": _params};
@@ -114,12 +114,12 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId modifiedDate:(long long)modifiedDate status:(int)status error:(NSError **)error {
+- (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
-		@"modifiedDate": @(modifiedDate),
-		@"status": @(status)
+		@"status": @(status),
+		@"subscribed": @(subscribed)
 	}];
 
 	NSDictionary *_command = @{@"/mbthread/get-group-threads-count": _params};

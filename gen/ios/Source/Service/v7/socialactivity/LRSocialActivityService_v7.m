@@ -71,9 +71,9 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getActivitiesCountWithClassNameId:(long long)classNameId error:(NSError **)error {
+- (NSNumber *)getActivitiesCountWithClassName:(NSString *)className error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"classNameId": @(classNameId)
+		@"className": [self checkNull: className]
 	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
@@ -81,9 +81,9 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getActivitiesCountWithClassName:(NSString *)className error:(NSError **)error {
+- (NSNumber *)getActivitiesCountWithClassNameId:(long long)classNameId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"className": [self checkNull: className]
+		@"classNameId": @(classNameId)
 	}];
 
 	NSDictionary *_command = @{@"/socialactivity/get-activities-count": _params};
