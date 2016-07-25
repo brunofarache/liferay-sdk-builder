@@ -84,9 +84,9 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error {
+- (NSDictionary *)getUserGroupWithName:(NSString *)name error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"userGroupId": @(userGroupId)
+		@"name": [self checkNull: name]
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/get-user-group": _params};
@@ -94,9 +94,9 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getUserGroupWithName:(NSString *)name error:(NSError **)error {
+- (NSDictionary *)getUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"name": [self checkNull: name]
+		@"userGroupId": @(userGroupId)
 	}];
 
 	NSDictionary *_command = @{@"/usergroup/get-user-group": _params};

@@ -307,18 +307,6 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getSubfolderIdsWithGroupId:(long long)groupId folderId:(long long)folderId recurse:(BOOL)recurse error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"folderId": @(folderId),
-		@"recurse": @(recurse)
-	}];
-
-	NSDictionary *_command = @{@"/dlfolder/get-subfolder-ids": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
 - (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderIds": [self checkNull: folderIds],
@@ -329,6 +317,18 @@
 	NSDictionary *_command = @{@"/dlfolder/get-subfolder-ids": _params};
 
 	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getSubfolderIdsWithGroupId:(long long)groupId folderId:(long long)folderId recurse:(BOOL)recurse error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"folderId": @(folderId),
+		@"recurse": @(recurse)
+	}];
+
+	NSDictionary *_command = @{@"/dlfolder/get-subfolder-ids": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 - (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long long)groupId folderId:(long long)folderId recurse:(BOOL)recurse error:(NSError **)error {
@@ -445,22 +445,6 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description defaultFileEntryTypeId:(long long)defaultFileEntryTypeId fileEntryTypeIds:(NSArray *)fileEntryTypeIds restrictionType:(int)restrictionType serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"folderId": @(folderId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"defaultFileEntryTypeId": @(defaultFileEntryTypeId),
-		@"fileEntryTypeIds": [self checkNull: fileEntryTypeIds],
-		@"restrictionType": @(restrictionType),
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/dlfolder/update-folder": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description defaultFileEntryTypeId:(long long)defaultFileEntryTypeId fileEntryTypeIds:(NSArray *)fileEntryTypeIds overrideFileEntryTypes:(BOOL)overrideFileEntryTypes serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"folderId": @(folderId),
@@ -469,6 +453,22 @@
 		@"defaultFileEntryTypeId": @(defaultFileEntryTypeId),
 		@"fileEntryTypeIds": [self checkNull: fileEntryTypeIds],
 		@"overrideFileEntryTypes": @(overrideFileEntryTypes),
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/dlfolder/update-folder": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description defaultFileEntryTypeId:(long long)defaultFileEntryTypeId fileEntryTypeIds:(NSArray *)fileEntryTypeIds restrictionType:(int)restrictionType serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"folderId": @(folderId),
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"defaultFileEntryTypeId": @(defaultFileEntryTypeId),
+		@"fileEntryTypeIds": [self checkNull: fileEntryTypeIds],
+		@"restrictionType": @(restrictionType),
 		@"serviceContext": [self checkNull: serviceContext]
 	}];
 

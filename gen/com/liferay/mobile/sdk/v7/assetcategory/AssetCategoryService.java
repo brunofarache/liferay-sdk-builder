@@ -60,10 +60,10 @@ public interface AssetCategoryService {
   Call<Integer> getVocabularyCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "vocabularyId") long vocabularyId);
 
   @Path("/get-vocabulary-categories-count")
-  Call<Integer> getVocabularyCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "vocabularyId") long vocabularyId);
+  Call<Integer> getVocabularyCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "parentCategory") long parentCategory, @Param(name = "vocabularyId") long vocabularyId);
 
   @Path("/get-vocabulary-categories-count")
-  Call<Integer> getVocabularyCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "parentCategory") long parentCategory, @Param(name = "vocabularyId") long vocabularyId);
+  Call<Integer> getVocabularyCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "vocabularyId") long vocabularyId);
 
   @Path("/get-vocabulary-categories-display")
   Call<JSONObject> getVocabularyCategoriesDisplay(@Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
@@ -90,10 +90,10 @@ public interface AssetCategoryService {
   Call<JSONArray> search(@Param(name = "groupId") long groupId, @Param(name = "keywords") String keywords, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/search-categories-display")
-  Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupId") long groupId, @Param(name = "title") String title, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "title") String title, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search-categories-display")
-  Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "title") String title, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupId") long groupId, @Param(name = "title") String title, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search-categories-display")
   Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "title") String title, @Param(name = "parentCategoryIds") JSONArray parentCategoryIds, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "start") int start, @Param(name = "end") int end);
@@ -102,10 +102,10 @@ public interface AssetCategoryService {
   Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupId") long groupId, @Param(name = "title") String title, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search-categories-display")
-  Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "title") String title, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "parentCategoryIds") JSONArray parentCategoryIds, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "sort", className = "") JSONObject sort);
+  Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupId") long groupId, @Param(name = "title") String title, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "sort", className = "") JSONObject sort);
 
   @Path("/search-categories-display")
-  Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupId") long groupId, @Param(name = "title") String title, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "sort", className = "") JSONObject sort);
+  Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "title") String title, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "parentCategoryIds") JSONArray parentCategoryIds, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "sort", className = "") JSONObject sort);
 
   @Path("/update-category")
   Call<JSONObject> updateCategory(@Param(name = "categoryId") long categoryId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "titleMap", className = "") JSONObject titleMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "categoryProperties") JSONArray categoryProperties, @Param(name = "serviceContext", className = "") JSONObject serviceContext);

@@ -150,9 +150,9 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)exportLayoutsAsFileInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
+- (NSNumber *)exportLayoutsAsFileInBackgroundWithExportImportConfigurationId:(long long)exportImportConfigurationId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"exportImportConfiguration": [self checkNull: exportImportConfiguration]
+		@"exportImportConfigurationId": @(exportImportConfigurationId)
 	}];
 
 	NSDictionary *_command = @{@"/layout/export-layouts-as-file-in-background": _params};
@@ -160,9 +160,9 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)exportLayoutsAsFileInBackgroundWithExportImportConfigurationId:(long long)exportImportConfigurationId error:(NSError **)error {
+- (NSNumber *)exportLayoutsAsFileInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"exportImportConfigurationId": @(exportImportConfigurationId)
+		@"exportImportConfiguration": [self checkNull: exportImportConfiguration]
 	}];
 
 	NSDictionary *_command = @{@"/layout/export-layouts-as-file-in-background": _params};

@@ -30,9 +30,9 @@
 - (void)deleteFileVersionWithFileEntryId:(long long)fileEntryId version:(NSString *)version error:(NSError **)error;
 - (NSDictionary *)fetchFileEntryByImageIdWithImageId:(long long)imageId error:(NSError **)error;
 - (NSArray *)getFileEntriesWithGroupId:(long long)groupId folderId:(long long)folderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)getFileEntriesWithGroupId:(long long)groupId folderId:(long long)folderId mimeTypes:(NSArray *)mimeTypes start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getFileEntriesWithGroupId:(long long)groupId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getFileEntriesWithGroupId:(long long)groupId folderId:(long long)folderId status:(int)status start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSArray *)getFileEntriesWithGroupId:(long long)groupId folderId:(long long)folderId mimeTypes:(NSArray *)mimeTypes start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSNumber *)getFileEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error;
 - (NSNumber *)getFileEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId mimeTypes:(NSArray *)mimeTypes error:(NSError **)error;
 - (NSNumber *)getFileEntriesCountWithGroupId:(long long)groupId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId error:(NSError **)error;

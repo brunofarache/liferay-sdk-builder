@@ -41,8 +41,8 @@
 - (NSNumber *)getFoldersCountWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId status:(int)status includeMountfolders:(BOOL)includeMountfolders error:(NSError **)error;
 - (NSArray *)getMountFoldersWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSNumber *)getMountFoldersCountWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId error:(NSError **)error;
-- (NSArray *)getSubfolderIdsWithGroupId:(long long)groupId folderId:(long long)folderId recurse:(BOOL)recurse error:(NSError **)error;
 - (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long long)groupId folderId:(long long)folderId error:(NSError **)error;
+- (NSArray *)getSubfolderIdsWithGroupId:(long long)groupId folderId:(long long)folderId recurse:(BOOL)recurse error:(NSError **)error;
 - (void)getSubfolderIdsWithFolderIds:(NSArray *)folderIds groupId:(long long)groupId folderId:(long long)folderId recurse:(BOOL)recurse error:(NSError **)error;
 - (BOOL)hasFolderLockWithFolderId:(long long)folderId error:(NSError **)error;
 - (BOOL)hasInheritableLockWithFolderId:(long long)folderId error:(NSError **)error;
@@ -53,8 +53,8 @@
 - (NSDictionary *)refreshFolderLockWithLockUuid:(NSString *)lockUuid companyId:(long long)companyId expirationTime:(long long)expirationTime error:(NSError **)error;
 - (void)unlockFolderWithFolderId:(long long)folderId lockUuid:(NSString *)lockUuid error:(NSError **)error;
 - (void)unlockFolderWithGroupId:(long long)groupId parentFolderId:(long long)parentFolderId name:(NSString *)name lockUuid:(NSString *)lockUuid error:(NSError **)error;
-- (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description defaultFileEntryTypeId:(long long)defaultFileEntryTypeId fileEntryTypeIds:(NSArray *)fileEntryTypeIds restrictionType:(int)restrictionType serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description defaultFileEntryTypeId:(long long)defaultFileEntryTypeId fileEntryTypeIds:(NSArray *)fileEntryTypeIds overrideFileEntryTypes:(BOOL)overrideFileEntryTypes serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)updateFolderWithFolderId:(long long)folderId name:(NSString *)name description:(NSString *)description defaultFileEntryTypeId:(long long)defaultFileEntryTypeId fileEntryTypeIds:(NSArray *)fileEntryTypeIds restrictionType:(int)restrictionType serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)updateFolderWithFolderId:(long long)folderId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description defaultFileEntryTypeId:(long long)defaultFileEntryTypeId fileEntryTypeIds:(NSArray *)fileEntryTypeIds restrictionType:(int)restrictionType serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (BOOL)verifyInheritableLockWithFolderId:(long long)folderId lockUuid:(NSString *)lockUuid error:(NSError **)error;
 

@@ -19,8 +19,8 @@
  */
 @interface LRDLAppService_v7 : LRBaseService
 
-- (NSDictionary *)addFileEntryWithRepositoryId:(long long)repositoryId folderId:(long long)folderId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog file:(NSDictionary *)file serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addFileEntryWithRepositoryId:(long long)repositoryId folderId:(long long)folderId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog bytes:(NSData *)bytes serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
+- (NSDictionary *)addFileEntryWithRepositoryId:(long long)repositoryId folderId:(long long)folderId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog file:(NSDictionary *)file serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addFileShortcutWithRepositoryId:(long long)repositoryId folderId:(long long)folderId toFileEntryId:(long long)toFileEntryId serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addFolderWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId name:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (NSDictionary *)addTempFileEntryWithGroupId:(long long)groupId folderId:(long long)folderId folderName:(NSString *)folderName fileName:(NSString *)fileName file:(NSDictionary *)file mimeType:(NSString *)mimeType error:(NSError **)error;
@@ -38,13 +38,13 @@
 - (void)deleteFolderWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId name:(NSString *)name error:(NSError **)error;
 - (void)deleteTempFileEntryWithGroupId:(long long)groupId folderId:(long long)folderId folderName:(NSString *)folderName fileName:(NSString *)fileName error:(NSError **)error;
 - (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId error:(NSError **)error;
-- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId error:(NSError **)error;
 - (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId mimeTypes:(NSArray *)mimeTypes error:(NSError **)error;
+- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId error:(NSError **)error;
 - (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId start:(int)start end:(int)end error:(NSError **)error;
-- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
-- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId mimeTypes:(NSArray *)mimeTypes start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
+- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getFileEntriesAndFileShortcutsWithRepositoryId:(long long)repositoryId folderId:(long long)folderId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
 - (NSNumber *)getFileEntriesAndFileShortcutsCountWithRepositoryId:(long long)repositoryId folderId:(long long)folderId status:(int)status error:(NSError **)error;
 - (NSNumber *)getFileEntriesAndFileShortcutsCountWithRepositoryId:(long long)repositoryId folderId:(long long)folderId status:(int)status mimeTypes:(NSArray *)mimeTypes error:(NSError **)error;
@@ -61,8 +61,8 @@
 - (NSArray *)getFoldersWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId error:(NSError **)error;
 - (NSArray *)getFoldersWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId includeMountFolders:(BOOL)includeMountFolders error:(NSError **)error;
 - (NSArray *)getFoldersWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId start:(int)start end:(int)end error:(NSError **)error;
-- (NSArray *)getFoldersWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getFoldersWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId includeMountFolders:(BOOL)includeMountFolders start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getFoldersWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getFoldersWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId includeMountFolders:(BOOL)includeMountFolders start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getFoldersWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId status:(int)status includeMountFolders:(BOOL)includeMountFolders start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSArray *)getFoldersAndFileEntriesAndFileShortcutsWithRepositoryId:(long long)repositoryId folderId:(long long)folderId status:(int)status includeMountFolders:(BOOL)includeMountFolders start:(int)start end:(int)end error:(NSError **)error;
@@ -87,8 +87,8 @@
 - (NSArray *)getMountFoldersWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error;
 - (NSNumber *)getMountFoldersCountWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId error:(NSError **)error;
 - (NSArray *)getSubfolderIdsWithRepositoryId:(long long)repositoryId folderId:(long long)folderId error:(NSError **)error;
-- (NSArray *)getSubfolderIdsWithRepositoryId:(long long)repositoryId folderId:(long long)folderId recurse:(BOOL)recurse error:(NSError **)error;
 - (void)getSubfolderIdsWithRepositoryId:(long long)repositoryId folderIds:(NSArray *)folderIds folderId:(long long)folderId error:(NSError **)error;
+- (NSArray *)getSubfolderIdsWithRepositoryId:(long long)repositoryId folderId:(long long)folderId recurse:(BOOL)recurse error:(NSError **)error;
 - (NSArray *)getTempFileNamesWithGroupId:(long long)groupId folderId:(long long)folderId folderName:(NSString *)folderName error:(NSError **)error;
 - (NSDictionary *)lockFolderWithRepositoryId:(long long)repositoryId folderId:(long long)folderId error:(NSError **)error;
 - (NSDictionary *)lockFolderWithRepositoryId:(long long)repositoryId folderId:(long long)folderId owner:(NSString *)owner inheritable:(BOOL)inheritable expirationTime:(long long)expirationTime error:(NSError **)error;

@@ -19,12 +19,12 @@
  */
 @implementation LRGroupService_v7
 
-- (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentGroupId": @(parentGroupId),
 		@"liveGroupId": @(liveGroupId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
+		@"nameMap": [self checkNull: nameMap],
+		@"descriptionMap": [self checkNull: descriptionMap],
 		@"type": @(type),
 		@"manualMembership": @(manualMembership),
 		@"membershipRestriction": @(membershipRestriction),
@@ -39,12 +39,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId nameMap:(NSDictionary *)nameMap descriptionMap:(NSDictionary *)descriptionMap type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+- (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentGroupId": @(parentGroupId),
 		@"liveGroupId": @(liveGroupId),
-		@"nameMap": [self checkNull: nameMap],
-		@"descriptionMap": [self checkNull: descriptionMap],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
 		@"type": @(type),
 		@"manualMembership": @(manualMembership),
 		@"membershipRestriction": @(membershipRestriction),

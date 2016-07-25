@@ -46,13 +46,13 @@ public interface DLFileEntryService {
   Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-file-entries")
+  Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
+
+  @Path("/get-file-entries")
   Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-file-entries")
   Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
-
-  @Path("/get-file-entries")
-  Call<JSONArray> getFileEntries(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "") JSONObject obc);
 
   @Path("/get-file-entries-count")
   Call<Integer> getFileEntriesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);

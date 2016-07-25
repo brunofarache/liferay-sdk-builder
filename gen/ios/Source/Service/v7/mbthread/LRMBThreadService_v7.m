@@ -43,12 +43,12 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId modifiedDate:(long long)modifiedDate status:(int)status start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
+		@"modifiedDate": @(modifiedDate),
 		@"status": @(status),
-		@"subscribed": @(subscribed),
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -58,12 +58,12 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId modifiedDate:(long long)modifiedDate status:(int)status start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"userId": @(userId),
-		@"modifiedDate": @(modifiedDate),
 		@"status": @(status),
+		@"subscribed": @(subscribed),
 		@"start": @(start),
 		@"end": @(end)
 	}];

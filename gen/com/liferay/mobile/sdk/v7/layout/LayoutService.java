@@ -40,10 +40,10 @@ public interface LayoutService {
   Call<JSONObject> exportLayoutsAsFile(@Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutIds") JSONArray layoutIds, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);
 
   @Path("/export-layouts-as-file-in-background")
-  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
+  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfigurationId") long exportImportConfigurationId);
 
   @Path("/export-layouts-as-file-in-background")
-  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfigurationId") long exportImportConfigurationId);
+  Call<Long> exportLayoutsAsFileInBackground(@Param(name = "exportImportConfiguration", className = "") JSONObject exportImportConfiguration);
 
   @Path("/export-layouts-as-file-in-background")
   Call<Long> exportLayoutsAsFileInBackground(@Param(name = "taskName") String taskName, @Param(name = "groupId") long groupId, @Param(name = "privateLayout") boolean privateLayout, @Param(name = "layoutIds") JSONArray layoutIds, @Param(name = "parameterMap", className = "") JSONObject parameterMap, @Param(name = "startDate") long startDate, @Param(name = "endDate") long endDate);

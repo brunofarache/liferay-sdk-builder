@@ -29,10 +29,10 @@ public interface UserGroupService {
   Call<JSONObject> fetchUserGroup(@Param(name = "userGroupId") long userGroupId);
 
   @Path("/get-user-group")
-  Call<JSONObject> getUserGroup(@Param(name = "userGroupId") long userGroupId);
+  Call<JSONObject> getUserGroup(@Param(name = "name") String name);
 
   @Path("/get-user-group")
-  Call<JSONObject> getUserGroup(@Param(name = "name") String name);
+  Call<JSONObject> getUserGroup(@Param(name = "userGroupId") long userGroupId);
 
   @Path("/get-user-groups")
   Call<JSONArray> getUserGroups(@Param(name = "companyId") long companyId);

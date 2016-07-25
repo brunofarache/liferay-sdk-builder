@@ -32,12 +32,12 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(NSDictionary *)file error:(NSError **)error {
+- (void)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo bytes:(NSData *)bytes error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"logo": @(logo),
-		@"file": [self checkNull: file]
+		@"bytes": [self toString:bytes]
 	}];
 
 	NSDictionary *_command = @{@"/layoutset/update-logo": _params};
@@ -45,12 +45,12 @@
 	[self.session invoke:_command error:error];
 }
 
-- (void)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo bytes:(NSData *)bytes error:(NSError **)error {
+- (void)updateLogoWithGroupId:(long long)groupId privateLayout:(BOOL)privateLayout logo:(BOOL)logo file:(NSDictionary *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
 		@"privateLayout": @(privateLayout),
 		@"logo": @(logo),
-		@"bytes": [self toString:bytes]
+		@"file": [self checkNull: file]
 	}];
 
 	NSDictionary *_command = @{@"/layoutset/update-logo": _params};

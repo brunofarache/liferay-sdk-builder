@@ -19,8 +19,8 @@
  */
 @interface LRUserGroupGroupRoleService_v7 : LRBaseService
 
-- (void)addUserGroupGroupRolesWithUserGroupId:(long long)userGroupId groupId:(long long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error;
 - (void)addUserGroupGroupRolesWithUserGroupIds:(NSArray *)userGroupIds groupId:(long long)groupId roleId:(long long)roleId error:(NSError **)error;
+- (void)addUserGroupGroupRolesWithUserGroupId:(long long)userGroupId groupId:(long long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error;
 - (void)deleteUserGroupGroupRolesWithUserGroupId:(long long)userGroupId groupId:(long long)groupId roleIds:(NSArray *)roleIds error:(NSError **)error;
 - (void)deleteUserGroupGroupRolesWithUserGroupIds:(NSArray *)userGroupIds groupId:(long long)groupId roleId:(long long)roleId error:(NSError **)error;
 

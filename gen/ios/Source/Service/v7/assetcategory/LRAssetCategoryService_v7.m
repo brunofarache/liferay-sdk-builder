@@ -211,10 +211,10 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId error:(NSError **)error {
+- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long long)groupId parentCategory:(long long)parentCategory vocabularyId:(long long)vocabularyId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"name": [self checkNull: name],
+		@"parentCategory": @(parentCategory),
 		@"vocabularyId": @(vocabularyId)
 	}];
 
@@ -223,10 +223,10 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long long)groupId parentCategory:(long long)parentCategory vocabularyId:(long long)vocabularyId error:(NSError **)error {
+- (NSNumber *)getVocabularyCategoriesCountWithGroupId:(long long)groupId name:(NSString *)name vocabularyId:(long long)vocabularyId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
-		@"parentCategory": @(parentCategory),
+		@"name": [self checkNull: name],
 		@"vocabularyId": @(vocabularyId)
 	}];
 
@@ -344,11 +344,11 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)searchCategoriesDisplayWithGroupId:(long long)groupId title:(NSString *)title vocabularyId:(long long)vocabularyId start:(int)start end:(int)end error:(NSError **)error {
+- (NSDictionary *)searchCategoriesDisplayWithGroupIds:(NSArray *)groupIds title:(NSString *)title vocabularyIds:(NSArray *)vocabularyIds start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
+		@"groupIds": [self checkNull: groupIds],
 		@"title": [self checkNull: title],
-		@"vocabularyId": @(vocabularyId),
+		@"vocabularyIds": [self checkNull: vocabularyIds],
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -358,11 +358,11 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)searchCategoriesDisplayWithGroupIds:(NSArray *)groupIds title:(NSString *)title vocabularyIds:(NSArray *)vocabularyIds start:(int)start end:(int)end error:(NSError **)error {
+- (NSDictionary *)searchCategoriesDisplayWithGroupId:(long long)groupId title:(NSString *)title vocabularyId:(long long)vocabularyId start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": [self checkNull: groupIds],
+		@"groupId": @(groupId),
 		@"title": [self checkNull: title],
-		@"vocabularyIds": [self checkNull: vocabularyIds],
+		@"vocabularyId": @(vocabularyId),
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -402,12 +402,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)searchCategoriesDisplayWithGroupIds:(NSArray *)groupIds title:(NSString *)title vocabularyIds:(NSArray *)vocabularyIds parentCategoryIds:(NSArray *)parentCategoryIds start:(int)start end:(int)end sort:(NSDictionary *)sort error:(NSError **)error {
+- (NSDictionary *)searchCategoriesDisplayWithGroupId:(long long)groupId title:(NSString *)title vocabularyId:(long long)vocabularyId parentCategoryId:(long long)parentCategoryId start:(int)start end:(int)end sort:(NSDictionary *)sort error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupIds": [self checkNull: groupIds],
+		@"groupId": @(groupId),
 		@"title": [self checkNull: title],
-		@"vocabularyIds": [self checkNull: vocabularyIds],
-		@"parentCategoryIds": [self checkNull: parentCategoryIds],
+		@"vocabularyId": @(vocabularyId),
+		@"parentCategoryId": @(parentCategoryId),
 		@"start": @(start),
 		@"end": @(end),
 		@"sort": [self checkNull: sort]
@@ -418,12 +418,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)searchCategoriesDisplayWithGroupId:(long long)groupId title:(NSString *)title vocabularyId:(long long)vocabularyId parentCategoryId:(long long)parentCategoryId start:(int)start end:(int)end sort:(NSDictionary *)sort error:(NSError **)error {
+- (NSDictionary *)searchCategoriesDisplayWithGroupIds:(NSArray *)groupIds title:(NSString *)title vocabularyIds:(NSArray *)vocabularyIds parentCategoryIds:(NSArray *)parentCategoryIds start:(int)start end:(int)end sort:(NSDictionary *)sort error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
+		@"groupIds": [self checkNull: groupIds],
 		@"title": [self checkNull: title],
-		@"vocabularyId": @(vocabularyId),
-		@"parentCategoryId": @(parentCategoryId),
+		@"vocabularyIds": [self checkNull: vocabularyIds],
+		@"parentCategoryIds": [self checkNull: parentCategoryIds],
 		@"start": @(start),
 		@"end": @(end),
 		@"sort": [self checkNull: sort]

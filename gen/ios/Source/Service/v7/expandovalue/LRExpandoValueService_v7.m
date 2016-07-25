@@ -48,12 +48,12 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSArray *)columnNames classPK:(long long)classPK error:(NSError **)error {
+- (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"className": [self checkNull: className],
 		@"tableName": [self checkNull: tableName],
-		@"columnNames": [self checkNull: columnNames],
+		@"columnName": [self checkNull: columnName],
 		@"classPK": @(classPK)
 	}];
 
@@ -62,12 +62,12 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK error:(NSError **)error {
+- (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSArray *)columnNames classPK:(long long)classPK error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"className": [self checkNull: className],
 		@"tableName": [self checkNull: tableName],
-		@"columnName": [self checkNull: columnName],
+		@"columnNames": [self checkNull: columnNames],
 		@"classPK": @(classPK)
 	}];
 

@@ -79,10 +79,10 @@ public interface DLFolderService {
   Call<Integer> getMountFoldersCount(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId);
 
   @Path("/get-subfolder-ids")
-  Call<JSONArray> getSubfolderIds(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "recurse") boolean recurse);
+  Call<Response> getSubfolderIds(@Param(name = "folderIds") JSONArray folderIds, @Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/get-subfolder-ids")
-  Call<Response> getSubfolderIds(@Param(name = "folderIds") JSONArray folderIds, @Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
+  Call<JSONArray> getSubfolderIds(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "recurse") boolean recurse);
 
   @Path("/get-subfolder-ids")
   Call<Response> getSubfolderIds(@Param(name = "folderIds") JSONArray folderIds, @Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "recurse") boolean recurse);
@@ -115,10 +115,10 @@ public interface DLFolderService {
   Call<Response> unlockFolder(@Param(name = "groupId") long groupId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "lockUuid") String lockUuid);
 
   @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "restrictionType") int restrictionType, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "overrideFileEntryTypes") boolean overrideFileEntryTypes, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/update-folder")
-  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "overrideFileEntryTypes") boolean overrideFileEntryTypes, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
+  Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "restrictionType") int restrictionType, @Param(name = "serviceContext", className = "") JSONObject serviceContext);
 
   @Path("/update-folder")
   Call<JSONObject> updateFolder(@Param(name = "folderId") long folderId, @Param(name = "parentFolderId") long parentFolderId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "defaultFileEntryTypeId") long defaultFileEntryTypeId, @Param(name = "fileEntryTypeIds") JSONArray fileEntryTypeIds, @Param(name = "restrictionType") int restrictionType, @Param(name = "serviceContext", className = "") JSONObject serviceContext);

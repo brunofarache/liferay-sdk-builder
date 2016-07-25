@@ -25,8 +25,8 @@
 - (NSDictionary *)addUserGroupWithName:(NSString *)name description:(NSString *)description serviceContext:(NSDictionary *)serviceContext error:(NSError **)error;
 - (void)deleteUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error;
 - (NSDictionary *)fetchUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error;
-- (NSDictionary *)getUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error;
 - (NSDictionary *)getUserGroupWithName:(NSString *)name error:(NSError **)error;
+- (NSDictionary *)getUserGroupWithUserGroupId:(long long)userGroupId error:(NSError **)error;
 - (NSArray *)getUserGroupsWithCompanyId:(long long)companyId error:(NSError **)error;
 - (NSArray *)getUserUserGroupsWithUserId:(long long)userId error:(NSError **)error;
 - (void)unsetGroupUserGroupsWithGroupId:(long long)groupId userGroupIds:(NSArray *)userGroupIds error:(NSError **)error;

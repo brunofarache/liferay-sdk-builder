@@ -21,8 +21,8 @@
 
 - (void)deleteThreadWithThreadId:(long long)threadId error:(NSError **)error;
 - (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status start:(int)start end:(int)end error:(NSError **)error;
-- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId modifiedDate:(long long)modifiedDate status:(int)status start:(int)start end:(int)end error:(NSError **)error;
+- (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed start:(int)start end:(int)end error:(NSError **)error;
 - (NSArray *)getGroupThreadsWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed includeAnonymous:(BOOL)includeAnonymous start:(int)start end:(int)end error:(NSError **)error;
 - (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId status:(int)status error:(NSError **)error;
 - (NSNumber *)getGroupThreadsCountWithGroupId:(long long)groupId userId:(long long)userId status:(int)status subscribed:(BOOL)subscribed error:(NSError **)error;

@@ -19,24 +19,6 @@
  */
 @implementation LRDLAppService_v7
 
-- (NSDictionary *)addFileEntryWithRepositoryId:(long long)repositoryId folderId:(long long)folderId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog file:(NSDictionary *)file serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"repositoryId": @(repositoryId),
-		@"folderId": @(folderId),
-		@"sourceFileName": [self checkNull: sourceFileName],
-		@"mimeType": [self checkNull: mimeType],
-		@"title": [self checkNull: title],
-		@"description": [self checkNull: description],
-		@"changeLog": [self checkNull: changeLog],
-		@"file": [self checkNull: file],
-		@"serviceContext": [self checkNull: serviceContext]
-	}];
-
-	NSDictionary *_command = @{@"/dlapp/add-file-entry": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addFileEntryWithRepositoryId:(long long)repositoryId folderId:(long long)folderId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog bytes:(NSData *)bytes serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
@@ -47,6 +29,24 @@
 		@"description": [self checkNull: description],
 		@"changeLog": [self checkNull: changeLog],
 		@"bytes": [self toString:bytes],
+		@"serviceContext": [self checkNull: serviceContext]
+	}];
+
+	NSDictionary *_command = @{@"/dlapp/add-file-entry": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addFileEntryWithRepositoryId:(long long)repositoryId folderId:(long long)folderId sourceFileName:(NSString *)sourceFileName mimeType:(NSString *)mimeType title:(NSString *)title description:(NSString *)description changeLog:(NSString *)changeLog file:(NSDictionary *)file serviceContext:(NSDictionary *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"repositoryId": @(repositoryId),
+		@"folderId": @(folderId),
+		@"sourceFileName": [self checkNull: sourceFileName],
+		@"mimeType": [self checkNull: mimeType],
+		@"title": [self checkNull: title],
+		@"description": [self checkNull: description],
+		@"changeLog": [self checkNull: changeLog],
+		@"file": [self checkNull: file],
 		@"serviceContext": [self checkNull: serviceContext]
 	}];
 
@@ -260,18 +260,6 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"repositoryId": @(repositoryId),
-		@"folderId": @(folderId),
-		@"fileEntryTypeId": @(fileEntryTypeId)
-	}];
-
-	NSDictionary *_command = @{@"/dlapp/get-file-entries": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
 - (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId mimeTypes:(NSArray *)mimeTypes error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
@@ -284,12 +272,11 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
-		@"start": @(start),
-		@"end": @(end)
+		@"fileEntryTypeId": @(fileEntryTypeId)
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/get-file-entries": _params};
@@ -297,11 +284,10 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId start:(int)start end:(int)end error:(NSError **)error {
+- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
-		@"fileEntryTypeId": @(fileEntryTypeId),
 		@"start": @(start),
 		@"end": @(end)
 	}];
@@ -325,14 +311,13 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
 		@"fileEntryTypeId": @(fileEntryTypeId),
 		@"start": @(start),
-		@"end": @(end),
-		@"obc": [self checkNull: obc]
+		@"end": @(end)
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/get-file-entries": _params};
@@ -345,6 +330,21 @@
 		@"repositoryId": @(repositoryId),
 		@"folderId": @(folderId),
 		@"mimeTypes": [self checkNull: mimeTypes],
+		@"start": @(start),
+		@"end": @(end),
+		@"obc": [self checkNull: obc]
+	}];
+
+	NSDictionary *_command = @{@"/dlapp/get-file-entries": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFileEntriesWithRepositoryId:(long long)repositoryId folderId:(long long)folderId fileEntryTypeId:(long long)fileEntryTypeId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"repositoryId": @(repositoryId),
+		@"folderId": @(folderId),
+		@"fileEntryTypeId": @(fileEntryTypeId),
 		@"start": @(start),
 		@"end": @(end),
 		@"obc": [self checkNull: obc]
@@ -540,20 +540,6 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getFoldersWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"repositoryId": @(repositoryId),
-		@"parentFolderId": @(parentFolderId),
-		@"start": @(start),
-		@"end": @(end),
-		@"obc": [self checkNull: obc]
-	}];
-
-	NSDictionary *_command = @{@"/dlapp/get-folders": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
 - (NSArray *)getFoldersWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId includeMountFolders:(BOOL)includeMountFolders start:(int)start end:(int)end error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
@@ -561,6 +547,20 @@
 		@"includeMountFolders": @(includeMountFolders),
 		@"start": @(start),
 		@"end": @(end)
+	}];
+
+	NSDictionary *_command = @{@"/dlapp/get-folders": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getFoldersWithRepositoryId:(long long)repositoryId parentFolderId:(long long)parentFolderId start:(int)start end:(int)end obc:(NSDictionary *)obc error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"repositoryId": @(repositoryId),
+		@"parentFolderId": @(parentFolderId),
+		@"start": @(start),
+		@"end": @(end),
+		@"obc": [self checkNull: obc]
 	}];
 
 	NSDictionary *_command = @{@"/dlapp/get-folders": _params};
@@ -892,18 +892,6 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)getSubfolderIdsWithRepositoryId:(long long)repositoryId folderId:(long long)folderId recurse:(BOOL)recurse error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"repositoryId": @(repositoryId),
-		@"folderId": @(folderId),
-		@"recurse": @(recurse)
-	}];
-
-	NSDictionary *_command = @{@"/dlapp/get-subfolder-ids": _params};
-
-	return (NSArray *)[self.session invoke:_command error:error];
-}
-
 - (void)getSubfolderIdsWithRepositoryId:(long long)repositoryId folderIds:(NSArray *)folderIds folderId:(long long)folderId error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"repositoryId": @(repositoryId),
@@ -914,6 +902,18 @@
 	NSDictionary *_command = @{@"/dlapp/get-subfolder-ids": _params};
 
 	[self.session invoke:_command error:error];
+}
+
+- (NSArray *)getSubfolderIdsWithRepositoryId:(long long)repositoryId folderId:(long long)folderId recurse:(BOOL)recurse error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"repositoryId": @(repositoryId),
+		@"folderId": @(folderId),
+		@"recurse": @(recurse)
+	}];
+
+	NSDictionary *_command = @{@"/dlapp/get-subfolder-ids": _params};
+
+	return (NSArray *)[self.session invoke:_command error:error];
 }
 
 - (NSArray *)getTempFileNamesWithGroupId:(long long)groupId folderId:(long long)folderId folderName:(NSString *)folderName error:(NSError **)error {

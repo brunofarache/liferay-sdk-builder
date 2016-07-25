@@ -18,10 +18,10 @@ public interface MBThreadService {
   Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-threads")
-  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "modifiedDate") long modifiedDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-threads")
-  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "modifiedDate") long modifiedDate, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-group-threads")
   Call<JSONArray> getGroupThreads(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "status") int status, @Param(name = "subscribed") boolean subscribed, @Param(name = "includeAnonymous") boolean includeAnonymous, @Param(name = "start") int start, @Param(name = "end") int end);

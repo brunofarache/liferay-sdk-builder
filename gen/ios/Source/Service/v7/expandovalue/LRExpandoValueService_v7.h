@@ -21,8 +21,8 @@
 
 - (NSDictionary *)addValueWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK data:(NSString *)data error:(NSError **)error;
 - (void)addValuesWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName classPK:(long long)classPK attributeValues:(NSDictionary *)attributeValues error:(NSError **)error;
-- (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSArray *)columnNames classPK:(long long)classPK error:(NSError **)error;
 - (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK error:(NSError **)error;
+- (NSDictionary *)getDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnNames:(NSArray *)columnNames classPK:(long long)classPK error:(NSError **)error;
 - (NSDictionary *)getJSONDataWithCompanyId:(long long)companyId className:(NSString *)className tableName:(NSString *)tableName columnName:(NSString *)columnName classPK:(long long)classPK error:(NSError **)error;
 
 @end
