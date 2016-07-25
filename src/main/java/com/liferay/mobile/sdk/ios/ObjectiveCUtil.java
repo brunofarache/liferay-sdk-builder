@@ -120,6 +120,7 @@ public class ObjectiveCUtil extends LanguageUtil {
 				return NS_STRING;
 
 			case FILE:
+			case FILE_JAVA_IO:
 				return LR_UPLOAD_DATA;
 
 			default:

@@ -25,7 +25,9 @@ public class LanguageUtil {
 
 	public static final String DOUBLE = "double";
 
-	public static final String FILE = "object<java.io.File>";
+	public static final String FILE = "file";
+
+	public static final String FILE_JAVA_IO = "object<java.io.File>";
 
 	public static final String INT = "int";
 

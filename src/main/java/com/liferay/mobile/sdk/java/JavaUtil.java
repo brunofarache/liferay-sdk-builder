@@ -97,6 +97,7 @@ public class JavaUtil extends LanguageUtil {
 				return String.class;
 
 			case FILE:
+			case FILE_JAVA_IO:
 				return UploadData.class;
 
 			default:
