@@ -27,11 +27,11 @@ import org.json.JSONObject;
 public class JavaUtil extends LanguageUtil {
 
 	public String className(String type) {
-		if (!type.startsWith(OBJECT_PREFIX)) {
-			return "";
+		if (type.startsWith(OBJECT_PREFIX)) {
+			return type.substring(7, type.length() - 1);
 		}
 
-		return type.substring(7, type.length() - 1);
+		return type;
 	}
 
 	public Class returnType(String type) {
