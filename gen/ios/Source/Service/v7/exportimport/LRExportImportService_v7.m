@@ -69,7 +69,7 @@
 	return (NSNumber *)[self.session invoke:_command error:error];
 }
 
-- (void)importLayoutsWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
+- (void)importLayoutsWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
 		@"file": [self checkNull: file]
@@ -80,7 +80,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)importLayoutsInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
+- (NSNumber *)importLayoutsInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
 		@"file": [self checkNull: file]
@@ -88,10 +88,10 @@
 
 	NSDictionary *_command = @{@"/exportimport/import-layouts-in-background": _params};
 
-	return (NSNumber *)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session upload:_command error:error];
 }
 
-- (void)importPortletInfoWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
+- (void)importPortletInfoWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
 		@"file": [self checkNull: file]
@@ -102,7 +102,7 @@
 	[self.session invoke:_command error:error];
 }
 
-- (NSNumber *)importPortletInfoInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
+- (NSNumber *)importPortletInfoInBackgroundWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
 		@"file": [self checkNull: file]
@@ -110,10 +110,10 @@
 
 	NSDictionary *_command = @{@"/exportimport/import-portlet-info-in-background": _params};
 
-	return (NSNumber *)[self.session invoke:_command error:error];
+	return (NSNumber *)[self.session upload:_command error:error];
 }
 
-- (NSDictionary *)validateImportLayoutsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
+- (NSDictionary *)validateImportLayoutsFileWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
 		@"file": [self checkNull: file]
@@ -121,10 +121,10 @@
 
 	NSDictionary *_command = @{@"/exportimport/validate-import-layouts-file": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session upload:_command error:error];
 }
 
-- (NSDictionary *)validateImportPortletInfoWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(NSDictionary *)file error:(NSError **)error {
+- (NSDictionary *)validateImportPortletInfoWithExportImportConfiguration:(NSDictionary *)exportImportConfiguration file:(LRUploadData *)file error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"exportImportConfiguration": [self checkNull: exportImportConfiguration],
 		@"file": [self checkNull: file]
@@ -132,7 +132,7 @@
 
 	NSDictionary *_command = @{@"/exportimport/validate-import-portlet-info": _params};
 
-	return (NSDictionary *)[self.session invoke:_command error:error];
+	return (NSDictionary *)[self.session upload:_command error:error];
 }
 
 @end
