@@ -30,6 +30,25 @@
 	[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"parentOrganizationId": @(parentOrganizationId),
+		@"name": [self checkNull: name],
+		@"type": [self checkNull: type],
+		@"regionId": @(regionId),
+		@"countryId": @(countryId),
+		@"statusId": @(statusId),
+		@"comments": [self checkNull: comments],
+		@"site": @(site),
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
+
+	NSDictionary *_command = @{@"/organization/add-organization": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type recursable:(BOOL)recursable regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"parentOrganizationId": @(parentOrganizationId),
@@ -90,25 +109,6 @@
 		@"orgLabors": [self checkNull: orgLabors],
 		@"phones": [self checkNull: phones],
 		@"websites": [self checkNull: websites],
-	}];
-
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
-
-	NSDictionary *_command = @{@"/organization/add-organization": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)addOrganizationWithParentOrganizationId:(long long)parentOrganizationId name:(NSString *)name type:(NSString *)type regionId:(long long)regionId countryId:(long long)countryId statusId:(int)statusId comments:(NSString *)comments site:(BOOL)site serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"parentOrganizationId": @(parentOrganizationId),
-		@"name": [self checkNull: name],
-		@"type": [self checkNull: type],
-		@"regionId": @(regionId),
-		@"countryId": @(countryId),
-		@"statusId": @(statusId),
-		@"comments": [self checkNull: comments],
-		@"site": @(site),
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];

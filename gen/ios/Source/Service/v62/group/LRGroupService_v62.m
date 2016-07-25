@@ -19,27 +19,6 @@
  */
 @implementation LRGroupService_v62
 
-- (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"parentGroupId": @(parentGroupId),
-		@"liveGroupId": @(liveGroupId),
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"type": @(type),
-		@"manualMembership": @(manualMembership),
-		@"membershipRestriction": @(membershipRestriction),
-		@"friendlyURL": [self checkNull: friendlyURL],
-		@"site": @(site),
-		@"active": @(active),
-	}];
-
-	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
-
-	NSDictionary *_command = @{@"/group/add-group": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
 - (NSDictionary *)addGroupWithName:(NSString *)name description:(NSString *)description type:(int)type friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"name": [self checkNull: name],
@@ -63,6 +42,27 @@
 		@"name": [self checkNull: name],
 		@"description": [self checkNull: description],
 		@"type": @(type),
+		@"friendlyURL": [self checkNull: friendlyURL],
+		@"site": @(site),
+		@"active": @(active),
+	}];
+
+	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
+
+	NSDictionary *_command = @{@"/group/add-group": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
+- (NSDictionary *)addGroupWithParentGroupId:(long long)parentGroupId liveGroupId:(long long)liveGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL site:(BOOL)site active:(BOOL)active serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"parentGroupId": @(parentGroupId),
+		@"liveGroupId": @(liveGroupId),
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"type": @(type),
+		@"manualMembership": @(manualMembership),
+		@"membershipRestriction": @(membershipRestriction),
 		@"friendlyURL": [self checkNull: friendlyURL],
 		@"site": @(site),
 		@"active": @(active),
@@ -414,6 +414,17 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)updateGroupWithGroupId:(long long)groupId typeSettings:(NSString *)typeSettings error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"typeSettings": [self checkNull: typeSettings]
+	}];
+
+	NSDictionary *_command = @{@"/group/update-group": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)updateGroupWithGroupId:(long long)groupId parentGroupId:(long long)parentGroupId name:(NSString *)name description:(NSString *)description type:(int)type manualMembership:(BOOL)manualMembership membershipRestriction:(int)membershipRestriction friendlyURL:(NSString *)friendlyURL active:(BOOL)active serviceContext:(LRJSONObjectWrapper *)serviceContext error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -428,17 +439,6 @@
 	}];
 
 	[self mangleWrapperWithParams:_params name:@"serviceContext" className:@"com.liferay.portal.service.ServiceContext" wrapper:serviceContext];
-
-	NSDictionary *_command = @{@"/group/update-group": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)updateGroupWithGroupId:(long long)groupId typeSettings:(NSString *)typeSettings error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"typeSettings": [self checkNull: typeSettings]
-	}];
 
 	NSDictionary *_command = @{@"/group/update-group": _params};
 

@@ -122,16 +122,13 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds templateId:(NSString *)templateId structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupIds": [self checkNull: groupIds],
-		@"templateId": [self checkNull: templateId],
+		@"keywords": [self checkNull: keywords],
 		@"structureId": [self checkNull: structureId],
 		@"structureIdComparator": [self checkNull: structureIdComparator],
-		@"name": [self checkNull: name],
-		@"description": [self checkNull: description],
-		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end),
 	}];
@@ -143,13 +140,16 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
-- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds keywords:(NSString *)keywords structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
+- (NSArray *)searchWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds templateId:(NSString *)templateId structureId:(NSString *)structureId structureIdComparator:(NSString *)structureIdComparator name:(NSString *)name description:(NSString *)description andOperator:(BOOL)andOperator start:(int)start end:(int)end obc:(LRJSONObjectWrapper *)obc error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
 		@"groupIds": [self checkNull: groupIds],
-		@"keywords": [self checkNull: keywords],
+		@"templateId": [self checkNull: templateId],
 		@"structureId": [self checkNull: structureId],
 		@"structureIdComparator": [self checkNull: structureIdComparator],
+		@"name": [self checkNull: name],
+		@"description": [self checkNull: description],
+		@"andOperator": @(andOperator),
 		@"start": @(start),
 		@"end": @(end),
 	}];

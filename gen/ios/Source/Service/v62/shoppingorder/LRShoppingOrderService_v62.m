@@ -73,6 +73,22 @@
 	[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)updateOrderWithGroupId:(long long)groupId orderId:(long long)orderId ppTxnId:(NSString *)ppTxnId ppPaymentStatus:(NSString *)ppPaymentStatus ppPaymentGross:(double)ppPaymentGross ppReceiverEmail:(NSString *)ppReceiverEmail ppPayerEmail:(NSString *)ppPayerEmail error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"groupId": @(groupId),
+		@"orderId": @(orderId),
+		@"ppTxnId": [self checkNull: ppTxnId],
+		@"ppPaymentStatus": [self checkNull: ppPaymentStatus],
+		@"ppPaymentGross": @(ppPaymentGross),
+		@"ppReceiverEmail": [self checkNull: ppReceiverEmail],
+		@"ppPayerEmail": [self checkNull: ppPayerEmail]
+	}];
+
+	NSDictionary *_command = @{@"/shoppingorder/update-order": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)updateOrderWithGroupId:(long long)groupId orderId:(long long)orderId billingFirstName:(NSString *)billingFirstName billingLastName:(NSString *)billingLastName billingEmailAddress:(NSString *)billingEmailAddress billingCompany:(NSString *)billingCompany billingStreet:(NSString *)billingStreet billingCity:(NSString *)billingCity billingState:(NSString *)billingState billingZip:(NSString *)billingZip billingCountry:(NSString *)billingCountry billingPhone:(NSString *)billingPhone shipToBilling:(BOOL)shipToBilling shippingFirstName:(NSString *)shippingFirstName shippingLastName:(NSString *)shippingLastName shippingEmailAddress:(NSString *)shippingEmailAddress shippingCompany:(NSString *)shippingCompany shippingStreet:(NSString *)shippingStreet shippingCity:(NSString *)shippingCity shippingState:(NSString *)shippingState shippingZip:(NSString *)shippingZip shippingCountry:(NSString *)shippingCountry shippingPhone:(NSString *)shippingPhone ccName:(NSString *)ccName ccType:(NSString *)ccType ccNumber:(NSString *)ccNumber ccExpMonth:(int)ccExpMonth ccExpYear:(int)ccExpYear ccVerNumber:(NSString *)ccVerNumber comments:(NSString *)comments error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"groupId": @(groupId),
@@ -105,22 +121,6 @@
 		@"ccExpYear": @(ccExpYear),
 		@"ccVerNumber": [self checkNull: ccVerNumber],
 		@"comments": [self checkNull: comments]
-	}];
-
-	NSDictionary *_command = @{@"/shoppingorder/update-order": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)updateOrderWithGroupId:(long long)groupId orderId:(long long)orderId ppTxnId:(NSString *)ppTxnId ppPaymentStatus:(NSString *)ppPaymentStatus ppPaymentGross:(double)ppPaymentGross ppReceiverEmail:(NSString *)ppReceiverEmail ppPayerEmail:(NSString *)ppPayerEmail error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"groupId": @(groupId),
-		@"orderId": @(orderId),
-		@"ppTxnId": [self checkNull: ppTxnId],
-		@"ppPaymentStatus": [self checkNull: ppPaymentStatus],
-		@"ppPaymentGross": @(ppPaymentGross),
-		@"ppReceiverEmail": [self checkNull: ppReceiverEmail],
-		@"ppPayerEmail": [self checkNull: ppPayerEmail]
 	}];
 
 	NSDictionary *_command = @{@"/shoppingorder/update-order": _params};

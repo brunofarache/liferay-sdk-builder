@@ -6,13 +6,14 @@ import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Path("/ddlrecordset")
 public interface DDLRecordSetService {
   @Path("/add-record-set")
-  Call<JSONObject> addRecordSet(@Param(name = "groupId") long groupId, @Param(name = "ddmStructureId") long ddmStructureId, @Param(name = "recordSetKey") String recordSetKey, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "minDisplayRows") int minDisplayRows, @Param(name = "scope") int scope, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addRecordSet(@Param(name = "groupId") long groupId, @Param(name = "ddmStructureId") long ddmStructureId, @Param(name = "recordSetKey") String recordSetKey, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "minDisplayRows") int minDisplayRows, @Param(name = "scope") int scope, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-record-set")
   Call<Response> deleteRecordSet(@Param(name = "recordSetId") long recordSetId);
@@ -36,8 +37,8 @@ public interface DDLRecordSetService {
   Call<JSONObject> updateMinDisplayRows(@Param(name = "recordSetId") long recordSetId, @Param(name = "minDisplayRows") int minDisplayRows, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-record-set")
-  Call<JSONObject> updateRecordSet(@Param(name = "recordSetId") long recordSetId, @Param(name = "ddmStructureId") long ddmStructureId, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "minDisplayRows") int minDisplayRows, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateRecordSet(@Param(name = "recordSetId") long recordSetId, @Param(name = "ddmStructureId") long ddmStructureId, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "minDisplayRows") int minDisplayRows, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-record-set")
-  Call<JSONObject> updateRecordSet(@Param(name = "groupId") long groupId, @Param(name = "ddmStructureId") long ddmStructureId, @Param(name = "recordSetKey") String recordSetKey, @Param(name = "nameMap", className = "") JSONObject nameMap, @Param(name = "descriptionMap", className = "") JSONObject descriptionMap, @Param(name = "minDisplayRows") int minDisplayRows, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateRecordSet(@Param(name = "groupId") long groupId, @Param(name = "ddmStructureId") long ddmStructureId, @Param(name = "recordSetKey") String recordSetKey, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "minDisplayRows") int minDisplayRows, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

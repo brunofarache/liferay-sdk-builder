@@ -335,6 +335,38 @@
 	return (NSArray *)[self.session invoke:_command error:error];
 }
 
+- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"groupId": @(groupId),
+		@"classNameId": @(classNameId),
+		@"classPK": @(classPK),
+		@"keywords": [self checkNull: keywords],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode]
+	}];
+
+	NSDictionary *_command = @{@"/ddmtemplate/search-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
+- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"groupIds": [self checkNull: groupIds],
+		@"classNameIds": [self checkNull: classNameIds],
+		@"classPKs": [self checkNull: classPKs],
+		@"keywords": [self checkNull: keywords],
+		@"type": [self checkNull: type],
+		@"mode": [self checkNull: mode]
+	}];
+
+	NSDictionary *_command = @{@"/ddmtemplate/search-count": _params};
+
+	return (NSNumber *)[self.session invoke:_command error:error];
+}
+
 - (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK name:(NSString *)name description:(NSString *)description type:(NSString *)type mode:(NSString *)mode language:(NSString *)language andOperator:(BOOL)andOperator error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
@@ -366,38 +398,6 @@
 		@"mode": [self checkNull: mode],
 		@"language": [self checkNull: language],
 		@"andOperator": @(andOperator)
-	}];
-
-	NSDictionary *_command = @{@"/ddmtemplate/search-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupId:(long long)groupId classNameId:(long long)classNameId classPK:(long long)classPK keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"groupId": @(groupId),
-		@"classNameId": @(classNameId),
-		@"classPK": @(classPK),
-		@"keywords": [self checkNull: keywords],
-		@"type": [self checkNull: type],
-		@"mode": [self checkNull: mode]
-	}];
-
-	NSDictionary *_command = @{@"/ddmtemplate/search-count": _params};
-
-	return (NSNumber *)[self.session invoke:_command error:error];
-}
-
-- (NSNumber *)searchCountWithCompanyId:(long long)companyId groupIds:(NSArray *)groupIds classNameIds:(NSArray *)classNameIds classPKs:(NSArray *)classPKs keywords:(NSString *)keywords type:(NSString *)type mode:(NSString *)mode error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"groupIds": [self checkNull: groupIds],
-		@"classNameIds": [self checkNull: classNameIds],
-		@"classPKs": [self checkNull: classPKs],
-		@"keywords": [self checkNull: keywords],
-		@"type": [self checkNull: type],
-		@"mode": [self checkNull: mode]
 	}];
 
 	NSDictionary *_command = @{@"/ddmtemplate/search-count": _params};

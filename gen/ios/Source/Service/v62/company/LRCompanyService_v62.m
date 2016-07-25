@@ -79,6 +79,20 @@
 	return (NSDictionary *)[self.session invoke:_command error:error];
 }
 
+- (NSDictionary *)updateCompanyWithCompanyId:(long long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx maxUsers:(int)maxUsers active:(BOOL)active error:(NSError **)error {
+	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
+		@"companyId": @(companyId),
+		@"virtualHost": [self checkNull: virtualHost],
+		@"mx": [self checkNull: mx],
+		@"maxUsers": @(maxUsers),
+		@"active": @(active)
+	}];
+
+	NSDictionary *_command = @{@"/company/update-company": _params};
+
+	return (NSDictionary *)[self.session invoke:_command error:error];
+}
+
 - (NSDictionary *)updateCompanyWithCompanyId:(long long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx homeURL:(NSString *)homeURL name:(NSString *)name legalName:(NSString *)legalName legalId:(NSString *)legalId legalType:(NSString *)legalType sicCode:(NSString *)sicCode tickerSymbol:(NSString *)tickerSymbol industry:(NSString *)industry type:(NSString *)type size:(NSString *)size error:(NSError **)error {
 	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
 		@"companyId": @(companyId),
@@ -94,20 +108,6 @@
 		@"industry": [self checkNull: industry],
 		@"type": [self checkNull: type],
 		@"size": [self checkNull: size]
-	}];
-
-	NSDictionary *_command = @{@"/company/update-company": _params};
-
-	return (NSDictionary *)[self.session invoke:_command error:error];
-}
-
-- (NSDictionary *)updateCompanyWithCompanyId:(long long)companyId virtualHost:(NSString *)virtualHost mx:(NSString *)mx maxUsers:(int)maxUsers active:(BOOL)active error:(NSError **)error {
-	NSMutableDictionary *_params = [NSMutableDictionary dictionaryWithDictionary:@{
-		@"companyId": @(companyId),
-		@"virtualHost": [self checkNull: virtualHost],
-		@"mx": [self checkNull: mx],
-		@"maxUsers": @(maxUsers),
-		@"active": @(active)
 	}];
 
 	NSDictionary *_command = @{@"/company/update-company": _params};
