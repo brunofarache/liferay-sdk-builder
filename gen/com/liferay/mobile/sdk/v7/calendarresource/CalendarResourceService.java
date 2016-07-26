@@ -5,14 +5,13 @@ import com.liferay.mobile.sdk.annotation.Param;
 import com.liferay.mobile.sdk.annotation.Path;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Path("/calendar.calendarresource")
 public interface CalendarResourceService {
   @Path("/add-calendar-resource")
-  Call<JSONObject> addCalendarResource(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "classPK") long classPK, @Param(name = "classUuid") String classUuid, @Param(name = "code") String code, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addCalendarResource(@Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "classPK") long classPK, @Param(name = "classUuid") String classUuid, @Param(name = "code") String code, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-calendar-resource")
   Call<JSONObject> deleteCalendarResource(@Param(name = "calendarResourceId") long calendarResourceId);
@@ -36,5 +35,5 @@ public interface CalendarResourceService {
   Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "classNameIds") JSONArray classNameIds, @Param(name = "code") String code, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "active") boolean active, @Param(name = "andOperator") boolean andOperator);
 
   @Path("/update-calendar-resource")
-  Call<JSONObject> updateCalendarResource(@Param(name = "calendarResourceId") long calendarResourceId, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateCalendarResource(@Param(name = "calendarResourceId") long calendarResourceId, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

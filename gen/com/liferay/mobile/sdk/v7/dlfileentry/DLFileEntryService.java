@@ -7,7 +7,6 @@ import com.liferay.mobile.sdk.http.Response;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -128,7 +127,7 @@ public interface DLFileEntryService {
   Call<JSONObject> search(@Param(name = "groupId") long groupId, @Param(name = "creatorUserId") long creatorUserId, @Param(name = "folderId") long folderId, @Param(name = "mimeTypes") JSONArray mimeTypes, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/update-status")
-  Call<JSONObject> updateStatus(@Param(name = "userId") long userId, @Param(name = "fileVersionId") long fileVersionId, @Param(name = "status") int status, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext, @Param(name = "workflowContext") Map workflowContext);
+  Call<JSONObject> updateStatus(@Param(name = "userId") long userId, @Param(name = "fileVersionId") long fileVersionId, @Param(name = "status") int status, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext, @Param(name = "workflowContext") JSONObject workflowContext);
 
   @Path("/verify-file-entry-check-out")
   Call<Boolean> verifyFileEntryCheckOut(@Param(name = "fileEntryId") long fileEntryId, @Param(name = "lockUuid") String lockUuid);
