@@ -17,6 +17,7 @@ package com.liferay.mobile.sdk.java;
 import com.liferay.mobile.sdk.file.UploadData;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.util.LanguageUtil;
+import com.liferay.mobile.sdk.util.Validator;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -28,14 +29,21 @@ public class JavaUtil extends LanguageUtil {
 
 	public String className(String type) {
 		if (type.startsWith(OBJECT_PREFIX)) {
-			return type.substring(7, type.length() - 1);
+			type = type.substring(7, type.length() - 1);
 		}
 		else if (type.startsWith("map")) {
-			return null;
+			type = null;
 		}
-		else {
-			return type;
+
+		if (Validator.isNotNull(type)) {
+			int index = type.indexOf("<");
+
+			if (index != -1) {
+				type = type.substring(0, index);
+			}
 		}
+
+		return type;
 	}
 
 	public Class returnType(String type) {
