@@ -157,15 +157,18 @@ public class JavaBuilder extends BaseBuilder {
 			.builder(Param.class)
 			.addMember("name", "$S", name);
 
-		Class type = javaUtil.type(parameter.getType());
+		String parameterType = parameter.getType();
 
-		if (type == JSONObject.class) {
+		Class clazz = javaUtil.type(parameterType);
+		String className = javaUtil.className(parameterType);
+
+		if ((clazz == JSONObject.class) && (className != null)) {
 			parameterAnnotationBuilder = parameterAnnotationBuilder.addMember(
-				"className", "$S", javaUtil.className(parameter.getType()));
+				"className", "$S", className);
 		}
 
 		return ParameterSpec
-			.builder(type, name)
+			.builder(clazz, name)
 			.addAnnotation(parameterAnnotationBuilder.build());
 	}
 

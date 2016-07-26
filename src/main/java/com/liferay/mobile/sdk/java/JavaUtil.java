@@ -18,8 +18,6 @@ import com.liferay.mobile.sdk.file.UploadData;
 import com.liferay.mobile.sdk.http.Response;
 import com.liferay.mobile.sdk.util.LanguageUtil;
 
-import java.util.Map;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -32,8 +30,12 @@ public class JavaUtil extends LanguageUtil {
 		if (type.startsWith(OBJECT_PREFIX)) {
 			return type.substring(7, type.length() - 1);
 		}
-
-		return type;
+		else if (type.startsWith("map")) {
+			return null;
+		}
+		else {
+			return type;
+		}
 	}
 
 	public Class returnType(String type) {
@@ -41,10 +43,6 @@ public class JavaUtil extends LanguageUtil {
 
 		if (isArray(type)) {
 			return JSONArray.class;
-		}
-
-		if (isMap(type)) {
-			return Map.class;
 		}
 
 		switch (type) {
@@ -83,10 +81,6 @@ public class JavaUtil extends LanguageUtil {
 			}
 		}
 
-		if (isMap(type)) {
-			return Map.class;
-		}
-
 		switch (type) {
 			case BOOLEAN:
 				return boolean.class;
@@ -113,10 +107,6 @@ public class JavaUtil extends LanguageUtil {
 			default:
 				return JSONObject.class;
 		}
-	}
-
-	protected boolean isMap(String type) {
-		return type.startsWith("map");
 	}
 
 }
