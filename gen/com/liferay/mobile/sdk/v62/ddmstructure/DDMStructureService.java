@@ -6,26 +6,25 @@ import com.liferay.mobile.sdk.annotation.Path;
 import com.liferay.mobile.sdk.http.Response;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Path("/ddmstructure")
 public interface DDMStructureService {
   @Path("/add-structure")
-  Call<JSONObject> addStructure(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "xsd") String xsd, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addStructure(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId, @Param(name = "classNameId") long classNameId, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "xsd") String xsd, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-structure")
-  Call<JSONObject> addStructure(@Param(name = "groupId") long groupId, @Param(name = "parentStructureId") long parentStructureId, @Param(name = "classNameId") long classNameId, @Param(name = "structureKey") String structureKey, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "xsd") String xsd, @Param(name = "storageType") String storageType, @Param(name = "type") int type, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addStructure(@Param(name = "groupId") long groupId, @Param(name = "parentStructureId") long parentStructureId, @Param(name = "classNameId") long classNameId, @Param(name = "structureKey") String structureKey, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "xsd") String xsd, @Param(name = "storageType") String storageType, @Param(name = "type") int type, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/add-structure")
-  Call<JSONObject> addStructure(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId, @Param(name = "parentStructureKey") String parentStructureKey, @Param(name = "classNameId") long classNameId, @Param(name = "structureKey") String structureKey, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "xsd") String xsd, @Param(name = "storageType") String storageType, @Param(name = "type") int type, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addStructure(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId, @Param(name = "parentStructureKey") String parentStructureKey, @Param(name = "classNameId") long classNameId, @Param(name = "structureKey") String structureKey, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "xsd") String xsd, @Param(name = "storageType") String storageType, @Param(name = "type") int type, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/copy-structure")
   Call<JSONObject> copyStructure(@Param(name = "structureId") long structureId, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/copy-structure")
-  Call<JSONObject> copyStructure(@Param(name = "structureId") long structureId, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> copyStructure(@Param(name = "structureId") long structureId, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-structure")
   Call<Response> deleteStructure(@Param(name = "structureId") long structureId);
@@ -61,8 +60,8 @@ public interface DDMStructureService {
   Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "classNameIds") JSONArray classNameIds, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "storageType") String storageType, @Param(name = "type") int type, @Param(name = "andOperator") boolean andOperator);
 
   @Path("/update-structure")
-  Call<JSONObject> updateStructure(@Param(name = "structureId") long structureId, @Param(name = "parentStructureId") long parentStructureId, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "xsd") String xsd, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateStructure(@Param(name = "structureId") long structureId, @Param(name = "parentStructureId") long parentStructureId, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "xsd") String xsd, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-structure")
-  Call<JSONObject> updateStructure(@Param(name = "groupId") long groupId, @Param(name = "parentStructureId") long parentStructureId, @Param(name = "classNameId") long classNameId, @Param(name = "structureKey") String structureKey, @Param(name = "nameMap") Map nameMap, @Param(name = "descriptionMap") Map descriptionMap, @Param(name = "xsd") String xsd, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> updateStructure(@Param(name = "groupId") long groupId, @Param(name = "parentStructureId") long parentStructureId, @Param(name = "classNameId") long classNameId, @Param(name = "structureKey") String structureKey, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "xsd") String xsd, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 }

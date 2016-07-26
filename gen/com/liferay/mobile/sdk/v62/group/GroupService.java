@@ -7,7 +7,6 @@ import com.liferay.mobile.sdk.http.Response;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -50,10 +49,10 @@ public interface GroupService {
   Call<JSONArray> getGroups(@Param(name = "companyId") long companyId, @Param(name = "parentGroupId") long parentGroupId, @Param(name = "site") boolean site);
 
   @Path("/get-manageable-site-groups")
-  Call<JSONArray> getManageableSiteGroups(@Param(name = "portlets", className = "java.util.Collection<object<com.liferay.portal.model.Portlet>>") JSONObject portlets, @Param(name = "max") int max);
+  Call<JSONArray> getManageableSiteGroups(@Param(name = "portlets", className = "java.util.Collection") JSONObject portlets, @Param(name = "max") int max);
 
   @Path("/get-manageable-sites")
-  Call<JSONArray> getManageableSites(@Param(name = "portlets", className = "java.util.Collection<object<com.liferay.portal.model.Portlet>>") JSONObject portlets, @Param(name = "max") int max);
+  Call<JSONArray> getManageableSites(@Param(name = "portlets", className = "java.util.Collection") JSONObject portlets, @Param(name = "max") int max);
 
   @Path("/get-organizations-groups")
   Call<JSONArray> getOrganizationsGroups(@Param(name = "organizations") JSONArray organizations);
@@ -122,5 +121,5 @@ public interface GroupService {
   Call<JSONObject> updateGroup(@Param(name = "groupId") long groupId, @Param(name = "parentGroupId") long parentGroupId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "type") int type, @Param(name = "manualMembership") boolean manualMembership, @Param(name = "membershipRestriction") int membershipRestriction, @Param(name = "friendlyURL") String friendlyURL, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-staged-portlets")
-  Call<Response> updateStagedPortlets(@Param(name = "groupId") long groupId, @Param(name = "stagedPortletIds") Map stagedPortletIds);
+  Call<Response> updateStagedPortlets(@Param(name = "groupId") long groupId, @Param(name = "stagedPortletIds") JSONObject stagedPortletIds);
 }
