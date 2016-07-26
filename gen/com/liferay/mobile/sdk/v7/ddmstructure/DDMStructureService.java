@@ -57,16 +57,16 @@ public interface DDMStructureService {
   Call<JSONArray> getStructures(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "classNameId") long classNameId, @Param(name = "status") int status);
 
   @Path("/get-structures")
-  Call<JSONArray> getStructures(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "classNameId") long classNameId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMStructure>") JSONObject orderByComparator);
+  Call<JSONArray> getStructures(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "classNameId") long classNameId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject orderByComparator);
 
   @Path("/revert-structure")
   Call<Response> revertStructure(@Param(name = "structureId") long structureId, @Param(name = "version") String version, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/search")
-  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "classNameId") long classNameId, @Param(name = "keywords") String keywords, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMStructure>") JSONObject orderByComparator);
+  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "classNameId") long classNameId, @Param(name = "keywords") String keywords, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject orderByComparator);
 
   @Path("/search")
-  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "storageType") String storageType, @Param(name = "type") int type, @Param(name = "status") int status, @Param(name = "andOperator") boolean andOperator, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.dynamic.data.mapping.model.DDMStructure>") JSONObject orderByComparator);
+  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "classNameId") long classNameId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "storageType") String storageType, @Param(name = "type") int type, @Param(name = "status") int status, @Param(name = "andOperator") boolean andOperator, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject orderByComparator);
 
   @Path("/search-count")
   Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "classNameId") long classNameId, @Param(name = "keywords") String keywords, @Param(name = "status") int status);

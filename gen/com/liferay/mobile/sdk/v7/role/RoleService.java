@@ -58,7 +58,7 @@ public interface RoleService {
   Call<Boolean> hasUserRoles(@Param(name = "userId") long userId, @Param(name = "companyId") long companyId, @Param(name = "names") JSONArray names, @Param(name = "inherited") boolean inherited);
 
   @Path("/search")
-  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "keywords") String keywords, @Param(name = "types") JSONArray types, @Param(name = "params") JSONObject params, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.portal.kernel.model.Role>") JSONObject obc);
+  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "keywords") String keywords, @Param(name = "types") JSONArray types, @Param(name = "params") JSONObject params, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/search-count")
   Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "keywords") String keywords, @Param(name = "types") JSONArray types, @Param(name = "params") JSONObject params);

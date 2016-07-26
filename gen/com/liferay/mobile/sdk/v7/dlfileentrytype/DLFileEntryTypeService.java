@@ -36,7 +36,7 @@ public interface DLFileEntryTypeService {
   Call<JSONArray> getFolderFileEntryTypes(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "folderId") long folderId, @Param(name = "inherited") boolean inherited);
 
   @Path("/search")
-  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "keywords") String keywords, @Param(name = "includeBasicFileEntryType") boolean includeBasicFileEntryType, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.document.library.kernel.model.DLFileEntryType>") JSONObject orderByComparator);
+  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "keywords") String keywords, @Param(name = "includeBasicFileEntryType") boolean includeBasicFileEntryType, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "orderByComparator", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject orderByComparator);
 
   @Path("/search-count")
   Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "keywords") String keywords, @Param(name = "includeBasicFileEntryType") boolean includeBasicFileEntryType);

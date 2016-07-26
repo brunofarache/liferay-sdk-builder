@@ -42,19 +42,19 @@ public interface AssetCategoryService {
   Call<JSONArray> getChildCategories(@Param(name = "parentCategoryId") long parentCategoryId);
 
   @Path("/get-child-categories")
-  Call<JSONArray> getChildCategories(@Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetCategory>") JSONObject obc);
+  Call<JSONArray> getChildCategories(@Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-vocabulary-categories")
-  Call<JSONArray> getVocabularyCategories(@Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetCategory>") JSONObject obc);
+  Call<JSONArray> getVocabularyCategories(@Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-vocabulary-categories")
-  Call<JSONArray> getVocabularyCategories(@Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetCategory>") JSONObject obc);
+  Call<JSONArray> getVocabularyCategories(@Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-vocabulary-categories")
-  Call<JSONArray> getVocabularyCategories(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetCategory>") JSONObject obc);
+  Call<JSONArray> getVocabularyCategories(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-vocabulary-categories")
-  Call<JSONArray> getVocabularyCategories(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetCategory>") JSONObject obc);
+  Call<JSONArray> getVocabularyCategories(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-vocabulary-categories-count")
   Call<Integer> getVocabularyCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "vocabularyId") long vocabularyId);
@@ -66,13 +66,13 @@ public interface AssetCategoryService {
   Call<Integer> getVocabularyCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "parentCategory") long parentCategory, @Param(name = "vocabularyId") long vocabularyId);
 
   @Path("/get-vocabulary-categories-display")
-  Call<JSONObject> getVocabularyCategoriesDisplay(@Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetCategory>") JSONObject obc);
+  Call<JSONObject> getVocabularyCategoriesDisplay(@Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-vocabulary-categories-display")
-  Call<JSONObject> getVocabularyCategoriesDisplay(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetCategory>") JSONObject obc);
+  Call<JSONObject> getVocabularyCategoriesDisplay(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-vocabulary-root-categories")
-  Call<JSONArray> getVocabularyRootCategories(@Param(name = "groupId") long groupId, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetCategory>") JSONObject obc);
+  Call<JSONArray> getVocabularyRootCategories(@Param(name = "groupId") long groupId, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-vocabulary-root-categories-count")
   Call<Integer> getVocabularyRootCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "vocabularyId") long vocabularyId);
@@ -87,7 +87,7 @@ public interface AssetCategoryService {
   Call<JSONArray> search(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "name") String name, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search")
-  Call<JSONArray> search(@Param(name = "groupId") long groupId, @Param(name = "keywords") String keywords, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.asset.kernel.model.AssetCategory>") JSONObject obc);
+  Call<JSONArray> search(@Param(name = "groupId") long groupId, @Param(name = "keywords") String keywords, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/search-categories-display")
   Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "title") String title, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "start") int start, @Param(name = "end") int end);

@@ -26,7 +26,7 @@ public interface LayoutPrototypeService {
   Call<JSONObject> getLayoutPrototype(@Param(name = "layoutPrototypeId") long layoutPrototypeId);
 
   @Path("/search")
-  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "active") boolean active, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.portal.kernel.model.LayoutPrototype>") JSONObject obc);
+  Call<JSONArray> search(@Param(name = "companyId") long companyId, @Param(name = "active") boolean active, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/update-layout-prototype")
   Call<JSONObject> updateLayoutPrototype(@Param(name = "layoutPrototypeId") long layoutPrototypeId, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "active") boolean active, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);

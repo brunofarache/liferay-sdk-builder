@@ -26,7 +26,7 @@ public interface SAPEntryService {
   Call<JSONArray> getCompanySAPEntries(@Param(name = "companyId") long companyId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-company-sap-entries")
-  Call<JSONArray> getCompanySAPEntries(@Param(name = "companyId") long companyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator<com.liferay.portal.security.service.access.policy.model.SAPEntry>") JSONObject obc);
+  Call<JSONArray> getCompanySAPEntries(@Param(name = "companyId") long companyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-company-sap-entries-count")
   Call<Integer> getCompanySAPEntriesCount(@Param(name = "companyId") long companyId);
