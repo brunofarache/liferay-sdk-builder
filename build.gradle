@@ -1,77 +1,9 @@
-plugins {
-	id 'java'
-	id 'maven-publish'
-	id 'com.jfrog.bintray' version '1.7.1'
-}
-
-apply from: 'formatter.gradle'
-format.workingDir = 'src/main/java'
-
-repositories {
-	mavenLocal()
-	jcenter()
-	mavenCentral()
-}
-
-dependencies {
-	compile group: 'com.liferay.mobile', name: 'liferay-mobile-sdk', version: '2.0-beta-8'
-	compile group: 'com.squareup', name: 'javapoet', version: '1.5.1'
-	compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
-	compile group: 'org.apache.velocity', name: 'velocity-tools', version: '2.0'
-	compile group: 'org.json', name: 'json', version: '20160212'
-}
-
-sourceCompatibility = JavaVersion.VERSION_1_7
-
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-			artifactId 'liferay-sdk-builder'
-			artifact sourceJar
-		}
+allprojects {
+	repositories {
+		mavenLocal()
+		jcenter()
+		mavenCentral()
 	}
-}
-
-bintray {
-	user = findProperty('user') ?: ''
-	key = findProperty('key') ?: ''
-
-	publications = ['mavenJava']
-
-	pkg {
-		repo = 'liferay-mobile'
-		name = 'liferay-sdk-builder'
-		userOrg = 'liferay'
-		licenses = ['LGPL-2.1']
-		vcsUrl = 'https://github.com/brunofarache/liferay-sdk-builder.git'
-
-		version {
-			name = project.version
-		}
-	}
-}
-
-task generate(type: JavaExec) {
-	group = 'Liferay'
-	description = 'Runs Liferay SDK Builder with arguments set in gradle.properties.'
-	main = 'com.liferay.mobile.sdk.SDKBuilder'
-	classpath = sourceSets.main.runtimeClasspath
-
-	args = [
-		"platforms=$platforms",
-		"url=$url",
-		"contexts=$contexts",
-		"filter=$filter",
-		"packageName=$packageName",
-		"portalVersion=$portalVersion",
-		"destination=$destination"
-	]
-}
-
-task sourceJar(type: Jar, dependsOn: classes) {
-	classifier = 'sources'
-	from sourceSets.main.allSource
 }
 
 task wrapper(type: Wrapper) {
