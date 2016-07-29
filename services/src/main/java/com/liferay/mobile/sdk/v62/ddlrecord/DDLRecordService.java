@@ -11,9 +11,6 @@ public interface DDLRecordService {
   @Path("/add-record")
   Call<JSONObject> addRecord(@Param(name = "groupId") long groupId, @Param(name = "recordSetId") long recordSetId, @Param(name = "displayIndex") int displayIndex, @Param(name = "fields", className = "com.liferay.portlet.dynamicdatamapping.storage.Fields") JSONObject fields, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 
-  @Path("/add-record")
-  Call<JSONObject> addRecord(@Param(name = "groupId") long groupId, @Param(name = "recordSetId") long recordSetId, @Param(name = "displayIndex") int displayIndex, @Param(name = "fieldsMap") JSONObject fieldsMap, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
-
   @Path("/delete-record-locale")
   Call<JSONObject> deleteRecordLocale(@Param(name = "recordId") long recordId, @Param(name = "locale") String locale, @Param(name = "serviceContext", className = "com.liferay.portal.service.ServiceContext") JSONObject serviceContext);
 

@@ -134,10 +134,10 @@ public interface JournalArticleService {
   Call<JSONObject> getLatestArticle(@Param(name = "resourcePrimKey") long resourcePrimKey);
 
   @Path("/get-latest-article")
-  Call<JSONObject> getLatestArticle(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "classPK") long classPK);
+  Call<JSONObject> getLatestArticle(@Param(name = "groupId") long groupId, @Param(name = "articleId") String articleId, @Param(name = "status") int status);
 
   @Path("/get-latest-article")
-  Call<JSONObject> getLatestArticle(@Param(name = "groupId") long groupId, @Param(name = "articleId") String articleId, @Param(name = "status") int status);
+  Call<JSONObject> getLatestArticle(@Param(name = "groupId") long groupId, @Param(name = "className") String className, @Param(name = "classPK") long classPK);
 
   @Path("/get-layout-articles")
   Call<JSONArray> getLayoutArticles(@Param(name = "groupId") long groupId);
@@ -149,10 +149,10 @@ public interface JournalArticleService {
   Call<Response> moveArticle(@Param(name = "groupId") long groupId, @Param(name = "articleId") String articleId, @Param(name = "newFolderId") long newFolderId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-article-from-trash")
-  Call<JSONObject> moveArticleFromTrash(@Param(name = "groupId") long groupId, @Param(name = "resourcePrimKey") long resourcePrimKey, @Param(name = "newFolderId") long newFolderId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> moveArticleFromTrash(@Param(name = "groupId") long groupId, @Param(name = "articleId") String articleId, @Param(name = "newFolderId") long newFolderId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-article-from-trash")
-  Call<JSONObject> moveArticleFromTrash(@Param(name = "groupId") long groupId, @Param(name = "articleId") String articleId, @Param(name = "newFolderId") long newFolderId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> moveArticleFromTrash(@Param(name = "groupId") long groupId, @Param(name = "resourcePrimKey") long resourcePrimKey, @Param(name = "newFolderId") long newFolderId, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/move-article-to-trash")
   Call<JSONObject> moveArticleToTrash(@Param(name = "groupId") long groupId, @Param(name = "articleId") String articleId);

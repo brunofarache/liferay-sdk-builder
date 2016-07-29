@@ -51,10 +51,10 @@ public interface AssetCategoryService {
   Call<JSONArray> getVocabularyCategories(@Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-vocabulary-categories")
-  Call<JSONArray> getVocabularyCategories(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getVocabularyCategories(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-vocabulary-categories")
-  Call<JSONArray> getVocabularyCategories(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
+  Call<JSONArray> getVocabularyCategories(@Param(name = "groupId") long groupId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-vocabulary-categories-count")
   Call<Integer> getVocabularyCategoriesCount(@Param(name = "groupId") long groupId, @Param(name = "vocabularyId") long vocabularyId);
@@ -96,16 +96,16 @@ public interface AssetCategoryService {
   Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "title") String title, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search-categories-display")
-  Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "title") String title, @Param(name = "parentCategoryIds") JSONArray parentCategoryIds, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "start") int start, @Param(name = "end") int end);
-
-  @Path("/search-categories-display")
   Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupId") long groupId, @Param(name = "title") String title, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search-categories-display")
-  Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "title") String title, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "parentCategoryIds") JSONArray parentCategoryIds, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "sort", className = "com.liferay.portal.kernel.search.Sort") JSONObject sort);
+  Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "title") String title, @Param(name = "parentCategoryIds") JSONArray parentCategoryIds, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/search-categories-display")
   Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupId") long groupId, @Param(name = "title") String title, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "sort", className = "com.liferay.portal.kernel.search.Sort") JSONObject sort);
+
+  @Path("/search-categories-display")
+  Call<JSONObject> searchCategoriesDisplay(@Param(name = "groupIds") JSONArray groupIds, @Param(name = "title") String title, @Param(name = "vocabularyIds") JSONArray vocabularyIds, @Param(name = "parentCategoryIds") JSONArray parentCategoryIds, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "sort", className = "com.liferay.portal.kernel.search.Sort") JSONObject sort);
 
   @Path("/update-category")
   Call<JSONObject> updateCategory(@Param(name = "categoryId") long categoryId, @Param(name = "parentCategoryId") long parentCategoryId, @Param(name = "titleMap") JSONObject titleMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "vocabularyId") long vocabularyId, @Param(name = "categoryProperties") JSONArray categoryProperties, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);

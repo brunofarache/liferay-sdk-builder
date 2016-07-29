@@ -80,10 +80,10 @@ public interface WikiPageService {
   Call<JSONObject> getPage(@Param(name = "groupId") long groupId, @Param(name = "nodeId") long nodeId, @Param(name = "title") String title);
 
   @Path("/get-page")
-  Call<JSONObject> getPage(@Param(name = "nodeId") long nodeId, @Param(name = "title") String title, @Param(name = "version") double version);
+  Call<JSONObject> getPage(@Param(name = "nodeId") long nodeId, @Param(name = "title") String title, @Param(name = "head") boolean head);
 
   @Path("/get-page")
-  Call<JSONObject> getPage(@Param(name = "nodeId") long nodeId, @Param(name = "title") String title, @Param(name = "head") boolean head);
+  Call<JSONObject> getPage(@Param(name = "nodeId") long nodeId, @Param(name = "title") String title, @Param(name = "version") double version);
 
   @Path("/get-pages")
   Call<JSONArray> getPages(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "nodeId") long nodeId, @Param(name = "status") int status, @Param(name = "start") int start, @Param(name = "end") int end);

@@ -11,10 +11,10 @@ import org.json.JSONObject;
 @Path("/trashentry")
 public interface TrashEntryService {
   @Path("/delete-entries")
-  Call<Response> deleteEntries(@Param(name = "groupId") long groupId);
+  Call<Response> deleteEntries(@Param(name = "entryIds") JSONArray entryIds);
 
   @Path("/delete-entries")
-  Call<Response> deleteEntries(@Param(name = "entryIds") JSONArray entryIds);
+  Call<Response> deleteEntries(@Param(name = "groupId") long groupId);
 
   @Path("/delete-entry")
   Call<Response> deleteEntry(@Param(name = "entryId") long entryId);

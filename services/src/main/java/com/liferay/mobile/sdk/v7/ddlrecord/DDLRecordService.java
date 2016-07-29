@@ -10,7 +10,7 @@ import org.json.JSONObject;
 @Path("/ddl.ddlrecord")
 public interface DDLRecordService {
   @Path("/add-record")
-  Call<JSONObject> addRecord(@Param(name = "groupId") long groupId, @Param(name = "recordSetId") long recordSetId, @Param(name = "displayIndex") int displayIndex, @Param(name = "fieldsMap") JSONObject fieldsMap, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<JSONObject> addRecord(@Param(name = "groupId") long groupId, @Param(name = "recordSetId") long recordSetId, @Param(name = "displayIndex") int displayIndex, @Param(name = "ddmFormValues", className = "com.liferay.dynamic.data.mapping.storage.DDMFormValues") JSONObject ddmFormValues, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/delete-record")
   Call<Response> deleteRecord(@Param(name = "recordId") long recordId);

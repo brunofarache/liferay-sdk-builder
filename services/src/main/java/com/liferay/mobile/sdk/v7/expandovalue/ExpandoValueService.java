@@ -17,10 +17,10 @@ public interface ExpandoValueService {
   Call<Response> addValues(@Param(name = "companyId") long companyId, @Param(name = "className") String className, @Param(name = "tableName") String tableName, @Param(name = "classPK") long classPK, @Param(name = "attributeValues") JSONObject attributeValues);
 
   @Path("/get-data")
-  Call<JSONObject> getData(@Param(name = "companyId") long companyId, @Param(name = "className") String className, @Param(name = "tableName") String tableName, @Param(name = "columnNames") JSONArray columnNames, @Param(name = "classPK") long classPK);
+  Call<JSONObject> getData(@Param(name = "companyId") long companyId, @Param(name = "className") String className, @Param(name = "tableName") String tableName, @Param(name = "columnName") String columnName, @Param(name = "classPK") long classPK);
 
   @Path("/get-data")
-  Call<JSONObject> getData(@Param(name = "companyId") long companyId, @Param(name = "className") String className, @Param(name = "tableName") String tableName, @Param(name = "columnName") String columnName, @Param(name = "classPK") long classPK);
+  Call<JSONObject> getData(@Param(name = "companyId") long companyId, @Param(name = "className") String className, @Param(name = "tableName") String tableName, @Param(name = "columnNames") JSONArray columnNames, @Param(name = "classPK") long classPK);
 
   @Path("/get-json-data")
   Call<JSONObject> getJSONData(@Param(name = "companyId") long companyId, @Param(name = "className") String className, @Param(name = "tableName") String tableName, @Param(name = "columnName") String columnName, @Param(name = "classPK") long classPK);

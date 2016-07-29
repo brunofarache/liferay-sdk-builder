@@ -34,10 +34,10 @@ public interface RoleService {
   Call<JSONObject> getRole(@Param(name = "companyId") long companyId, @Param(name = "name") String name);
 
   @Path("/get-roles")
-  Call<JSONArray> getRoles(@Param(name = "type") int type, @Param(name = "subtype") String subtype);
+  Call<JSONArray> getRoles(@Param(name = "companyId") long companyId, @Param(name = "types") JSONArray types);
 
   @Path("/get-roles")
-  Call<JSONArray> getRoles(@Param(name = "companyId") long companyId, @Param(name = "types") JSONArray types);
+  Call<JSONArray> getRoles(@Param(name = "type") int type, @Param(name = "subtype") String subtype);
 
   @Path("/get-user-group-group-roles")
   Call<JSONArray> getUserGroupGroupRoles(@Param(name = "userId") long userId, @Param(name = "groupId") long groupId);

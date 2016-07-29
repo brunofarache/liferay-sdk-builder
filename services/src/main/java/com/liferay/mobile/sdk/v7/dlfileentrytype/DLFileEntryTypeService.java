@@ -42,8 +42,8 @@ public interface DLFileEntryTypeService {
   Call<Integer> searchCount(@Param(name = "companyId") long companyId, @Param(name = "groupIds") JSONArray groupIds, @Param(name = "keywords") String keywords, @Param(name = "includeBasicFileEntryType") boolean includeBasicFileEntryType);
 
   @Path("/update-file-entry-type")
-  Call<Response> updateFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> updateFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 
   @Path("/update-file-entry-type")
-  Call<Response> updateFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "name") String name, @Param(name = "description") String description, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
+  Call<Response> updateFileEntryType(@Param(name = "fileEntryTypeId") long fileEntryTypeId, @Param(name = "nameMap") JSONObject nameMap, @Param(name = "descriptionMap") JSONObject descriptionMap, @Param(name = "ddmStructureIds") JSONArray ddmStructureIds, @Param(name = "serviceContext", className = "com.liferay.portal.kernel.service.ServiceContext") JSONObject serviceContext);
 }

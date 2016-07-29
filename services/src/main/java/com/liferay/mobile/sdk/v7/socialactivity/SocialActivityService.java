@@ -11,22 +11,22 @@ import org.json.JSONObject;
 @Path("/socialactivity")
 public interface SocialActivityService {
   @Path("/get-activities")
-  Call<JSONArray> getActivities(@Param(name = "classNameId") long classNameId, @Param(name = "start") int start, @Param(name = "end") int end);
-
-  @Path("/get-activities")
   Call<JSONArray> getActivities(@Param(name = "className") String className, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-activities")
-  Call<JSONArray> getActivities(@Param(name = "mirrorActivityId") long mirrorActivityId, @Param(name = "classNameId") long classNameId, @Param(name = "classPK") long classPK, @Param(name = "start") int start, @Param(name = "end") int end);
+  Call<JSONArray> getActivities(@Param(name = "classNameId") long classNameId, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-activities")
   Call<JSONArray> getActivities(@Param(name = "mirrorActivityId") long mirrorActivityId, @Param(name = "className") String className, @Param(name = "classPK") long classPK, @Param(name = "start") int start, @Param(name = "end") int end);
 
-  @Path("/get-activities-count")
-  Call<Integer> getActivitiesCount(@Param(name = "classNameId") long classNameId);
+  @Path("/get-activities")
+  Call<JSONArray> getActivities(@Param(name = "mirrorActivityId") long mirrorActivityId, @Param(name = "classNameId") long classNameId, @Param(name = "classPK") long classPK, @Param(name = "start") int start, @Param(name = "end") int end);
 
   @Path("/get-activities-count")
   Call<Integer> getActivitiesCount(@Param(name = "className") String className);
+
+  @Path("/get-activities-count")
+  Call<Integer> getActivitiesCount(@Param(name = "classNameId") long classNameId);
 
   @Path("/get-activities-count")
   Call<Integer> getActivitiesCount(@Param(name = "mirrorActivityId") long mirrorActivityId, @Param(name = "className") String className, @Param(name = "classPK") long classPK);

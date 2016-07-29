@@ -60,10 +60,10 @@ public interface JournalFolderService {
   Call<Integer> getFoldersAndArticlesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId);
 
   @Path("/get-folders-and-articles-count")
-  Call<Integer> getFoldersAndArticlesCount(@Param(name = "groupId") long groupId, @Param(name = "folderIds") JSONArray folderIds, @Param(name = "status") int status);
+  Call<Integer> getFoldersAndArticlesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status);
 
   @Path("/get-folders-and-articles-count")
-  Call<Integer> getFoldersAndArticlesCount(@Param(name = "groupId") long groupId, @Param(name = "folderId") long folderId, @Param(name = "status") int status);
+  Call<Integer> getFoldersAndArticlesCount(@Param(name = "groupId") long groupId, @Param(name = "folderIds") JSONArray folderIds, @Param(name = "status") int status);
 
   @Path("/get-folders-and-articles-count")
   Call<Integer> getFoldersAndArticlesCount(@Param(name = "groupId") long groupId, @Param(name = "userId") long userId, @Param(name = "folderId") long folderId, @Param(name = "status") int status);

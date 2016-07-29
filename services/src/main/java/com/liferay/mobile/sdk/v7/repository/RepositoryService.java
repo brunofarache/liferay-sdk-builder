@@ -26,10 +26,10 @@ public interface RepositoryService {
   Call<JSONArray> getSupportedConfigurations(@Param(name = "classNameId") long classNameId);
 
   @Path("/get-supported-parameters")
-  Call<JSONArray> getSupportedParameters(@Param(name = "classNameId") long classNameId, @Param(name = "configuration") String configuration);
+  Call<JSONArray> getSupportedParameters(@Param(name = "className") String className, @Param(name = "configuration") String configuration);
 
   @Path("/get-supported-parameters")
-  Call<JSONArray> getSupportedParameters(@Param(name = "className") String className, @Param(name = "configuration") String configuration);
+  Call<JSONArray> getSupportedParameters(@Param(name = "classNameId") long classNameId, @Param(name = "configuration") String configuration);
 
   @Path("/get-type-settings-properties")
   Call<JSONObject> getTypeSettingsProperties(@Param(name = "repositoryId") long repositoryId);

@@ -28,10 +28,10 @@ public interface RegionService {
   Call<JSONArray> getRegions();
 
   @Path("/get-regions")
-  Call<JSONArray> getRegions(@Param(name = "countryId") long countryId);
+  Call<JSONArray> getRegions(@Param(name = "active") boolean active);
 
   @Path("/get-regions")
-  Call<JSONArray> getRegions(@Param(name = "active") boolean active);
+  Call<JSONArray> getRegions(@Param(name = "countryId") long countryId);
 
   @Path("/get-regions")
   Call<JSONArray> getRegions(@Param(name = "countryId") long countryId, @Param(name = "active") boolean active);

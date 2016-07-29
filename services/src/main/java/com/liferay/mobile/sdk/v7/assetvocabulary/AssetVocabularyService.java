@@ -30,10 +30,10 @@ public interface AssetVocabularyService {
   Call<JSONArray> getCompanyVocabularies(@Param(name = "companyId") long companyId);
 
   @Path("/get-group-vocabularies")
-  Call<JSONArray> getGroupVocabularies(@Param(name = "groupIds") JSONArray groupIds);
+  Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId);
 
   @Path("/get-group-vocabularies")
-  Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId);
+  Call<JSONArray> getGroupVocabularies(@Param(name = "groupIds") JSONArray groupIds);
 
   @Path("/get-group-vocabularies")
   Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId, @Param(name = "createDefaultVocabulary") boolean createDefaultVocabulary);
@@ -42,16 +42,16 @@ public interface AssetVocabularyService {
   Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-group-vocabularies")
-  Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
-
-  @Path("/get-group-vocabularies")
   Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId, @Param(name = "createDefaultVocabulary") boolean createDefaultVocabulary, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
-  @Path("/get-group-vocabularies-count")
-  Call<Integer> getGroupVocabulariesCount(@Param(name = "groupIds") JSONArray groupIds);
+  @Path("/get-group-vocabularies")
+  Call<JSONArray> getGroupVocabularies(@Param(name = "groupId") long groupId, @Param(name = "name") String name, @Param(name = "start") int start, @Param(name = "end") int end, @Param(name = "obc", className = "com.liferay.portal.kernel.util.OrderByComparator") JSONObject obc);
 
   @Path("/get-group-vocabularies-count")
   Call<Integer> getGroupVocabulariesCount(@Param(name = "groupId") long groupId);
+
+  @Path("/get-group-vocabularies-count")
+  Call<Integer> getGroupVocabulariesCount(@Param(name = "groupIds") JSONArray groupIds);
 
   @Path("/get-group-vocabularies-count")
   Call<Integer> getGroupVocabulariesCount(@Param(name = "groupId") long groupId, @Param(name = "name") String name);
