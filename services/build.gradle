@@ -1,29 +1,27 @@
 buildscript {
-	dependencies {
-		classpath group: 'com.liferay.mobile', name: 'liferay-sdk-builder-gradle-plugin', version: '1.0'
-	}
-
 	repositories {
 		mavenLocal()
 		jcenter()
 		mavenCentral()
 	}
-}
 
-plugins {
-	id 'java'
-	id 'maven-publish'
-	id 'com.jfrog.bintray' version '1.7.1'
+	dependencies {
+		classpath group: 'com.liferay.mobile', name: 'liferay-sdk-builder-gradle-plugin', version: '1.0'
+	}
 }
 
 apply plugin: 'com.liferay.mobile.sdk.builder'
+
+ext {
+	artifactId = 'liferay-mobile-sdk-services'
+}
+
+version '1.0'
 
 dependencies {
 	compileOnly group: 'com.liferay.mobile', name: 'liferay-mobile-sdk', version: '2.0-beta-8'
 	compileOnly group: 'org.json', name: 'json', version: '20160212'
 }
-
-sourceCompatibility = JavaVersion.VERSION_1_7
 
 builder {
 	platforms = ['android']
@@ -37,38 +35,4 @@ builder {
 	packageName = 'com.liferay.mobile.sdk'
 	destination = "${projectDir}/src/main/java"
 	portalVersion = 7
-}
-
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-			artifactId 'liferay-mobile-sdk-services'
-			artifact sourceJar
-		}
-	}
-}
-
-bintray {
-	user = findProperty('user') ?: ''
-	key = findProperty('key') ?: ''
-
-	publications = ['mavenJava']
-
-	pkg {
-		repo = 'liferay-mobile'
-		name = 'liferay-mobile-sdk-services'
-		userOrg = 'liferay'
-		licenses = ['LGPL-2.1']
-		vcsUrl = 'https://github.com/brunofarache/liferay-sdk-builder.git'
-
-		version {
-			name = project.version
-		}
-	}
-}
-
-task sourceJar(type: Jar, dependsOn: classes) {
-	classifier = 'sources'
-	from sourceSets.main.allSource
 }

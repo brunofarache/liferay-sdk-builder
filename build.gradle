@@ -1,27 +1,73 @@
 buildscript {
-	dependencies {
-		classpath group: 'com.liferay', name: 'com.liferay.gradle.plugins.source.formatter', version: '1.0.3'
+	repositories {
+		jcenter()
+		maven {
+			url 'https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public'
+		}
 	}
 
-	repositories {
-		maven {
-			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
-		}
+	dependencies {
+		classpath group: 'com.liferay', name: 'com.liferay.gradle.plugins.source.formatter', version: '1.0.3'
+		classpath group: 'com.jfrog.bintray.gradle', name: 'gradle-bintray-plugin', version: '1.7.1'
 	}
 }
 
-allprojects {
+subprojects {
 	repositories {
 		mavenLocal()
 		jcenter()
 		mavenCentral()
 	}
 
-	apply plugin: "com.liferay.source.formatter"
+	apply plugin: 'java'
+	apply plugin: 'maven-publish'
+	apply plugin: 'com.liferay.source.formatter'
+	apply plugin: 'com.jfrog.bintray'
 
 	formatSource {
-		baseDirName = "src/main/java"
-		copyrightFileName = "LICENSE"
+		baseDirName = 'src/main/java'
+		copyrightFileName = 'LICENSE'
+	}
+
+	ext {
+		artifactId = ''
+	}
+
+	group 'com.liferay.mobile'
+	sourceCompatibility = JavaVersion.VERSION_1_7
+
+	publishing {
+		publications {
+			mavenJava(MavenPublication) {
+				from components.java
+				artifactId project.ext.artifactId
+				artifact sourceJar
+			}
+		}
+	}
+
+	bintray {
+		user = findProperty('user') ?: ''
+		key = findProperty('key') ?: ''
+
+		publications = ['mavenJava']
+
+		pkg {
+			repo = 'liferay-mobile'
+			name = project.ext.artifactId
+			userOrg = 'liferay'
+			licenses = ['LGPL-2.1']
+			vcsUrl = 'https://github.com/brunofarache/liferay-sdk-builder.git'
+
+			version {
+				name = project.version
+			}
+		}
+	}
+
+	task sourceJar(type: Jar, dependsOn: classes) {
+		classifier = 'sources'
+		from sourceSets.main.allSource
 	}
 }
 

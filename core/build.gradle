@@ -1,8 +1,8 @@
-plugins {
-	id 'java'
-	id 'maven-publish'
-	id 'com.jfrog.bintray' version '1.7.1'
+ext {
+	artifactId = 'liferay-sdk-builder'
 }
+
+version '2.0-beta-6'
 
 dependencies {
 	compile group: 'com.liferay.mobile', name: 'liferay-mobile-sdk', version: '2.0-beta-8'
@@ -10,40 +10,4 @@ dependencies {
 	compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
 	compile group: 'org.apache.velocity', name: 'velocity-tools', version: '2.0'
 	compile group: 'org.json', name: 'json', version: '20160212'
-}
-
-sourceCompatibility = JavaVersion.VERSION_1_7
-
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-			artifactId 'liferay-sdk-builder'
-			artifact sourceJar
-		}
-	}
-}
-
-bintray {
-	user = findProperty('user') ?: ''
-	key = findProperty('key') ?: ''
-
-	publications = ['mavenJava']
-
-	pkg {
-		repo = 'liferay-mobile'
-		name = 'liferay-sdk-builder'
-		userOrg = 'liferay'
-		licenses = ['LGPL-2.1']
-		vcsUrl = 'https://github.com/brunofarache/liferay-sdk-builder.git'
-
-		version {
-			name = project.version
-		}
-	}
-}
-
-task sourceJar(type: Jar, dependsOn: classes) {
-	classifier = 'sources'
-	from sourceSets.main.allSource
 }
