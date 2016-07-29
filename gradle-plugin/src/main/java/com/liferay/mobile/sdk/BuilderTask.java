@@ -14,11 +14,12 @@
 
 package com.liferay.mobile.sdk;
 
+import com.liferay.mobile.sdk.BuilderPlugin.Extension;
+
 import org.gradle.api.DefaultTask;
 import org.gradle.api.Project;
 import org.gradle.api.plugins.ExtensionContainer;
 import org.gradle.api.tasks.TaskAction;
-import com.liferay.mobile.sdk.BuilderPlugin.Extension;
 
 /**
  * @author Bruno Farache
@@ -28,7 +29,9 @@ public class BuilderTask extends DefaultTask {
 	@TaskAction
 	public void generate() throws Exception {
 		Project project = getProject();
+
 		ExtensionContainer extensions = project.getExtensions();
+
 		Extension ext = extensions.findByType(Extension.class);
 
 		SDKBuilder builder = new SDKBuilder();

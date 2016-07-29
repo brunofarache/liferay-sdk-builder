@@ -59,7 +59,11 @@ public class Validator {
 			counter++;
 		}
 
-		return (counter == 0) || (counter == 4);
+		if ((counter == 0) || (counter == 4)) {
+			return true;
+		}
+
+		return false;
 	}
 
 }

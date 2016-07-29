@@ -36,6 +36,7 @@ public class DiscoveryDeserializer implements JsonDeserializer<Discovery> {
 		throws JsonParseException {
 
 		JsonObject root = json.getAsJsonObject();
+
 		String contextName = root.get("contextName").getAsString();
 		JsonArray jsonArray = root.getAsJsonArray("services");
 

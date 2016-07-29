@@ -61,7 +61,8 @@ public abstract class BaseBuilder implements Builder {
 			}
 			catch (Exception e) {
 				_log.log(
-					Level.SEVERE, "Could not generate classes for action " +
+					Level.SEVERE,
+					"Could not generate classes for action " +
 						entry.getKey(),
 					e);
 			}

@@ -36,6 +36,7 @@ public class ActionDeserializer implements JsonDeserializer<Action> {
 		throws JsonParseException {
 
 		JsonObject root = json.getAsJsonObject();
+
 		String path = root.get("path").getAsString();
 		String response = root.getAsJsonObject("returns").get("type")
 			.getAsString();
@@ -44,6 +45,7 @@ public class ActionDeserializer implements JsonDeserializer<Action> {
 		String methodName = null;
 
 		String name = root.get("name").getAsString();
+
 		String[] values = name.split("#");
 
 		if (values.length == 2) {

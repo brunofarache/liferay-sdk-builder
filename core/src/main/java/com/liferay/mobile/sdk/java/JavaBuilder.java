@@ -77,6 +77,7 @@ public class JavaBuilder extends BaseBuilder {
 		}
 
 		File directory = new File(destination);
+
 		directory.mkdirs();
 
 		file.writeTo(directory);

@@ -94,6 +94,7 @@ public class Action {
 
 	protected String getMethodNameFromPath() {
 		String last = getMethodPath().substring(1);
+
 		String[] methodName = last.split("-");
 		StringBuilder sb = new StringBuilder();
 

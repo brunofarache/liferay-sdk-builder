@@ -63,9 +63,8 @@ public class ClassNames {
 		return classNames;
 	}
 
+	protected static Properties classNames;
 	protected static final Logger log = Logger.getLogger(
 		ClassNames.class.getName());
-
-	protected static Properties classNames;
 
 }
