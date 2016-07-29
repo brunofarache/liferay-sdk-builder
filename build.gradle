@@ -21,6 +21,7 @@ allprojects {
 
 	formatSource {
 		baseDirName = "src/main/java"
+		copyrightFileName = "LICENSE"
 	}
 }
 
