@@ -31,7 +31,6 @@ public class BuilderTask extends DefaultTask {
 		ExtensionContainer extensions = project.getExtensions();
 		Extension ext = extensions.findByType(Extension.class);
 
-
 		SDKBuilder builder = new SDKBuilder();
 
 		builder.build(
