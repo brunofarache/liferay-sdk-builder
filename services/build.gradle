@@ -25,14 +25,9 @@ dependencies {
 
 builder {
 	platforms = ['android']
-	url = 'http://localhost:8080'
 	contexts = [
 		'portal', 'backgroundtask', 'bookmarks', 'calendar', 'comment',
 		'contacts', 'ddl', 'ddm', 'flags', 'journal', 'kaleo', 'marketplace',
 		'mdr', 'microblogs', 'pm', 'polls', 'sap', 'sync', 'sync-web', 'wiki'
 	]
-	filter = ''
-	packageName = 'com.liferay.mobile.sdk'
-	destination = "${projectDir}/src/main/java"
-	portalVersion = 7
 }

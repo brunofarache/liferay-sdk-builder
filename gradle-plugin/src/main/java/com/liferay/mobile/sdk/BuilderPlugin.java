@@ -30,13 +30,13 @@ public class BuilderPlugin implements Plugin<Project> {
 
 	class Extension {
 
-		public String[] platforms;
-		public String url;
-		public String[] contexts;
-		public String filter;
-		public String packageName;
-		public int portalVersion;
-		public String destination;
+		public String[] platforms = new String[]{ "android", "ios" };
+		public String url = "http://localhost:8080";
+		public String[] contexts = new String[]{ "" };
+		public String filter = "";
+		public String packageName = "com.liferay.mobile.sdk";
+		public int portalVersion = 7;
+		public String destination = "src/main/java";
 
 	}
 
