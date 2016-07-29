@@ -4,9 +4,6 @@ plugins {
 	id 'com.jfrog.bintray' version '1.7.1'
 }
 
-apply from: '../formatter.gradle'
-format.workingDir = 'src/main'
-
 dependencies {
 	compile group: 'com.liferay.mobile', name: 'liferay-mobile-sdk', version: '2.0-beta-8'
 	compile group: 'com.squareup', name: 'javapoet', version: '1.5.1'
