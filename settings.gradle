@@ -1,1 +1,1 @@
-include 'core', 'gradle-plugin', 'sample'
+include 'core', 'gradle-plugin', 'services'
