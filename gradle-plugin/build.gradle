@@ -1,0 +1,28 @@
+plugins {
+	id "java-gradle-plugin"
+	id 'maven-publish'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+
+gradlePlugin {
+	plugins {
+		builder {
+			id = "com.liferay.mobile.sdk.builder"
+			implementationClass = "com.liferay.mobile.sdk.BuilderPlugin"
+		}
+	}
+}
+
+dependencies {
+	compile project(':core')
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+			artifactId 'liferay-sdk-builder-gradle-plugin'
+		}
+	}
+}

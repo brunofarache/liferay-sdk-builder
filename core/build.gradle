@@ -46,23 +46,6 @@ bintray {
 	}
 }
 
-task generate(type: JavaExec) {
-	group = 'Liferay'
-	description = 'Runs Liferay SDK Builder with arguments set in gradle.properties.'
-	main = 'com.liferay.mobile.sdk.SDKBuilder'
-	classpath = sourceSets.main.runtimeClasspath
-
-	args = [
-		"platforms=$platforms",
-		"url=$url",
-		"contexts=$contexts",
-		"filter=$filter",
-		"packageName=$packageName",
-		"portalVersion=$portalVersion",
-		"destination=$destination"
-	]
-}
-
 task sourceJar(type: Jar, dependsOn: classes) {
 	classifier = 'sources'
 	from sourceSets.main.allSource

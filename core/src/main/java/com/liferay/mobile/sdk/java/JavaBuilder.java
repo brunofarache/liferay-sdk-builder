@@ -76,7 +76,10 @@ public class JavaBuilder extends BaseBuilder {
 			destination = "src/gen/java";
 		}
 
-		file.writeTo(new File(destination));
+		File directory = new File(destination);
+		directory.mkdirs();
+
+		file.writeTo(directory);
 	}
 
 	protected TypeSpec.Builder classBuilder(

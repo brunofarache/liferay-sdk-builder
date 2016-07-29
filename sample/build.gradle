@@ -1,0 +1,27 @@
+buildscript {
+	dependencies {
+		classpath group: 'com.liferay.mobile', name: 'liferay-sdk-builder-gradle-plugin', version: '1.0'
+	}
+
+	repositories {
+		mavenLocal()
+		jcenter()
+		mavenCentral()
+	}
+}
+
+apply plugin: "com.liferay.mobile.sdk.builder"
+
+builder {
+	platforms = ['android', 'ios']
+	url = 'http://localhost:8080'
+	contexts = [
+		'portal', 'backgroundtask', 'bookmarks', 'calendar', 'comment',
+		'contacts', 'ddl', 'ddm', 'flags', 'journal', 'kaleo', 'marketplace',
+		'mdr', 'microblogs', 'pm', 'polls', 'sap', 'sync', 'sync-web', 'wiki'
+	]
+	filter = ''
+	packageName = 'com.liferay.mobile.sdk'
+	destination = 'src/main/java'
+	portalVersion = 7
+}
