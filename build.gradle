@@ -29,41 +29,8 @@ subprojects {
 		copyrightFileName = 'LICENSE'
 	}
 
-	ext {
-		artifactId = ''
-	}
-
 	group 'com.liferay.mobile'
 	sourceCompatibility = JavaVersion.VERSION_1_7
-
-	publishing {
-		publications {
-			mavenJava(MavenPublication) {
-				from components.java
-				artifactId project.ext.artifactId
-				artifact sourceJar
-			}
-		}
-	}
-
-	bintray {
-		user = findProperty('user') ?: ''
-		key = findProperty('key') ?: ''
-
-		publications = ['mavenJava']
-
-		pkg {
-			repo = 'liferay-mobile'
-			name = project.ext.artifactId
-			userOrg = 'liferay'
-			licenses = ['LGPL-2.1']
-			vcsUrl = 'https://github.com/brunofarache/liferay-sdk-builder.git'
-
-			version {
-				name = project.version
-			}
-		}
-	}
 
 	task sourceJar(type: Jar, dependsOn: classes) {
 		classifier = 'sources'
