@@ -1,15 +1,24 @@
 plugins {
+	id 'maven-publish'
 	id 'java-gradle-plugin'
+	id 'com.gradle.plugin-publish' version '0.9.5'
+}
+
+repositories {
+	mavenLocal()
+	jcenter()
 }
 
 ext {
 	artifactId = 'liferay-sdk-builder-gradle-plugin'
 }
 
+sourceCompatibility = JavaVersion.VERSION_1_7
+group 'com.liferay.mobile'
 version '1.0'
 
 dependencies {
-	compile project(':core')
+	compile group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '2.0'
 }
 
 publishing {
@@ -17,7 +26,21 @@ publishing {
 		mavenJava(MavenPublication) {
 			from components.java
 			artifactId project.artifactId
-			artifact sourceJar
+		}
+	}
+}
+
+pluginBundle {
+	website = 'https://github.com/brunofarache/liferay-sdk-builder'
+	vcsUrl = 'https://github.com/brunofarache/liferay-sdk-builder.git'
+	description = 'Liferay Mobile SDK Builder Gradle Plugin'
+	tags = ['liferay', 'mobile', 'builder']
+	version = project.version
+
+	plugins {
+		builder {
+			id = 'com.liferay.mobile.sdk.builder'
+			displayName = 'Liferay Mobile SDK Builder Gradle Plugin'
 		}
 	}
 }
