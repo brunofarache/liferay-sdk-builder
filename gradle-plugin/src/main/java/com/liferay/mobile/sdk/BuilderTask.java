@@ -37,7 +37,7 @@ public class BuilderTask extends DefaultTask {
 		SDKBuilder builder = new SDKBuilder();
 
 		builder.build(
-			ext.platforms, ext.url, ext.contexts, ext.packageName, ext.filter,
+			ext.platforms, ext.url, ext.contexts, ext.packageName,
 			ext.portalVersion, ext.destination);
 	}
 

@@ -6,7 +6,7 @@ buildscript {
 	}
 
 	dependencies {
-		classpath group: 'com.liferay.mobile', name: 'liferay-sdk-builder-gradle-plugin', version: '1.0'
+		classpath group: 'com.liferay.mobile', name: 'liferay-sdk-builder-gradle-plugin', version: '1.0.2'
 	}
 }
 

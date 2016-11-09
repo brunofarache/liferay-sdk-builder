@@ -15,10 +15,10 @@ ext {
 
 sourceCompatibility = JavaVersion.VERSION_1_7
 group 'com.liferay.mobile'
-version '1.0.1'
+version '1.0.2'
 
 dependencies {
-	compile group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '2.0'
+	compile group: 'com.liferay.mobile', name: 'liferay-sdk-builder', version: '2.0.1'
 }
 
 publishing {

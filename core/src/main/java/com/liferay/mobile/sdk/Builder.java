@@ -29,7 +29,7 @@ public interface Builder {
 			int version, String destination)
 		throws Exception;
 
-	void buildAll(
+	void build(
 		Discovery discovery, String packageName, int version,
 		String destination);
 

@@ -32,7 +32,7 @@ import java.util.logging.Logger;
 public abstract class BaseBuilder implements Builder {
 
 	@Override
-	public void buildAll(
+	public void build(
 		Discovery discovery, String packageName, int version,
 		String destination) {
 

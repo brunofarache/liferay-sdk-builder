@@ -48,13 +48,12 @@ public class SDKBuilder {
 		String url = arguments.get("url");
 		String[] contexts = arguments.get("contexts").split(",");
 		String packageName = arguments.get("packageName");
-		String filter = arguments.get("filter");
 		int portalVersion = Integer.valueOf(arguments.get("portalVersion"));
 		String destination = arguments.get("destination");
 
 		try {
 			builder.build(
-				platforms, url, contexts, packageName, filter, portalVersion,
+				platforms, url, contexts, packageName, portalVersion,
 				destination);
 		}
 		catch (Exception e) {
@@ -70,41 +69,25 @@ public class SDKBuilder {
 
 	public void build(
 			String[] platforms, String url, String[] contexts,
-			String packageName, String filter, int portalVersion,
-			String destination)
+			String packageName, int portalVersion, String destination)
 		throws Exception {
 
 		for (String context : contexts) {
-			Discovery discovery = discover(url, context, filter, portalVersion);
+			Discovery discovery = discover(url, context, portalVersion);
 
 			for (String platform : platforms) {
 				String className = _properties.getProperty(platform);
 				Builder builder = (Builder)Class.forName(
 					className).newInstance();
 
-				if (Validator.isNull(filter)) {
-					builder.buildAll(
-						discovery, packageName, portalVersion, destination);
-				}
-				else {
-					builder.build(
-						discovery, discovery.getActions(), packageName,
-						portalVersion, destination);
-				}
+				builder.build(
+					discovery, packageName, portalVersion, destination);
 			}
 		}
 	}
 
-	public Discovery discover(
-			String url, String context, String filter, int portalVersion)
+	public Discovery discover(String url, String context, int portalVersion)
 		throws Exception {
-
-		if (Validator.isNull(filter)) {
-			filter = "*";
-		}
-		else {
-			filter = filter + "/*";
-		}
 
 		if ("portal".equals(context)) {
 			context = "";
@@ -115,13 +98,11 @@ public class SDKBuilder {
 				context = "/" + context;
 			}
 
-			url = String.format(
-				"%s%s/api/jsonws?discover=/%s", url, context, filter);
+			url = String.format("%s%s/api/jsonws?discover", url, context);
 		}
 		else if (portalVersion == 7) {
 			url = String.format(
-				"%s/api/jsonws?discover=/%s&contextName=%s", url, filter,
-				context);
+				"%s/api/jsonws?discover&contextName=%s", url, context);
 		}
 
 		OkHttpClient client = new OkHttpClient();

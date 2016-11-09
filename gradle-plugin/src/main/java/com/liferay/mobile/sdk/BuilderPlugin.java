@@ -33,7 +33,6 @@ public class BuilderPlugin implements Plugin<Project> {
 		public String[] platforms = new String[]{ "android", "ios" };
 		public String url = "http://localhost:8080";
 		public String[] contexts = new String[]{ "" };
-		public String filter = "";
 		public String packageName = "com.liferay.mobile.sdk";
 		public int portalVersion = 7;
 		public String destination = "src/main/java";
