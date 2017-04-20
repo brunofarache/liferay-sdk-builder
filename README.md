@@ -1,4 +1,4 @@
-![Liferay Mobile SDK logo](../logo.png)
+![Liferay Mobile SDK logo](https://raw.githubusercontent.com/liferay/liferay-mobile-sdk/master/logo.png)
 
 # Liferay SDK Builder
 
@@ -17,8 +17,7 @@ plugins {
 }
 ```
 
-If you are using an older version of Gradle, or want to use it from a 
-subproject:
+If you are using an older version of Gradle or want to use it from a subproject:
 
 ```groovy
 buildscript {
@@ -82,7 +81,7 @@ instance and find out metadata about your services. Default value is
 either `62` or `7`. Default value is `7`.
 
 * `packageName` - On Android, this is the package to which your SDK's
-classes are written.
+classes are written. Default value is `com.liferay.mobile.sdk`.
 
 * `destination` - This property refers to the destination folder where the
 generate source files will be stored. Default values is `src/main/java`.
